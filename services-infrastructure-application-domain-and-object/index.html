@@ -20,7 +20,7 @@
 
   	<meta property="og:title" content="Services: Infrastructure, Application, Domain, and Object &middot; Jonathan Oliver" />
   	<meta property="og:site_name" content="Jonathan Oliver" />
-  	<meta property="og:url" content="https://joliver.github.io/services-infrastructure-application-domain-and-object/" />
+  	<meta property="og:url" content="https://blog.jonathanoliver.com/services-infrastructure-application-domain-and-object/" />
 
     
         
@@ -45,11 +45,11 @@
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="shortcut icon" href="https://joliver.github.io/images/favicon.ico">
-	  <link rel="apple-touch-icon" href="https://joliver.github.io/images/apple-touch-icon.png" />
+    <link rel="shortcut icon" href="https://blog.jonathanoliver.com/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="https://blog.jonathanoliver.com/images/apple-touch-icon.png" />
 
-    <link rel="stylesheet" type="text/css" href="https://joliver.github.io/css/screen.css" />
-    <link rel="stylesheet" type="text/css" href="https://joliver.github.io/css/nav.css" />
+    <link rel="stylesheet" type="text/css" href="https://blog.jonathanoliver.com/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="https://blog.jonathanoliver.com/css/nav.css" />
 
     
 
@@ -62,13 +62,13 @@
 
     
       
-          <link href="https://joliver.github.io/index.xml" rel="alternate" type="application/rss+xml" title="Jonathan Oliver" />
+          <link href="https://blog.jonathanoliver.com/index.xml" rel="alternate" type="application/rss+xml" title="Jonathan Oliver" />
       
       
     
     <meta name="generator" content="Hugo 0.46-DEV" />
 
-    <link rel="canonical" href="https://joliver.github.io/services-infrastructure-application-domain-and-object/" />
+    <link rel="canonical" href="https://blog.jonathanoliver.com/services-infrastructure-application-domain-and-object/" />
 
     
       
@@ -80,7 +80,7 @@
     "publisher": {
         "@type": "Organization",
         "name": ,
-        "logo": https://joliver.github.io/images/tux.png
+        "logo": https://blog.jonathanoliver.com/images/tux.png
     },
     "author": {
         "@type": "Person",
@@ -88,12 +88,12 @@
         
         "image": {
             "@type": "ImageObject",
-            "url": https://joliver.github.io/images/tux.png,
+            "url": https://blog.jonathanoliver.com/images/tux.png,
             "width": 250,
             "height": 250
         }, 
         
-        "url": https://joliver.github.io,
+        "url": https://blog.jonathanoliver.com/,
         "sameAs": [
             
             
@@ -113,7 +113,7 @@
       "@type": "Language",
       "alternateName": en
     },
-    "url": https://joliver.github.io/services-infrastructure-application-domain-and-object/,
+    "url": https://blog.jonathanoliver.com/services-infrastructure-application-domain-and-object/,
     "datePublished": 2008-12-30T00:00Z,
     "dateModified": 2008-12-30T00:00Z,
     
@@ -121,7 +121,7 @@
     "description": ,
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": https://joliver.github.io/services-infrastructure-application-domain-and-object/
+        "@id": https://blog.jonathanoliver.com/services-infrastructure-application-domain-and-object/
     }
 }
     </script>
@@ -147,7 +147,7 @@
     </ul>
 
     
-    <a class="subscribe-button icon-feed" href="https://joliver.github.io/index.xml">Subscribe</a>
+    <a class="subscribe-button icon-feed" href="https://blog.jonathanoliver.com/index.xml">Subscribe</a>
     
 </div>
 <span class="nav-cover"></span>
@@ -162,10 +162,10 @@
 
 
   
-      <a class="blog-logo" href="https://joliver.github.io/"><img src="https://joliver.github.io/images/tux.png" alt="Home" /></a>
+      <a class="blog-logo" href="https://blog.jonathanoliver.com/"><img src="https://blog.jonathanoliver.com/images/tux.png" alt="Home" /></a>
   
   
-      <a class="menu-button icon-feed" href="https://joliver.github.io/index.xml" >&nbsp;&nbsp;Subscribe</a>
+      <a class="menu-button icon-feed" href="https://blog.jonathanoliver.com/index.xml" >&nbsp;&nbsp;Subscribe</a>
   
   </nav>
 </header>
@@ -194,7 +194,7 @@
     </header>
 
     <section class="post-content">
-      <p>You may have read on various blog from individuals--including well-known master craftsmen--that having references to a service or repository inside of your domain entity is an anti-pattern or a code smell which leads to the dreaded &quot;anemic domain model&quot; problem. If you agreed with this, you'd be wrong.</p> <p>Allow me qualify the above statement. The issue isn't so much having services inside your domain entities--or value objects for that matter--it's having the wrong kind of services. Before we elaborate on the various types of services we need to understand what a service actually is.</p> <p><strong>What is a Service?</strong></p> <p>A service, in the simplest sense, is an object that does something. One of the single-most identifying features of a service is that it is stateless. In other words it doesn't inherently track state internally even though it may make use of external factors to determine proper outcome. A service call is thus non-deterministic--potentially having a different result for each call--but the determinism is external to the service.</p> <p>There are several kinds of services: infrastructure services, application services, domain services, and little-known &quot;object&quot; services--each having a different purpose and reason for existence.</p> <p><strong>Infrastructure Services</strong></p> <p>This is probably the most easily identifiable because it deals with infrastructure concerns such as the interacting with a database, communicating across a network, sending an email, etc. If not carefully isolated, infrastructure concerns can bleed into the domain model and make testability virtually impossible and erecting barriers to change.</p> <p>Keep this kind of service out of entity objects.</p> <p><strong>Application Services</strong></p> <p>Another common and well-known service is that of the application service. This one is often blamed for the anemic domain model--and rightly so. When this service overused or given too much responsibility it robs the domain model of its power and and strength.</p> <p>This is not to say that application services are bad. In fact, application services are often the best way to orchestrate a complex unit of work amongst the various domain objects.</p> <p>Keep this kind of service out of entity objects.</p> <p><strong>Domain Services</strong></p> <p>This is the oft-forgotten, oft-overloaded variety of services. In Evans' landmark book <em>Domain-Driven Design</em> he dedicates an entire section to domain services validating that services are, indeed, first-class citizens in the domain. The biggest distinguishing feature of domain service is that that it is inherently part of the &quot;ubiquitous language&quot;.</p> <p>Domain services may make use of whatever object necessary, including other domain services, repositories, entities--even infrastructure services--to accomplish their assigned responsibility. Furthermore because they are <strong>inside</strong> of the domain they may be freely called <strong>from</strong> other domain objects--including entity and value objects, among others.</p> <p><strong>Another Kind of Service?</strong></p> <p>This is a term I have coined to help describe a particular kind of services that, likes its siblings, is stateless and has a specific responsibility. This service is often confused with an application service or even an infrastructure service. Perhaps a small, contrived example will suffice:</p> <p>Suppose an entity has the responsibility to perform a complex calculation. Naturally this functionality rightfully belongs to the entity. Now suppose in our discovery of the ubiquitous language that another entity has need to perform the same calculation.</p> <p>Do we simply copy and paste the calculation code into the other entity because &quot;services aren't allowed in entities&quot;? Do we make the complex calculation method as <em>public static</em> on one entity and call it from the new entity? The logical answer is neither.</p> <p><em>Pragmatically</em> speaking, we want to conform to one of the most well-understood principles in software development: <a href="http://en.wikipedia.org/wiki/Don't_repeat_yourself">Don't Repeat Yourself</a>. Copying and pasting code from class to class stands in direct violation of this principle and creates a stench bordering on unforgivable.</p> <p><strong>Object Services</strong></p> <p>Because of this there is a need for a fourth kind of service: the object service. The idea behind this service is that it performs the function that was originally a part of a single domain entity, but to avoid duplication and to promote composability and reuse, it has been factored out to another object.</p> <p>In its simplest form an object service would receive primitives into its method call and return some kind of primitive. In a more complex scenario it would define an interface as a parameter and accept the entity which contains it as a parameter in order to prevent coupling.</p> <p>To some this may seem as though we have weakened our domain model to the point where it becomes anemic, being little more than DTOs. The fact that the logic is not coded in the same class file as the domain entity does not mean the model is anemic. A DTO is a series of getters and setters (in C# ) or a bunch of member variables with no ability to act but only to be acted upon.</p> <p>A domain entity has the ability to act, but more especially to <strong>delegate and coordinate</strong> subordinate logic to other objects under its control. In this way it is externally impossible to distinguish whether the domain entity is performing all of the logic itself or delegating the work to other objects--much the same way we think of a car as a single, mental unit without giving much thought to all of the subordinate parts that make it useful.</p> <p>Perhaps some of the challenge and reasoning behind keeping all services out of domain entities is because of the challenge of <a href="https://joliver.github.io/2008/12/making-nhibernate-inversion-of-control.html">properly injecting services</a> into an entity when using an OR/M. This is a purely technical consideration and is more a manifestation of the limits of our current technology. As such this shouldn't even be a consideration.</p> <p><strong>Conclusion</strong></p> <p>Delegation, a foundational pillar of <em>GoF Patterns</em>, never made a domain model anemic or created a DTO from a proper domain entity. Object services, when properly identified and isolated, represent an easy and powerful way to ensure a strong domain model by ensuring testability, separation of concerns, delegation, and code de-duplication, which are explicitly or inherently SOLID principles.</p> 
+      <p>You may have read on various blog from individuals--including well-known master craftsmen--that having references to a service or repository inside of your domain entity is an anti-pattern or a code smell which leads to the dreaded &quot;anemic domain model&quot; problem. If you agreed with this, you'd be wrong.</p> <p>Allow me qualify the above statement. The issue isn't so much having services inside your domain entities--or value objects for that matter--it's having the wrong kind of services. Before we elaborate on the various types of services we need to understand what a service actually is.</p> <p><strong>What is a Service?</strong></p> <p>A service, in the simplest sense, is an object that does something. One of the single-most identifying features of a service is that it is stateless. In other words it doesn't inherently track state internally even though it may make use of external factors to determine proper outcome. A service call is thus non-deterministic--potentially having a different result for each call--but the determinism is external to the service.</p> <p>There are several kinds of services: infrastructure services, application services, domain services, and little-known &quot;object&quot; services--each having a different purpose and reason for existence.</p> <p><strong>Infrastructure Services</strong></p> <p>This is probably the most easily identifiable because it deals with infrastructure concerns such as the interacting with a database, communicating across a network, sending an email, etc. If not carefully isolated, infrastructure concerns can bleed into the domain model and make testability virtually impossible and erecting barriers to change.</p> <p>Keep this kind of service out of entity objects.</p> <p><strong>Application Services</strong></p> <p>Another common and well-known service is that of the application service. This one is often blamed for the anemic domain model--and rightly so. When this service overused or given too much responsibility it robs the domain model of its power and and strength.</p> <p>This is not to say that application services are bad. In fact, application services are often the best way to orchestrate a complex unit of work amongst the various domain objects.</p> <p>Keep this kind of service out of entity objects.</p> <p><strong>Domain Services</strong></p> <p>This is the oft-forgotten, oft-overloaded variety of services. In Evans' landmark book <em>Domain-Driven Design</em> he dedicates an entire section to domain services validating that services are, indeed, first-class citizens in the domain. The biggest distinguishing feature of domain service is that that it is inherently part of the &quot;ubiquitous language&quot;.</p> <p>Domain services may make use of whatever object necessary, including other domain services, repositories, entities--even infrastructure services--to accomplish their assigned responsibility. Furthermore because they are <strong>inside</strong> of the domain they may be freely called <strong>from</strong> other domain objects--including entity and value objects, among others.</p> <p><strong>Another Kind of Service?</strong></p> <p>This is a term I have coined to help describe a particular kind of services that, likes its siblings, is stateless and has a specific responsibility. This service is often confused with an application service or even an infrastructure service. Perhaps a small, contrived example will suffice:</p> <p>Suppose an entity has the responsibility to perform a complex calculation. Naturally this functionality rightfully belongs to the entity. Now suppose in our discovery of the ubiquitous language that another entity has need to perform the same calculation.</p> <p>Do we simply copy and paste the calculation code into the other entity because &quot;services aren't allowed in entities&quot;? Do we make the complex calculation method as <em>public static</em> on one entity and call it from the new entity? The logical answer is neither.</p> <p><em>Pragmatically</em> speaking, we want to conform to one of the most well-understood principles in software development: <a href="http://en.wikipedia.org/wiki/Don't_repeat_yourself">Don't Repeat Yourself</a>. Copying and pasting code from class to class stands in direct violation of this principle and creates a stench bordering on unforgivable.</p> <p><strong>Object Services</strong></p> <p>Because of this there is a need for a fourth kind of service: the object service. The idea behind this service is that it performs the function that was originally a part of a single domain entity, but to avoid duplication and to promote composability and reuse, it has been factored out to another object.</p> <p>In its simplest form an object service would receive primitives into its method call and return some kind of primitive. In a more complex scenario it would define an interface as a parameter and accept the entity which contains it as a parameter in order to prevent coupling.</p> <p>To some this may seem as though we have weakened our domain model to the point where it becomes anemic, being little more than DTOs. The fact that the logic is not coded in the same class file as the domain entity does not mean the model is anemic. A DTO is a series of getters and setters (in C# ) or a bunch of member variables with no ability to act but only to be acted upon.</p> <p>A domain entity has the ability to act, but more especially to <strong>delegate and coordinate</strong> subordinate logic to other objects under its control. In this way it is externally impossible to distinguish whether the domain entity is performing all of the logic itself or delegating the work to other objects--much the same way we think of a car as a single, mental unit without giving much thought to all of the subordinate parts that make it useful.</p> <p>Perhaps some of the challenge and reasoning behind keeping all services out of domain entities is because of the challenge of <a href="https://blog.jonathanoliver.com/2008/12/making-nhibernate-inversion-of-control.html">properly injecting services</a> into an entity when using an OR/M. This is a purely technical consideration and is more a manifestation of the limits of our current technology. As such this shouldn't even be a consideration.</p> <p><strong>Conclusion</strong></p> <p>Delegation, a foundational pillar of <em>GoF Patterns</em>, never made a domain model anemic or created a DTO from a proper domain entity. Object services, when properly identified and isolated, represent an easy and powerful way to ensure a strong domain model by ensuring testability, separation of concerns, delegation, and code de-duplication, which are explicitly or inherently SOLID principles.</p> 
 
     </section>
 
@@ -212,18 +212,18 @@
 
 
 <figure class="author-image">
-    <a class="img" href="https://joliver.github.io/" style="background-image: url(/images/tux.png)"><span class="hidden">Jonathan Oliver's Picture</span></a>
+    <a class="img" href="https://blog.jonathanoliver.com/" style="background-image: url(/images/tux.png)"><span class="hidden">Jonathan Oliver's Picture</span></a>
 </figure>
 
 
 <section class="author">
-  <h4><a href="https://joliver.github.io/">Jonathan Oliver</a></h4>
+  <h4><a href="https://blog.jonathanoliver.com/">Jonathan Oliver</a></h4>
   
-  <p>Read <a href="https://joliver.github.io/">more posts</a> by this author.</p>
+  <p>Read <a href="https://blog.jonathanoliver.com/">more posts</a> by this author.</p>
   
   <div class="author-meta">
     <span class="author-location icon-location">Utah, USA</span>
-    <span class="author-link icon-link"><a href="https://joliver.github.io">https://joliver.github.io</a></span>
+    <span class="author-link icon-link"><a href="https://blog.jonathanoliver.com/">https://blog.jonathanoliver.com/</a></span>
   </div>
 </section>
 
@@ -233,19 +233,19 @@
     
 <section class="share">
   <h4>Share this post</h4>
-  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Services%3a%20Infrastructure%2c%20Application%2c%20Domain%2c%20and%20Object&nbsp;-&nbsp;Jonathan%20Oliver&amp;url=https%3a%2f%2fjoliver.github.io%2fservices-infrastructure-application-domain-and-object%2f"
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Services%3a%20Infrastructure%2c%20Application%2c%20Domain%2c%20and%20Object&nbsp;-&nbsp;Jonathan%20Oliver&amp;url=https%3a%2f%2fblog.jonathanoliver.com%2fservices-infrastructure-application-domain-and-object%2f"
       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
       <span class="hidden">Twitter</span>
   </a>
-  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fjoliver.github.io%2fservices-infrastructure-application-domain-and-object%2f"
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.jonathanoliver.com%2fservices-infrastructure-application-domain-and-object%2f"
       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
       <span class="hidden">Facebook</span>
   </a>
-  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fjoliver.github.io%2fservices-infrastructure-application-domain-and-object%2f&amp;description=Services%3a%20Infrastructure%2c%20Application%2c%20Domain%2c%20and%20Object"
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fblog.jonathanoliver.com%2fservices-infrastructure-application-domain-and-object%2f&amp;description=Services%3a%20Infrastructure%2c%20Application%2c%20Domain%2c%20and%20Object"
       onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
       <span class="hidden">Pinterest</span>
   </a>
-  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fjoliver.github.io%2fservices-infrastructure-application-domain-and-object%2f"
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fblog.jonathanoliver.com%2fservices-infrastructure-application-domain-and-object%2f"
      onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
       <span class="hidden">Google+</span>
   </a>
@@ -262,8 +262,8 @@
 
 
 var disqus_config = function () {
-this.page.url = "https:\/\/joliver.github.io\/services-infrastructure-application-domain-and-object\/";  
-this.page.identifier = "https:\/\/joliver.github.io\/services-infrastructure-application-domain-and-object\/"; 
+this.page.url = "https:\/\/blog.jonathanoliver.com\/services-infrastructure-application-domain-and-object\/";  
+this.page.identifier = "https:\/\/blog.jonathanoliver.com\/services-infrastructure-application-domain-and-object\/"; 
 };
 
 (function() { 
@@ -290,7 +290,7 @@ s.setAttribute('data-timestamp', +new Date());
 
   <aside class="read-next">
   
-      <a class="read-next-story" style="no-cover" href="https://joliver.github.io/windows-server-2008-x64-cerc-1-5-6-channel-sata-raid/">
+      <a class="read-next-story" style="no-cover" href="https://blog.jonathanoliver.com/windows-server-2008-x64-cerc-1-5-6-channel-sata-raid/">
           <section class="post">
               <h2>Windows Server 2008 x64 &amp; CERC 1.5 6-Channel SATA RAID</h2>
               
@@ -298,7 +298,7 @@ s.setAttribute('data-timestamp', +new Date());
       </a>
   
   
-      <a class="read-next-story prev" style="no-cover" href="https://joliver.github.io/assembly-artifact-storage/">
+      <a class="read-next-story prev" style="no-cover" href="https://blog.jonathanoliver.com/assembly-artifact-storage/">
           <section class="post">
               <h2>Assembly &amp; Artifact Storage</h2>
           </section>
@@ -313,9 +313,9 @@ s.setAttribute('data-timestamp', +new Date());
         
     </footer>
     </div>
-    <script type="text/javascript" src="https://joliver.github.io/js/jquery.js"></script>
-    <script type="text/javascript" src="https://joliver.github.io/js/jquery.fitvids.js"></script>
-    <script type="text/javascript" src="https://joliver.github.io/js/index.js"></script>
+    <script type="text/javascript" src="https://blog.jonathanoliver.com/js/jquery.js"></script>
+    <script type="text/javascript" src="https://blog.jonathanoliver.com/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://blog.jonathanoliver.com/js/index.js"></script>
     
 </body>
 </html>

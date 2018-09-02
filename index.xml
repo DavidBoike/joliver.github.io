@@ -2,81 +2,81 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Jonathan Oliver</title>
-    <link>https://joliver.github.io/</link>
+    <link>https://blog.jonathanoliver.com/</link>
     <description>Recent content on Jonathan Oliver</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <copyright>(c) Jonathan Oliver. All rights reserved.</copyright>
     <lastBuildDate>Mon, 30 Jun 2014 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://joliver.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.jonathanoliver.com/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>AWS Elastic Block Storage Scares Me</title>
-      <link>https://joliver.github.io/ebs-scares-me/</link>
+      <link>https://blog.jonathanoliver.com/ebs-scares-me/</link>
       <pubDate>Mon, 30 Jun 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/ebs-scares-me/</guid>
+      <guid>https://blog.jonathanoliver.com/ebs-scares-me/</guid>
       <description>Take a look at the last half-dozen or so publicized outages at Amazon. Every single time it was a failure in EBS—including the multi-day EBS outage in April 2011.
 I still love AWS. If you have an elastic (scaling) workload, it&#39;s awesome. Normally I have a hard time taking a dependency of third-party behavior which facilitates vendor lock-in, but Amazon makes it so incredibly easy because their cloud is vastly more capable when compared to other cloud providers.</description>
     </item>
     
     <item>
       <title>Golang Has Generics—Why I Don&#39;t Miss Generics Anymore</title>
-      <link>https://joliver.github.io/golang-has-generics/</link>
+      <link>https://blog.jonathanoliver.com/golang-has-generics/</link>
       <pubDate>Mon, 30 Jun 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/golang-has-generics/</guid>
+      <guid>https://blog.jonathanoliver.com/golang-has-generics/</guid>
       <description>There&#39;s a lot of discussion about generics in Go. In fact, it&#39;s one of the most-requested features in the language discussion groups. The language designers aren&#39;t against generics, but they have not found or seen a good proposal that allows generics in the language without significantly complicating the language and implementation.
 That being said, Go has generics. Think about it. What is the primary use case for generics? Collections—when you&#39;ve got a set of &amp;quot;objects&amp;quot; (instances of a structure) and you want to operate on that structure regardless of type.</description>
     </item>
     
     <item>
       <title>I Was On Page One of Hacker News—Here&#39;s What I Learned</title>
-      <link>https://joliver.github.io/hacker-news-page-one/</link>
+      <link>https://blog.jonathanoliver.com/hacker-news-page-one/</link>
       <pubDate>Mon, 30 Jun 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/hacker-news-page-one/</guid>
+      <guid>https://blog.jonathanoliver.com/hacker-news-page-one/</guid>
       <description>Hacker News is awesome. I browse the site every day because love the continual stream of relevant stories and articles for tech-savvy people. Stories there are sorted by using an algorithm based upon time and community up-votes, among other things. This means that the first page of results is an ever-changing set of compelling and intellectually revealing articles.
 My phone started going crazy with email alerts on Sunday afternoon. I was receiving a bunch of email alerts for new Disqus comments on my blog.</description>
     </item>
     
     <item>
       <title>Celebrating the Death of Comcast: The Case for Net Neutrality</title>
-      <link>https://joliver.github.io/celebrating-the-death-of-comcast-net/</link>
+      <link>https://blog.jonathanoliver.com/celebrating-the-death-of-comcast-net/</link>
       <pubDate>Fri, 21 Mar 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/celebrating-the-death-of-comcast-net/</guid>
+      <guid>https://blog.jonathanoliver.com/celebrating-the-death-of-comcast-net/</guid>
       <description>Comcast&#39;s Evil Twin We love our movies and our television. After a hard day at work, many Americans like to enjoy some downtime with a good TV show or movie. When technology advanced in the 1980s in the form of video cassette tapes, this gave us a new choice for how and when we consumed media. From this innovation came a natural outgrowth: the video store. Virtually every town in America had one.</description>
     </item>
     
     <item>
       <title>Why I Left the .NET Framework</title>
-      <link>https://joliver.github.io/why-i-left-dot-net/</link>
+      <link>https://blog.jonathanoliver.com/why-i-left-dot-net/</link>
       <pubDate>Thu, 30 Jan 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/why-i-left-dot-net/</guid>
+      <guid>https://blog.jonathanoliver.com/why-i-left-dot-net/</guid>
       <description>The .NET Framework was good. Really good. Until it wasn&#39;t. Why did I leave .NET? In short, it constrained our ability to choose (which is a huge deal for me) and turned our focus inward toward the perceived safety of the nest instead of the helping us experience all of the possibilities out there in the big, wide world.
 [Buckle up: this is post has pratically become a book in length.</description>
     </item>
     
     <item>
       <title>Why I Left Windows</title>
-      <link>https://joliver.github.io/why-i-left-windows/</link>
+      <link>https://blog.jonathanoliver.com/why-i-left-windows/</link>
       <pubDate>Wed, 29 Jan 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/why-i-left-windows/</guid>
+      <guid>https://blog.jonathanoliver.com/why-i-left-windows/</guid>
       <description>As a development environment and a server environment Windows makes less and less sense. It&#39;s not that I don&#39;t like Windows. It&#39;s actually really good operating system for a lot of people and is getting arguably more secure from attacks. My problem is that it continues to get in my way and limit me in ways that hamper and impede progress.
 NOTE: I&#39;ve been using various operating systems since the early 90s, but I&#39;ve been using Windows as my primary OS for software development until a year ago when we decided to change development stacks.</description>
     </item>
     
     <item>
       <title>Hello, World! (again)</title>
-      <link>https://joliver.github.io/hello-world-again/</link>
+      <link>https://blog.jonathanoliver.com/hello-world-again/</link>
       <pubDate>Tue, 28 Jan 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/hello-world-again/</guid>
+      <guid>https://blog.jonathanoliver.com/hello-world-again/</guid>
       <description>Hello, World! I&#39;m still here. It&#39;s been a good, long while since I last posted. So where have I been? And what have I been up to?
 Well, a lot has changed since my last post, but one thing remains the same: messaging. In fact, messaging is now more ubiquitous in my architecture and designs than it has ever been. I&#39;ll touch on that in a future post.
 For now, I&#39;m back and I&#39;ll be attempting to outline various architectural patterns, styles, and best practices--along with the coding tips and tricks.</description>
@@ -84,20 +84,20 @@ For now, I&#39;m back and I&#39;ll be attempting to outline various architectura
     
     <item>
       <title>Why I Love Go</title>
-      <link>https://joliver.github.io/why-i-love-go/</link>
+      <link>https://blog.jonathanoliver.com/why-i-love-go/</link>
       <pubDate>Tue, 28 Jan 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/why-i-love-go/</guid>
+      <guid>https://blog.jonathanoliver.com/why-i-love-go/</guid>
       <description>I have been in the process of migrating off of Windows and the .NET Framework for a little while now. The process is still underway, but is going very smoothly. To understand the need for a platform migration, there are two things to understand:
  First, why change the development environments and application platform at all? And second, what platform/language should we choose?  The first point is beyond the scope of this post and will be covered in more detail at a later date.</description>
     </item>
     
     <item>
       <title>NuGet File Locks</title>
-      <link>https://joliver.github.io/nuget-file-locks/</link>
+      <link>https://blog.jonathanoliver.com/nuget-file-locks/</link>
       <pubDate>Fri, 23 Mar 2012 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/nuget-file-locks/</guid>
+      <guid>https://blog.jonathanoliver.com/nuget-file-locks/</guid>
       <description>Since leveraging some of the capabilities of NuGet v1.6, such as &amp;quot;package restore&amp;quot;, our build server has been giving us random fits about various file locks. Sometimes it was just a matter of re-executing the build and sometimes we had to clear the temporary build workspace and then re-execute. In any case, it was very annoying.
 The error message that we&#39;d get during our build was something like this:
 The process cannot access the file &#39;XYZ&#39; because it is being used by another process.</description>
@@ -105,47 +105,47 @@ The process cannot access the file &#39;XYZ&#39; because it is being used by ano
     
     <item>
       <title>Hamachi Goodness</title>
-      <link>https://joliver.github.io/hamachi-goodness/</link>
+      <link>https://blog.jonathanoliver.com/hamachi-goodness/</link>
       <pubDate>Sat, 25 Feb 2012 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/hamachi-goodness/</guid>
+      <guid>https://blog.jonathanoliver.com/hamachi-goodness/</guid>
       <description>Hamachi is my new best friend. My company recently expanded into a 3rd data center to have even more redundancy and fault tolerance. One issue that we had as we approached the rollout was how to best create a secure communication channel over the web for this purpose. Generally speaking, this is a solved problem, but even so, when working with a semi-crippled OS such as Windows, the ability to choose VPN solutions becomes a problem.</description>
     </item>
     
     <item>
       <title>Utah .NET User Group Meeting</title>
-      <link>https://joliver.github.io/utah-net-user-group-meeting/</link>
+      <link>https://blog.jonathanoliver.com/utah-net-user-group-meeting/</link>
       <pubDate>Thu, 12 Jan 2012 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/utah-net-user-group-meeting/</guid>
+      <guid>https://blog.jonathanoliver.com/utah-net-user-group-meeting/</guid>
       <description>Tonight at 6:00 PM at Neumont University (room 300) in Sandy, Utah--the same place where the Utah Code Camp is held. I&#39;ll be giving a presentation on my EventStore project and going into a little bit of detail regarding the advantages of event sourcing--specifically idempotent messaging and rebuilding view models. If you&#39;re in the area, you&#39;re welcome to attend. If not, you can watch the recording of the European Virtual ALT.</description>
     </item>
     
     <item>
       <title>Crime Scene Event Sourcing</title>
-      <link>https://joliver.github.io/crime-scene-event-sourcing/</link>
+      <link>https://blog.jonathanoliver.com/crime-scene-event-sourcing/</link>
       <pubDate>Fri, 06 Jan 2012 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/crime-scene-event-sourcing/</guid>
+      <guid>https://blog.jonathanoliver.com/crime-scene-event-sourcing/</guid>
       <description>To use event sourcing or not is an interesting question and one that should not be taken lightly. The two main camps in the debate contend on several key points among which include business necessity, architectural gold plating, educational overhead, and tool support. For a moment, let&#39;s consider the argument to use or not use event sourcing in a different light.
 Let&#39;s take a &amp;quot;real-world&amp;quot; example and see how the presence of event sourcing could fundamentally change the investigation of a crime scene.</description>
     </item>
     
     <item>
       <title>CQRS EventStore - Europe Virtual ALT.NET Presentation</title>
-      <link>https://joliver.github.io/cqrs-eventstore-europe-virtual-alt-net-presentation/</link>
+      <link>https://blog.jonathanoliver.com/cqrs-eventstore-europe-virtual-alt-net-presentation/</link>
       <pubDate>Mon, 07 Nov 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/cqrs-eventstore-europe-virtual-alt-net-presentation/</guid>
+      <guid>https://blog.jonathanoliver.com/cqrs-eventstore-europe-virtual-alt-net-presentation/</guid>
       <description>The video for my Europe Virtual ALT.NET Presentation for the CQRS EventStore is now live (as of a week ago) I have also just posted the slides for the presentation to SlideShare.</description>
     </item>
     
     <item>
       <title>EventStore v3.0 Release</title>
-      <link>https://joliver.github.io/eventstore-v3-0-release/</link>
+      <link>https://blog.jonathanoliver.com/eventstore-v3-0-release/</link>
       <pubDate>Wed, 02 Nov 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/eventstore-v3-0-release/</guid>
+      <guid>https://blog.jonathanoliver.com/eventstore-v3-0-release/</guid>
       <description>It&#39;s been a little while in coming, but nonetheless, I&#39;m pleased to release the latest version of the CQRS EventStore As always, you can find the source code on GitHub as well as the official pre-built binaries. You can also find the EventStore package on the NuGet Gallery. NuGet is the recommended way to install.
 New in the release (since the v3.0 beta release)
   Fixes in the SQL implementation that could cause concurrency exceptions when running multiple instances of the EventStore against a single backend storage.</description>
@@ -153,19 +153,19 @@ New in the release (since the v3.0 beta release)
     
     <item>
       <title>EventStore EVAN Presentation</title>
-      <link>https://joliver.github.io/eventstore-evan-presentation/</link>
+      <link>https://blog.jonathanoliver.com/eventstore-evan-presentation/</link>
       <pubDate>Tue, 25 Oct 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/eventstore-evan-presentation/</guid>
+      <guid>https://blog.jonathanoliver.com/eventstore-evan-presentation/</guid>
       <description>Just in case you missed the announcement, I will be presenting today at 7:00 PM UTC on the EventStore project for the Europe Virtual ALT.NET conference. The event will be recorded and available for later viewing if you can&#39;t make it.</description>
     </item>
     
     <item>
       <title>CQRS EventStore v3.0</title>
-      <link>https://joliver.github.io/cqrs-eventstore-v3-0/</link>
+      <link>https://blog.jonathanoliver.com/cqrs-eventstore-v3-0/</link>
       <pubDate>Thu, 22 Sep 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/cqrs-eventstore-v3-0/</guid>
+      <guid>https://blog.jonathanoliver.com/cqrs-eventstore-v3-0/</guid>
       <description>The official release for EventStore 3.0 is just around the corner. Following SemVer semantics, this is now version 3.0 instead of 2.1 or whatever. his post is to highlight the differences between 2.0 and 3.0. First and foremost, the packages are available for download here in both .NET 3.5 and .NET 4.0 flavors:
 https://github.com/joliver/EventStore/downloads (contains all binaries and plugins for various persistence and serialization methods)
 On NuGet, the following packages have been pushed.</description>
@@ -173,39 +173,39 @@ On NuGet, the following packages have been pushed.</description>
     
     <item>
       <title>My New Best Friend: git merge  --no-ff</title>
-      <link>https://joliver.github.io/my-new-best-friend-git-merge-no-ff/</link>
+      <link>https://blog.jonathanoliver.com/my-new-best-friend-git-merge-no-ff/</link>
       <pubDate>Wed, 31 Aug 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/my-new-best-friend-git-merge-no-ff/</guid>
+      <guid>https://blog.jonathanoliver.com/my-new-best-friend-git-merge-no-ff/</guid>
       <description>I&#39;ve been using Git now for several years. Over a year ago I bumped into a great article about A Successful Git Branching Model. It&#39;s a great article in its own right and deserves your attention if you&#39;re using Git. If you&#39;re not using Git, you&#39;d better be using some form of distributed version control. If you&#39;re not…well…I digress.
 One of the things about Git that I never worried about too much was leveraging branches for various work items.</description>
     </item>
     
     <item>
       <title>Browser-side View Model Templates</title>
-      <link>https://joliver.github.io/browser-side-view-model-templates/</link>
+      <link>https://blog.jonathanoliver.com/browser-side-view-model-templates/</link>
       <pubDate>Thu, 23 Jun 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/browser-side-view-model-templates/</guid>
+      <guid>https://blog.jonathanoliver.com/browser-side-view-model-templates/</guid>
       <description>Years ago I considered Javascript to be more or less of a joke as a language. At the time browser implementations made creating a consistent implementation both dangerous and time consuming. Time passed and several very significant things happened:
   FireFox 1.0 and the modern browser.   Google Maps   jQuery   Web-scale loads   Because of these developments, much of my recent work has been able to leverage Javascript more fully thus making the browser an integral part of a fully distributed system.</description>
     </item>
     
     <item>
       <title>Transcending the POST, Validate, Redirect Pattern</title>
-      <link>https://joliver.github.io/transcending-the-post-validate-redirect-pattern/</link>
+      <link>https://blog.jonathanoliver.com/transcending-the-post-validate-redirect-pattern/</link>
       <pubDate>Thu, 23 Jun 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/transcending-the-post-validate-redirect-pattern/</guid>
+      <guid>https://blog.jonathanoliver.com/transcending-the-post-validate-redirect-pattern/</guid>
       <description>Jimmy Bogard&#39;s recent blog post entitled Cleaning up POSTs in ASP.NET MVC was a great read. But I wanted to share another method that I have used with great success in recent months. One of the primary issues that Jimmy is trying to solve in his blog post is that of DRYing up duplicate code by creating application-level infrastructure code that can easily be used and varied within certain boundaries.</description>
     </item>
     
     <item>
       <title>NServiceBus and Guaranteed Delivery</title>
-      <link>https://joliver.github.io/nservicebus-and-guaranteed-delivery/</link>
+      <link>https://blog.jonathanoliver.com/nservicebus-and-guaranteed-delivery/</link>
       <pubDate>Wed, 15 Jun 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/nservicebus-and-guaranteed-delivery/</guid>
+      <guid>https://blog.jonathanoliver.com/nservicebus-and-guaranteed-delivery/</guid>
       <description>As a committer on NServiceBus, I&#39;m typically running the code from the master branch head in production. Crazy, huh? I commit made against the master branch not too long ago affected my application code in its ability to properly handle a message. But it didn&#39;t cause me any long-term grief.
 Why?
 The answer is simple. Guaranteed delivery. The messages couldn&#39;t be processed so they were forwarded to an error queue. One in the error queue, we were made aware of the problem and were able to fix it in short order.</description>
@@ -213,10 +213,10 @@ The answer is simple. Guaranteed delivery. The messages couldn&#39;t be processe
     
     <item>
       <title>CQRS EventStore v2.0 Release</title>
-      <link>https://joliver.github.io/cqrs-eventstore-v2-0-release/</link>
+      <link>https://blog.jonathanoliver.com/cqrs-eventstore-v2-0-release/</link>
       <pubDate>Mon, 06 Jun 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/cqrs-eventstore-v2-0-release/</guid>
+      <guid>https://blog.jonathanoliver.com/cqrs-eventstore-v2-0-release/</guid>
       <description>I have just released v2.0 of my CQRS EventStore project. I have been amazed at and delighted by the number of contributors the project. Interest continues to grow and implementations for various storage engines continues as well as other serialization strategies.
 Download
 Download the .NET 4.0 release here: https://github.com/downloads/joliver/EventStore/EventStore-2.0.11157.39-net40.zip
@@ -227,76 +227,76 @@ First and foremost, any volunteers to help me with the NuGet package? Ideally we
     
     <item>
       <title>Why I Still Love CQRS (and Messaging and Event Sourcing)</title>
-      <link>https://joliver.github.io/why-i-still-love-cqrs-and-messaging-and-event-sourcing/</link>
+      <link>https://blog.jonathanoliver.com/why-i-still-love-cqrs-and-messaging-and-event-sourcing/</link>
       <pubDate>Mon, 09 May 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/why-i-still-love-cqrs-and-messaging-and-event-sourcing/</guid>
+      <guid>https://blog.jonathanoliver.com/why-i-still-love-cqrs-and-messaging-and-event-sourcing/</guid>
       <description>Let&#39;s rewind several years. At the time I was struggling through a large project with ever increasing complexity in my &#34;domain model&#34; (if you could really call it that) along with an explosion of dependencies—from NHibernate (including Fluent NHibernate, NHibernate.LINQ), log4net, unit tests, and web services all over the place. It was crazy—crazy big, crazy hard to debug, and crazy hard to figure out what was happening through the rats nest of dependencies.</description>
     </item>
     
     <item>
       <title>ASP.NET MVC and IIS7 404 Pages</title>
-      <link>https://joliver.github.io/asp-net-mvc-and-iis7-404-pages/</link>
+      <link>https://blog.jonathanoliver.com/asp-net-mvc-and-iis7-404-pages/</link>
       <pubDate>Fri, 06 May 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/asp-net-mvc-and-iis7-404-pages/</guid>
+      <guid>https://blog.jonathanoliver.com/asp-net-mvc-and-iis7-404-pages/</guid>
       <description>Note to self (and to anyone else who cares): If IIS7 is giving back 404 pages and it&#39;s pointing to the proper directory and configured with Integrated Mode, and the MVC routes appear to be correct, it might be that there are no controllers registered with the container.
 This one bit me a little bit today--I kept getting 404 pages from IIS and everything appeared to be configured correctly. Finally, when I registered the controller with the container the 404&#39;s went away and I was able to continue.</description>
     </item>
     
     <item>
       <title>A Simple Reminder of Event Sourcing Benefits</title>
-      <link>https://joliver.github.io/a-simple-reminder-of-event-sourcing-benefits/</link>
+      <link>https://blog.jonathanoliver.com/a-simple-reminder-of-event-sourcing-benefits/</link>
       <pubDate>Mon, 02 May 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/a-simple-reminder-of-event-sourcing-benefits/</guid>
+      <guid>https://blog.jonathanoliver.com/a-simple-reminder-of-event-sourcing-benefits/</guid>
       <description>I was working with some legacy data the other day when all of a sudden I realized that I needed to know exactly how old the data was. The problem? I had no way to get that information precisely. The specific scenario was I was working with phone numbers and addresses of customers. Knowing how old a piece of information—especially contact info—is critical because the older or more stale it is, the higher the potential for error.</description>
     </item>
     
     <item>
       <title>CQRS: Out of Sequence Messages and Read Models</title>
-      <link>https://joliver.github.io/cqrs-out-of-sequence-messages-and-read-models/</link>
+      <link>https://blog.jonathanoliver.com/cqrs-out-of-sequence-messages-and-read-models/</link>
       <pubDate>Mon, 04 Apr 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/cqrs-out-of-sequence-messages-and-read-models/</guid>
+      <guid>https://blog.jonathanoliver.com/cqrs-out-of-sequence-messages-and-read-models/</guid>
       <description>One of the tricks to message-based solutions is handling messages that come out of order. In some instances the application code must be made resilient to this situation. In other cases, it can be easier to re-sequence the messages and then apply each messages in sequence. In one of my current systems this is the route we took—re-sequencing messages if they arrive out of order.
 One of the easier possibilities is to have the read model poll the event store for new commits.</description>
     </item>
     
     <item>
       <title>How I Avoid Two-Phase Commit</title>
-      <link>https://joliver.github.io/how-i-avoid-two-phase-commit/</link>
+      <link>https://blog.jonathanoliver.com/how-i-avoid-two-phase-commit/</link>
       <pubDate>Mon, 04 Apr 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/how-i-avoid-two-phase-commit/</guid>
+      <guid>https://blog.jonathanoliver.com/how-i-avoid-two-phase-commit/</guid>
       <description>In my last blog post I ranted about two-phase commit (2PC) and MSDTC. This is going to be a quick post about a few techniques that I use. The basic premise is that I break a two-phase commit apart into multiple transactions such that each is handled independently but with resiliency against failure scenarios.
 There are a number of different methods and patterns that can be used to avoid 2PC and each method is different depending upon the application-level requirements.</description>
     </item>
     
     <item>
       <title>My Beef with MSDTC and Two-Phase Commits</title>
-      <link>https://joliver.github.io/my-beef-with-msdtc-and-two-phase-commits/</link>
+      <link>https://blog.jonathanoliver.com/my-beef-with-msdtc-and-two-phase-commits/</link>
       <pubDate>Mon, 04 Apr 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/my-beef-with-msdtc-and-two-phase-commits/</guid>
+      <guid>https://blog.jonathanoliver.com/my-beef-with-msdtc-and-two-phase-commits/</guid>
       <description>I&#39;m just not a fan of the Microsoft Distributed Transaction Coordinator. I&#39;ve tweeted and blogged a few times about it, but I&#39;ve never really gone into why. I should preface my remarks by saying that MSDTC does work—it will facilitate and coordinate distributed transactions using a two-phase commit (2PC) protocol. I should also say also that much of what follows is a rant against 2PC and MSDTC is a casualty in the argument.</description>
     </item>
     
     <item>
       <title>ILMerge Gotcha</title>
-      <link>https://joliver.github.io/ilmerge-gotcha/</link>
+      <link>https://blog.jonathanoliver.com/ilmerge-gotcha/</link>
       <pubDate>Sat, 02 Apr 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/ilmerge-gotcha/</guid>
+      <guid>https://blog.jonathanoliver.com/ilmerge-gotcha/</guid>
       <description>Just remember that when two assemblies have internalized a reference to another assembly using ILMerge, each gets their own &#34;copy&#34; of static variables. That is to say, that the class MyClass1.SomeStaticInstance is no longer the same between the two assemblies. I was kicking against this one for the better part of an hour. At first I thought it was some quirk with the [ThreadStatic] attribute I was using. It wasn&#39;t.</description>
     </item>
     
     <item>
       <title>Removing 2PC (Two Phase Commit)</title>
-      <link>https://joliver.github.io/removing-2pc-two-phase-commit/</link>
+      <link>https://blog.jonathanoliver.com/removing-2pc-two-phase-commit/</link>
       <pubDate>Wed, 16 Mar 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/removing-2pc-two-phase-commit/</guid>
+      <guid>https://blog.jonathanoliver.com/removing-2pc-two-phase-commit/</guid>
       <description>I received the following email today and I thought I&#39;d answer it as a blog post so that all can benefit:
  If you remove the 2PC from the system, how do you deal with ensuring that published events are: * truly published, * not lost, * that there is confidence that the interested parties (subscribers) are truly receiving and processing the events in a &#39;timely&#39; manner
 * and that there is confidence and a method that the system can gracefully recover from unexpected situations?</description>
@@ -304,39 +304,39 @@ There are a number of different methods and patterns that can be used to avoid 2
     
     <item>
       <title>CQRS: Event Sourcing and Immutable Data</title>
-      <link>https://joliver.github.io/cqrs-event-sourcing-and-immutable-data/</link>
+      <link>https://blog.jonathanoliver.com/cqrs-event-sourcing-and-immutable-data/</link>
       <pubDate>Tue, 15 Mar 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/cqrs-event-sourcing-and-immutable-data/</guid>
+      <guid>https://blog.jonathanoliver.com/cqrs-event-sourcing-and-immutable-data/</guid>
       <description>There are a number of interesting and unique advantages offered by event sourcing as well as messaging in general. Some of these advantages include the ability to perform merge-based, business-level concurrency—as compared to simple optimistic or pessimistic concurrency. Further, the ability to replay all stored messages into new or alternate models because business context and intent has been captured, is invaluable. One interesting advantage that may not seem like much at first is the immutability of the events once they are committed to a persistent medium.</description>
     </item>
     
     <item>
       <title>IIS 7 500 Errors</title>
-      <link>https://joliver.github.io/iis-7-500-errors/</link>
+      <link>https://blog.jonathanoliver.com/iis-7-500-errors/</link>
       <pubDate>Mon, 14 Mar 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/iis-7-500-errors/</guid>
+      <guid>https://blog.jonathanoliver.com/iis-7-500-errors/</guid>
       <description>I paid my &amp;quot;Windows tithing&amp;quot; recently and did a complete reinstall. Fortunately Windows is now a guest VM inside of a Linux host. A settings change I had made a long time ago but forgot to reapply during my reinstall was for IIS. Whenever I was developing--even locally--I would get &amp;quot;500&amp;quot; errors from IIS which would then display a generic and very unhelpful error page.
 The solution is to go into IIS and disable generic error messages:</description>
     </item>
     
     <item>
       <title>New NServiceBus Feature: 32-bit (x86) Host Process</title>
-      <link>https://joliver.github.io/new-nservicebus-feature-32-bit-x86-host-process/</link>
+      <link>https://blog.jonathanoliver.com/new-nservicebus-feature-32-bit-x86-host-process/</link>
       <pubDate>Sat, 12 Mar 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/new-nservicebus-feature-32-bit-x86-host-process/</guid>
+      <guid>https://blog.jonathanoliver.com/new-nservicebus-feature-32-bit-x86-host-process/</guid>
       <description>NServiceBus is an &#34;Any CPU&#34; framework. It doesn&#39;t have an 32-bit or 64-bit specific code. This makes it very easy to transition between 32-bit and 64-bit operating systems. Unfortunately, not all assemblies are or even can be compiled using the default &#34;Any CPU&#34; architecture. In many, if not most cases, this is related to legacy systems that have 32-bit specific code for platform interop with native C libraries, etc.
 If you use the default host--NServiceBus.</description>
     </item>
     
     <item>
       <title>Installing the VirtualBox Extension Pack on Ubuntu 10.10 x64</title>
-      <link>https://joliver.github.io/installing-the-virtualbox-extension-pack-on-ubuntu-10-10-x64/</link>
+      <link>https://blog.jonathanoliver.com/installing-the-virtualbox-extension-pack-on-ubuntu-10-10-x64/</link>
       <pubDate>Thu, 10 Mar 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/installing-the-virtualbox-extension-pack-on-ubuntu-10-10-x64/</guid>
+      <guid>https://blog.jonathanoliver.com/installing-the-virtualbox-extension-pack-on-ubuntu-10-10-x64/</guid>
       <description>There have been quite a few posts related to issues installing the VirtualBox Extension Pack for both Windows and Linux hosts.
 http://forums.virtualbox.org/viewtopic.php?p=11262&amp;sid;=334fb962995ae00d32bb8988192f701chttp://www.virtualbox.org/ticket/7899http://www.virtualbox.org/ticket/7972http://blogs.oracle.com/wim/2010/12/oracle_vm_virtualbox_40_extens.htmlThe error message given is very cryptic: &amp;quot;Failed to install the Extension Pack&amp;quot; NS_ERROR_FAILURE (0x80004005)
 Weird.
@@ -345,28 +345,28 @@ In digging through the above posts I found tidbits of the solution that I was ab
     
     <item>
       <title>CQRS EventStore Podcast</title>
-      <link>https://joliver.github.io/cqrs-eventstore-podcast/</link>
+      <link>https://blog.jonathanoliver.com/cqrs-eventstore-podcast/</link>
       <pubDate>Tue, 08 Mar 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/cqrs-eventstore-podcast/</guid>
+      <guid>https://blog.jonathanoliver.com/cqrs-eventstore-podcast/</guid>
       <description>For the latest episode of the Distributed Podcast, we looked a little more closely at my CQRS EventStore project. If you&#39;ve wanted to get some background and understanding on where, when, and why to use the library, now would be a good time.</description>
     </item>
     
     <item>
       <title>In-Memory Messaging (Actors) in C#</title>
-      <link>https://joliver.github.io/in-memory-messaging-actors-in-c/</link>
+      <link>https://blog.jonathanoliver.com/in-memory-messaging-actors-in-c/</link>
       <pubDate>Tue, 08 Mar 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/in-memory-messaging-actors-in-c/</guid>
+      <guid>https://blog.jonathanoliver.com/in-memory-messaging-actors-in-c/</guid>
       <description>I just came across a really cool library that facilitates in-memory messaging—very similar to the way this is handled in Scala and Erlang using the Actor model. It&#39;s called retlang. Check it out.</description>
     </item>
     
     <item>
       <title>Conference Sessions - Distributed Systems</title>
-      <link>https://joliver.github.io/conference-sessions-distributed-systems/</link>
+      <link>https://blog.jonathanoliver.com/conference-sessions-distributed-systems/</link>
       <pubDate>Wed, 09 Feb 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/conference-sessions-distributed-systems/</guid>
+      <guid>https://blog.jonathanoliver.com/conference-sessions-distributed-systems/</guid>
       <description>I will be speaking at two upcoming conferences. The Rocky Mountain Tech Trifecta in Denver, Colorado on March 5th and the Utah Code Camp in Salt Lake City, Utah on March 19th. I will be speaking on distributed systems and messaging.
 I&#39;ll be touching on the following topics:
  The Fallacies of Distributed Computing Messaging Publish/subscribe NoSQL CAP CQRS Event sourcing (depending upon time constraints)  If you&#39;re attending the Utah Code Camp, go vote for my session.</description>
@@ -374,49 +374,49 @@ I&#39;ll be touching on the following topics:
     
     <item>
       <title>Data Precision in NoSQL</title>
-      <link>https://joliver.github.io/data-precision-in-nosql/</link>
+      <link>https://blog.jonathanoliver.com/data-precision-in-nosql/</link>
       <pubDate>Thu, 20 Jan 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/data-precision-in-nosql/</guid>
+      <guid>https://blog.jonathanoliver.com/data-precision-in-nosql/</guid>
       <description>I&#39;ve got to hand it to the NoSQL teams. In some recent work on my EventStore project, I have seen how, when you give them a value to story and then query the associated document/row/whatever, the NoSQL solutions hand back the *exact same value* every single time. The RDBMS crowd is another story.
 MySQL has an outstanding bug whereby it truncates any DateTime values and forgets the milliseconds on the value.</description>
     </item>
     
     <item>
       <title>EventStore: Getting All Events Since…</title>
-      <link>https://joliver.github.io/eventstore-getting-all-events-since/</link>
+      <link>https://blog.jonathanoliver.com/eventstore-getting-all-events-since/</link>
       <pubDate>Thu, 20 Jan 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/eventstore-getting-all-events-since/</guid>
+      <guid>https://blog.jonathanoliver.com/eventstore-getting-all-events-since/</guid>
       <description>One of the fundamental advantages of event sourcing coupled with CQRS is the ability to quickly and easily build your read models from your event stream. This includes the ability to build alternate views or projections from your data (which is a *huge* advantage) as well as the ability to scale by creating duplicate, load-balanced read models from your event stream.
 In order to scale your reads using something other than JSON files hosted on a CDN, such as a RavenDB, CouchDB, or even a traditional RDBMS, we need the ability to get all events from the event store.</description>
     </item>
     
     <item>
       <title>Sagas, Event Sourcing, and Failed Commands</title>
-      <link>https://joliver.github.io/sagas-event-sourcing-and-failed-commands/</link>
+      <link>https://blog.jonathanoliver.com/sagas-event-sourcing-and-failed-commands/</link>
       <pubDate>Sat, 25 Dec 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/sagas-event-sourcing-and-failed-commands/</guid>
+      <guid>https://blog.jonathanoliver.com/sagas-event-sourcing-and-failed-commands/</guid>
       <description>There is an interesting thread on the DDD/CQRS group involving sagas. I&#39;m posting my reply below because I want to make it available as a solution to those that encounter this same problem. All replies should be directed on the CQRS thread instead of replying here below.
 To give a small amount of background, the question is related to how a failure or refusal on the part of the domain to perform some action is communicated back to the saga such that it can take the appropriate, compensating action.</description>
     </item>
     
     <item>
       <title>Event Store: Transaction Integrity Without Transactions</title>
-      <link>https://joliver.github.io/event-store-transaction-integrity-without-transactions/</link>
+      <link>https://blog.jonathanoliver.com/event-store-transaction-integrity-without-transactions/</link>
       <pubDate>Thu, 23 Dec 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/event-store-transaction-integrity-without-transactions/</guid>
+      <guid>https://blog.jonathanoliver.com/event-store-transaction-integrity-without-transactions/</guid>
       <description>As outlined in the architectural overview document, the central model in version 2.0 of the EventStore is that of a &#34;commit&#34; consisting of a series of events. By focusing on a commit we are able to liberate ourselves from the high requirements introduced when using a two-phase commit protocol. At the same time, by reordering slightly the sequence of operations when performing a commit to the configured persistence engine, the EventStore is able to avoid using transactions at all and yet still maintain transactional integrity, all of which has been outlined in the architectural overview document.</description>
     </item>
     
     <item>
       <title>CQRS: EventStore v2 Architectural Overview</title>
-      <link>https://joliver.github.io/cqrs-eventstore-v2-architectural-overview/</link>
+      <link>https://blog.jonathanoliver.com/cqrs-eventstore-v2-architectural-overview/</link>
       <pubDate>Sat, 11 Dec 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/cqrs-eventstore-v2-architectural-overview/</guid>
+      <guid>https://blog.jonathanoliver.com/cqrs-eventstore-v2-architectural-overview/</guid>
       <description>[The following is a design document that gives an overview of version 2.0 of my EventStore project that is currently under active development. Buckle up. It&#39;s long.]
 EventStore v2 Architectural Overview
 The EventStore is designed to store a series of events, known as an event stream, to durable storage. Because of the simplicity of the model of an event stream, it can easily be persisted to durable storage using a large number of storage engines, including relational databases, plain files, NoSQL document databases, or even key-value stores.</description>
@@ -424,58 +424,58 @@ The EventStore is designed to store a series of events, known as an event stream
     
     <item>
       <title>NServiceBus: w3wp.exe Processes Crashing</title>
-      <link>https://joliver.github.io/nservicebus-w3wp-exe-processes-crashing/</link>
+      <link>https://blog.jonathanoliver.com/nservicebus-w3wp-exe-processes-crashing/</link>
       <pubDate>Wed, 17 Nov 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/nservicebus-w3wp-exe-processes-crashing/</guid>
+      <guid>https://blog.jonathanoliver.com/nservicebus-w3wp-exe-processes-crashing/</guid>
       <description>If you are using NServiceBus in a web application and the process named w3wp.exe keeps bombing and exiting shortly after starting, here&#39;s what&#39;s happening: You don&#39;t have the appropriate permissions set for your message queues.
 The way NServiceBus is designed, it performs a few small startup tasks when the bus is started during web application initialization. Among these tasks it checks the configured input queue. If, because of a permissions error, it fails to read from the queue, it logs a message using the configured logging, waits 10 seconds, and then exits the process.</description>
     </item>
     
     <item>
       <title>100th Post</title>
-      <link>https://joliver.github.io/100th-post/</link>
+      <link>https://blog.jonathanoliver.com/100th-post/</link>
       <pubDate>Thu, 21 Oct 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/100th-post/</guid>
+      <guid>https://blog.jonathanoliver.com/100th-post/</guid>
       <description>I just counted up the number of posts I&#39;ve written in the last two years and I&#39;m at 100. That&#39;s about one a week. Not too shabby. I have Oren to thank for convincing me to start a blog. At the same time, there&#39;s no way I&#39;ll be able to catch him at the rate he&#39;s posting.
 If any of you guys are considering a blog, I would strongly recommend it.</description>
     </item>
     
     <item>
       <title>NServiceBus: ASP.NET Permissions for MSMQ</title>
-      <link>https://joliver.github.io/nservicebus-asp-net-permissions-for-msmq/</link>
+      <link>https://blog.jonathanoliver.com/nservicebus-asp-net-permissions-for-msmq/</link>
       <pubDate>Thu, 21 Oct 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/nservicebus-asp-net-permissions-for-msmq/</guid>
+      <guid>https://blog.jonathanoliver.com/nservicebus-asp-net-permissions-for-msmq/</guid>
       <description>I have two different development machines, one at home and one at work. I&#39;m definitely not a laptop guy because I like having three monitors. In any case, this gives me the ability to develop slightly different environments which helps uncover subtle issues. One such issue that I encountered was related to that of sending a message through NServiceBus to an endpoint inside of a web application.
 On my home machine, everything was working great.</description>
     </item>
     
     <item>
       <title>CQRS: Sagas with Event Sourcing (Part II of II)</title>
-      <link>https://joliver.github.io/cqrs-sagas-with-event-sourcing-part-ii-of-ii/</link>
+      <link>https://blog.jonathanoliver.com/cqrs-sagas-with-event-sourcing-part-ii-of-ii/</link>
       <pubDate>Wed, 29 Sep 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/cqrs-sagas-with-event-sourcing-part-ii-of-ii/</guid>
+      <guid>https://blog.jonathanoliver.com/cqrs-sagas-with-event-sourcing-part-ii-of-ii/</guid>
       <description>In my first post, I explained a little bit about how sagas can be leveraged to deal with the problem of nested transactions—&#34;transactions&#34; that span more than a single message. There were a few community questions related to me redefining the concept of a saga. That&#39;s definitely not what I&#39;m trying to do. Per my understanding, a saga sits there and handles multiple messages and exists to coordinate multiple distinct transactions and perform compensating actions relative to the entire &#34;</description>
     </item>
     
     <item>
       <title>CQRS: Sagas with Event Sourcing (Part I of II)</title>
-      <link>https://joliver.github.io/cqrs-sagas-with-event-sourcing-part-i-of-ii/</link>
+      <link>https://blog.jonathanoliver.com/cqrs-sagas-with-event-sourcing-part-i-of-ii/</link>
       <pubDate>Tue, 28 Sep 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/cqrs-sagas-with-event-sourcing-part-i-of-ii/</guid>
+      <guid>https://blog.jonathanoliver.com/cqrs-sagas-with-event-sourcing-part-i-of-ii/</guid>
       <description>For starters, what is a saga? A saga is a &#34;long-lived business transaction or process&#34;. Okay, so what does that mean? Well, first of all, the &#34;long-lived&#34; part doesn&#39;t have to mean hours, days, or even weeks—it could literally mean something as short as a few seconds. The amount of time is not the important part. It&#39;s the fact that the &#34;transaction&#34;, business process, or activity spans more than one message.</description>
     </item>
     
     <item>
       <title>Leadership and Self-Deception: Getting Out of the Box</title>
-      <link>https://joliver.github.io/leadership-and-self-deception-getting-out-of-the-box/</link>
+      <link>https://blog.jonathanoliver.com/leadership-and-self-deception-getting-out-of-the-box/</link>
       <pubDate>Tue, 21 Sep 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/leadership-and-self-deception-getting-out-of-the-box/</guid>
+      <guid>https://blog.jonathanoliver.com/leadership-and-self-deception-getting-out-of-the-box/</guid>
       <description>I recently finished a book called Leadership and Self-Deception: Getting Out of the Box. In a word, this book was fantastic.
 The premise of the book is about understanding the problems that we have in our relationships—with family members, co-workers, anyone. The irony of it all is that we can often see problems in other people but we are rarely even aware of problems with ourselves—we are self-deceived.
 This 150-page book is written in a story/narrative-format which makes for very easy read and allows you to get inside the head of the main character to see his thought process.</description>
@@ -483,30 +483,30 @@ This 150-page book is written in a story/narrative-format which makes for very e
     
     <item>
       <title>Event Sourcing: Backup and Archiving Strategies</title>
-      <link>https://joliver.github.io/event-sourcing-backup-and-archiving-strategies/</link>
+      <link>https://blog.jonathanoliver.com/event-sourcing-backup-and-archiving-strategies/</link>
       <pubDate>Thu, 16 Sep 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/event-sourcing-backup-and-archiving-strategies/</guid>
+      <guid>https://blog.jonathanoliver.com/event-sourcing-backup-and-archiving-strategies/</guid>
       <description>One point that comes up now and again is related to archiving and backup strategies for an event store. The main thinking is that, if we keep all events ever generated, won&#39;t we run out of disk space? That&#39;s a great question and one that deserves a little bit more consideration.
 First of all, one of the primary reasons for keeping everything relates to the incredible business value offered by the events.</description>
     </item>
     
     <item>
       <title>Event Sourcing: Underling Storage Engine Options</title>
-      <link>https://joliver.github.io/event-sourcing-underling-storage-engine-options/</link>
+      <link>https://blog.jonathanoliver.com/event-sourcing-underling-storage-engine-options/</link>
       <pubDate>Wed, 15 Sep 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/event-sourcing-underling-storage-engine-options/</guid>
+      <guid>https://blog.jonathanoliver.com/event-sourcing-underling-storage-engine-options/</guid>
       <description>The emergence of NoSQL is an interesting movement. One of the key principles behind NoSQL is related to the simplicity of the data store. This is in contrast to a traditional RDBMS. The amount of code required to create a production-grade relational database is far from trivial. Of course, NoSQL goes far beyond this and pushes hard on CAP and the ability to scale out.
 One of the beauties of event sourcing and specifically the event store is that it has relatively few, yet well-defined requirements that it puts on the underlying storage engine.</description>
     </item>
     
     <item>
       <title>HTTP and HTTPS with Google CDN</title>
-      <link>https://joliver.github.io/http-and-https-with-google-cdn/</link>
+      <link>https://blog.jonathanoliver.com/http-and-https-with-google-cdn/</link>
       <pubDate>Wed, 15 Sep 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/http-and-https-with-google-cdn/</guid>
+      <guid>https://blog.jonathanoliver.com/http-and-https-with-google-cdn/</guid>
       <description>One little trick that I learned not too long ago was the ability to load a file from Google&#39;s CDN (or any CDN for that matter) relative to the protocol of the page, e.g. if the page is HTTPS, the CDN content would load HTTPS, and vice versa.
 In virtually all CDN examples you&#39;ll see something like this:
 http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js
@@ -515,30 +515,30 @@ http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js
     
     <item>
       <title>NServiceBus: Distributing Event Schema/Contract</title>
-      <link>https://joliver.github.io/nservicebus-distributing-event-schemacontract/</link>
+      <link>https://blog.jonathanoliver.com/nservicebus-distributing-event-schemacontract/</link>
       <pubDate>Wed, 15 Sep 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/nservicebus-distributing-event-schemacontract/</guid>
+      <guid>https://blog.jonathanoliver.com/nservicebus-distributing-event-schemacontract/</guid>
       <description>In SOA, events facilitate loose coupling. One of the primary tenets of SOA is that services define schema and contract not class or type. For this reason it is good to keep the event definitions separate from your code. In fact, Udi recommend keeping this separation to the utmost—by having totally separate source control repositories for the event definitions and another for the service implementation.
 One issue that we&#39;ve experienced in strongly typed, compile-time friendly .</description>
     </item>
     
     <item>
       <title>jQuery CDN Failover</title>
-      <link>https://joliver.github.io/jquery-cdn-failover/</link>
+      <link>https://blog.jonathanoliver.com/jquery-cdn-failover/</link>
       <pubDate>Wed, 15 Sep 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/jquery-cdn-failover/</guid>
+      <guid>https://blog.jonathanoliver.com/jquery-cdn-failover/</guid>
       <description>There are a number of large benefits to referencing the jQuery libraries hosted on the Google and Microsoft CDNs. But there are a few drawbacks as well. The primary drawback being: what happens if Google is down. The event is unlikely, but not without precedence.
 I have seen a number of posts out there that try to address the issue of CDN failover—where, if Google is down, the Microsoft version is loaded, but there are a few small problems:</description>
     </item>
     
     <item>
       <title>Why I Love NServiceBus</title>
-      <link>https://joliver.github.io/why-i-love-nservicebus-2/</link>
+      <link>https://blog.jonathanoliver.com/why-i-love-nservicebus-2/</link>
       <pubDate>Mon, 16 Aug 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/why-i-love-nservicebus-2/</guid>
+      <guid>https://blog.jonathanoliver.com/why-i-love-nservicebus-2/</guid>
       <description>Almost a year ago I wrote a post called Why I Love CQRS. Little did I realize how far that post would go. It ranks # 1 in Google for the term CQRS and # 2 in Bing. Since that same time I have been wanting to post my thoughts on NServiceBus…and here they are:
 From the Mind of Udi Dahan
 For anyone that has had the privilege of listening to Udi Dahan it becomes immediately apparent that he knows what he&#39;s talking about.</description>
@@ -546,30 +546,30 @@ For anyone that has had the privilege of listening to Udi Dahan it becomes immed
     
     <item>
       <title>CQRS Event Store</title>
-      <link>https://joliver.github.io/cqrs-event-store/</link>
+      <link>https://blog.jonathanoliver.com/cqrs-event-store/</link>
       <pubDate>Thu, 15 Jul 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/cqrs-event-store/</guid>
+      <guid>https://blog.jonathanoliver.com/cqrs-event-store/</guid>
       <description>Almost two months ago I went to Montreal to visit Greg Young and get some clarification on a few lesser-known points of his DDDD (CQRS+DDD+Event Sourcing) style of programming and preachment. He&#39;s really great to talk to but it can sometimes be like sipping from the fire hose. This is a good thing.
 One key point that Greg kept hammering on was his dislike of frameworks. Not all frameworks, per se, but just our general inclination as .</description>
     </item>
     
     <item>
       <title>Optimistic Concurrency in Riak: Take 2</title>
-      <link>https://joliver.github.io/optimistic-concurrency-in-riak-take-2/</link>
+      <link>https://blog.jonathanoliver.com/optimistic-concurrency-in-riak-take-2/</link>
       <pubDate>Mon, 31 May 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/optimistic-concurrency-in-riak-take-2/</guid>
+      <guid>https://blog.jonathanoliver.com/optimistic-concurrency-in-riak-take-2/</guid>
       <description>A few weeks ago I blogged about implementing optimistic concurrency control using the Dynamo clone storage engines. I need to give an update to this technique that is specific to Riak.
 Riak supports an &#34;if-match&#34; header that allows you to implement OCC out of the box. The only quirk with this technique—per my understanding—is that it is single-node based. In other words, if I have two concurrent writers that are updating a particular value and they are operating against two different nodes, the &#34;</description>
     </item>
     
     <item>
       <title>Greg Young&#39;s CQRS Workshop</title>
-      <link>https://joliver.github.io/greg-youngs-cqrs-workshop/</link>
+      <link>https://blog.jonathanoliver.com/greg-youngs-cqrs-workshop/</link>
       <pubDate>Sat, 29 May 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/greg-youngs-cqrs-workshop/</guid>
+      <guid>https://blog.jonathanoliver.com/greg-youngs-cqrs-workshop/</guid>
       <description>This week I went to Montreal where I was able to participate in a three-day workshop. There were about nine people there including Greg.
 The workshop was great. I really enjoyed listening to Greg go into significant depth regarding both the technological and business perspectives behind CQRS. I had never fully considered the business advantages of the architecture, but they are very compelling.
 Here are a few pictures from the workshop.</description>
@@ -577,87 +577,87 @@ Here are a few pictures from the workshop.</description>
     
     <item>
       <title>Somewhere Werner is Crying</title>
-      <link>https://joliver.github.io/somewhere-werner-is-crying/</link>
+      <link>https://blog.jonathanoliver.com/somewhere-werner-is-crying/</link>
       <pubDate>Fri, 21 May 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/somewhere-werner-is-crying/</guid>
+      <guid>https://blog.jonathanoliver.com/somewhere-werner-is-crying/</guid>
       <description>My last blog post generated a fair amount of activity in the twittersphere. In many ways I was expecting that because it&#39;s fairly controversial. To think that someone would take a nice scalable storage solution and put it back under the thumb of an RDBMS is nuts. But that&#39;s exactly what my previous post talks about.
 If it&#39;s so crazy, why blog about it? I agree, it&#39;s pretty crazy to want to put a Dynamo instance under the thumb of an RDBMS.</description>
     </item>
     
     <item>
       <title>Cassandra/Riak/Dynamo Optimistic Concurrency Control</title>
-      <link>https://joliver.github.io/cassandrariakdynamo-optimistic-concurrency-control/</link>
+      <link>https://blog.jonathanoliver.com/cassandrariakdynamo-optimistic-concurrency-control/</link>
       <pubDate>Fri, 07 May 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/cassandrariakdynamo-optimistic-concurrency-control/</guid>
+      <guid>https://blog.jonathanoliver.com/cassandrariakdynamo-optimistic-concurrency-control/</guid>
       <description>There are a number of great NoSQL implementation each with their own set of unique advantages and quirks including maturity of the project, size of the community, and technical merit. While not discounting the unique ways in which each NoSQL project fills a specific set of requirements, I consider one group of NoSQL projects to be a cut above the rest—the Dynamo clones.
 While HBase, BigTable, CouchDB, and MongoDB are wonderful and have various levels of acceptance along with installed user base, the Dynamo clones seem to have something else.</description>
     </item>
     
     <item>
       <title>Message Idempotency Patterns and Disk Usage</title>
-      <link>https://joliver.github.io/message-idempotency-patterns-and-disk-usage/</link>
+      <link>https://blog.jonathanoliver.com/message-idempotency-patterns-and-disk-usage/</link>
       <pubDate>Thu, 22 Apr 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/message-idempotency-patterns-and-disk-usage/</guid>
+      <guid>https://blog.jonathanoliver.com/message-idempotency-patterns-and-disk-usage/</guid>
       <description>One of the main concerns that may be expressed in reviewing my previous blog post about idempotent messaging patterns is that of disk usage. The concern is about retaining every. single. message we ever publish. That&#39;s a lot of messages. That&#39;s a lot disk space.
 Before we dig into one plausible solution, let&#39;s first look at a few mitigating factors. First, disk space is cheap. Really cheap. We&#39;re moving into the sub-$100 for 2 TBs of disk space.</description>
     </item>
     
     <item>
       <title>Messaging: At-Least-Once Delivery</title>
-      <link>https://joliver.github.io/messaging-at-least-once-delivery/</link>
+      <link>https://blog.jonathanoliver.com/messaging-at-least-once-delivery/</link>
       <pubDate>Thu, 22 Apr 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/messaging-at-least-once-delivery/</guid>
+      <guid>https://blog.jonathanoliver.com/messaging-at-least-once-delivery/</guid>
       <description>One of the guarantees behind messaging is guaranteed delivery. Most of us don&#39;t give any additional thought to the subject. Until we get into production. While messages may be guaranteed deliverable, have we ever considered that a message may be delivered more than once?
 When I first started seriously looking at and investigating messaging solutions a number of years ago one of the things that baffled me was how to ensure exactly-once delivery of messages.</description>
     </item>
     
     <item>
       <title>Idempotency Patterns</title>
-      <link>https://joliver.github.io/idempotency-patterns/</link>
+      <link>https://blog.jonathanoliver.com/idempotency-patterns/</link>
       <pubDate>Wed, 21 Apr 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/idempotency-patterns/</guid>
+      <guid>https://blog.jonathanoliver.com/idempotency-patterns/</guid>
       <description>In several of my previous posts I discussed how to avoid the overhead of a two-phase commit while still being able to maintain an application-level transactional consistency between two resources, such as a message queue and durable data store, e.g. a database. When considering how to implement idempotency there are a number of factors to consider. Let us examine each of these in turn.
 First, is the message inherently idempotent? That is, does it contain and operation that contains a fixed value at a point in time such as a stock quote rather than a transformational instruction such as &#34;</description>
     </item>
     
     <item>
       <title>Extending NServiceBus: Avoiding Two-Phase Commits</title>
-      <link>https://joliver.github.io/extending-nservicebus-avoiding-two-phase-commits/</link>
+      <link>https://blog.jonathanoliver.com/extending-nservicebus-avoiding-two-phase-commits/</link>
       <pubDate>Thu, 15 Apr 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/extending-nservicebus-avoiding-two-phase-commits/</guid>
+      <guid>https://blog.jonathanoliver.com/extending-nservicebus-avoiding-two-phase-commits/</guid>
       <description>When using non-transactional queues processing a message is trivially easy—just handle the message and write to your data store. If the process dies and we lose a message, that&#39;s okay. But when using a transactional queue things can become more difficult because we want our infrastructure to ensure consistency between our message queues and application database. I have already outlined the trouble of using two-phase commits in a previous post.</description>
     </item>
     
     <item>
       <title>NServiceBus Distributed Transaction Woes</title>
-      <link>https://joliver.github.io/nservicebus-distributed-transaction-woes/</link>
+      <link>https://blog.jonathanoliver.com/nservicebus-distributed-transaction-woes/</link>
       <pubDate>Thu, 15 Apr 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/nservicebus-distributed-transaction-woes/</guid>
+      <guid>https://blog.jonathanoliver.com/nservicebus-distributed-transaction-woes/</guid>
       <description>In the industry there is a general trend away from locking, two-phase commits. In theory, quorum and Paxos-style commits ensure consistency across disparate resources, but why not avoid the issue altogether? The fundamental idea behind each of these commit protocols is to ensure application consistency at an infrastructure level. Rather than relying on low-level protocols to ensure consistency, why not embrace inconsistency and handle it explicitly within our application? In this way we can avoid anything but simple, &#34;</description>
     </item>
     
     <item>
       <title>NServiceBus Message Modules (IMessageModule)</title>
-      <link>https://joliver.github.io/nservicebus-message-modules-imessagemodule/</link>
+      <link>https://blog.jonathanoliver.com/nservicebus-message-modules-imessagemodule/</link>
       <pubDate>Thu, 15 Apr 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/nservicebus-message-modules-imessagemodule/</guid>
+      <guid>https://blog.jonathanoliver.com/nservicebus-message-modules-imessagemodule/</guid>
       <description>When handling messages in NServiceBus it may become necessary to consume the same message multiple times but in different ways. For example, suppose you wanted to update separate yet related tables in the database. You could throw all of the business logic into a single message handler and be done with it. The only problem is that this message handler would be performing multiple actions and the intention behind the handler would be obscured.</description>
     </item>
     
     <item>
       <title>Extending NServiceBus: Per Unit of Work IoC Container</title>
-      <link>https://joliver.github.io/extending-nservicebus-per-unit-of-work-ioc-container/</link>
+      <link>https://blog.jonathanoliver.com/extending-nservicebus-per-unit-of-work-ioc-container/</link>
       <pubDate>Wed, 14 Apr 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/extending-nservicebus-per-unit-of-work-ioc-container/</guid>
+      <guid>https://blog.jonathanoliver.com/extending-nservicebus-per-unit-of-work-ioc-container/</guid>
       <description>NServiceBus is great. That&#39;s really all there is to it. The framework is incredibly flexible such that it can be extended without too much effort. But there are a few small points of friction that we&#39;ve encountered. This article shows how we&#39;ve been able to address one such point.
 Choose Your IoC Container
 Because NServiceBus allows us to choose an IoC container rather than forcing us to use a predefined one, we gain a lot of flexibility.</description>
@@ -665,30 +665,30 @@ Because NServiceBus allows us to choose an IoC container rather than forcing us 
     
     <item>
       <title>Extending NServiceBus: Thread-Specific Message Modules</title>
-      <link>https://joliver.github.io/extending-nservicebus-thread-specific-message-modules/</link>
+      <link>https://blog.jonathanoliver.com/extending-nservicebus-thread-specific-message-modules/</link>
       <pubDate>Wed, 14 Apr 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/extending-nservicebus-thread-specific-message-modules/</guid>
+      <guid>https://blog.jonathanoliver.com/extending-nservicebus-thread-specific-message-modules/</guid>
       <description>NServiceBus message modules are global objects that are invoked at various stages of processing for a physical message, e.g. during receipt, when processing is complete, and upon any error condition. Their typical use case is to setup thread-specific values, such as outbound message headers or starting up a new instance of ISession and storing it on the thread.
 Message modules, while incredibly powerful, are somewhat troublesome. First, because they&#39;re shared, we have to remember to to avoid storing any state about message processing unless we store it on the thread by decorating it with the ThreadStatic attribute.</description>
     </item>
     
     <item>
       <title>CQRS Session Video – Utah Code Camp 2010</title>
-      <link>https://joliver.github.io/cqrs-session-video-utah-code-camp-2010/</link>
+      <link>https://blog.jonathanoliver.com/cqrs-session-video-utah-code-camp-2010/</link>
       <pubDate>Sat, 27 Mar 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/cqrs-session-video-utah-code-camp-2010/</guid>
+      <guid>https://blog.jonathanoliver.com/cqrs-session-video-utah-code-camp-2010/</guid>
       <description>I recorded my CQRS presentation that I gave at the Utah Code Camp today (Saturday). The video is divided in two parts in order be under the size limit imposed by the video hosting provider.
 If it says &#34;Video not available&#34;, try back in a few minutes, I just uploaded the videos and they&#39;re in the process being converted. Converted to what, I don&#39;t know, CQRS perhaps, but converted nonetheless.</description>
     </item>
     
     <item>
       <title>Utah Code Camp: CQRS Presentation</title>
-      <link>https://joliver.github.io/utah-code-camp-cqrs-presentation/</link>
+      <link>https://blog.jonathanoliver.com/utah-code-camp-cqrs-presentation/</link>
       <pubDate>Thu, 25 Mar 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/utah-code-camp-cqrs-presentation/</guid>
+      <guid>https://blog.jonathanoliver.com/utah-code-camp-cqrs-presentation/</guid>
       <description>I will be giving a presentation on CQRS at the local code camp this Saturday, March 27 at about 3:00 PM.
 Here&#39;s the schedule: http://utahcodecamp.com/Web/Schedule
 If you are unable to attend, I will be recording the presentation and posting the video and slides online.</description>
@@ -696,68 +696,68 @@ If you are unable to attend, I will be recording the presentation and posting th
     
     <item>
       <title>Event Sourcing and CAP Requirements</title>
-      <link>https://joliver.github.io/event-sourcing-and-cap-requirements/</link>
+      <link>https://blog.jonathanoliver.com/event-sourcing-and-cap-requirements/</link>
       <pubDate>Mon, 22 Feb 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/event-sourcing-and-cap-requirements/</guid>
+      <guid>https://blog.jonathanoliver.com/event-sourcing-and-cap-requirements/</guid>
       <description>One of the great things about CQRS is that, because all read responsibilities have been removed from the service layer, the mechanism for storage can be vastly different. We can continue to use a relational database but we also have the option to utilize alternative storage engines, such a document database or an object database.
 From an application layer perspective, when we employ CQRS and utilize the event sourcing pattern we only require lookups based upon a unique key.</description>
     </item>
     
     <item>
       <title>Event Sourcing and the Event Pipeline</title>
-      <link>https://joliver.github.io/event-sourcing-and-the-event-pipeline/</link>
+      <link>https://blog.jonathanoliver.com/event-sourcing-and-the-event-pipeline/</link>
       <pubDate>Sat, 20 Feb 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/event-sourcing-and-the-event-pipeline/</guid>
+      <guid>https://blog.jonathanoliver.com/event-sourcing-and-the-event-pipeline/</guid>
       <description>Greg recently posted on the benefits of using event sourcing instead of traditional state-based persistence mechanisms. It&#39;s a great article and definitely worth reading multiple times. But there was one paragraph in particular that caught my attention that gave me one of those great ah-ha moments.
  One of those benefits is that we can avoid having to use a 2pc [two-phase commit] transaction between the data model and the message queue (if we are using one)… the reason for this is that the event storage itself is also a queue, we could be trailing the event storage to place the items on the queue (or directly use the event storage as a queue).</description>
     </item>
     
     <item>
       <title>CQRS: An Introduction for Beginners</title>
-      <link>https://joliver.github.io/cqrs-an-introduction-for-beginners/</link>
+      <link>https://blog.jonathanoliver.com/cqrs-an-introduction-for-beginners/</link>
       <pubDate>Fri, 19 Feb 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/cqrs-an-introduction-for-beginners/</guid>
+      <guid>https://blog.jonathanoliver.com/cqrs-an-introduction-for-beginners/</guid>
       <description>I had the chance to present CQRS to the local .NET user group this week. The speaker had a last minute conflict so I volunteered to step up and speak. I only had a few hours to prepare. So what did I do? I had previously watched several of Udi&#39;s CQRS presentations—one in Australia the other in London. I really like Udi&#39;s style and the way he communicates his message, so I took (stole) the most basic elements and watered them down for a 30-minute presentation.</description>
     </item>
     
     <item>
       <title>Aggregate Roots and Shared Data</title>
-      <link>https://joliver.github.io/aggregate-roots-and-shared-data/</link>
+      <link>https://blog.jonathanoliver.com/aggregate-roots-and-shared-data/</link>
       <pubDate>Wed, 17 Feb 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/aggregate-roots-and-shared-data/</guid>
+      <guid>https://blog.jonathanoliver.com/aggregate-roots-and-shared-data/</guid>
       <description>When working on a new domain model a few days ago, we ran into an interesting issue. What happens when an aggregate has shared data? You know, data that is common or shared between aggregate roots? This is a question that also recently came up on the Domain Driven Design Yahoo Group, we had generally the same question but independent of the Yahoo Group.
 For purposes of example, we will use the canonical sales/order model.</description>
     </item>
     
     <item>
       <title>CQRS Presentation Tonight</title>
-      <link>https://joliver.github.io/cqrs-presentation-tonight/</link>
+      <link>https://blog.jonathanoliver.com/cqrs-presentation-tonight/</link>
       <pubDate>Wed, 17 Feb 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/cqrs-presentation-tonight/</guid>
+      <guid>https://blog.jonathanoliver.com/cqrs-presentation-tonight/</guid>
       <description>I will be giving a free presentation tonight at 6:00 PM on CQRS. I&#39;m going to give some historical background on CQRS and I will show how it resolves a lot of the pain and friction that developers experience when building systems. Further, I&#39;m going to talk about how it can be used to scale a system out to 10,000+ transactions per second. Again, the event is free and there will be pizza provided.</description>
     </item>
     
     <item>
       <title>Domain Models, Aggregate Roots, and Lookup Tables</title>
-      <link>https://joliver.github.io/domain-models-aggregate-roots-and-lookup-tables/</link>
+      <link>https://blog.jonathanoliver.com/domain-models-aggregate-roots-and-lookup-tables/</link>
       <pubDate>Wed, 17 Feb 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/domain-models-aggregate-roots-and-lookup-tables/</guid>
+      <guid>https://blog.jonathanoliver.com/domain-models-aggregate-roots-and-lookup-tables/</guid>
       <description>A problem that we experienced recently was that of dealing with and wrapping lookup tables. By definition, a domain model is supposed to be isolated from the outside world. It shouldn&#39;t have any concept of data access or persistence. Because a domain model is isolated and we don&#39;t want to inject services or objects into our domain object, how do we go about querying lookup tables?
 In our particular domain, we have about a dozen industry-mandated lookup tables that we query 30+ times in various ways.</description>
     </item>
     
     <item>
       <title>CQRS: Udi Dahan Style</title>
-      <link>https://joliver.github.io/cqrs-udi-dahan-style/</link>
+      <link>https://blog.jonathanoliver.com/cqrs-udi-dahan-style/</link>
       <pubDate>Mon, 25 Jan 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/cqrs-udi-dahan-style/</guid>
+      <guid>https://blog.jonathanoliver.com/cqrs-udi-dahan-style/</guid>
       <description>Mark Harris recently recorded Udi Dahan talking about CQRS when he was at a user group in Australia.
 It&#39;s about 90 minutes long, but if you&#39;re trying to wrap your head around CQRS, it&#39;s a great place to start.
 One other note, Udi&#39;s style is independent of &#34;event sourcing&#34; as a mechanism for storing and rehydrating your objects from persistence.</description>
@@ -765,88 +765,88 @@ One other note, Udi&#39;s style is independent of &#34;event sourcing&#34; as a 
     
     <item>
       <title>DRY: Don&#39;t Repeat Yourself</title>
-      <link>https://joliver.github.io/dry-dont-repeat-yourself/</link>
+      <link>https://blog.jonathanoliver.com/dry-dont-repeat-yourself/</link>
       <pubDate>Wed, 06 Jan 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/dry-dont-repeat-yourself/</guid>
+      <guid>https://blog.jonathanoliver.com/dry-dont-repeat-yourself/</guid>
       <description>It might just be me, but every single time I see/hear the the acronym DRY used on a blog/podcast, it is always followed by: &#34;(Don&#39;t Repeat Yourself)&#34;.
 Does this strike you as ironic?</description>
     </item>
     
     <item>
       <title>Extreme Web UI Scalability – Part 2</title>
-      <link>https://joliver.github.io/extreme-web-ui-scalability-part-2/</link>
+      <link>https://blog.jonathanoliver.com/extreme-web-ui-scalability-part-2/</link>
       <pubDate>Fri, 18 Dec 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/extreme-web-ui-scalability-part-2/</guid>
+      <guid>https://blog.jonathanoliver.com/extreme-web-ui-scalability-part-2/</guid>
       <description>Yesterday I did a massive post about separating HTML layout from user data and then using a JavaScript templating engine to bind up JSON data object which contains user-specific information. I also talked about setting the HTTP expiration policy on the HTML files and using CDNs to scale out your web tier without lots of additional hardware.
 In thinking about the solution a little bit further it occurred to me that this could facilitate a RESTful layout of both HTML and JSON URLs.</description>
     </item>
     
     <item>
       <title>Postulating Extreme Web UI Scalability</title>
-      <link>https://joliver.github.io/postulating-extreme-web-ui-scalability/</link>
+      <link>https://blog.jonathanoliver.com/postulating-extreme-web-ui-scalability/</link>
       <pubDate>Wed, 16 Dec 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/postulating-extreme-web-ui-scalability/</guid>
+      <guid>https://blog.jonathanoliver.com/postulating-extreme-web-ui-scalability/</guid>
       <description>I&#39;ve been working with CQRS for almost a year. Ever since I first heard about it, I was immediately convinced that it had the ability to vastly simplify a lot of unnecessary development overhead. In this particular post, I will not be discussing event sourcing which is often mingled with CQRS. Instead, I will be focusing on the query side of the equation.
 Please note that the ideas contained herein are merely conjectures of what might be rather than any kind of working, concrete implementation.</description>
     </item>
     
     <item>
       <title>Persistence Ignorance and ActiveRecord</title>
-      <link>https://joliver.github.io/persistence-ignorance-and-activerecord/</link>
+      <link>https://blog.jonathanoliver.com/persistence-ignorance-and-activerecord/</link>
       <pubDate>Wed, 18 Nov 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/persistence-ignorance-and-activerecord/</guid>
+      <guid>https://blog.jonathanoliver.com/persistence-ignorance-and-activerecord/</guid>
       <description>Jimmy Bogard recently tweeted that Persistence Ignorance does not apply to the ActiveRecord pattern. I couldn&#39;t agree more because ActiveRecord is about creating a strong coupling to the database schema.
 Persistence Ignorance is about keeping your business objects ignorant of the underlying mechanism used to persist them and the schema in which they are persisted. In the case of ActiveRecord, it doesn&#39;t apply because these objects are intimately coupled to the schema itself.</description>
     </item>
     
     <item>
       <title>CQRS: Reporting Database Access Strategies</title>
-      <link>https://joliver.github.io/cqrs-reporting-database-access-strategies/</link>
+      <link>https://blog.jonathanoliver.com/cqrs-reporting-database-access-strategies/</link>
       <pubDate>Thu, 12 Nov 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/cqrs-reporting-database-access-strategies/</guid>
+      <guid>https://blog.jonathanoliver.com/cqrs-reporting-database-access-strategies/</guid>
       <description>One of the things that I love about CQRS is that it completely eliminates the impedance mismatch that you normally experience with traditional ORMs. It is incredibly compelling to be able query and retrieve all values necessary for a particular report or screen in a single database call because of a denormalized database schema.
 Over the past year there has been significant debate regarding Microsoft&#39;s LINQ to SQL, Entity Framework, and ADO.</description>
     </item>
     
     <item>
       <title>The Software Simplist</title>
-      <link>https://joliver.github.io/the-software-simplist/</link>
+      <link>https://blog.jonathanoliver.com/the-software-simplist/</link>
       <pubDate>Thu, 12 Nov 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/the-software-simplist/</guid>
+      <guid>https://blog.jonathanoliver.com/the-software-simplist/</guid>
       <description>Udi Dahan is known as the &#34;Software Simplist&#34;. What does he mean by simple? Is he saying that software cannot be used to tackle complex problems? Or does he mean that we work at a problem until a simple, clean, and concise solution presents itself? And what about &#34;the simplest thing that could possibly work&#34;? Here are a few of my favorite quotes regarding simplicity:
  &amp;quot;I wouldn&#39;t give a fig for the simplicity on this side of complexity; I would give my right arm for the simplicity on the far side of complexity&amp;quot; ~ Attributed to Oliver Wendell Holmes Jr.</description>
     </item>
     
     <item>
       <title>DDDD: Why I Love CQRS</title>
-      <link>https://joliver.github.io/dddd-why-i-love-cqrs/</link>
+      <link>https://blog.jonathanoliver.com/dddd-why-i-love-cqrs/</link>
       <pubDate>Thu, 29 Oct 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/dddd-why-i-love-cqrs/</guid>
+      <guid>https://blog.jonathanoliver.com/dddd-why-i-love-cqrs/</guid>
       <description>[UPDATE: This post was written about the time Greg Young formally named his CQS architectural implementation of command query separation. Because of the change in terminology this post was written with the understanding that CQRS consisted of all elements commonly associated with CQRS. In other words, CQRS herein is incorrectly defined as the following concepts together: DDD, event sourcing, domain events, true &#34;CQRS&#34;, and eventual consistency. It should be noted that all of those concepts better fit under the umbrella of &#34;</description>
     </item>
     
     <item>
       <title>DDD: Entity Injection</title>
-      <link>https://joliver.github.io/ddd-entity-injection/</link>
+      <link>https://blog.jonathanoliver.com/ddd-entity-injection/</link>
       <pubDate>Thu, 22 Oct 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/ddd-entity-injection/</guid>
+      <guid>https://blog.jonathanoliver.com/ddd-entity-injection/</guid>
       <description>In a former life, I wouldn&#39;t think twice about using dependency injection to put behavior into a domain object. But the more I learned about traditional DDD, the more I found that it was considered &#34;taboo&#34; to inject things into your entity objects. Obviously injecting behavior into domain services was okay, but entities were special. Of course, this topic is still a matter of debate among DDDers and there are people on both sides of the line.</description>
     </item>
     
     <item>
       <title>Testing Time - The Best of Both Worlds</title>
-      <link>https://joliver.github.io/testing-time-the-best-of-both-worlds/</link>
+      <link>https://blog.jonathanoliver.com/testing-time-the-best-of-both-worlds/</link>
       <pubDate>Wed, 21 Oct 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/testing-time-the-best-of-both-worlds/</guid>
+      <guid>https://blog.jonathanoliver.com/testing-time-the-best-of-both-worlds/</guid>
       <description>I am a big fan of &#34;the simplest thing that could possibly work&#34;. The elegance and simplicity of the following code is hard to overstate:
 public static Func Now = () = DateTime.Now
 It&#39;s wonderful because there are no external dependencies, no external libraries, and no versioning issues. Furthermore, we&#39;ve placed a layer of indirection such that we can easily substitute calls to DateTime.[Utc]Now as necessary.
@@ -855,10 +855,10 @@ The only problem with this code is that it works at a single layer.</description
     
     <item>
       <title>Testing Time—Static Calls and ISystemTime</title>
-      <link>https://joliver.github.io/testing-time-static-calls-and-isystemtime/</link>
+      <link>https://blog.jonathanoliver.com/testing-time-static-calls-and-isystemtime/</link>
       <pubDate>Mon, 19 Oct 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/testing-time-static-calls-and-isystemtime/</guid>
+      <guid>https://blog.jonathanoliver.com/testing-time-static-calls-and-isystemtime/</guid>
       <description>In my previous post, I talked about a technique that I saw for testing time and also about how I simply injected some kind of ISystemTime/IClock interface. The problem with that was having to do injection at every level—including domain entities.
 Oren Eini&#39;s method, while probably the most simple and easiest to implement (both of which are *good things*) has two small issues:
  Implicit disposability. You have to remember to reset the static lambda expression every time it&#39;s set.</description>
@@ -866,10 +866,10 @@ Oren Eini&#39;s method, while probably the most simple and easiest to implement 
     
     <item>
       <title>DDD: Entity Injection and Mocking Time</title>
-      <link>https://joliver.github.io/ddd-entity-injection-and-mocking-time/</link>
+      <link>https://blog.jonathanoliver.com/ddd-entity-injection-and-mocking-time/</link>
       <pubDate>Fri, 09 Oct 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/ddd-entity-injection-and-mocking-time/</guid>
+      <guid>https://blog.jonathanoliver.com/ddd-entity-injection-and-mocking-time/</guid>
       <description>[UPDATE: I have created an open source library based upon the concepts found below.]
 In my early experience with DDD, I loved injecting dependencies into my domain entities. I have since repented. The one downright nasty dependency that we could never quite slip away from was…time. That&#39;s right, temporal couplings. Well, not exactly. Instead, we had to couple to an object that provides the current time.
 Initially we had used a &amp;quot;TimeService&amp;quot;, basically just a service that you would inject (ugh) into your entities so that they could query the current time.</description>
@@ -877,39 +877,39 @@ Initially we had used a &amp;quot;TimeService&amp;quot;, basically just a servic
     
     <item>
       <title>DDDD: Circular Disk-backed Buffer</title>
-      <link>https://joliver.github.io/dddd-circular-disk-backed-buffer/</link>
+      <link>https://blog.jonathanoliver.com/dddd-circular-disk-backed-buffer/</link>
       <pubDate>Tue, 06 Oct 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/dddd-circular-disk-backed-buffer/</guid>
+      <guid>https://blog.jonathanoliver.com/dddd-circular-disk-backed-buffer/</guid>
       <description>In a few of Greg&#39;s video presentations regarding DDDD, he mentions using a circular, disk-backed buffer. As far as I can tell, he&#39;s using this as a temporary storage mechanism when events are committed. He then has a single consumer reading the events from this buffer and putting them into the permanent event store.
 I just read an interesting article by one of the .NET CLR guys about building a thread-safe, producer/consumer buffer.</description>
     </item>
     
     <item>
       <title>Git Submodules like svn:externals</title>
-      <link>https://joliver.github.io/git-submodules-like-svnexternals/</link>
+      <link>https://blog.jonathanoliver.com/git-submodules-like-svnexternals/</link>
       <pubDate>Mon, 05 Oct 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/git-submodules-like-svnexternals/</guid>
+      <guid>https://blog.jonathanoliver.com/git-submodules-like-svnexternals/</guid>
       <description>One critical difference between Git submodules and Subversion &#34;externals&#34; is the concept that submodules are locked to a particular commit. Normally this is a &#34;good thing&#34; because blindly attaching yourself to a particular branch in Subversion can have interesting an unexpected consequences when the branch changes out from underneath you. Subversion provides a way to &#34;lock&#34; to a particular revision via the &#34;-r&#34; parameter in the svn:externals declaration, e.g.&#34;name –r commit_url&#34;</description>
     </item>
     
     <item>
       <title>CI Servers and Build Scripts</title>
-      <link>https://joliver.github.io/ci-servers-and-build-scripts/</link>
+      <link>https://blog.jonathanoliver.com/ci-servers-and-build-scripts/</link>
       <pubDate>Thu, 24 Sep 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/ci-servers-and-build-scripts/</guid>
+      <guid>https://blog.jonathanoliver.com/ci-servers-and-build-scripts/</guid>
       <description>About a year ago, I read Continuous Integration: Improving Software Quality and Reducing Risk. It&#39;s a great book that talks about the importance of making your CI server the hub of development.
 One part of the book that was very insightful was the exact role of build scripts. Specifically, the build scripts should be able to execute on our developer machines as well as the CI server. Even though we were attempting to do this to some extent, there were some additional advantages that were obtained by going the rest of the way.</description>
     </item>
     
     <item>
       <title>Continous Integration Workflow</title>
-      <link>https://joliver.github.io/continous-integration-workflow/</link>
+      <link>https://blog.jonathanoliver.com/continous-integration-workflow/</link>
       <pubDate>Thu, 24 Sep 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/continous-integration-workflow/</guid>
+      <guid>https://blog.jonathanoliver.com/continous-integration-workflow/</guid>
       <description>With permission, here is our general CI workflow document that my team drafted that governs our vision regarding how we do CI:
 Continuous Integration Workflow
 Abstract
@@ -919,10 +919,10 @@ Further, we want the build artifacts resulting from source code changes to be qu
     
     <item>
       <title>Gallio (v3.0.6 and v3.1) with NCover v1.5.8 on x64</title>
-      <link>https://joliver.github.io/gallio-v3-0-6-and-v3-1-with-ncover-v1-5-8-on-x64/</link>
+      <link>https://blog.jonathanoliver.com/gallio-v3-0-6-and-v3-1-with-ncover-v1-5-8-on-x64/</link>
       <pubDate>Tue, 22 Sep 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/gallio-v3-0-6-and-v3-1-with-ncover-v1-5-8-on-x64/</guid>
+      <guid>https://blog.jonathanoliver.com/gallio-v3-0-6-and-v3-1-with-ncover-v1-5-8-on-x64/</guid>
       <description>I spent the better part of a day trying to get Gallio&#39;s runner to execute NCover and run our unit and integration tests as part of our build process. Our build server and all of our developer workstations run some variant of 64-bit Windows, e.g. Vista, 2008, 7, 2008 R2, etc.
 At the command line, I would type the following:
 Gallio.Echo.exe /runner:NCover PathToTestAssemblyMyApp.UnitTests.dll
@@ -931,59 +931,59 @@ Everything worked great except for NCover. NCover.Console.exe would stall and ti
     
     <item>
       <title>NHibernate, Inverse, and Object Associations</title>
-      <link>https://joliver.github.io/nhibernate-inverse-and-object-associations/</link>
+      <link>https://blog.jonathanoliver.com/nhibernate-inverse-and-object-associations/</link>
       <pubDate>Fri, 18 Sep 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/nhibernate-inverse-and-object-associations/</guid>
+      <guid>https://blog.jonathanoliver.com/nhibernate-inverse-and-object-associations/</guid>
       <description>You gotta love NHibernate. But sometimes there are little quirks the drive you nuts—at least until you understand how NHibernate handles things. We ran into one such &#34;hiccup&#34; the other day.
 Our objective was to have a parent object contain a list of child objects. Simple enough. Problem is, we didn&#39;t want the child to know about or have a reference back to the parent. But all of the simple example code that we found for NHibernate and Fluent NHibernate kept showing the bidirectional reference.</description>
     </item>
     
     <item>
       <title>Git Lost (and Git Submodules)</title>
-      <link>https://joliver.github.io/git-lost-and-git-submodules/</link>
+      <link>https://blog.jonathanoliver.com/git-lost-and-git-submodules/</link>
       <pubDate>Thu, 03 Sep 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/git-lost-and-git-submodules/</guid>
+      <guid>https://blog.jonathanoliver.com/git-lost-and-git-submodules/</guid>
       <description>We&#39;ve been using Git for a little while now in a Windows environment and we have been quite pleased with it and the capabilities it affords us as part with its decentralized workflow. We have a number of shared projects or &#34;common libraries&#34; that we use between projects. Because of this, we are using Git&#39;s submodules feature.
 One small issue that we hit was when we would make changes to the code to the project in a submodule (for example, some scripting code in a submodule), we would want to commit and push those changes.</description>
     </item>
     
     <item>
       <title>Microsoft Source Server with Git</title>
-      <link>https://joliver.github.io/microsoft-source-server-with-git/</link>
+      <link>https://blog.jonathanoliver.com/microsoft-source-server-with-git/</link>
       <pubDate>Thu, 03 Sep 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/microsoft-source-server-with-git/</guid>
+      <guid>https://blog.jonathanoliver.com/microsoft-source-server-with-git/</guid>
       <description>I try to avoid the debugger at all costs, but it does come in handy sometimes. You&#39;ll even catch Uncle Bob in the debugger on occasion. When using a compiled language, you basically &#34;lose&#34; the source code once compiled. Of course bytecode languages can be decompiled, but that&#39;s beside the point.
 We have a number of common library projects that we share between our applications. Usually these common projects are very low-level infrastructure concerns, etc.</description>
     </item>
     
     <item>
       <title>Accountants Don&#39;t Use Erasers</title>
-      <link>https://joliver.github.io/accountants-dont-use-erasers/</link>
+      <link>https://blog.jonathanoliver.com/accountants-dont-use-erasers/</link>
       <pubDate>Sat, 29 Aug 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/accountants-dont-use-erasers/</guid>
+      <guid>https://blog.jonathanoliver.com/accountants-dont-use-erasers/</guid>
       <description>Mark Needham posted on his blog a link to this article which I hadn&#39;t read before. It&#39;s a really good read about the logic behind write-only storage:
 http://blogs.msdn.com/pathelland/archive/2007/06/14/accountants-don-t-use-erasers.aspx</description>
     </item>
     
     <item>
       <title>DDDD: The Event Storage Doesn&#39;t Store Commands</title>
-      <link>https://joliver.github.io/dddd-the-event-storage-doesnt-store-commands/</link>
+      <link>https://blog.jonathanoliver.com/dddd-the-event-storage-doesnt-store-commands/</link>
       <pubDate>Tue, 11 Aug 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/dddd-the-event-storage-doesnt-store-commands/</guid>
+      <guid>https://blog.jonathanoliver.com/dddd-the-event-storage-doesnt-store-commands/</guid>
       <description>I&#39;ve been involved in a few projects recently that didn&#39;t get into DDD much, so I&#39;ve been out of the loop for a few months. As I was getting back into things, I had a question regarding what was stored in the &#34;event store&#34; for a bounded context—events, commands, or both? The reason for this is critical, because replaying of events vs. commands has some broad implications related to side effects, recalculation of values, keeping the context of the original operation, etc.</description>
     </item>
     
     <item>
       <title>DDDD: Distributing A Single Bounded Context</title>
-      <link>https://joliver.github.io/dddd-distributing-a-single-bounded-context/</link>
+      <link>https://blog.jonathanoliver.com/dddd-distributing-a-single-bounded-context/</link>
       <pubDate>Mon, 10 Aug 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/dddd-distributing-a-single-bounded-context/</guid>
+      <guid>https://blog.jonathanoliver.com/dddd-distributing-a-single-bounded-context/</guid>
       <description>In a previous post, I detailed all of the reasons why processing messages one by one with an aggregate root was a good thing. I am now going to contradict some of the main points in that post. While certain aspects still hold true, there is a much larger matter involved.
 First, the points that I still consider to be valid:
  Don&#39;t have threading logic in your aggregate roots. Don&#39;t do things with locks, monitors, mutexes, etc.</description>
@@ -991,69 +991,69 @@ First, the points that I still consider to be valid:
     
     <item>
       <title>Poor Man&#39;s Dependency Injection: Take 42, Action!</title>
-      <link>https://joliver.github.io/poor-mans-dependency-injection-take-42-action/</link>
+      <link>https://blog.jonathanoliver.com/poor-mans-dependency-injection-take-42-action/</link>
       <pubDate>Fri, 24 Jul 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/poor-mans-dependency-injection-take-42-action/</guid>
+      <guid>https://blog.jonathanoliver.com/poor-mans-dependency-injection-take-42-action/</guid>
       <description>I watched the battle from the sidelines where Jimmy Bogard talked about how not to do &#34;poor man&#39;s dependency injection&#34;. Then Tim Barcz gave his input. Then Chad Myers got into the mix. Considering this blog is called Inversion of Control Freak, I should probably add my $.02 now that things have settled down.
 I&#39;ve gone back and forth on this issue where I really want to allow flexible wire-up of my components using the IoC container of choice, but at the same time, I&#39;d like to have the ability to just skip the wire-up and have a default, ready-to-go implementation.</description>
     </item>
     
     <item>
       <title>Behavior and Data Centricity</title>
-      <link>https://joliver.github.io/behavior-and-data-centricity/</link>
+      <link>https://blog.jonathanoliver.com/behavior-and-data-centricity/</link>
       <pubDate>Thu, 23 Jul 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/behavior-and-data-centricity/</guid>
+      <guid>https://blog.jonathanoliver.com/behavior-and-data-centricity/</guid>
       <description>As I look back at applications and systems that I have been involved with over the years, what strikes me is how data-centric those applications were. In fact, the driving force behind most of those applications was the data. The behavior of an application was looked at as merely if statements and for loops. It was inconsequential. The other thing that strikes me about all of these applications is that, because they were all about the data, they were incredibly dumb.</description>
     </item>
     
     <item>
       <title>DDD, TDD, BDD, and CQS</title>
-      <link>https://joliver.github.io/ddd-tdd-bdd-and-cqs/</link>
+      <link>https://blog.jonathanoliver.com/ddd-tdd-bdd-and-cqs/</link>
       <pubDate>Wed, 22 Jul 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/ddd-tdd-bdd-and-cqs/</guid>
+      <guid>https://blog.jonathanoliver.com/ddd-tdd-bdd-and-cqs/</guid>
       <description>While fixing a few bugs in some legacy code that had no tests didn&#39;t follow DDD principles, I had an epiphany. Well, maybe I shouldn&#39;t say it that way. I had a few concepts reinforced in my mind regarding the importance of state-based testing, specifically using Behavior-Driven Design techniques.
 The problems I had were related to business concepts, such as renewing a customer&#39;s subscription. Other than the bugs that I fixed, the main problem with the code was that it didn&#39;t follow DDD principles.</description>
     </item>
     
     <item>
       <title>TDD: Isn&#39;t It About Time?</title>
-      <link>https://joliver.github.io/tdd-isnt-it-about-time/</link>
+      <link>https://blog.jonathanoliver.com/tdd-isnt-it-about-time/</link>
       <pubDate>Wed, 22 Jul 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/tdd-isnt-it-about-time/</guid>
+      <guid>https://blog.jonathanoliver.com/tdd-isnt-it-about-time/</guid>
       <description>I just spent the last six hours in the debugger going through some legacy code because of some problems we had in a production system. Okay, maybe the code is only a few years old, but it doesn&#39;t have any tests in it whatsoever, which is what makes it legacy code.
 The most common argument against TDD (and testing in general) is that it takes too much time. That&#39;s a half truth because it does take time.</description>
     </item>
     
     <item>
       <title>Stephen Covey&#39;s Personal Library</title>
-      <link>https://joliver.github.io/stephen-coveys-personal-library/</link>
+      <link>https://blog.jonathanoliver.com/stephen-coveys-personal-library/</link>
       <pubDate>Tue, 21 Jul 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/stephen-coveys-personal-library/</guid>
+      <guid>https://blog.jonathanoliver.com/stephen-coveys-personal-library/</guid>
       <description>Not long ago I was at the home of Stephen Covey, author of The 7 Habits. It was a real pleasure to meet him and rub shoulders for a few minutes. He was welcoming and gracious and very insightful when he spoke to you.
 You can tell a lot about a person from their home. When I first walked into his house, I noticed the large mosaic in the tile floor of a compass pointing north.</description>
     </item>
     
     <item>
       <title>Serializing (Queuing) Messages To Aggregates</title>
-      <link>https://joliver.github.io/serializing-queuing-messages-to-aggregates/</link>
+      <link>https://blog.jonathanoliver.com/serializing-queuing-messages-to-aggregates/</link>
       <pubDate>Tue, 07 Jul 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/serializing-queuing-messages-to-aggregates/</guid>
+      <guid>https://blog.jonathanoliver.com/serializing-queuing-messages-to-aggregates/</guid>
       <description>I responded to a message on Yahoo! Groups DDD forum regarding locking an aggregate root and serializing access to it. The question surrounds locking of an aggregate while it processes a message. The concern was that &#34;pessimistic locking&#34; makes your system unable to scale, which per the formal definition is absolutely correct. But there&#39;s a slightly different way to lock that isn&#39;t truly pessimistic.
 Below follows my response to some of the concerns posted in the above message.</description>
     </item>
     
     <item>
       <title>DDD in a Distributed World</title>
-      <link>https://joliver.github.io/ddd-in-a-distributed-world/</link>
+      <link>https://blog.jonathanoliver.com/ddd-in-a-distributed-world/</link>
       <pubDate>Mon, 06 Jul 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/ddd-in-a-distributed-world/</guid>
+      <guid>https://blog.jonathanoliver.com/ddd-in-a-distributed-world/</guid>
       <description>My primary resources for understanding and guidance in DDDD come from various parts of books that are available, many of which Greg has suggested:
  Domain-Driven Design Enterprise Integration Patterns Pattern Oriented Software Architecture Distributed Event-Based Systems among others  Greg Young has consolidated much of this information and has been presenting it in a fairly high-level form at various professional conferences during the last few years.
 I just found another good resource discussing some aspects of DDDD.</description>
@@ -1061,10 +1061,10 @@ I just found another good resource discussing some aspects of DDDD.</description
     
     <item>
       <title>New DDDD Content</title>
-      <link>https://joliver.github.io/new-dddd-content/</link>
+      <link>https://blog.jonathanoliver.com/new-dddd-content/</link>
       <pubDate>Mon, 29 Jun 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/new-dddd-content/</guid>
+      <guid>https://blog.jonathanoliver.com/new-dddd-content/</guid>
       <description>Greg&#39;s InfoQ presentation entitled &#34;Unshackle Your Domain&#34; from QCon back in November 2008 is finally up and available. I&#39;ll have an opportunity shortly to go through and glean a few of the nuggets that haven&#39;t been covered elsewhere in his material.
 Further, Herding Code interviewed him and posted that audio interview on their website. Like the QCon presentation, I&#39;ll be posting a few thoughts shortly.
 The last thing is that I&#39;ve been wanting to publish a few bits of sample C# source code from some our projects under the MIT license so you can see some of the infrastructure classes we use in order to facilitate DDDD.</description>
@@ -1072,10 +1072,10 @@ The last thing is that I&#39;ve been wanting to publish a few bits of sample C# 
     
     <item>
       <title>Synergy: Cross-Platform Keyboard &amp; Mouse Sharing</title>
-      <link>https://joliver.github.io/synergy-cross-platform-keyboard-mouse-sharing/</link>
+      <link>https://blog.jonathanoliver.com/synergy-cross-platform-keyboard-mouse-sharing/</link>
       <pubDate>Tue, 23 Jun 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/synergy-cross-platform-keyboard-mouse-sharing/</guid>
+      <guid>https://blog.jonathanoliver.com/synergy-cross-platform-keyboard-mouse-sharing/</guid>
       <description>I recently setup a dedicated Linux machine next to my Windows machine. Rather than using a KVM switch or two keyboards and two mice, I searched for a solution that would allow me to share the same keyboard, mouse, and clipboard between the two machines.
 Enter Synergy. While it appears that is no longer under active development, it still works great.
 For my setup, my Windows machine is the host/server—meaning it&#39;s the one with the keyboard and mouse physically attached.</description>
@@ -1083,20 +1083,20 @@ For my setup, my Windows machine is the host/server—meaning it&#39;s the one w
     
     <item>
       <title>Move Over ASP.NET WebForms and MVC!</title>
-      <link>https://joliver.github.io/move-over-asp-net-webforms-and-mvc/</link>
+      <link>https://blog.jonathanoliver.com/move-over-asp-net-webforms-and-mvc/</link>
       <pubDate>Tue, 28 Apr 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/move-over-asp-net-webforms-and-mvc/</guid>
+      <guid>https://blog.jonathanoliver.com/move-over-asp-net-webforms-and-mvc/</guid>
       <description>This seems to be a hot topic right now. Everyone is talking about the decision to switch from ASP.NET WebForms to the new ASP.NET MVC. It can be a tough decision, but fortunately there is an alternative. Classic ASP.
 I cast my vote for moving back to the well-established Classic ASP framework. I cast my vote for debugging using Response.Write and zero separation between code and markup. I cast my vote for the coolest.</description>
     </item>
     
     <item>
       <title>All Your Repositories Are Belong To Us</title>
-      <link>https://joliver.github.io/all-your-repositories-are-belong-to-us/</link>
+      <link>https://blog.jonathanoliver.com/all-your-repositories-are-belong-to-us/</link>
       <pubDate>Mon, 27 Apr 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/all-your-repositories-are-belong-to-us/</guid>
+      <guid>https://blog.jonathanoliver.com/all-your-repositories-are-belong-to-us/</guid>
       <description>Who would have thought that the Repository Pattern could become a battleground? I always thought it was pretty straightforward—at least, that&#39;s how I felt when I first read Domain-Driven Design a few years ago.
 While I could immediately see the benefits of using a repository, there were a few things that really bothered me as I started implementing the pattern that I could never fully reconcile:
  How do we best query the repository to find the particular aggregates that we care about?</description>
@@ -1104,10 +1104,10 @@ While I could immediately see the benefits of using a repository, there were a f
     
     <item>
       <title>DDDD: Event Storage</title>
-      <link>https://joliver.github.io/dddd-event-storage/</link>
+      <link>https://blog.jonathanoliver.com/dddd-event-storage/</link>
       <pubDate>Mon, 13 Apr 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/dddd-event-storage/</guid>
+      <guid>https://blog.jonathanoliver.com/dddd-event-storage/</guid>
       <description>Finally, I&#39;ve found what I&#39;ve been looking for: http://tech.groups.yahoo.com/group/altdotnet/message/15415
 In the above post, Greg outlines exactly how he does file-based storage of serialized events.
 UPDATE: Greg has posted a few additional details here: http://tech.groups.yahoo.com/group/domaindrivendesign/message/12396</description>
@@ -1115,79 +1115,79 @@ UPDATE: Greg has posted a few additional details here: http://tech.groups.yahoo.
     
     <item>
       <title>DDD: Strategic Design: Core, Supporting, and Generic Subdomains</title>
-      <link>https://joliver.github.io/ddd-strategic-design-core-supporting-and-generic-subdomains/</link>
+      <link>https://blog.jonathanoliver.com/ddd-strategic-design-core-supporting-and-generic-subdomains/</link>
       <pubDate>Sat, 04 Apr 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/ddd-strategic-design-core-supporting-and-generic-subdomains/</guid>
+      <guid>https://blog.jonathanoliver.com/ddd-strategic-design-core-supporting-and-generic-subdomains/</guid>
       <description>I have been re-reading Domain-Driven Design after watching several InfoQ presentations given by Eric Evans as well as an interview of Eric at QCon in San Francisco in 2008. There were several core concepts that really stuck out to me as I was watching these in one sitting.
 One of the key points that really stuck out to me for some reason was the concepts surrounding &#34;strategic design&#34; and the need to break down that design into parts.</description>
     </item>
     
     <item>
       <title>DDDD: Aggregate Versioning &amp; Persistence Schema</title>
-      <link>https://joliver.github.io/dddd-aggregate-versioning-persistence-schema/</link>
+      <link>https://blog.jonathanoliver.com/dddd-aggregate-versioning-persistence-schema/</link>
       <pubDate>Sat, 04 Apr 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/dddd-aggregate-versioning-persistence-schema/</guid>
+      <guid>https://blog.jonathanoliver.com/dddd-aggregate-versioning-persistence-schema/</guid>
       <description>In a previous post, I talked about a possible relational database schema for event storage. I also discussed the idea behind aggregate versioning in a relational store. In this post, I&#39;d like to talk about storage in a non-relational persistence medium, such as CouchDB, HyperTable, or even the file system.
 One of the reasons behind the &#34;last_snapshot_seq&#34; column in the relational schema is that is helps determine the point at which to start loading events from the database.</description>
     </item>
     
     <item>
       <title>DDDD: Double Dispatch</title>
-      <link>https://joliver.github.io/dddd-double-dispatch/</link>
+      <link>https://blog.jonathanoliver.com/dddd-double-dispatch/</link>
       <pubDate>Wed, 01 Apr 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/dddd-double-dispatch/</guid>
+      <guid>https://blog.jonathanoliver.com/dddd-double-dispatch/</guid>
       <description>I just finished watching David Laribee&#39;s devTeach video. Towards the middle of the presentation he started talking about domain services and how we can use double dispatching to provide a service to a domain entity. By doing this, we gain the ability for the domain object to call the domain service—without injecting it during construction. This, in turn, facilitates variability because we can provide different implementations of the service which may or may not access other external services or state—all without leaking infrastructure concepts into the domain.</description>
     </item>
     
     <item>
       <title>DDDD: Didn&#39;t You Get The Message?</title>
-      <link>https://joliver.github.io/dddd-didnt-you-get-the-message/</link>
+      <link>https://blog.jonathanoliver.com/dddd-didnt-you-get-the-message/</link>
       <pubDate>Tue, 31 Mar 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/dddd-didnt-you-get-the-message/</guid>
+      <guid>https://blog.jonathanoliver.com/dddd-didnt-you-get-the-message/</guid>
       <description>Greg has generously shed some light on a critical aspect of DDDD: How do I get the command (or event) message into the aggregate root?
 First a small amount of background. When a message arrives for consumption, typically a message handler like MapMessageToAggregateRootHandler will be responsible for loading the aggregate from the repository and pushing the message into the aggregate root. (Note: The messages handled by this handler all have a GUID property representing the aggregate ID which the handler can use to load the aggregate from the repository.</description>
     </item>
     
     <item>
       <title>DDDD: Pipes (Producers) and Filters (Consumers)</title>
-      <link>https://joliver.github.io/dddd-pipes-producers-and-filters-consumers/</link>
+      <link>https://blog.jonathanoliver.com/dddd-pipes-producers-and-filters-consumers/</link>
       <pubDate>Tue, 31 Mar 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/dddd-pipes-producers-and-filters-consumers/</guid>
+      <guid>https://blog.jonathanoliver.com/dddd-pipes-producers-and-filters-consumers/</guid>
       <description>[UPDATE: This article may be better titled as Pipes (Publishers) and Filters (Consumers) because as of a recent message group thread, the concept of &#34;Produce&#34; has been renamed to &#34;Publish&#34;.]
 As I really started looking at the interface for IConsume and IPublish (sorry, I can&#39;t shake putting &#34;I&#34; on interfaces), I was slightly perplexed. In essence, it appears that these two methods could do the same thing: Consume(Message) and Publish(Message) because the method signature is identical except the name.</description>
     </item>
     
     <item>
       <title>DDDD: Producers and Consumers</title>
-      <link>https://joliver.github.io/dddd-producers-and-consumers/</link>
+      <link>https://blog.jonathanoliver.com/dddd-producers-and-consumers/</link>
       <pubDate>Tue, 31 Mar 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/dddd-producers-and-consumers/</guid>
+      <guid>https://blog.jonathanoliver.com/dddd-producers-and-consumers/</guid>
       <description>About a year ago, Greg wrote a good article on producers and consumers. It&#39;s an excellent read but is a little too abstract if you&#39;re brand new to DDDD. I would strongly recommend reading (at least three times) each of the previous blog posts from Greg in the DDDD series and watching all of the videos as listed in my Getting Started post.
 Fortunately, Greg is very active in the Domain-Driven Design Yahoo Group.</description>
     </item>
     
     <item>
       <title>DDDD: Eric Evans Interviews Greg Young</title>
-      <link>https://joliver.github.io/dddd-eric-evans-interviews-greg-young/</link>
+      <link>https://blog.jonathanoliver.com/dddd-eric-evans-interviews-greg-young/</link>
       <pubDate>Mon, 30 Mar 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/dddd-eric-evans-interviews-greg-young/</guid>
+      <guid>https://blog.jonathanoliver.com/dddd-eric-evans-interviews-greg-young/</guid>
       <description>[UPDATE: Well this is embarrassing. This post is starting to get good amount of traffic and is getting listed on daily link blogs such as Dew Drop. Unlike the other posts in my DDDD series, this particular post was supposed to serve more as a reminder to me, rather than a polished set of coherent and sequential thoughts. It probably got ranked fairly high because it&#39;s so keyword dense.]
 I have watched the InfoQ video of Eric Evans interviewing Greg Young several times.</description>
     </item>
     
     <item>
       <title>Ensure Code File Line Lengths</title>
-      <link>https://joliver.github.io/ensure-code-file-line-lengths/</link>
+      <link>https://blog.jonathanoliver.com/ensure-code-file-line-lengths/</link>
       <pubDate>Mon, 30 Mar 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/ensure-code-file-line-lengths/</guid>
+      <guid>https://blog.jonathanoliver.com/ensure-code-file-line-lengths/</guid>
       <description>Wouldn&#39;t it be great to ensure that you had consistent line lengths in your code files in Visual Studio? All versions of Visual Studio since 2003 have the ability to have what&#39;s called a &#34;guide line&#34; as shown below:
 You can even have multiple &#34;guide lines&#34;.
 The following command will add two guidelines, one at column 82 and the other at column 98 (zero-based):
@@ -1196,20 +1196,20 @@ REG ADD &amp;quot;HKCUSoftwareMicrosoftVisualStudio9.0Text Editor&amp;quot; /v G
     
     <item>
       <title>DDDD: The Event Pipeline—Bringing It All Together</title>
-      <link>https://joliver.github.io/dddd-the-event-pipeline-bringing-it-all-together/</link>
+      <link>https://blog.jonathanoliver.com/dddd-the-event-pipeline-bringing-it-all-together/</link>
       <pubDate>Wed, 25 Mar 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/dddd-the-event-pipeline-bringing-it-all-together/</guid>
+      <guid>https://blog.jonathanoliver.com/dddd-the-event-pipeline-bringing-it-all-together/</guid>
       <description>There are little nuggets of gold in comments that Greg makes on various groups, such as Yahoo&#39;s DDD group. One of them is in regards to the event pipeline.
 The responsibility of the event pipeline is &#34;to provide an indexed view of the event storage.&#34; In other words, it&#39;s like the repository pattern, but this time at a much lower level. Basically we want to make it look like all of the events are in memory.</description>
     </item>
     
     <item>
       <title>Concurrency in a DDDD World</title>
-      <link>https://joliver.github.io/concurrency-in-a-dddd-world/</link>
+      <link>https://blog.jonathanoliver.com/concurrency-in-a-dddd-world/</link>
       <pubDate>Mon, 23 Mar 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/concurrency-in-a-dddd-world/</guid>
+      <guid>https://blog.jonathanoliver.com/concurrency-in-a-dddd-world/</guid>
       <description>Introduction
 One of the tough things about DDDD right now is there isn&#39;t a mountain of information available like with other programming topics. I guess that&#39;s a blessing in disguise because there&#39;s also not a ton of misinformation either.
 In traditional N-tier systems and in repository-based, DDD systems, we typically let the database manage all of our state for us. Then we use different patterns, such as the optimistic offline lock (AKA optimistic concurrency), to ensure concurrency when multiple processes are trying to modify the same information at roughly the same time.</description>
@@ -1217,20 +1217,20 @@ In traditional N-tier systems and in repository-based, DDD systems, we typically
     
     <item>
       <title>DDDD Locator—Not a Single Point of Failure</title>
-      <link>https://joliver.github.io/dddd-locator-not-a-single-point-of-failure/</link>
+      <link>https://blog.jonathanoliver.com/dddd-locator-not-a-single-point-of-failure/</link>
       <pubDate>Mon, 23 Mar 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/dddd-locator-not-a-single-point-of-failure/</guid>
+      <guid>https://blog.jonathanoliver.com/dddd-locator-not-a-single-point-of-failure/</guid>
       <description>In my previous blog post, I elaborated upon Greg&#39;s devTeach talk in which he hints at distributing a bounded context. I talked about how using what Greg calls a &#34;locator&#34; can facilitate distribution without introducing concurrency problems.
 The question was asked in his talk at 46:40, &#34;Is the locator a single point of failure?&#34; Because his talk was not actually about distributed systems, but rather about CQS and some foundational aspects of DDDD, Greg pulled back from that question and moved on.</description>
     </item>
     
     <item>
       <title>DDDD and CQS: Getting Started</title>
-      <link>https://joliver.github.io/dddd-and-cqs-getting-started/</link>
+      <link>https://blog.jonathanoliver.com/dddd-and-cqs-getting-started/</link>
       <pubDate>Wed, 18 Mar 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/dddd-and-cqs-getting-started/</guid>
+      <guid>https://blog.jonathanoliver.com/dddd-and-cqs-getting-started/</guid>
       <description>There are a number of good resources for getting started on Distributed Domain-Driven Design as well as architectural-level Command Query Separation (not to be confused with CQS as a programming paradigm).
 Basic Concepts
 For starters, you should be familiar with &amp;quot;regular&amp;quot; DDD: Domain-Driven Design, DDD Quickly, and Think DDD.
@@ -1239,107 +1239,107 @@ Then, you&#39;ll probably want to understand about distributed systems because t
     
     <item>
       <title>Event Sourcing Persistence</title>
-      <link>https://joliver.github.io/event-sourcing-persistence/</link>
+      <link>https://blog.jonathanoliver.com/event-sourcing-persistence/</link>
       <pubDate>Wed, 18 Mar 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/event-sourcing-persistence/</guid>
+      <guid>https://blog.jonathanoliver.com/event-sourcing-persistence/</guid>
       <description>Greg&#39;s devTeach talk has various slides in which he presents a simple overview of persistence for event storage. In the video [at 39:30] he talks about how he doesn&#39;t use a relational database for storing his events, but he says that you could.
 Because I have only superficially glanced at solutions like BigTable, HyperTable, and CouchDB, I&#39;m still using a relational database on the back end. Here is a proposed schema for storing the state transitions for any and all events of a bounded context in a SQL Server relational database:</description>
     </item>
     
     <item>
       <title>Event Sourcing and Committing Transactions</title>
-      <link>https://joliver.github.io/event-sourcing-and-committing-transactions/</link>
+      <link>https://blog.jonathanoliver.com/event-sourcing-and-committing-transactions/</link>
       <pubDate>Wed, 18 Mar 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/event-sourcing-and-committing-transactions/</guid>
+      <guid>https://blog.jonathanoliver.com/event-sourcing-and-committing-transactions/</guid>
       <description>In virtually all of the video recordings Greg Young&#39;s presentations and PowerPoint slides, he talks about an event pipeline that comes out of the repository when events are committed.
 One small optimization that helps with performance as well as availability of the system is to put the action of writing to your persistence engine as a subscriber on the pipeline rather than attempting to write to the persistence engine when committing the transaction.</description>
     </item>
     
     <item>
       <title>Event Sourcing and Snapshots</title>
-      <link>https://joliver.github.io/event-sourcing-and-snapshots/</link>
+      <link>https://blog.jonathanoliver.com/event-sourcing-and-snapshots/</link>
       <pubDate>Wed, 18 Mar 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/event-sourcing-and-snapshots/</guid>
+      <guid>https://blog.jonathanoliver.com/event-sourcing-and-snapshots/</guid>
       <description>One part of Event Sourcing that could become problematic is those objects with long, complex lifetimes. In virtually all cases, an object&#39;s lifetime is relatively short--perhaps a dozen events or so. But there are cases in which an object may live for a very, very long time and be used frequently. Greg gives an example in one if his talks of an object that gets thousands of new events per day.</description>
     </item>
     
     <item>
       <title>Event Sourcing and Write-Ahead Logging</title>
-      <link>https://joliver.github.io/event-sourcing-and-write-ahead-logging/</link>
+      <link>https://blog.jonathanoliver.com/event-sourcing-and-write-ahead-logging/</link>
       <pubDate>Wed, 18 Mar 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/event-sourcing-and-write-ahead-logging/</guid>
+      <guid>https://blog.jonathanoliver.com/event-sourcing-and-write-ahead-logging/</guid>
       <description>In Greg&#39;s devTeach presentation he brings up the concept of a write-ahead log, which is a powerful, yet simple mechanism for temporary event storage which is also a capability offered by virtually all relational databases.
 In a database scenario, the concept is simple: whenever a command is performed, it is performed in memory and immediately recorded in the log. Then, if the database process accidentally restarts/shuts down, etc. it can be brought back to a known state.</description>
     </item>
     
     <item>
       <title>Event Sourcing in a DDDD World</title>
-      <link>https://joliver.github.io/event-sourcing-in-a-dddd-world/</link>
+      <link>https://blog.jonathanoliver.com/event-sourcing-in-a-dddd-world/</link>
       <pubDate>Wed, 18 Mar 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/event-sourcing-in-a-dddd-world/</guid>
+      <guid>https://blog.jonathanoliver.com/event-sourcing-in-a-dddd-world/</guid>
       <description>For the past few weeks I have been scouring the Internet investigating all things related to DDDD as well as the concepts behind Command Query Separation at an architectural level.
 One of the main posts that is referenced is Martin Fowler&#39;s work on Event Sourcing. In a nutshell, the article talks about capturing each change to the application state as an object and then persisting those objects. Then, to rebuild the state of an application at a given time, you simply re-run those captured objects against your entity.</description>
     </item>
     
     <item>
       <title>Infinite Loop Event Sourcing</title>
-      <link>https://joliver.github.io/infinite-loop-event-sourcing/</link>
+      <link>https://blog.jonathanoliver.com/infinite-loop-event-sourcing/</link>
       <pubDate>Wed, 18 Mar 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/infinite-loop-event-sourcing/</guid>
+      <guid>https://blog.jonathanoliver.com/infinite-loop-event-sourcing/</guid>
       <description>Greg Young talks about using an identity map to help avoid hitting the persistence engine and making it the bottleneck for the entire system. In a fully distributed scenario, the event pipeline coming out of the repository would publish any events committed to an aggregate to all interested parties. These interested parties would include a persistence engine subscriber, other bounded contexts, and other instances of the same bounded context. Other instances of the same bounded context would use an identity map and listen to messages for aggregates that already held in memory--other messages would be ignored.</description>
     </item>
     
     <item>
       <title>DDD: CQS and Bounded Contexts</title>
-      <link>https://joliver.github.io/ddd-cqs-and-bounded-contexts/</link>
+      <link>https://blog.jonathanoliver.com/ddd-cqs-and-bounded-contexts/</link>
       <pubDate>Mon, 16 Feb 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/ddd-cqs-and-bounded-contexts/</guid>
+      <guid>https://blog.jonathanoliver.com/ddd-cqs-and-bounded-contexts/</guid>
       <description>Since publishing my last post a few minutes ago, I came across a Develicious post by Casey Charlton. He&#39;s covered what I have said in significantly more detail.
 The really cool thing that he brings out, as we both refer back to some of Greg Young&#39;s architecture concepts, is that the domain/command operations could be in separate bounded context from the reporting bounded context. In fact, these two systems could have a completely different data store--something that Greg mentioned in his InfoQ video.</description>
     </item>
     
     <item>
       <title>DDD: Entity Validation and Command/Query Separation</title>
-      <link>https://joliver.github.io/ddd-entity-validation-and-commandquery-separation/</link>
+      <link>https://blog.jonathanoliver.com/ddd-entity-validation-and-commandquery-separation/</link>
       <pubDate>Mon, 16 Feb 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/ddd-entity-validation-and-commandquery-separation/</guid>
+      <guid>https://blog.jonathanoliver.com/ddd-entity-validation-and-commandquery-separation/</guid>
       <description>Over the past few months I have been trying to wrap my head around the concept of user input validation and operational validation and how to best handle it. In many regards, it&#39;s a domain concept so it should be in the domain. But at the same time, it felt weird to put the validation logic inside of an entity object in a highly reactive, IsValid fashion. This smacks of doing CRUD operations on a DDD object.</description>
     </item>
     
     <item>
       <title>Reporting Bounded Context and Performance</title>
-      <link>https://joliver.github.io/reporting-bounded-context-and-performance/</link>
+      <link>https://blog.jonathanoliver.com/reporting-bounded-context-and-performance/</link>
       <pubDate>Mon, 16 Feb 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/reporting-bounded-context-and-performance/</guid>
+      <guid>https://blog.jonathanoliver.com/reporting-bounded-context-and-performance/</guid>
       <description>The more I think about having a completely separate reporting context, the more I love the concept.
 I love the idea that you can have a read-optimized version of your data. Obviously this idea is not new, it&#39;s the foundation of data warehousing. I&#39;m not going down that road quite that far for my situation. It&#39;s the idea of having reporting be its own bounded context--its own separate sub-domain which is appealing.</description>
     </item>
     
     <item>
       <title>Uncle Bob Is Right</title>
-      <link>https://joliver.github.io/uncle-bob-is-right/</link>
+      <link>https://blog.jonathanoliver.com/uncle-bob-is-right/</link>
       <pubDate>Fri, 13 Feb 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/uncle-bob-is-right/</guid>
+      <guid>https://blog.jonathanoliver.com/uncle-bob-is-right/</guid>
       <description>I&#39;m baffled by the podcast from Jeff and Joel. In many regards, I have had the same reaction as Robert Martin. In our organization we have tried our best to implement SOLID principles. The affect that these principles have had on our ability to produce software is both profound and staggering.
 To basically say that things like the Single Responsibility Principle and the Dependency Inversion Principle are &amp;quot;bureaucratic&amp;quot; and that they come from someone who &amp;quot;doesn&#39;t write a lot of code&amp;quot; is absurd.</description>
     </item>
     
     <item>
       <title>Integers vs. GUIDs and Natural vs. Surrogate Keys</title>
-      <link>https://joliver.github.io/integers-vs-guids-and-natural-vs-surrogate-keys/</link>
+      <link>https://blog.jonathanoliver.com/integers-vs-guids-and-natural-vs-surrogate-keys/</link>
       <pubDate>Mon, 26 Jan 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/integers-vs-guids-and-natural-vs-surrogate-keys/</guid>
+      <guid>https://blog.jonathanoliver.com/integers-vs-guids-and-natural-vs-surrogate-keys/</guid>
       <description>In the database world, there are few arguments that provoke such strong feelings as the proper choice for a database key. Should we choose a natural or surrogate key? If we choose a surrogate key, should it be an integer or a GUID? I have actually done work on all sides of the argument, so I can see it from the various perspectives.
 Natural vs. Surrogate
 Joe Celko argues that we should be using a natural key--one composed from the attributes of the entity being modeled rather than just assigning an arbitrary value.</description>
@@ -1347,20 +1347,20 @@ Joe Celko argues that we should be using a natural key--one composed from the at
     
     <item>
       <title>DDD: Your Entity Object Is My Value Object</title>
-      <link>https://joliver.github.io/ddd-your-entity-object-is-my-value-object/</link>
+      <link>https://blog.jonathanoliver.com/ddd-your-entity-object-is-my-value-object/</link>
       <pubDate>Thu, 15 Jan 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/ddd-your-entity-object-is-my-value-object/</guid>
+      <guid>https://blog.jonathanoliver.com/ddd-your-entity-object-is-my-value-object/</guid>
       <description>As a quick primer, an entity object is something that has a identity and can change over time--much like a person--whereas a value object is something that is immutable once constructed and can be interchanged with another value object holding the same value.
 I have read, from time to time, the laments of some who would like to see a published list of the all of the various kinds objects--and the classification of each: entity or value object.</description>
     </item>
     
     <item>
       <title>Fedora 10 x64 and CERC 1.5 6-Channel SATA RAID</title>
-      <link>https://joliver.github.io/fedora-10-x64-and-cerc-1-5-6-channel-sata-raid/</link>
+      <link>https://blog.jonathanoliver.com/fedora-10-x64-and-cerc-1-5-6-channel-sata-raid/</link>
       <pubDate>Sat, 03 Jan 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/fedora-10-x64-and-cerc-1-5-6-channel-sata-raid/</guid>
+      <guid>https://blog.jonathanoliver.com/fedora-10-x64-and-cerc-1-5-6-channel-sata-raid/</guid>
       <description>Fedora doesn&#39;t play nice with this RAID card. After installation it wouldn&#39;t recognize the hardware device. It would just say:
  Volume group &amp;quot;VolGroup00&amp;quot; not found
  After a bit of Googling, I came upon this post. The problem occurs because Fedora is loading too quickly and not giving sufficient time for the RAID card to be recognized. The solution is to boot into recovery mode using the Fedora installation disk.</description>
@@ -1368,20 +1368,20 @@ I have read, from time to time, the laments of some who would like to see a publ
     
     <item>
       <title>Holy Wars: C# vs Java, Windows vs Linux</title>
-      <link>https://joliver.github.io/holy-wars-c-vs-java-windows-vs-linux/</link>
+      <link>https://blog.jonathanoliver.com/holy-wars-c-vs-java-windows-vs-linux/</link>
       <pubDate>Sat, 03 Jan 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/holy-wars-c-vs-java-windows-vs-linux/</guid>
+      <guid>https://blog.jonathanoliver.com/holy-wars-c-vs-java-windows-vs-linux/</guid>
       <description>I was re-reading The 7 Habits and I came upon an interesting principle. In Habit 2, Begin With the End in Mind, Stephen Covey talks about how change can affect us. Specifically, he mentions how, by having a changeless, principle-centered core, we don&#39;t have to be afraid of change and that we can adapt and grow with change rather than fearing it or labeling/prejudicing ourselves against it.
 The thought occurred to me, how much does the lack of this principle permeate the development community?</description>
     </item>
     
     <item>
       <title>HOWTO: Get 4 Extra Hours Every Day...</title>
-      <link>https://joliver.github.io/howto-get-4-extra-hours-every-day/</link>
+      <link>https://blog.jonathanoliver.com/howto-get-4-extra-hours-every-day/</link>
       <pubDate>Fri, 02 Jan 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/howto-get-4-extra-hours-every-day/</guid>
+      <guid>https://blog.jonathanoliver.com/howto-get-4-extra-hours-every-day/</guid>
       <description>About two months ago, I was thinking of the goals I had that I wanted to accomplish as well as all of the projects that I wanted to complete. There just wasn&#39;t enough time. It occurred to me that there several immediate steps that I could take to gain a few hours every day.
 Wake Up Earlier
 I love to sleep. Let me repeat that, I absolutely, positively love to sleep.</description>
@@ -1389,40 +1389,40 @@ I love to sleep. Let me repeat that, I absolutely, positively love to sleep.</d
     
     <item>
       <title>Windows Server 2008 x64 &amp; CERC 1.5 6-Channel SATA RAID</title>
-      <link>https://joliver.github.io/windows-server-2008-x64-cerc-1-5-6-channel-sata-raid/</link>
+      <link>https://blog.jonathanoliver.com/windows-server-2008-x64-cerc-1-5-6-channel-sata-raid/</link>
       <pubDate>Wed, 31 Dec 2008 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/windows-server-2008-x64-cerc-1-5-6-channel-sata-raid/</guid>
+      <guid>https://blog.jonathanoliver.com/windows-server-2008-x64-cerc-1-5-6-channel-sata-raid/</guid>
       <description>Just so you know, for some reason when you do a clean install of Windows Server 2008 x64 on a machine with Adaptec&#39;s CERC 1.5 6-Channel SATA RAID card, Windows doesn&#39;t have drivers built in.
 Easy enough, you can go get the drivers from the manufacturer website--in my case Dell. Obviously you want to use the x64 drivers because it&#39;s an x64 operating system. When you attempt to use the x64 drivers via the &amp;quot;Load Driver&amp;quot; option, because it can&#39;t detect the disks otherwise, it gives you the following helpful message:</description>
     </item>
     
     <item>
       <title>Services: Infrastructure, Application, Domain, and Object</title>
-      <link>https://joliver.github.io/services-infrastructure-application-domain-and-object/</link>
+      <link>https://blog.jonathanoliver.com/services-infrastructure-application-domain-and-object/</link>
       <pubDate>Tue, 30 Dec 2008 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/services-infrastructure-application-domain-and-object/</guid>
+      <guid>https://blog.jonathanoliver.com/services-infrastructure-application-domain-and-object/</guid>
       <description>You may have read on various blog from individuals--including well-known master craftsmen--that having references to a service or repository inside of your domain entity is an anti-pattern or a code smell which leads to the dreaded &amp;quot;anemic domain model&amp;quot; problem. If you agreed with this, you&#39;d be wrong.
 Allow me qualify the above statement. The issue isn&#39;t so much having services inside your domain entities--or value objects for that matter--it&#39;s having the wrong kind of services.</description>
     </item>
     
     <item>
       <title>Assembly &amp; Artifact Storage</title>
-      <link>https://joliver.github.io/assembly-artifact-storage/</link>
+      <link>https://blog.jonathanoliver.com/assembly-artifact-storage/</link>
       <pubDate>Fri, 19 Dec 2008 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/assembly-artifact-storage/</guid>
+      <guid>https://blog.jonathanoliver.com/assembly-artifact-storage/</guid>
       <description>In the process of implementing a more advanced process for our build server the question ultimately arose, &amp;quot;What do we do with the assemblies and other artifacts that are created?&amp;quot; The easiest and perhaps the best solution is to store them in your version control repository along with everything else, provided you are using a system capable of performing binary deltas on your files, e.g. Subversion.
 In our situation we wanted to build artifacts and store them in a tagged directory of SVN in order to easily get the exact binaries that were created at any point in time.</description>
     </item>
     
     <item>
       <title>Making NHibernate Inversion of Control-Friendly</title>
-      <link>https://joliver.github.io/making-nhibernate-inversion-of-control-friendly/</link>
+      <link>https://blog.jonathanoliver.com/making-nhibernate-inversion-of-control-friendly/</link>
       <pubDate>Mon, 15 Dec 2008 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/making-nhibernate-inversion-of-control-friendly/</guid>
+      <guid>https://blog.jonathanoliver.com/making-nhibernate-inversion-of-control-friendly/</guid>
       <description>UPDATE: Fabio Maulo, the man behind NHibernate, posted the following recently on the topic:
 http://fabiomaulo.blogspot.com/2008/11/entities-behavior-injection.html
 -----
@@ -1431,20 +1431,20 @@ NHibernate is a little bit of a pill when it comes to dependency injection. Sinc
     
     <item>
       <title>Source Server &#43; Subversion = Easy Assembly Debugging</title>
-      <link>https://joliver.github.io/source-server-subversion-easy-assembly-debugging/</link>
+      <link>https://blog.jonathanoliver.com/source-server-subversion-easy-assembly-debugging/</link>
       <pubDate>Fri, 12 Dec 2008 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/source-server-subversion-easy-assembly-debugging/</guid>
+      <guid>https://blog.jonathanoliver.com/source-server-subversion-easy-assembly-debugging/</guid>
       <description>I started using Microsoft Source Server to more easily debug assemblies. Although I&#39;m a strong TDD/BDD advocate, I still find myself in the debugger, especially when working with our own internal, shared libraries.
 One of the biggest advantages to using Source Server with Subversion is the ability to quickly and easily retrieve the correct revision of the underlying source code for the assembly being debugged. The majority of the steps are found in MSDN&#39;s Bugslayer article.</description>
     </item>
     
     <item>
       <title>Don&#39;t Forgot svn:externals When Tagging in Subversion</title>
-      <link>https://joliver.github.io/dont-forgot-svnexternals-when-tagging-in-subversion/</link>
+      <link>https://blog.jonathanoliver.com/dont-forgot-svnexternals-when-tagging-in-subversion/</link>
       <pubDate>Wed, 10 Dec 2008 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/dont-forgot-svnexternals-when-tagging-in-subversion/</guid>
+      <guid>https://blog.jonathanoliver.com/dont-forgot-svnexternals-when-tagging-in-subversion/</guid>
       <description>The Problem
 If any of you have ever dealt with external libraries or even your own shared libraries which are used in multiple projects, you&#39;ve most likely worked with the svn:externals property. Yes, there are a few alternatives such as Piston, among others. All in all, svn:externals is pretty simple, but it does have one simple, but nasty gotcha when working with tags.
 The idea behind a tag is to have a snapshot in time of your software such that it can be reconstructed at a known state.</description>
@@ -1452,20 +1452,20 @@ The idea behind a tag is to have a snapshot in time of your software such that i
     
     <item>
       <title>The Obligatory Hello, World! Post</title>
-      <link>https://joliver.github.io/the-obligatory-hello-world-post/</link>
+      <link>https://blog.jonathanoliver.com/the-obligatory-hello-world-post/</link>
       <pubDate>Mon, 08 Dec 2008 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/the-obligatory-hello-world-post/</guid>
+      <guid>https://blog.jonathanoliver.com/the-obligatory-hello-world-post/</guid>
       <description>Ayende finally convinced me that it&#39;s time to have a blog. He&#39;s right, having an online presence matters. For the longest time I&#39;ve tried convince myself that I can sit quietly in the background and carefully observe without being noticed.
 During my innumerable searches on various development topics I have almost exclusively found that blogs offer by far the best and most elegant solutions. It is to those bloggers that have been so insightful and as well as any struggling developers that I might help through solutions that I publish that I dedicate this blog.</description>
     </item>
     
     <item>
       <title></title>
-      <link>https://joliver.github.io/images/readme/</link>
+      <link>https://blog.jonathanoliver.com/images/readme/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://joliver.github.io/images/readme/</guid>
+      <guid>https://blog.jonathanoliver.com/images/readme/</guid>
       <description>Content / Images If using the standard file storage, Ghost will upload images to this directory.</description>
     </item>
     

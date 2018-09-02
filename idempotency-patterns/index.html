@@ -20,7 +20,7 @@
 
   	<meta property="og:title" content="Idempotency Patterns &middot; Jonathan Oliver" />
   	<meta property="og:site_name" content="Jonathan Oliver" />
-  	<meta property="og:url" content="https://joliver.github.io/idempotency-patterns/" />
+  	<meta property="og:url" content="https://blog.jonathanoliver.com/idempotency-patterns/" />
 
     
         
@@ -45,11 +45,11 @@
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="shortcut icon" href="https://joliver.github.io/images/favicon.ico">
-	  <link rel="apple-touch-icon" href="https://joliver.github.io/images/apple-touch-icon.png" />
+    <link rel="shortcut icon" href="https://blog.jonathanoliver.com/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="https://blog.jonathanoliver.com/images/apple-touch-icon.png" />
 
-    <link rel="stylesheet" type="text/css" href="https://joliver.github.io/css/screen.css" />
-    <link rel="stylesheet" type="text/css" href="https://joliver.github.io/css/nav.css" />
+    <link rel="stylesheet" type="text/css" href="https://blog.jonathanoliver.com/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="https://blog.jonathanoliver.com/css/nav.css" />
 
     
 
@@ -62,13 +62,13 @@
 
     
       
-          <link href="https://joliver.github.io/index.xml" rel="alternate" type="application/rss+xml" title="Jonathan Oliver" />
+          <link href="https://blog.jonathanoliver.com/index.xml" rel="alternate" type="application/rss+xml" title="Jonathan Oliver" />
       
       
     
     <meta name="generator" content="Hugo 0.46-DEV" />
 
-    <link rel="canonical" href="https://joliver.github.io/idempotency-patterns/" />
+    <link rel="canonical" href="https://blog.jonathanoliver.com/idempotency-patterns/" />
 
     
       
@@ -80,7 +80,7 @@
     "publisher": {
         "@type": "Organization",
         "name": ,
-        "logo": https://joliver.github.io/images/tux.png
+        "logo": https://blog.jonathanoliver.com/images/tux.png
     },
     "author": {
         "@type": "Person",
@@ -88,12 +88,12 @@
         
         "image": {
             "@type": "ImageObject",
-            "url": https://joliver.github.io/images/tux.png,
+            "url": https://blog.jonathanoliver.com/images/tux.png,
             "width": 250,
             "height": 250
         }, 
         
-        "url": https://joliver.github.io,
+        "url": https://blog.jonathanoliver.com/,
         "sameAs": [
             
             
@@ -113,7 +113,7 @@
       "@type": "Language",
       "alternateName": en
     },
-    "url": https://joliver.github.io/idempotency-patterns/,
+    "url": https://blog.jonathanoliver.com/idempotency-patterns/,
     "datePublished": 2010-04-21T00:00Z,
     "dateModified": 2010-04-21T00:00Z,
     
@@ -121,7 +121,7 @@
     "description": ,
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": https://joliver.github.io/idempotency-patterns/
+        "@id": https://blog.jonathanoliver.com/idempotency-patterns/
     }
 }
     </script>
@@ -147,7 +147,7 @@
     </ul>
 
     
-    <a class="subscribe-button icon-feed" href="https://joliver.github.io/index.xml">Subscribe</a>
+    <a class="subscribe-button icon-feed" href="https://blog.jonathanoliver.com/index.xml">Subscribe</a>
     
 </div>
 <span class="nav-cover"></span>
@@ -162,10 +162,10 @@
 
 
   
-      <a class="blog-logo" href="https://joliver.github.io/"><img src="https://joliver.github.io/images/tux.png" alt="Home" /></a>
+      <a class="blog-logo" href="https://blog.jonathanoliver.com/"><img src="https://blog.jonathanoliver.com/images/tux.png" alt="Home" /></a>
   
   
-      <a class="menu-button icon-feed" href="https://joliver.github.io/index.xml" >&nbsp;&nbsp;Subscribe</a>
+      <a class="menu-button icon-feed" href="https://blog.jonathanoliver.com/index.xml" >&nbsp;&nbsp;Subscribe</a>
   
   </nav>
 </header>
@@ -194,7 +194,7 @@
     </header>
 
     <section class="post-content">
-      <p align="justify">In several of my <a href="https://joliver.github.io/2010/04/extending-nservicebus-avoiding-two.html">previous posts</a> I discussed how to avoid the overhead of a two-phase commit while still being able to maintain an application-level transactional consistency between two resources, such as a message queue and durable data store, e.g. a database. When considering how to implement idempotency there are a number of factors to consider. Let us examine each of these in turn.</p> <p align="justify">First, is the message inherently idempotent? That is, does it contain and operation that contains a fixed value at a point in time such as a stock quote rather than a transformational instruction such as "add $10 to balance". If the message is naturally idempotent, then much of the following discussion can be ignored because reprocessing the message multiple times results in the same value, e.g. f(x) = f(f(x)).</p> <p align="justify">If the message is not intrinsically idempotent, we will want to take steps to mitigate or resolve the effects of processing the same message multiple times. In other words, we want artificial idempotency. In this case, we need to consider the computational overhead of reprocessing a particular message. Understanding this cost can be important because it helps us determine if we must proactively or reactively handle application-level message idempotency.</p> <p align="justify">As mentioned in my <a href="https://joliver.github.io/2010/04/extending-nservicebus-avoiding-two.html">previous post</a>, one requirement for creating idempotency in messages that aren't idempotent is to establish a message store. This message store is keyed off of the application-level identifier of the message being processed. It contains a list of messages that have been dispatched as a result of processing the message being received. Hereafter we shall simply call this a <strong>message store</strong>.</p> <p align="justify">When the computational overhead of reprocessing a message is high as compared to querying to determine if a message has been processed and the probability of a message being received more than once, we will want to proactively filter messages that have already been processed. Remember that the reasons for receiving the same message twice can be varied and range from unexpected process termination to other applications (including our own) redispatching messages.</p> <p align="justify">When proactively filtering messages, we simply query our message store to determine if the message being received has already been processed. If so, redispatch the messages loaded from the query and discontinue processing the current message. Note that the way we store messages in our data store very much depends upon the transactional characteristics of the data store itself. The specifics are outlined in my <a href="https://joliver.github.io/2010/04/extending-nservicebus-avoiding-two.html">previous post</a>.</p> <p align="justify">When we reactively filter a message we know that the computational overhead of processing is very low and/or the probability of a duplicate message is relatively low. In this scenario, we simply reprocess as normal. Then, when we attempt to save any to-be-dispatched-messages resulting from processing to our data store, we catch unique key violations (or similar exceptions) thrown by our data store. If we catch an exception, we abandon our current unit of work and redispatch the messages saved to the data store.</p> <p align="justify">The above scenarios are all fine and good, but what about if we aren't operating against a transactional resource? What if we are performing an operation against a web service or some other RPC-based call using a non-reliable protocol? How can we know if the operation was successful? This requires a little bit more work but still falls within the same general set of patterns outlined herein. Generally we will want to follow the proactive approach discussed above but with a few notable exceptions.</p> <p align="justify">The main theme surrounding this last "pattern" is that we cannot truly wrap all work in a unit and submit it as a batch because we are operating against a non-transactional resource. One possible solution would simply be to query the non-transactional resource to determine the state for a given message. One problem is the latency involved when querying remote resources such as web services over HTTP. Other considerations may include that some HTTP calls incur a fee on a per-call basis making it prohibitively expensive to perform a status-checking query for every single message. Lastly, some resources may not even support a querying operation.</p> <p align="justify">At this point, we probably should disambiguate the meaning of non-transactional resource a little bit more. Although the resource may be transactional in the sense that it did or did not perform an operation, it's effectively all or nothing for only a single call, such as a web service. Furthermore, our application may not even know that the remote invocation succeeded or failed because the response never made it back to our application. Or, our process may have terminated after the "request" packet had been sent across the wire but before any "response" packet was received.</p> <p align="justify">Further, just because we're working with a non-transactional resource, doesn't mean that we can't effectively simulate transactional behavior by recording the application status to our own durable resource.</p> <p align="justify">In the cases where the resource supports queries, we can implement a few techniques to avoid excessive and sometimes expensive calls. The first technique is to record the status of the call at each step to a durable resource. For example, when we are about to call a web service we record that fact. When we receive the results of a web service call, we also log that fact. Finally when we are about to dispatch a message containing the results of the web service call, we log that message to our message store. As we receive a message from our own queue and process it, we must check the log to determine what work, if any, has been done for this particular message. If we have previously logged that we called the web service but no corresponding log entry for the results of the web service call was recorded, we can then incur the additional overhead of querying the resource to see what happened and then taking appropriate action.</p> <p align="justify">Let's look at the above for something like calling a shipping web service from FedEx or UPS or perhaps processing a credit card transaction. If our application has logged that we called the web service but there is no log entry containing the results, we can query the web service and ask what has been done for credit card ABC or order 123. Depending upon the results we can take appropriate action such as authorizing a credit card if the transaction was never received or picking up where the previous attempt failed.</p> <p align="justify">The last "pattern" that merits our consideration is when the resource doesn't support query operations. This is where things get a little bit sticky because we have no way to know if the work was really performed. The canonical example is sending an email by connecting to an SMTP server. Like the previous scenario of calling FedEx or UPS, we can perform virtually all of the same steps. The key difference is that we are unable to query to determine the state of the resource involved. In this case, we may have to accept a small level of inconsistency for a very specific failure condition.</p> <p align="justify">The inconsistency being referred to is the possibility of an email being sent twice (continuing with the SMTP example). If our process terminates after us logging that we are going to call the SMTP server (and perhaps after the SMTP server was called), but before we are able to log that the SMTP server was called, we have absolutely no way to know what work has been done. This being the case we have no choice but to perform the operation again. At the same time, is it really that bad if an end user gets an email twice?</p> <p align="justify"><strong>Conclusion</strong></p> <p align="justify">I hope you will find some of these patterns useful when building applications using messaging patterns using guaranteed at-least-once delivery provided by messaging infrastructure.</p> <p align="justify">Granted, these are only brief summaries of some of the various "patterns" for making messages idempotent. The examples are a little bit arbitrary  and contrived and we might easily poke holes in them, but the principles still hold.</p> 
+      <p align="justify">In several of my <a href="https://blog.jonathanoliver.com/2010/04/extending-nservicebus-avoiding-two.html">previous posts</a> I discussed how to avoid the overhead of a two-phase commit while still being able to maintain an application-level transactional consistency between two resources, such as a message queue and durable data store, e.g. a database. When considering how to implement idempotency there are a number of factors to consider. Let us examine each of these in turn.</p> <p align="justify">First, is the message inherently idempotent? That is, does it contain and operation that contains a fixed value at a point in time such as a stock quote rather than a transformational instruction such as "add $10 to balance". If the message is naturally idempotent, then much of the following discussion can be ignored because reprocessing the message multiple times results in the same value, e.g. f(x) = f(f(x)).</p> <p align="justify">If the message is not intrinsically idempotent, we will want to take steps to mitigate or resolve the effects of processing the same message multiple times. In other words, we want artificial idempotency. In this case, we need to consider the computational overhead of reprocessing a particular message. Understanding this cost can be important because it helps us determine if we must proactively or reactively handle application-level message idempotency.</p> <p align="justify">As mentioned in my <a href="https://blog.jonathanoliver.com/2010/04/extending-nservicebus-avoiding-two.html">previous post</a>, one requirement for creating idempotency in messages that aren't idempotent is to establish a message store. This message store is keyed off of the application-level identifier of the message being processed. It contains a list of messages that have been dispatched as a result of processing the message being received. Hereafter we shall simply call this a <strong>message store</strong>.</p> <p align="justify">When the computational overhead of reprocessing a message is high as compared to querying to determine if a message has been processed and the probability of a message being received more than once, we will want to proactively filter messages that have already been processed. Remember that the reasons for receiving the same message twice can be varied and range from unexpected process termination to other applications (including our own) redispatching messages.</p> <p align="justify">When proactively filtering messages, we simply query our message store to determine if the message being received has already been processed. If so, redispatch the messages loaded from the query and discontinue processing the current message. Note that the way we store messages in our data store very much depends upon the transactional characteristics of the data store itself. The specifics are outlined in my <a href="https://blog.jonathanoliver.com/2010/04/extending-nservicebus-avoiding-two.html">previous post</a>.</p> <p align="justify">When we reactively filter a message we know that the computational overhead of processing is very low and/or the probability of a duplicate message is relatively low. In this scenario, we simply reprocess as normal. Then, when we attempt to save any to-be-dispatched-messages resulting from processing to our data store, we catch unique key violations (or similar exceptions) thrown by our data store. If we catch an exception, we abandon our current unit of work and redispatch the messages saved to the data store.</p> <p align="justify">The above scenarios are all fine and good, but what about if we aren't operating against a transactional resource? What if we are performing an operation against a web service or some other RPC-based call using a non-reliable protocol? How can we know if the operation was successful? This requires a little bit more work but still falls within the same general set of patterns outlined herein. Generally we will want to follow the proactive approach discussed above but with a few notable exceptions.</p> <p align="justify">The main theme surrounding this last "pattern" is that we cannot truly wrap all work in a unit and submit it as a batch because we are operating against a non-transactional resource. One possible solution would simply be to query the non-transactional resource to determine the state for a given message. One problem is the latency involved when querying remote resources such as web services over HTTP. Other considerations may include that some HTTP calls incur a fee on a per-call basis making it prohibitively expensive to perform a status-checking query for every single message. Lastly, some resources may not even support a querying operation.</p> <p align="justify">At this point, we probably should disambiguate the meaning of non-transactional resource a little bit more. Although the resource may be transactional in the sense that it did or did not perform an operation, it's effectively all or nothing for only a single call, such as a web service. Furthermore, our application may not even know that the remote invocation succeeded or failed because the response never made it back to our application. Or, our process may have terminated after the "request" packet had been sent across the wire but before any "response" packet was received.</p> <p align="justify">Further, just because we're working with a non-transactional resource, doesn't mean that we can't effectively simulate transactional behavior by recording the application status to our own durable resource.</p> <p align="justify">In the cases where the resource supports queries, we can implement a few techniques to avoid excessive and sometimes expensive calls. The first technique is to record the status of the call at each step to a durable resource. For example, when we are about to call a web service we record that fact. When we receive the results of a web service call, we also log that fact. Finally when we are about to dispatch a message containing the results of the web service call, we log that message to our message store. As we receive a message from our own queue and process it, we must check the log to determine what work, if any, has been done for this particular message. If we have previously logged that we called the web service but no corresponding log entry for the results of the web service call was recorded, we can then incur the additional overhead of querying the resource to see what happened and then taking appropriate action.</p> <p align="justify">Let's look at the above for something like calling a shipping web service from FedEx or UPS or perhaps processing a credit card transaction. If our application has logged that we called the web service but there is no log entry containing the results, we can query the web service and ask what has been done for credit card ABC or order 123. Depending upon the results we can take appropriate action such as authorizing a credit card if the transaction was never received or picking up where the previous attempt failed.</p> <p align="justify">The last "pattern" that merits our consideration is when the resource doesn't support query operations. This is where things get a little bit sticky because we have no way to know if the work was really performed. The canonical example is sending an email by connecting to an SMTP server. Like the previous scenario of calling FedEx or UPS, we can perform virtually all of the same steps. The key difference is that we are unable to query to determine the state of the resource involved. In this case, we may have to accept a small level of inconsistency for a very specific failure condition.</p> <p align="justify">The inconsistency being referred to is the possibility of an email being sent twice (continuing with the SMTP example). If our process terminates after us logging that we are going to call the SMTP server (and perhaps after the SMTP server was called), but before we are able to log that the SMTP server was called, we have absolutely no way to know what work has been done. This being the case we have no choice but to perform the operation again. At the same time, is it really that bad if an end user gets an email twice?</p> <p align="justify"><strong>Conclusion</strong></p> <p align="justify">I hope you will find some of these patterns useful when building applications using messaging patterns using guaranteed at-least-once delivery provided by messaging infrastructure.</p> <p align="justify">Granted, these are only brief summaries of some of the various "patterns" for making messages idempotent. The examples are a little bit arbitrary  and contrived and we might easily poke holes in them, but the principles still hold.</p> 
 
     </section>
 
@@ -212,18 +212,18 @@
 
 
 <figure class="author-image">
-    <a class="img" href="https://joliver.github.io/" style="background-image: url(/images/tux.png)"><span class="hidden">Jonathan Oliver's Picture</span></a>
+    <a class="img" href="https://blog.jonathanoliver.com/" style="background-image: url(/images/tux.png)"><span class="hidden">Jonathan Oliver's Picture</span></a>
 </figure>
 
 
 <section class="author">
-  <h4><a href="https://joliver.github.io/">Jonathan Oliver</a></h4>
+  <h4><a href="https://blog.jonathanoliver.com/">Jonathan Oliver</a></h4>
   
-  <p>Read <a href="https://joliver.github.io/">more posts</a> by this author.</p>
+  <p>Read <a href="https://blog.jonathanoliver.com/">more posts</a> by this author.</p>
   
   <div class="author-meta">
     <span class="author-location icon-location">Utah, USA</span>
-    <span class="author-link icon-link"><a href="https://joliver.github.io">https://joliver.github.io</a></span>
+    <span class="author-link icon-link"><a href="https://blog.jonathanoliver.com/">https://blog.jonathanoliver.com/</a></span>
   </div>
 </section>
 
@@ -233,19 +233,19 @@
     
 <section class="share">
   <h4>Share this post</h4>
-  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Idempotency%20Patterns&nbsp;-&nbsp;Jonathan%20Oliver&amp;url=https%3a%2f%2fjoliver.github.io%2fidempotency-patterns%2f"
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Idempotency%20Patterns&nbsp;-&nbsp;Jonathan%20Oliver&amp;url=https%3a%2f%2fblog.jonathanoliver.com%2fidempotency-patterns%2f"
       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
       <span class="hidden">Twitter</span>
   </a>
-  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fjoliver.github.io%2fidempotency-patterns%2f"
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.jonathanoliver.com%2fidempotency-patterns%2f"
       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
       <span class="hidden">Facebook</span>
   </a>
-  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fjoliver.github.io%2fidempotency-patterns%2f&amp;description=Idempotency%20Patterns"
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fblog.jonathanoliver.com%2fidempotency-patterns%2f&amp;description=Idempotency%20Patterns"
       onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
       <span class="hidden">Pinterest</span>
   </a>
-  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fjoliver.github.io%2fidempotency-patterns%2f"
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fblog.jonathanoliver.com%2fidempotency-patterns%2f"
      onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
       <span class="hidden">Google+</span>
   </a>
@@ -262,8 +262,8 @@
 
 
 var disqus_config = function () {
-this.page.url = "https:\/\/joliver.github.io\/idempotency-patterns\/";  
-this.page.identifier = "https:\/\/joliver.github.io\/idempotency-patterns\/"; 
+this.page.url = "https:\/\/blog.jonathanoliver.com\/idempotency-patterns\/";  
+this.page.identifier = "https:\/\/blog.jonathanoliver.com\/idempotency-patterns\/"; 
 };
 
 (function() { 
@@ -290,7 +290,7 @@ s.setAttribute('data-timestamp', +new Date());
 
   <aside class="read-next">
   
-      <a class="read-next-story" style="no-cover" href="https://joliver.github.io/messaging-at-least-once-delivery/">
+      <a class="read-next-story" style="no-cover" href="https://blog.jonathanoliver.com/messaging-at-least-once-delivery/">
           <section class="post">
               <h2>Messaging: At-Least-Once Delivery</h2>
               
@@ -298,7 +298,7 @@ s.setAttribute('data-timestamp', +new Date());
       </a>
   
   
-      <a class="read-next-story prev" style="no-cover" href="https://joliver.github.io/extending-nservicebus-avoiding-two-phase-commits/">
+      <a class="read-next-story prev" style="no-cover" href="https://blog.jonathanoliver.com/extending-nservicebus-avoiding-two-phase-commits/">
           <section class="post">
               <h2>Extending NServiceBus: Avoiding Two-Phase Commits</h2>
           </section>
@@ -313,9 +313,9 @@ s.setAttribute('data-timestamp', +new Date());
         
     </footer>
     </div>
-    <script type="text/javascript" src="https://joliver.github.io/js/jquery.js"></script>
-    <script type="text/javascript" src="https://joliver.github.io/js/jquery.fitvids.js"></script>
-    <script type="text/javascript" src="https://joliver.github.io/js/index.js"></script>
+    <script type="text/javascript" src="https://blog.jonathanoliver.com/js/jquery.js"></script>
+    <script type="text/javascript" src="https://blog.jonathanoliver.com/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://blog.jonathanoliver.com/js/index.js"></script>
     
 </body>
 </html>

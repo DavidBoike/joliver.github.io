@@ -20,7 +20,7 @@
 
   	<meta property="og:title" content="DDD: Entity Injection and Mocking Time &middot; Jonathan Oliver" />
   	<meta property="og:site_name" content="Jonathan Oliver" />
-  	<meta property="og:url" content="https://joliver.github.io/ddd-entity-injection-and-mocking-time/" />
+  	<meta property="og:url" content="https://blog.jonathanoliver.com/ddd-entity-injection-and-mocking-time/" />
 
     
         
@@ -46,11 +46,11 @@ In my early experience with DDD, I loved injecting dependencies into my dom" />
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="shortcut icon" href="https://joliver.github.io/images/favicon.ico">
-	  <link rel="apple-touch-icon" href="https://joliver.github.io/images/apple-touch-icon.png" />
+    <link rel="shortcut icon" href="https://blog.jonathanoliver.com/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="https://blog.jonathanoliver.com/images/apple-touch-icon.png" />
 
-    <link rel="stylesheet" type="text/css" href="https://joliver.github.io/css/screen.css" />
-    <link rel="stylesheet" type="text/css" href="https://joliver.github.io/css/nav.css" />
+    <link rel="stylesheet" type="text/css" href="https://blog.jonathanoliver.com/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="https://blog.jonathanoliver.com/css/nav.css" />
 
     
 
@@ -63,13 +63,13 @@ In my early experience with DDD, I loved injecting dependencies into my dom" />
 
     
       
-          <link href="https://joliver.github.io/index.xml" rel="alternate" type="application/rss+xml" title="Jonathan Oliver" />
+          <link href="https://blog.jonathanoliver.com/index.xml" rel="alternate" type="application/rss+xml" title="Jonathan Oliver" />
       
       
     
     <meta name="generator" content="Hugo 0.46-DEV" />
 
-    <link rel="canonical" href="https://joliver.github.io/ddd-entity-injection-and-mocking-time/" />
+    <link rel="canonical" href="https://blog.jonathanoliver.com/ddd-entity-injection-and-mocking-time/" />
 
     
       
@@ -81,7 +81,7 @@ In my early experience with DDD, I loved injecting dependencies into my dom" />
     "publisher": {
         "@type": "Organization",
         "name": ,
-        "logo": https://joliver.github.io/images/tux.png
+        "logo": https://blog.jonathanoliver.com/images/tux.png
     },
     "author": {
         "@type": "Person",
@@ -89,12 +89,12 @@ In my early experience with DDD, I loved injecting dependencies into my dom" />
         
         "image": {
             "@type": "ImageObject",
-            "url": https://joliver.github.io/images/tux.png,
+            "url": https://blog.jonathanoliver.com/images/tux.png,
             "width": 250,
             "height": 250
         }, 
         
-        "url": https://joliver.github.io,
+        "url": https://blog.jonathanoliver.com/,
         "sameAs": [
             
             
@@ -114,7 +114,7 @@ In my early experience with DDD, I loved injecting dependencies into my dom" />
       "@type": "Language",
       "alternateName": en
     },
-    "url": https://joliver.github.io/ddd-entity-injection-and-mocking-time/,
+    "url": https://blog.jonathanoliver.com/ddd-entity-injection-and-mocking-time/,
     "datePublished": 2009-10-09T00:00Z,
     "dateModified": 2009-10-09T00:00Z,
     
@@ -122,7 +122,7 @@ In my early experience with DDD, I loved injecting dependencies into my dom" />
     "description": ,
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": https://joliver.github.io/ddd-entity-injection-and-mocking-time/
+        "@id": https://blog.jonathanoliver.com/ddd-entity-injection-and-mocking-time/
     }
 }
     </script>
@@ -148,7 +148,7 @@ In my early experience with DDD, I loved injecting dependencies into my dom" />
     </ul>
 
     
-    <a class="subscribe-button icon-feed" href="https://joliver.github.io/index.xml">Subscribe</a>
+    <a class="subscribe-button icon-feed" href="https://blog.jonathanoliver.com/index.xml">Subscribe</a>
     
 </div>
 <span class="nav-cover"></span>
@@ -163,10 +163,10 @@ In my early experience with DDD, I loved injecting dependencies into my dom" />
 
 
   
-      <a class="blog-logo" href="https://joliver.github.io/"><img src="https://joliver.github.io/images/tux.png" alt="Home" /></a>
+      <a class="blog-logo" href="https://blog.jonathanoliver.com/"><img src="https://blog.jonathanoliver.com/images/tux.png" alt="Home" /></a>
   
   
-      <a class="menu-button icon-feed" href="https://joliver.github.io/index.xml" >&nbsp;&nbsp;Subscribe</a>
+      <a class="menu-button icon-feed" href="https://blog.jonathanoliver.com/index.xml" >&nbsp;&nbsp;Subscribe</a>
   
   </nav>
 </header>
@@ -195,7 +195,7 @@ In my early experience with DDD, I loved injecting dependencies into my dom" />
     </header>
 
     <section class="post-content">
-      <p><p>[<strong>UPDATE:</strong> I have created an <a href="https://joliver.github.io/2009/10/testing-timestatic-calls-and.html">open source library</a> based upon the concepts found below.]</p> <p>In my early experience with DDD, I loved injecting dependencies into my domain entities. I have since repented. The one downright nasty dependency that we could never quite slip away from was…time. That's right, temporal couplings. Well, not exactly. Instead, we had to couple to an object that provides the current time.</p> <p>Initially we had used a &quot;TimeService&quot;, basically just a service that you would inject (ugh) into your entities so that they could query the current time.</p> <p>We've kicked around a few alternatives because we have always wanted to stay away from System.DateTime.UtcNow—mocking that particular class isn't fun.</p> <p>Udi Dahan has written about fully encapsulated domain models. <a href="http://www.udidahan.com/2009/06/14/domain-events-salvation/">His third take on the subject</a> was very insightful, but I couldn't bring myself to use the static singleton reference he had for publishing events. At first glance, this is completely unrelated to what I'm talking about.</p> <p>Today when I read <a href="http://www.markhneedham.com/blog/2009/10/10/coding-api-readabilitytestability/">Mark Needham's post regarding testability</a> and DateTime, I thought back to the days when we hit issues with that. But then I saw a comment by Ryan Roberts. He showed his solution for the problem they had with time:</p> <blockquote> <p>I use a ..<strong><em>static</em></strong> DomainTime.Instance shim to control datetime in tests.</p> <p>Ends up with something like</p> <p>using(DomainTime.Is(new(DateTime(2003,10,10))      <br />{       <br />    var model = SomeRandomModel.JustTheUsualMethod();       <br />    DomainTime.HasBeen(new TimeSpan(0,0,0,1));</p> <p>    Assert.AreEqual(..)      <br />}</p> </blockquote> <p>It's simple and brilliant. Just use a static singleton instance (like Udi does, but for time) that you can easily mock and do it within the context of a using statement. In this manner, we can control the value of &quot;now&quot; within our tests or our code.</p> <p>UPDATE: I've read both of these articles previously, but I'm referencing them here because they have interesting and relevant discussion:</p> <ul> <li><a href="http://www.lostechies.com/blogs/jimmy_bogard/archive/2008/11/09/systemtime-versus-isystemclock-dependencies-revisited.aspx">Jimmy Bogard: SystemTime vs ISystemClock</a> </li> <li><a href="http://ayende.com/Blog/archive/2008/07/07/Dealing-with-time-in-tests.aspx">Oren Eini: Dealing with time in tests</a> </li> <li><a href="http://codebetter.com/blogs/dru.sellers/archive/2009/01/11/kick-the-datetime-now-addiction.aspx">Dru Sellers: Kick the DateTime.Now addiction</a> </li> <li><a href="http://www.hardcodet.net/2009/02/timeguard-helper-class-to-measure-elapsed-time">Phillip Sumi: Time Measurement in Tests</a> </li> </ul></p>
+      <p><p>[<strong>UPDATE:</strong> I have created an <a href="https://blog.jonathanoliver.com/2009/10/testing-timestatic-calls-and.html">open source library</a> based upon the concepts found below.]</p> <p>In my early experience with DDD, I loved injecting dependencies into my domain entities. I have since repented. The one downright nasty dependency that we could never quite slip away from was…time. That's right, temporal couplings. Well, not exactly. Instead, we had to couple to an object that provides the current time.</p> <p>Initially we had used a &quot;TimeService&quot;, basically just a service that you would inject (ugh) into your entities so that they could query the current time.</p> <p>We've kicked around a few alternatives because we have always wanted to stay away from System.DateTime.UtcNow—mocking that particular class isn't fun.</p> <p>Udi Dahan has written about fully encapsulated domain models. <a href="http://www.udidahan.com/2009/06/14/domain-events-salvation/">His third take on the subject</a> was very insightful, but I couldn't bring myself to use the static singleton reference he had for publishing events. At first glance, this is completely unrelated to what I'm talking about.</p> <p>Today when I read <a href="http://www.markhneedham.com/blog/2009/10/10/coding-api-readabilitytestability/">Mark Needham's post regarding testability</a> and DateTime, I thought back to the days when we hit issues with that. But then I saw a comment by Ryan Roberts. He showed his solution for the problem they had with time:</p> <blockquote> <p>I use a ..<strong><em>static</em></strong> DomainTime.Instance shim to control datetime in tests.</p> <p>Ends up with something like</p> <p>using(DomainTime.Is(new(DateTime(2003,10,10))      <br />{       <br />    var model = SomeRandomModel.JustTheUsualMethod();       <br />    DomainTime.HasBeen(new TimeSpan(0,0,0,1));</p> <p>    Assert.AreEqual(..)      <br />}</p> </blockquote> <p>It's simple and brilliant. Just use a static singleton instance (like Udi does, but for time) that you can easily mock and do it within the context of a using statement. In this manner, we can control the value of &quot;now&quot; within our tests or our code.</p> <p>UPDATE: I've read both of these articles previously, but I'm referencing them here because they have interesting and relevant discussion:</p> <ul> <li><a href="http://www.lostechies.com/blogs/jimmy_bogard/archive/2008/11/09/systemtime-versus-isystemclock-dependencies-revisited.aspx">Jimmy Bogard: SystemTime vs ISystemClock</a> </li> <li><a href="http://ayende.com/Blog/archive/2008/07/07/Dealing-with-time-in-tests.aspx">Oren Eini: Dealing with time in tests</a> </li> <li><a href="http://codebetter.com/blogs/dru.sellers/archive/2009/01/11/kick-the-datetime-now-addiction.aspx">Dru Sellers: Kick the DateTime.Now addiction</a> </li> <li><a href="http://www.hardcodet.net/2009/02/timeguard-helper-class-to-measure-elapsed-time">Phillip Sumi: Time Measurement in Tests</a> </li> </ul></p>
 
     </section>
 
@@ -213,18 +213,18 @@ In my early experience with DDD, I loved injecting dependencies into my dom" />
 
 
 <figure class="author-image">
-    <a class="img" href="https://joliver.github.io/" style="background-image: url(/images/tux.png)"><span class="hidden">Jonathan Oliver's Picture</span></a>
+    <a class="img" href="https://blog.jonathanoliver.com/" style="background-image: url(/images/tux.png)"><span class="hidden">Jonathan Oliver's Picture</span></a>
 </figure>
 
 
 <section class="author">
-  <h4><a href="https://joliver.github.io/">Jonathan Oliver</a></h4>
+  <h4><a href="https://blog.jonathanoliver.com/">Jonathan Oliver</a></h4>
   
-  <p>Read <a href="https://joliver.github.io/">more posts</a> by this author.</p>
+  <p>Read <a href="https://blog.jonathanoliver.com/">more posts</a> by this author.</p>
   
   <div class="author-meta">
     <span class="author-location icon-location">Utah, USA</span>
-    <span class="author-link icon-link"><a href="https://joliver.github.io">https://joliver.github.io</a></span>
+    <span class="author-link icon-link"><a href="https://blog.jonathanoliver.com/">https://blog.jonathanoliver.com/</a></span>
   </div>
 </section>
 
@@ -234,19 +234,19 @@ In my early experience with DDD, I loved injecting dependencies into my dom" />
     
 <section class="share">
   <h4>Share this post</h4>
-  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=DDD%3a%20Entity%20Injection%20and%20Mocking%20Time&nbsp;-&nbsp;Jonathan%20Oliver&amp;url=https%3a%2f%2fjoliver.github.io%2fddd-entity-injection-and-mocking-time%2f"
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=DDD%3a%20Entity%20Injection%20and%20Mocking%20Time&nbsp;-&nbsp;Jonathan%20Oliver&amp;url=https%3a%2f%2fblog.jonathanoliver.com%2fddd-entity-injection-and-mocking-time%2f"
       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
       <span class="hidden">Twitter</span>
   </a>
-  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fjoliver.github.io%2fddd-entity-injection-and-mocking-time%2f"
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.jonathanoliver.com%2fddd-entity-injection-and-mocking-time%2f"
       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
       <span class="hidden">Facebook</span>
   </a>
-  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fjoliver.github.io%2fddd-entity-injection-and-mocking-time%2f&amp;description=DDD%3a%20Entity%20Injection%20and%20Mocking%20Time"
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fblog.jonathanoliver.com%2fddd-entity-injection-and-mocking-time%2f&amp;description=DDD%3a%20Entity%20Injection%20and%20Mocking%20Time"
       onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
       <span class="hidden">Pinterest</span>
   </a>
-  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fjoliver.github.io%2fddd-entity-injection-and-mocking-time%2f"
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fblog.jonathanoliver.com%2fddd-entity-injection-and-mocking-time%2f"
      onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
       <span class="hidden">Google+</span>
   </a>
@@ -263,8 +263,8 @@ In my early experience with DDD, I loved injecting dependencies into my dom" />
 
 
 var disqus_config = function () {
-this.page.url = "https:\/\/joliver.github.io\/ddd-entity-injection-and-mocking-time\/";  
-this.page.identifier = "https:\/\/joliver.github.io\/ddd-entity-injection-and-mocking-time\/"; 
+this.page.url = "https:\/\/blog.jonathanoliver.com\/ddd-entity-injection-and-mocking-time\/";  
+this.page.identifier = "https:\/\/blog.jonathanoliver.com\/ddd-entity-injection-and-mocking-time\/"; 
 };
 
 (function() { 
@@ -291,7 +291,7 @@ s.setAttribute('data-timestamp', +new Date());
 
   <aside class="read-next">
   
-      <a class="read-next-story" style="no-cover" href="https://joliver.github.io/testing-time-static-calls-and-isystemtime/">
+      <a class="read-next-story" style="no-cover" href="https://blog.jonathanoliver.com/testing-time-static-calls-and-isystemtime/">
           <section class="post">
               <h2>Testing Time—Static Calls and ISystemTime</h2>
               
@@ -299,7 +299,7 @@ s.setAttribute('data-timestamp', +new Date());
       </a>
   
   
-      <a class="read-next-story prev" style="no-cover" href="https://joliver.github.io/dddd-circular-disk-backed-buffer/">
+      <a class="read-next-story prev" style="no-cover" href="https://blog.jonathanoliver.com/dddd-circular-disk-backed-buffer/">
           <section class="post">
               <h2>DDDD: Circular Disk-backed Buffer</h2>
           </section>
@@ -314,9 +314,9 @@ s.setAttribute('data-timestamp', +new Date());
         
     </footer>
     </div>
-    <script type="text/javascript" src="https://joliver.github.io/js/jquery.js"></script>
-    <script type="text/javascript" src="https://joliver.github.io/js/jquery.fitvids.js"></script>
-    <script type="text/javascript" src="https://joliver.github.io/js/index.js"></script>
+    <script type="text/javascript" src="https://blog.jonathanoliver.com/js/jquery.js"></script>
+    <script type="text/javascript" src="https://blog.jonathanoliver.com/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://blog.jonathanoliver.com/js/index.js"></script>
     
 </body>
 </html>

@@ -20,7 +20,7 @@
 
   	<meta property="og:title" content="Persistence Ignorance and ActiveRecord &middot; Jonathan Oliver" />
   	<meta property="og:site_name" content="Jonathan Oliver" />
-  	<meta property="og:url" content="https://joliver.github.io/persistence-ignorance-and-activerecord/" />
+  	<meta property="og:url" content="https://blog.jonathanoliver.com/persistence-ignorance-and-activerecord/" />
 
     
         
@@ -45,11 +45,11 @@
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="shortcut icon" href="https://joliver.github.io/images/favicon.ico">
-	  <link rel="apple-touch-icon" href="https://joliver.github.io/images/apple-touch-icon.png" />
+    <link rel="shortcut icon" href="https://blog.jonathanoliver.com/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="https://blog.jonathanoliver.com/images/apple-touch-icon.png" />
 
-    <link rel="stylesheet" type="text/css" href="https://joliver.github.io/css/screen.css" />
-    <link rel="stylesheet" type="text/css" href="https://joliver.github.io/css/nav.css" />
+    <link rel="stylesheet" type="text/css" href="https://blog.jonathanoliver.com/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="https://blog.jonathanoliver.com/css/nav.css" />
 
     
 
@@ -62,13 +62,13 @@
 
     
       
-          <link href="https://joliver.github.io/index.xml" rel="alternate" type="application/rss+xml" title="Jonathan Oliver" />
+          <link href="https://blog.jonathanoliver.com/index.xml" rel="alternate" type="application/rss+xml" title="Jonathan Oliver" />
       
       
     
     <meta name="generator" content="Hugo 0.46-DEV" />
 
-    <link rel="canonical" href="https://joliver.github.io/persistence-ignorance-and-activerecord/" />
+    <link rel="canonical" href="https://blog.jonathanoliver.com/persistence-ignorance-and-activerecord/" />
 
     
       
@@ -80,7 +80,7 @@
     "publisher": {
         "@type": "Organization",
         "name": ,
-        "logo": https://joliver.github.io/images/tux.png
+        "logo": https://blog.jonathanoliver.com/images/tux.png
     },
     "author": {
         "@type": "Person",
@@ -88,12 +88,12 @@
         
         "image": {
             "@type": "ImageObject",
-            "url": https://joliver.github.io/images/tux.png,
+            "url": https://blog.jonathanoliver.com/images/tux.png,
             "width": 250,
             "height": 250
         }, 
         
-        "url": https://joliver.github.io,
+        "url": https://blog.jonathanoliver.com/,
         "sameAs": [
             
             
@@ -113,7 +113,7 @@
       "@type": "Language",
       "alternateName": en
     },
-    "url": https://joliver.github.io/persistence-ignorance-and-activerecord/,
+    "url": https://blog.jonathanoliver.com/persistence-ignorance-and-activerecord/,
     "datePublished": 2009-11-18T00:00Z,
     "dateModified": 2009-11-18T00:00Z,
     
@@ -121,7 +121,7 @@
     "description": ,
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": https://joliver.github.io/persistence-ignorance-and-activerecord/
+        "@id": https://blog.jonathanoliver.com/persistence-ignorance-and-activerecord/
     }
 }
     </script>
@@ -147,7 +147,7 @@
     </ul>
 
     
-    <a class="subscribe-button icon-feed" href="https://joliver.github.io/index.xml">Subscribe</a>
+    <a class="subscribe-button icon-feed" href="https://blog.jonathanoliver.com/index.xml">Subscribe</a>
     
 </div>
 <span class="nav-cover"></span>
@@ -162,10 +162,10 @@
 
 
   
-      <a class="blog-logo" href="https://joliver.github.io/"><img src="https://joliver.github.io/images/tux.png" alt="Home" /></a>
+      <a class="blog-logo" href="https://blog.jonathanoliver.com/"><img src="https://blog.jonathanoliver.com/images/tux.png" alt="Home" /></a>
   
   
-      <a class="menu-button icon-feed" href="https://joliver.github.io/index.xml" >&nbsp;&nbsp;Subscribe</a>
+      <a class="menu-button icon-feed" href="https://blog.jonathanoliver.com/index.xml" >&nbsp;&nbsp;Subscribe</a>
   
   </nav>
 </header>
@@ -194,7 +194,7 @@
     </header>
 
     <section class="post-content">
-      <p><a href="http://www.lostechies.com/blogs/jimmy_bogard/default.aspx">Jimmy Bogard</a> recently <a href="http://twitter.com/jbogard/status/5833538955">tweeted</a> that Persistence Ignorance does not apply to the ActiveRecord pattern. I couldn't agree more because ActiveRecord is about creating a strong coupling to the database <strong><u>schema</u></strong>.</p> <p>Persistence Ignorance is about keeping your business objects ignorant of the underlying mechanism used to persist them and the schema in which they are persisted. In the case of ActiveRecord, it doesn't apply because these objects are intimately coupled to the schema itself. ActiveRecord objects may implement a special base class, have lots of decorator attributes and other such things. But ActiveRecord objects should also be simple DTOs--ones that can be easily serialized across the wire if necessary.</p> <p>Just because we are tightly coupled to a database <em>schema</em> <strong>does not</strong> mean we have to be coupled to any particular database <strong><u>product or vendor</u></strong>. In other words, we should still be able to swap out a relational database using another one from another vendor without having to modify our application code.</p> <p>Using CQRS this becomes less than trivial because the only place where we use a relational database is for reporting. Incidentally, this happens to be the ideal location for a relational database because they're really, really good at querying data.</p> <p>By using the <a href="https://joliver.github.io/2009/11/cqrs-reporting-database-access.html">proper abstraction</a> to isolate your ActiveRecord-based technology, you should be able to swap out not only your database product, but also your data access technology and your application shouldn't even notice.</p> 
+      <p><a href="http://www.lostechies.com/blogs/jimmy_bogard/default.aspx">Jimmy Bogard</a> recently <a href="http://twitter.com/jbogard/status/5833538955">tweeted</a> that Persistence Ignorance does not apply to the ActiveRecord pattern. I couldn't agree more because ActiveRecord is about creating a strong coupling to the database <strong><u>schema</u></strong>.</p> <p>Persistence Ignorance is about keeping your business objects ignorant of the underlying mechanism used to persist them and the schema in which they are persisted. In the case of ActiveRecord, it doesn't apply because these objects are intimately coupled to the schema itself. ActiveRecord objects may implement a special base class, have lots of decorator attributes and other such things. But ActiveRecord objects should also be simple DTOs--ones that can be easily serialized across the wire if necessary.</p> <p>Just because we are tightly coupled to a database <em>schema</em> <strong>does not</strong> mean we have to be coupled to any particular database <strong><u>product or vendor</u></strong>. In other words, we should still be able to swap out a relational database using another one from another vendor without having to modify our application code.</p> <p>Using CQRS this becomes less than trivial because the only place where we use a relational database is for reporting. Incidentally, this happens to be the ideal location for a relational database because they're really, really good at querying data.</p> <p>By using the <a href="https://blog.jonathanoliver.com/2009/11/cqrs-reporting-database-access.html">proper abstraction</a> to isolate your ActiveRecord-based technology, you should be able to swap out not only your database product, but also your data access technology and your application shouldn't even notice.</p> 
 
     </section>
 
@@ -212,18 +212,18 @@
 
 
 <figure class="author-image">
-    <a class="img" href="https://joliver.github.io/" style="background-image: url(/images/tux.png)"><span class="hidden">Jonathan Oliver's Picture</span></a>
+    <a class="img" href="https://blog.jonathanoliver.com/" style="background-image: url(/images/tux.png)"><span class="hidden">Jonathan Oliver's Picture</span></a>
 </figure>
 
 
 <section class="author">
-  <h4><a href="https://joliver.github.io/">Jonathan Oliver</a></h4>
+  <h4><a href="https://blog.jonathanoliver.com/">Jonathan Oliver</a></h4>
   
-  <p>Read <a href="https://joliver.github.io/">more posts</a> by this author.</p>
+  <p>Read <a href="https://blog.jonathanoliver.com/">more posts</a> by this author.</p>
   
   <div class="author-meta">
     <span class="author-location icon-location">Utah, USA</span>
-    <span class="author-link icon-link"><a href="https://joliver.github.io">https://joliver.github.io</a></span>
+    <span class="author-link icon-link"><a href="https://blog.jonathanoliver.com/">https://blog.jonathanoliver.com/</a></span>
   </div>
 </section>
 
@@ -233,19 +233,19 @@
     
 <section class="share">
   <h4>Share this post</h4>
-  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Persistence%20Ignorance%20and%20ActiveRecord&nbsp;-&nbsp;Jonathan%20Oliver&amp;url=https%3a%2f%2fjoliver.github.io%2fpersistence-ignorance-and-activerecord%2f"
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Persistence%20Ignorance%20and%20ActiveRecord&nbsp;-&nbsp;Jonathan%20Oliver&amp;url=https%3a%2f%2fblog.jonathanoliver.com%2fpersistence-ignorance-and-activerecord%2f"
       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
       <span class="hidden">Twitter</span>
   </a>
-  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fjoliver.github.io%2fpersistence-ignorance-and-activerecord%2f"
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.jonathanoliver.com%2fpersistence-ignorance-and-activerecord%2f"
       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
       <span class="hidden">Facebook</span>
   </a>
-  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fjoliver.github.io%2fpersistence-ignorance-and-activerecord%2f&amp;description=Persistence%20Ignorance%20and%20ActiveRecord"
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fblog.jonathanoliver.com%2fpersistence-ignorance-and-activerecord%2f&amp;description=Persistence%20Ignorance%20and%20ActiveRecord"
       onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
       <span class="hidden">Pinterest</span>
   </a>
-  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fjoliver.github.io%2fpersistence-ignorance-and-activerecord%2f"
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fblog.jonathanoliver.com%2fpersistence-ignorance-and-activerecord%2f"
      onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
       <span class="hidden">Google+</span>
   </a>
@@ -262,8 +262,8 @@
 
 
 var disqus_config = function () {
-this.page.url = "https:\/\/joliver.github.io\/persistence-ignorance-and-activerecord\/";  
-this.page.identifier = "https:\/\/joliver.github.io\/persistence-ignorance-and-activerecord\/"; 
+this.page.url = "https:\/\/blog.jonathanoliver.com\/persistence-ignorance-and-activerecord\/";  
+this.page.identifier = "https:\/\/blog.jonathanoliver.com\/persistence-ignorance-and-activerecord\/"; 
 };
 
 (function() { 
@@ -290,7 +290,7 @@ s.setAttribute('data-timestamp', +new Date());
 
   <aside class="read-next">
   
-      <a class="read-next-story" style="no-cover" href="https://joliver.github.io/postulating-extreme-web-ui-scalability/">
+      <a class="read-next-story" style="no-cover" href="https://blog.jonathanoliver.com/postulating-extreme-web-ui-scalability/">
           <section class="post">
               <h2>Postulating Extreme Web UI Scalability</h2>
               
@@ -298,7 +298,7 @@ s.setAttribute('data-timestamp', +new Date());
       </a>
   
   
-      <a class="read-next-story prev" style="no-cover" href="https://joliver.github.io/cqrs-reporting-database-access-strategies/">
+      <a class="read-next-story prev" style="no-cover" href="https://blog.jonathanoliver.com/cqrs-reporting-database-access-strategies/">
           <section class="post">
               <h2>CQRS: Reporting Database Access Strategies</h2>
           </section>
@@ -313,9 +313,9 @@ s.setAttribute('data-timestamp', +new Date());
         
     </footer>
     </div>
-    <script type="text/javascript" src="https://joliver.github.io/js/jquery.js"></script>
-    <script type="text/javascript" src="https://joliver.github.io/js/jquery.fitvids.js"></script>
-    <script type="text/javascript" src="https://joliver.github.io/js/index.js"></script>
+    <script type="text/javascript" src="https://blog.jonathanoliver.com/js/jquery.js"></script>
+    <script type="text/javascript" src="https://blog.jonathanoliver.com/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://blog.jonathanoliver.com/js/index.js"></script>
     
 </body>
 </html>

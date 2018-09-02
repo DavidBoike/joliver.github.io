@@ -20,7 +20,7 @@
 
   	<meta property="og:title" content="EventStore: Getting All Events Since… &middot; Jonathan Oliver" />
   	<meta property="og:site_name" content="Jonathan Oliver" />
-  	<meta property="og:url" content="https://joliver.github.io/eventstore-getting-all-events-since/" />
+  	<meta property="og:url" content="https://blog.jonathanoliver.com/eventstore-getting-all-events-since/" />
 
     
         
@@ -45,11 +45,11 @@
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="shortcut icon" href="https://joliver.github.io/images/favicon.ico">
-	  <link rel="apple-touch-icon" href="https://joliver.github.io/images/apple-touch-icon.png" />
+    <link rel="shortcut icon" href="https://blog.jonathanoliver.com/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="https://blog.jonathanoliver.com/images/apple-touch-icon.png" />
 
-    <link rel="stylesheet" type="text/css" href="https://joliver.github.io/css/screen.css" />
-    <link rel="stylesheet" type="text/css" href="https://joliver.github.io/css/nav.css" />
+    <link rel="stylesheet" type="text/css" href="https://blog.jonathanoliver.com/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="https://blog.jonathanoliver.com/css/nav.css" />
 
     
 
@@ -62,13 +62,13 @@
 
     
       
-          <link href="https://joliver.github.io/index.xml" rel="alternate" type="application/rss+xml" title="Jonathan Oliver" />
+          <link href="https://blog.jonathanoliver.com/index.xml" rel="alternate" type="application/rss+xml" title="Jonathan Oliver" />
       
       
     
     <meta name="generator" content="Hugo 0.46-DEV" />
 
-    <link rel="canonical" href="https://joliver.github.io/eventstore-getting-all-events-since/" />
+    <link rel="canonical" href="https://blog.jonathanoliver.com/eventstore-getting-all-events-since/" />
 
     
       
@@ -80,7 +80,7 @@
     "publisher": {
         "@type": "Organization",
         "name": ,
-        "logo": https://joliver.github.io/images/tux.png
+        "logo": https://blog.jonathanoliver.com/images/tux.png
     },
     "author": {
         "@type": "Person",
@@ -88,12 +88,12 @@
         
         "image": {
             "@type": "ImageObject",
-            "url": https://joliver.github.io/images/tux.png,
+            "url": https://blog.jonathanoliver.com/images/tux.png,
             "width": 250,
             "height": 250
         }, 
         
-        "url": https://joliver.github.io,
+        "url": https://blog.jonathanoliver.com/,
         "sameAs": [
             
             
@@ -113,7 +113,7 @@
       "@type": "Language",
       "alternateName": en
     },
-    "url": https://joliver.github.io/eventstore-getting-all-events-since/,
+    "url": https://blog.jonathanoliver.com/eventstore-getting-all-events-since/,
     "datePublished": 2011-01-20T00:00Z,
     "dateModified": 2011-01-20T00:00Z,
     
@@ -121,7 +121,7 @@
     "description": ,
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": https://joliver.github.io/eventstore-getting-all-events-since/
+        "@id": https://blog.jonathanoliver.com/eventstore-getting-all-events-since/
     }
 }
     </script>
@@ -147,7 +147,7 @@
     </ul>
 
     
-    <a class="subscribe-button icon-feed" href="https://joliver.github.io/index.xml">Subscribe</a>
+    <a class="subscribe-button icon-feed" href="https://blog.jonathanoliver.com/index.xml">Subscribe</a>
     
 </div>
 <span class="nav-cover"></span>
@@ -162,10 +162,10 @@
 
 
   
-      <a class="blog-logo" href="https://joliver.github.io/"><img src="https://joliver.github.io/images/tux.png" alt="Home" /></a>
+      <a class="blog-logo" href="https://blog.jonathanoliver.com/"><img src="https://blog.jonathanoliver.com/images/tux.png" alt="Home" /></a>
   
   
-      <a class="menu-button icon-feed" href="https://joliver.github.io/index.xml" >&nbsp;&nbsp;Subscribe</a>
+      <a class="menu-button icon-feed" href="https://blog.jonathanoliver.com/index.xml" >&nbsp;&nbsp;Subscribe</a>
   
   </nav>
 </header>
@@ -194,7 +194,7 @@
     </header>
 
     <section class="post-content">
-      <p align="justify">One of the fundamental advantages of event sourcing coupled with CQRS is the ability to quickly and easily build your read models from your event stream. This includes the ability to build alternate views or projections from your data (which is a *huge* advantage) as well as the ability to scale by creating duplicate, load-balanced read models from your event stream.</p> <p align="justify">In order to scale your reads <a href="https://joliver.github.io/2009/12/postulating-extreme-web-ui-scalability.html">using something other than JSON files hosted on a CDN</a>, such as a RavenDB, CouchDB, or even a traditional RDBMS, we need the ability to get all events from the event store. In one of my recent commits to the EventStore project on GitHub, I added the ability to get all commits from storage from a particular point in time forward.</p> <p align="justify">I have received a few questions regarding why the API for the EventStore queries for all events across all "streams" (meaning aggregates) from a certain time, rather than using some kind of index, such as an integer. The argument on behalf of using integers is that time is a "fuzzy" and imprecise concept whereas a strict, atomically incrementing integer is a much more precise way to query for all events from a point in time. Within a stream (or aggregate boundary) we can easily enforce atomically increasing indexes using an integer. However, once we break outside of that consistency boundary things get more challenging.</p> <p align="justify">The concept of an auto-incrementing integer or "identity" is usually a concept that is provided by a relational database or other fully consistent storage engines. The abstraction exposed by the EventStore allows it to function on top of dozens of different kinds of storage engines—perhaps more than any other kind of abstraction. As a result, we can't rely upon the persistence mechanism to expose a unique, ever-increasing integer value. Many NoSQL implementations don't support it.</p> <p align="justify">For most, the purpose of querying the event store directly for all events is related to the concept of building a read model from scratch. In this situation there really isn't any issue with the fuzziness of time. But suppose, for whatever reason, you needed to query the event store multiple times to get all committed events since your last query to the event store. Because clocks may not be 100% synchronized across hardware, can we really be sure we're not missing events if we ask the event store for all events since our last query?</p> <p align="justify">To handle this situation, the client merely needs to query for all events since a few minutes before the last query. As long as your server clocks are relatively synchronized using NTP, a few minutes is more than enough to cover variance in clocks. At the same time, now you're also assured to receive events that you've already handled previously, which means you must de-duplicate and drop ones that have already been handled. There are a few possible solutions here. The first is to track the commit identifiers. If you've seen it previously, it's a duplicate and can be discarded. Another is to track the most recent revision that you've seen for a particular stream/aggregate and discard those on/below a certain revision.</p> <p align="justify">While it may seem like some extra work for the client, and indeed it is, the benefits are massive because we have a <strong>guarantee</strong> that we can easily swap our storage infrastructure with only token effort. A few technologies, such as NHibernate, try to deliver on this same promise, but ultimately come up short.</p> <p align="justify">The bottom line is that our consistency boundaries should always be that of a stream. Anything inside of that stream is consistent, while anything outside of that stream is not guaranteed to be fully consistent. By doing this we are more fully able to distribute our system and we can can leverage any storage technology we choose.</p> 
+      <p align="justify">One of the fundamental advantages of event sourcing coupled with CQRS is the ability to quickly and easily build your read models from your event stream. This includes the ability to build alternate views or projections from your data (which is a *huge* advantage) as well as the ability to scale by creating duplicate, load-balanced read models from your event stream.</p> <p align="justify">In order to scale your reads <a href="https://blog.jonathanoliver.com/2009/12/postulating-extreme-web-ui-scalability.html">using something other than JSON files hosted on a CDN</a>, such as a RavenDB, CouchDB, or even a traditional RDBMS, we need the ability to get all events from the event store. In one of my recent commits to the EventStore project on GitHub, I added the ability to get all commits from storage from a particular point in time forward.</p> <p align="justify">I have received a few questions regarding why the API for the EventStore queries for all events across all "streams" (meaning aggregates) from a certain time, rather than using some kind of index, such as an integer. The argument on behalf of using integers is that time is a "fuzzy" and imprecise concept whereas a strict, atomically incrementing integer is a much more precise way to query for all events from a point in time. Within a stream (or aggregate boundary) we can easily enforce atomically increasing indexes using an integer. However, once we break outside of that consistency boundary things get more challenging.</p> <p align="justify">The concept of an auto-incrementing integer or "identity" is usually a concept that is provided by a relational database or other fully consistent storage engines. The abstraction exposed by the EventStore allows it to function on top of dozens of different kinds of storage engines—perhaps more than any other kind of abstraction. As a result, we can't rely upon the persistence mechanism to expose a unique, ever-increasing integer value. Many NoSQL implementations don't support it.</p> <p align="justify">For most, the purpose of querying the event store directly for all events is related to the concept of building a read model from scratch. In this situation there really isn't any issue with the fuzziness of time. But suppose, for whatever reason, you needed to query the event store multiple times to get all committed events since your last query to the event store. Because clocks may not be 100% synchronized across hardware, can we really be sure we're not missing events if we ask the event store for all events since our last query?</p> <p align="justify">To handle this situation, the client merely needs to query for all events since a few minutes before the last query. As long as your server clocks are relatively synchronized using NTP, a few minutes is more than enough to cover variance in clocks. At the same time, now you're also assured to receive events that you've already handled previously, which means you must de-duplicate and drop ones that have already been handled. There are a few possible solutions here. The first is to track the commit identifiers. If you've seen it previously, it's a duplicate and can be discarded. Another is to track the most recent revision that you've seen for a particular stream/aggregate and discard those on/below a certain revision.</p> <p align="justify">While it may seem like some extra work for the client, and indeed it is, the benefits are massive because we have a <strong>guarantee</strong> that we can easily swap our storage infrastructure with only token effort. A few technologies, such as NHibernate, try to deliver on this same promise, but ultimately come up short.</p> <p align="justify">The bottom line is that our consistency boundaries should always be that of a stream. Anything inside of that stream is consistent, while anything outside of that stream is not guaranteed to be fully consistent. By doing this we are more fully able to distribute our system and we can can leverage any storage technology we choose.</p> 
 
     </section>
 
@@ -212,18 +212,18 @@
 
 
 <figure class="author-image">
-    <a class="img" href="https://joliver.github.io/" style="background-image: url(/images/tux.png)"><span class="hidden">Jonathan Oliver's Picture</span></a>
+    <a class="img" href="https://blog.jonathanoliver.com/" style="background-image: url(/images/tux.png)"><span class="hidden">Jonathan Oliver's Picture</span></a>
 </figure>
 
 
 <section class="author">
-  <h4><a href="https://joliver.github.io/">Jonathan Oliver</a></h4>
+  <h4><a href="https://blog.jonathanoliver.com/">Jonathan Oliver</a></h4>
   
-  <p>Read <a href="https://joliver.github.io/">more posts</a> by this author.</p>
+  <p>Read <a href="https://blog.jonathanoliver.com/">more posts</a> by this author.</p>
   
   <div class="author-meta">
     <span class="author-location icon-location">Utah, USA</span>
-    <span class="author-link icon-link"><a href="https://joliver.github.io">https://joliver.github.io</a></span>
+    <span class="author-link icon-link"><a href="https://blog.jonathanoliver.com/">https://blog.jonathanoliver.com/</a></span>
   </div>
 </section>
 
@@ -233,19 +233,19 @@
     
 <section class="share">
   <h4>Share this post</h4>
-  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=EventStore%3a%20Getting%20All%20Events%20Since%e2%80%a6&nbsp;-&nbsp;Jonathan%20Oliver&amp;url=https%3a%2f%2fjoliver.github.io%2feventstore-getting-all-events-since%2f"
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=EventStore%3a%20Getting%20All%20Events%20Since%e2%80%a6&nbsp;-&nbsp;Jonathan%20Oliver&amp;url=https%3a%2f%2fblog.jonathanoliver.com%2feventstore-getting-all-events-since%2f"
       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
       <span class="hidden">Twitter</span>
   </a>
-  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fjoliver.github.io%2feventstore-getting-all-events-since%2f"
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.jonathanoliver.com%2feventstore-getting-all-events-since%2f"
       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
       <span class="hidden">Facebook</span>
   </a>
-  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fjoliver.github.io%2feventstore-getting-all-events-since%2f&amp;description=EventStore%3a%20Getting%20All%20Events%20Since%e2%80%a6"
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fblog.jonathanoliver.com%2feventstore-getting-all-events-since%2f&amp;description=EventStore%3a%20Getting%20All%20Events%20Since%e2%80%a6"
       onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
       <span class="hidden">Pinterest</span>
   </a>
-  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fjoliver.github.io%2feventstore-getting-all-events-since%2f"
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fblog.jonathanoliver.com%2feventstore-getting-all-events-since%2f"
      onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
       <span class="hidden">Google+</span>
   </a>
@@ -262,8 +262,8 @@
 
 
 var disqus_config = function () {
-this.page.url = "https:\/\/joliver.github.io\/eventstore-getting-all-events-since\/";  
-this.page.identifier = "https:\/\/joliver.github.io\/eventstore-getting-all-events-since\/"; 
+this.page.url = "https:\/\/blog.jonathanoliver.com\/eventstore-getting-all-events-since\/";  
+this.page.identifier = "https:\/\/blog.jonathanoliver.com\/eventstore-getting-all-events-since\/"; 
 };
 
 (function() { 
@@ -290,7 +290,7 @@ s.setAttribute('data-timestamp', +new Date());
 
   <aside class="read-next">
   
-      <a class="read-next-story" style="no-cover" href="https://joliver.github.io/data-precision-in-nosql/">
+      <a class="read-next-story" style="no-cover" href="https://blog.jonathanoliver.com/data-precision-in-nosql/">
           <section class="post">
               <h2>Data Precision in NoSQL</h2>
               
@@ -298,7 +298,7 @@ s.setAttribute('data-timestamp', +new Date());
       </a>
   
   
-      <a class="read-next-story prev" style="no-cover" href="https://joliver.github.io/sagas-event-sourcing-and-failed-commands/">
+      <a class="read-next-story prev" style="no-cover" href="https://blog.jonathanoliver.com/sagas-event-sourcing-and-failed-commands/">
           <section class="post">
               <h2>Sagas, Event Sourcing, and Failed Commands</h2>
           </section>
@@ -313,9 +313,9 @@ s.setAttribute('data-timestamp', +new Date());
         
     </footer>
     </div>
-    <script type="text/javascript" src="https://joliver.github.io/js/jquery.js"></script>
-    <script type="text/javascript" src="https://joliver.github.io/js/jquery.fitvids.js"></script>
-    <script type="text/javascript" src="https://joliver.github.io/js/index.js"></script>
+    <script type="text/javascript" src="https://blog.jonathanoliver.com/js/jquery.js"></script>
+    <script type="text/javascript" src="https://blog.jonathanoliver.com/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://blog.jonathanoliver.com/js/index.js"></script>
     
 </body>
 </html>
