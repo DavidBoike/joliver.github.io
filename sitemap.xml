@@ -1,0 +1,751 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/ebs-scares-me/</loc>
+    <lastmod>2014-06-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/golang-has-generics/</loc>
+    <lastmod>2014-06-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/hacker-news-page-one/</loc>
+    <lastmod>2014-06-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/celebrating-the-death-of-comcast-net/</loc>
+    <lastmod>2014-03-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/why-i-left-dot-net/</loc>
+    <lastmod>2014-01-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/why-i-left-windows/</loc>
+    <lastmod>2014-01-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/hello-world-again/</loc>
+    <lastmod>2014-01-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/why-i-love-go/</loc>
+    <lastmod>2014-01-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/nuget-file-locks/</loc>
+    <lastmod>2012-03-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/hamachi-goodness/</loc>
+    <lastmod>2012-02-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/utah-net-user-group-meeting/</loc>
+    <lastmod>2012-01-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/crime-scene-event-sourcing/</loc>
+    <lastmod>2012-01-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/cqrs-eventstore-europe-virtual-alt-net-presentation/</loc>
+    <lastmod>2011-11-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/eventstore-v3-0-release/</loc>
+    <lastmod>2011-11-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/eventstore-evan-presentation/</loc>
+    <lastmod>2011-10-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/cqrs-eventstore-v3-0/</loc>
+    <lastmod>2011-09-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/my-new-best-friend-git-merge-no-ff/</loc>
+    <lastmod>2011-08-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/browser-side-view-model-templates/</loc>
+    <lastmod>2011-06-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/transcending-the-post-validate-redirect-pattern/</loc>
+    <lastmod>2011-06-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/nservicebus-and-guaranteed-delivery/</loc>
+    <lastmod>2011-06-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/cqrs-eventstore-v2-0-release/</loc>
+    <lastmod>2011-06-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/why-i-still-love-cqrs-and-messaging-and-event-sourcing/</loc>
+    <lastmod>2011-05-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/asp-net-mvc-and-iis7-404-pages/</loc>
+    <lastmod>2011-05-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/a-simple-reminder-of-event-sourcing-benefits/</loc>
+    <lastmod>2011-05-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/cqrs-out-of-sequence-messages-and-read-models/</loc>
+    <lastmod>2011-04-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/how-i-avoid-two-phase-commit/</loc>
+    <lastmod>2011-04-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/my-beef-with-msdtc-and-two-phase-commits/</loc>
+    <lastmod>2011-04-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/ilmerge-gotcha/</loc>
+    <lastmod>2011-04-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/removing-2pc-two-phase-commit/</loc>
+    <lastmod>2011-03-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/cqrs-event-sourcing-and-immutable-data/</loc>
+    <lastmod>2011-03-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/iis-7-500-errors/</loc>
+    <lastmod>2011-03-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/new-nservicebus-feature-32-bit-x86-host-process/</loc>
+    <lastmod>2011-03-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/installing-the-virtualbox-extension-pack-on-ubuntu-10-10-x64/</loc>
+    <lastmod>2011-03-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/cqrs-eventstore-podcast/</loc>
+    <lastmod>2011-03-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/in-memory-messaging-actors-in-c/</loc>
+    <lastmod>2011-03-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/conference-sessions-distributed-systems/</loc>
+    <lastmod>2011-02-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/data-precision-in-nosql/</loc>
+    <lastmod>2011-01-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/eventstore-getting-all-events-since/</loc>
+    <lastmod>2011-01-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/sagas-event-sourcing-and-failed-commands/</loc>
+    <lastmod>2010-12-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/event-store-transaction-integrity-without-transactions/</loc>
+    <lastmod>2010-12-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/cqrs-eventstore-v2-architectural-overview/</loc>
+    <lastmod>2010-12-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/nservicebus-w3wp-exe-processes-crashing/</loc>
+    <lastmod>2010-11-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/100th-post/</loc>
+    <lastmod>2010-10-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/nservicebus-asp-net-permissions-for-msmq/</loc>
+    <lastmod>2010-10-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/cqrs-sagas-with-event-sourcing-part-ii-of-ii/</loc>
+    <lastmod>2010-09-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/cqrs-sagas-with-event-sourcing-part-i-of-ii/</loc>
+    <lastmod>2010-09-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/leadership-and-self-deception-getting-out-of-the-box/</loc>
+    <lastmod>2010-09-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/event-sourcing-backup-and-archiving-strategies/</loc>
+    <lastmod>2010-09-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/event-sourcing-underling-storage-engine-options/</loc>
+    <lastmod>2010-09-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/http-and-https-with-google-cdn/</loc>
+    <lastmod>2010-09-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/nservicebus-distributing-event-schemacontract/</loc>
+    <lastmod>2010-09-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/jquery-cdn-failover/</loc>
+    <lastmod>2010-09-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/why-i-love-nservicebus-2/</loc>
+    <lastmod>2010-08-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/cqrs-event-store/</loc>
+    <lastmod>2010-07-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/optimistic-concurrency-in-riak-take-2/</loc>
+    <lastmod>2010-05-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/greg-youngs-cqrs-workshop/</loc>
+    <lastmod>2010-05-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/somewhere-werner-is-crying/</loc>
+    <lastmod>2010-05-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/cassandrariakdynamo-optimistic-concurrency-control/</loc>
+    <lastmod>2010-05-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/message-idempotency-patterns-and-disk-usage/</loc>
+    <lastmod>2010-04-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/messaging-at-least-once-delivery/</loc>
+    <lastmod>2010-04-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/idempotency-patterns/</loc>
+    <lastmod>2010-04-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/extending-nservicebus-avoiding-two-phase-commits/</loc>
+    <lastmod>2010-04-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/nservicebus-distributed-transaction-woes/</loc>
+    <lastmod>2010-04-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/nservicebus-message-modules-imessagemodule/</loc>
+    <lastmod>2010-04-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/extending-nservicebus-per-unit-of-work-ioc-container/</loc>
+    <lastmod>2010-04-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/extending-nservicebus-thread-specific-message-modules/</loc>
+    <lastmod>2010-04-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/cqrs-session-video-utah-code-camp-2010/</loc>
+    <lastmod>2010-03-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/utah-code-camp-cqrs-presentation/</loc>
+    <lastmod>2010-03-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/event-sourcing-and-cap-requirements/</loc>
+    <lastmod>2010-02-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/event-sourcing-and-the-event-pipeline/</loc>
+    <lastmod>2010-02-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/cqrs-an-introduction-for-beginners/</loc>
+    <lastmod>2010-02-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/aggregate-roots-and-shared-data/</loc>
+    <lastmod>2010-02-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/cqrs-presentation-tonight/</loc>
+    <lastmod>2010-02-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/domain-models-aggregate-roots-and-lookup-tables/</loc>
+    <lastmod>2010-02-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/cqrs-udi-dahan-style/</loc>
+    <lastmod>2010-01-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/dry-dont-repeat-yourself/</loc>
+    <lastmod>2010-01-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/extreme-web-ui-scalability-part-2/</loc>
+    <lastmod>2009-12-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/postulating-extreme-web-ui-scalability/</loc>
+    <lastmod>2009-12-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/persistence-ignorance-and-activerecord/</loc>
+    <lastmod>2009-11-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/cqrs-reporting-database-access-strategies/</loc>
+    <lastmod>2009-11-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/the-software-simplist/</loc>
+    <lastmod>2009-11-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/dddd-why-i-love-cqrs/</loc>
+    <lastmod>2009-10-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/ddd-entity-injection/</loc>
+    <lastmod>2009-10-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/testing-time-the-best-of-both-worlds/</loc>
+    <lastmod>2009-10-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/testing-time-static-calls-and-isystemtime/</loc>
+    <lastmod>2009-10-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/ddd-entity-injection-and-mocking-time/</loc>
+    <lastmod>2009-10-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/dddd-circular-disk-backed-buffer/</loc>
+    <lastmod>2009-10-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/git-submodules-like-svnexternals/</loc>
+    <lastmod>2009-10-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/ci-servers-and-build-scripts/</loc>
+    <lastmod>2009-09-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/continous-integration-workflow/</loc>
+    <lastmod>2009-09-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/gallio-v3-0-6-and-v3-1-with-ncover-v1-5-8-on-x64/</loc>
+    <lastmod>2009-09-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/nhibernate-inverse-and-object-associations/</loc>
+    <lastmod>2009-09-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/git-lost-and-git-submodules/</loc>
+    <lastmod>2009-09-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/microsoft-source-server-with-git/</loc>
+    <lastmod>2009-09-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/accountants-dont-use-erasers/</loc>
+    <lastmod>2009-08-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/dddd-the-event-storage-doesnt-store-commands/</loc>
+    <lastmod>2009-08-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/dddd-distributing-a-single-bounded-context/</loc>
+    <lastmod>2009-08-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/poor-mans-dependency-injection-take-42-action/</loc>
+    <lastmod>2009-07-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/behavior-and-data-centricity/</loc>
+    <lastmod>2009-07-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/ddd-tdd-bdd-and-cqs/</loc>
+    <lastmod>2009-07-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/tdd-isnt-it-about-time/</loc>
+    <lastmod>2009-07-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/stephen-coveys-personal-library/</loc>
+    <lastmod>2009-07-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/serializing-queuing-messages-to-aggregates/</loc>
+    <lastmod>2009-07-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/ddd-in-a-distributed-world/</loc>
+    <lastmod>2009-07-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/new-dddd-content/</loc>
+    <lastmod>2009-06-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/synergy-cross-platform-keyboard-mouse-sharing/</loc>
+    <lastmod>2009-06-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/move-over-asp-net-webforms-and-mvc/</loc>
+    <lastmod>2009-04-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/all-your-repositories-are-belong-to-us/</loc>
+    <lastmod>2009-04-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/dddd-event-storage/</loc>
+    <lastmod>2009-04-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/ddd-strategic-design-core-supporting-and-generic-subdomains/</loc>
+    <lastmod>2009-04-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/dddd-aggregate-versioning-persistence-schema/</loc>
+    <lastmod>2009-04-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/dddd-double-dispatch/</loc>
+    <lastmod>2009-04-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/dddd-didnt-you-get-the-message/</loc>
+    <lastmod>2009-03-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/dddd-pipes-producers-and-filters-consumers/</loc>
+    <lastmod>2009-03-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/dddd-producers-and-consumers/</loc>
+    <lastmod>2009-03-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/dddd-eric-evans-interviews-greg-young/</loc>
+    <lastmod>2009-03-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/ensure-code-file-line-lengths/</loc>
+    <lastmod>2009-03-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/dddd-the-event-pipeline-bringing-it-all-together/</loc>
+    <lastmod>2009-03-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/concurrency-in-a-dddd-world/</loc>
+    <lastmod>2009-03-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/dddd-locator-not-a-single-point-of-failure/</loc>
+    <lastmod>2009-03-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/dddd-and-cqs-getting-started/</loc>
+    <lastmod>2009-03-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/event-sourcing-persistence/</loc>
+    <lastmod>2009-03-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/event-sourcing-and-committing-transactions/</loc>
+    <lastmod>2009-03-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/event-sourcing-and-snapshots/</loc>
+    <lastmod>2009-03-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/event-sourcing-and-write-ahead-logging/</loc>
+    <lastmod>2009-03-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/event-sourcing-in-a-dddd-world/</loc>
+    <lastmod>2009-03-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/infinite-loop-event-sourcing/</loc>
+    <lastmod>2009-03-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/ddd-cqs-and-bounded-contexts/</loc>
+    <lastmod>2009-02-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/ddd-entity-validation-and-commandquery-separation/</loc>
+    <lastmod>2009-02-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/reporting-bounded-context-and-performance/</loc>
+    <lastmod>2009-02-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/uncle-bob-is-right/</loc>
+    <lastmod>2009-02-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/integers-vs-guids-and-natural-vs-surrogate-keys/</loc>
+    <lastmod>2009-01-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/ddd-your-entity-object-is-my-value-object/</loc>
+    <lastmod>2009-01-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/fedora-10-x64-and-cerc-1-5-6-channel-sata-raid/</loc>
+    <lastmod>2009-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/holy-wars-c-vs-java-windows-vs-linux/</loc>
+    <lastmod>2009-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/howto-get-4-extra-hours-every-day/</loc>
+    <lastmod>2009-01-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/windows-server-2008-x64-cerc-1-5-6-channel-sata-raid/</loc>
+    <lastmod>2008-12-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/services-infrastructure-application-domain-and-object/</loc>
+    <lastmod>2008-12-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/assembly-artifact-storage/</loc>
+    <lastmod>2008-12-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/making-nhibernate-inversion-of-control-friendly/</loc>
+    <lastmod>2008-12-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/source-server-subversion-easy-assembly-debugging/</loc>
+    <lastmod>2008-12-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/dont-forgot-svnexternals-when-tagging-in-subversion/</loc>
+    <lastmod>2008-12-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/the-obligatory-hello-world-post/</loc>
+    <lastmod>2008-12-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/images/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/images/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/</loc>
+    <lastmod>2014-06-30T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/post/</loc>
+    <lastmod>2014-06-30T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.jonathanoliver.com/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

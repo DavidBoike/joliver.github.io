@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:image" content="/images/cover.jpg"/>
+
+
+
+<meta name="twitter:title" content="Posts"/>
+<meta name="twitter:description" content="Eventually Consistent, Fully Distributed"/>
+<meta name="twitter:site" content="@jonathan_oliver"/>
+
+
+
+  	<meta property="og:title" content="Posts &middot; Jonathan Oliver" />
+  	<meta property="og:site_name" content="Jonathan Oliver" />
+  	<meta property="og:url" content="http://blog.jonathanoliver.com/post/" />
+
+    
+        
+            <meta property="og:image" content="/images/cover.jpg"/>
+        
+    
+
+    
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="Eventually Consistent, Fully Distributed" />
+    
+
+    <title>Posts &middot; Jonathan Oliver</title>
+
+    
+    <meta name="description" content="Eventually Consistent, Fully Distributed" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="http://blog.jonathanoliver.com/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://blog.jonathanoliver.com/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/nav.css" />
+
+    
+
+    
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/default.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        
+        <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+      
+          <link href="http://blog.jonathanoliver.com/index.xml" rel="alternate" type="application/rss+xml" title="Jonathan Oliver" />
+      
+      
+        <link href="http://blog.jonathanoliver.com/post/index.xml" rel="alternate" type="application/rss+xml" title="Posts &middot; Jonathan Oliver" />
+      
+    
+    <meta name="generator" content="Hugo 0.46-DEV" />
+
+    <link rel="canonical" href="http://blog.jonathanoliver.com/post/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Person",
+        "name": ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": http://blog.jonathanoliver.com/images/tux.png,
+            "width": 250,
+            "height": 250
+        },
+        
+        "url": https://blog.jonathanoliver.com,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "url": http://blog.jonathanoliver.com/,
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": http://blog.jonathanoliver.com/
+    },
+    "description": Eventually Consistent, Fully Distributed
+}
+  </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="http://blog.jonathanoliver.com/post/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+
+	 
+  <header class="main-header tag-head" style="background-image: url(/images/cover.jpg)">
+  
+
+    <nav class="main-nav overlay clearfix">
+      
+        <a class="blog-logo" href="http://blog.jonathanoliver.com/"><img src="http://blog.jonathanoliver.com/images/tux.png" alt="Home" /></a>
+      
+      
+        
+          <a class="menu-button icon-feed" href="http://blog.jonathanoliver.com/post/index.xml">&nbsp;&nbsp;Subscribe</a>
+        
+      
+    </nav>
+    <div class="vertical">
+        <div class="main-header-content inner">
+            <h1 class="page-title">Posts</h1>
+            <h2 class="page-description">
+                
+            </h2>
+        </div>
+    </div>
+</header>
+
+<main class="content" role="main">
+    
+
+	<div class="extra-pagination inner">
+    <nav class="pagination" role="navigation">
+	
+	    <a class="newer-posts" href="http://blog.jonathanoliver.com/post/page/4/">&larr; Newer Posts</a>
+	
+	<span class="page-number">Page 5 of 15</span>
+	
+	    <a class="older-posts" href="http://blog.jonathanoliver.com/post/page/6/">Older Posts &rarr;</a>
+	
+</nav>
+
+	</div>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="http://blog.jonathanoliver.com/cqrs-eventstore-v2-architectural-overview/">CQRS: EventStore v2 Architectural Overview</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>[The following is a design document that gives an overview of version 2.0 of my EventStore project that is currently under active development. Buckle up. It's long.]
+EventStore v2 Architectural Overview
+The EventStore is designed to store a series of events, known as an event stream, to durable storage. Because of the simplicity of the model of an event stream, it can easily be persisted to durable storage using a large number of storage engines, including relational databases, plain files, NoSQL document databases, or even key-value stores. <a class="read-more" href="http://blog.jonathanoliver.com/cqrs-eventstore-v2-architectural-overview/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="http://blog.jonathanoliver.com/images/tux.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            Jonathan Oliver
+                 
+        
+
+        
+        <time class="post-date" datetime="2010-12-11T00:00:00Z">
+            11 Dec 2010
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="http://blog.jonathanoliver.com/nservicebus-w3wp-exe-processes-crashing/">NServiceBus: w3wp.exe Processes Crashing</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>If you are using NServiceBus in a web application and the process named w3wp.exe keeps bombing and exiting shortly after starting, here's what's happening: You don't have the appropriate permissions set for your message queues.
+The way NServiceBus is designed, it performs a few small startup tasks when the bus is started during web application initialization. Among these tasks it checks the configured input queue. If, because of a permissions error, it fails to read from the queue, it logs a message using the configured logging, waits 10 seconds, and then exits the process. <a class="read-more" href="http://blog.jonathanoliver.com/nservicebus-w3wp-exe-processes-crashing/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="http://blog.jonathanoliver.com/images/tux.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            Jonathan Oliver
+                 
+        
+
+        
+        <time class="post-date" datetime="2010-11-17T00:00:00Z">
+            17 Nov 2010
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="http://blog.jonathanoliver.com/100th-post/">100th Post</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>I just counted up the number of posts I've written in the last two years and I'm at 100. That's about one a week. Not too shabby. I have Oren to thank for convincing me to start a blog. At the same time, there's no way I'll be able to catch him at the rate he's posting.
+If any of you guys are considering a blog, I would strongly recommend it. <a class="read-more" href="http://blog.jonathanoliver.com/100th-post/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="http://blog.jonathanoliver.com/images/tux.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            Jonathan Oliver
+                 
+        
+
+        
+        <time class="post-date" datetime="2010-10-21T00:00:00Z">
+            21 Oct 2010
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="http://blog.jonathanoliver.com/nservicebus-asp-net-permissions-for-msmq/">NServiceBus: ASP.NET Permissions for MSMQ</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>I have two different development machines, one at home and one at work. I'm definitely not a laptop guy because I like having three monitors. In any case, this gives me the ability to develop slightly different environments which helps uncover subtle issues. One such issue that I encountered was related to that of sending a message through NServiceBus to an endpoint inside of a web application.
+On my home machine, everything was working great. <a class="read-more" href="http://blog.jonathanoliver.com/nservicebus-asp-net-permissions-for-msmq/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="http://blog.jonathanoliver.com/images/tux.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            Jonathan Oliver
+                 
+        
+
+        
+        <time class="post-date" datetime="2010-10-21T00:00:00Z">
+            21 Oct 2010
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="http://blog.jonathanoliver.com/cqrs-sagas-with-event-sourcing-part-ii-of-ii/">CQRS: Sagas with Event Sourcing (Part II of II)</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>In my first post, I explained a little bit about how sagas can be leveraged to deal with the problem of nested transactions—"transactions" that span more than a single message. There were a few community questions related to me redefining the concept of a saga. That's definitely not what I'm trying to do. Per my understanding, a saga sits there and handles multiple messages and exists to coordinate multiple distinct transactions and perform compensating actions relative to the entire " <a class="read-more" href="http://blog.jonathanoliver.com/cqrs-sagas-with-event-sourcing-part-ii-of-ii/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="http://blog.jonathanoliver.com/images/tux.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            Jonathan Oliver
+                 
+        
+
+        
+        <time class="post-date" datetime="2010-09-29T00:00:00Z">
+            29 Sep 2010
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="http://blog.jonathanoliver.com/cqrs-sagas-with-event-sourcing-part-i-of-ii/">CQRS: Sagas with Event Sourcing (Part I of II)</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>For starters, what is a saga? A saga is a "long-lived business transaction or process". Okay, so what does that mean? Well, first of all, the "long-lived" part doesn't have to mean hours, days, or even weeks—it could literally mean something as short as a few seconds. The amount of time is not the important part. It's the fact that the "transaction", business process, or activity spans more than one message. <a class="read-more" href="http://blog.jonathanoliver.com/cqrs-sagas-with-event-sourcing-part-i-of-ii/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="http://blog.jonathanoliver.com/images/tux.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            Jonathan Oliver
+                 
+        
+
+        
+        <time class="post-date" datetime="2010-09-28T00:00:00Z">
+            28 Sep 2010
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="http://blog.jonathanoliver.com/leadership-and-self-deception-getting-out-of-the-box/">Leadership and Self-Deception: Getting Out of the Box</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>I recently finished a book called Leadership and Self-Deception: Getting Out of the Box. In a word, this book was fantastic.
+The premise of the book is about understanding the problems that we have in our relationships—with family members, co-workers, anyone. The irony of it all is that we can often see problems in other people but we are rarely even aware of problems with ourselves—we are self-deceived.
+This 150-page book is written in a story/narrative-format which makes for very easy read and allows you to get inside the head of the main character to see his thought process. <a class="read-more" href="http://blog.jonathanoliver.com/leadership-and-self-deception-getting-out-of-the-box/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="http://blog.jonathanoliver.com/images/tux.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            Jonathan Oliver
+                 
+        
+
+        
+        <time class="post-date" datetime="2010-09-21T00:00:00Z">
+            21 Sep 2010
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="http://blog.jonathanoliver.com/event-sourcing-backup-and-archiving-strategies/">Event Sourcing: Backup and Archiving Strategies</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>One point that comes up now and again is related to archiving and backup strategies for an event store. The main thinking is that, if we keep all events ever generated, won't we run out of disk space? That's a great question and one that deserves a little bit more consideration.
+First of all, one of the primary reasons for keeping everything relates to the incredible business value offered by the events. <a class="read-more" href="http://blog.jonathanoliver.com/event-sourcing-backup-and-archiving-strategies/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="http://blog.jonathanoliver.com/images/tux.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            Jonathan Oliver
+                 
+        
+
+        
+        <time class="post-date" datetime="2010-09-16T00:00:00Z">
+            16 Sep 2010
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="http://blog.jonathanoliver.com/event-sourcing-underling-storage-engine-options/">Event Sourcing: Underling Storage Engine Options</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>The emergence of NoSQL is an interesting movement. One of the key principles behind NoSQL is related to the simplicity of the data store. This is in contrast to a traditional RDBMS. The amount of code required to create a production-grade relational database is far from trivial. Of course, NoSQL goes far beyond this and pushes hard on CAP and the ability to scale out.
+One of the beauties of event sourcing and specifically the event store is that it has relatively few, yet well-defined requirements that it puts on the underlying storage engine. <a class="read-more" href="http://blog.jonathanoliver.com/event-sourcing-underling-storage-engine-options/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="http://blog.jonathanoliver.com/images/tux.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            Jonathan Oliver
+                 
+        
+
+        
+        <time class="post-date" datetime="2010-09-15T00:00:00Z">
+            15 Sep 2010
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="http://blog.jonathanoliver.com/http-and-https-with-google-cdn/">HTTP and HTTPS with Google CDN</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>One little trick that I learned not too long ago was the ability to load a file from Google's CDN (or any CDN for that matter) relative to the protocol of the page, e.g. if the page is HTTPS, the CDN content would load HTTPS, and vice versa.
+In virtually all CDN examples you'll see something like this:
+http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js
+// http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" // ]] But what if my page is HTTPS? Do I somehow have to go through and either by hand, or with Javascript, update all src values to be HTTPS? <a class="read-more" href="http://blog.jonathanoliver.com/http-and-https-with-google-cdn/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="http://blog.jonathanoliver.com/images/tux.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            Jonathan Oliver
+                 
+        
+
+        
+        <time class="post-date" datetime="2010-09-15T00:00:00Z">
+            15 Sep 2010
+        </time>
+    </footer>
+</article>
+
+	
+
+	<nav class="pagination" role="navigation">
+	
+	    <a class="newer-posts" href="http://blog.jonathanoliver.com/post/page/4/">&larr; Newer Posts</a>
+	
+	<span class="page-number">Page 5 of 15</span>
+	
+	    <a class="older-posts" href="http://blog.jonathanoliver.com/post/page/6/">Older Posts &rarr;</a>
+	
+</nav>
+
+</main>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">Jonathan Oliver</a> (c) Jonathan Oliver. All rights reserved.</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/index.js"></script>
+    
+</body>
+</html>

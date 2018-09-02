@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="Concurrency in a DDDD World"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@jonathan_oliver"/>
+
+
+
+  	<meta property="og:title" content="Concurrency in a DDDD World &middot; Jonathan Oliver" />
+  	<meta property="og:site_name" content="Jonathan Oliver" />
+  	<meta property="og:url" content="http://blog.jonathanoliver.com/concurrency-in-a-dddd-world/" />
+
+    
+        
+            <meta property="og:image" content="/images/cover.jpg"/>
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2009-03-23T00:00:00Z" />
+
+    
+    
+
+    <title>Concurrency in a DDDD World &middot; Jonathan Oliver</title>
+
+    
+    <meta name="description" content="Introduction
+One of the tough things about DDDD right now is there isn&#39;t a mountain of information available like with other programming topics. I guess that&#39;s " />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="http://blog.jonathanoliver.com/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://blog.jonathanoliver.com/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/nav.css" />
+
+    
+
+    
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/default.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        
+        <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+      
+          <link href="http://blog.jonathanoliver.com/index.xml" rel="alternate" type="application/rss+xml" title="Jonathan Oliver" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.46-DEV" />
+
+    <link rel="canonical" href="http://blog.jonathanoliver.com/concurrency-in-a-dddd-world/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": ,
+        "logo": http://blog.jonathanoliver.com/images/tux.png
+    },
+    "author": {
+        "@type": "Person",
+        "name": ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": http://blog.jonathanoliver.com/images/tux.png,
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": https://blog.jonathanoliver.com,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": Concurrency in a DDDD World,
+    "name": Concurrency in a DDDD World,
+    "wordCount": 709,
+    "timeRequired": "PT4M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": en
+    },
+    "url": http://blog.jonathanoliver.com/concurrency-in-a-dddd-world/,
+    "datePublished": 2009-03-23T00:00Z,
+    "dateModified": 2009-03-23T00:00Z,
+    
+    
+    "description": ,
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": http://blog.jonathanoliver.com/concurrency-in-a-dddd-world/
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="http://blog.jonathanoliver.com/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="http://blog.jonathanoliver.com/"><img src="http://blog.jonathanoliver.com/images/tux.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button icon-feed" href="http://blog.jonathanoliver.com/index.xml" >&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">Concurrency in a DDDD World</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2009-03-23T00:00:00Z">
+            Mar 23, 2009
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <p><strong>Introduction</strong></p> <p>One of the tough things about DDDD right now is there isn't a mountain of information available like with other programming topics. I guess that's a blessing in disguise because there's also not a ton of <strong>mis</strong>information either.</p> <p>In traditional N-tier systems and in repository-based, DDD systems, we typically let the database manage all of our state for us. Then we use different patterns, such as the <a href="http://martinfowler.com/eaaCatalog/optimisticOfflineLock.html">optimistic offline lock</a> (AKA optimistic concurrency), to ensure concurrency when multiple processes are trying to modify the same information at roughly the same time.</p> <p>In DDDD things work a little bit differently. Once you start to scale a bounded context out beyond one server, you have to worry about concurrency—meaning that we ensure that the understanding of the known world is consistent between any instance of the same bounded context. This is a very challenging problem, but it is one that has been solved in <a href="http://www.amazon.com/Pattern-Oriented-Software-Architecture-Distributed-Computing/dp/0470059028">several different ways</a>. What we need to decide is how best to solve the problem in a distributed, message-based environment.</p> <p><strong>The Identity Map</strong></p> <p>As I have <a href="http://blog.jonathanoliver.com/2009/03/infinite-loop-event-sourcing.html">blogged about previously</a>, Greg mentions that each bounded context has an identity map and that we can use pub/sub to notify all other instances of the same bounded context of changes in state as a result of processing commands. This works great, but once we have multiple instances running, we need to be extremely careful lest two instances of the same aggregate process commands which produce conflicting results.</p> <p><strong>An Example</strong></p> <p>Let's suppose there's a user on eBay who wants to sign-up with a certain username—let's say it's "bob" and, for the sake of argument, that it's available. Because of the number of users using eBay, it's a fairly probable situation that he could attempt to register with that username at the same time as someone else.</p> <p>If the same aggregate was on multiple servers and a request came into both instances simultaneously requesting the username "bob"—one from <a href="http://www.objectmentor.com/omTeam/martin_r.html">Bob Martin</a> and the other from Bob Jones—all of a sudden, we have a problem. Each aggregate has approved the username "bob" and passed a message back to some workflow saying that it's reserved the name for their respective user. We've got a concurrency issue.</p> <p>If not address properly we will run into some very nasty temporal bugs that may or may not be discovered for a long time. What's worse, the longer the bug exists, the more damage it causes to all related systems. Usually these types of bugs have a way of corrupting data not just in their own bounded context, but throughout all parts of the extended domain.</p> <p><strong>The Solution</strong></p> <p>Rather than randomly having any instance of the same bounded context receive commands that it needs to perform, we instead want to forward them to a single instance. You might say, "Wait a second!  Why run multiple instances if all commands are forwarded to only one instance?!"  The answer is simple: Partitioning. We can use a locator (devTeach @ 46:20) to forward the command to the appropriate instance of the bounded context based upon some selection criteria. In the case of our eBay example—we could partition based upon the first letter of the username, such that all requests for usernames starting with the letter "b" are forwarded to a specific instance of the bounded context for the aggregate root to process.</p> <p>Continuing with our example—the same aggregate would now service both requests. It would service one command and then the other. The first would be approved, the second would be denied. Usernames starting with other letters, would be handled by other instances. Because we have different instances handling non-overlapping portions of work, we have effectively eliminated concurrency issues—for this particular context. Do you see how we can distribute and scale?</p> <p>The only caveat, per my understanding, is that we need to ensure that each aggregate only performs one unit of work at a time—effectively <strong>serializing all work</strong>. Serializing (queuing up work), makes it seem like commands would back up very quickly. Fortunately because of ways that we can <a href="http://blog.jonathanoliver.com/2009/03/event-sourcing-and-committing.html">architecture our DDDD infrastructure</a>, each unit of work does not take long to complete—especially when we don't have to communicate with a persistence engine directly and virtually all communication is in-process communication.</p> 
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+
+
+
+
+<figure class="author-image">
+    <a class="img" href="http://blog.jonathanoliver.com/" style="background-image: url(/images/tux.png)"><span class="hidden">Jonathan Oliver's Picture</span></a>
+</figure>
+
+
+<section class="author">
+  <h4><a href="http://blog.jonathanoliver.com/">Jonathan Oliver</a></h4>
+  
+  <p>Read <a href="http://blog.jonathanoliver.com/">more posts</a> by this author.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">Utah, USA</span>
+    <span class="author-link icon-link"><a href="https://blog.jonathanoliver.com">https://blog.jonathanoliver.com</a></span>
+  </div>
+</section>
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Concurrency%20in%20a%20DDDD%20World&nbsp;-&nbsp;Jonathan%20Oliver&amp;url=http%3a%2f%2fblog.jonathanoliver.com%2fconcurrency-in-a-dddd-world%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.jonathanoliver.com%2fconcurrency-in-a-dddd-world%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fblog.jonathanoliver.com%2fconcurrency-in-a-dddd-world%2f&amp;description=Concurrency%20in%20a%20DDDD%20World"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fblog.jonathanoliver.com%2fconcurrency-in-a-dddd-world%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "http:\/\/blog.jonathanoliver.com\/concurrency-in-a-dddd-world\/";  
+this.page.identifier = "http:\/\/blog.jonathanoliver.com\/concurrency-in-a-dddd-world\/"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://jonathanoliver.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="http://blog.jonathanoliver.com/dddd-the-event-pipeline-bringing-it-all-together/">
+          <section class="post">
+              <h2>DDDD: The Event Pipeline—Bringing It All Together</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="http://blog.jonathanoliver.com/dddd-locator-not-a-single-point-of-failure/">
+          <section class="post">
+              <h2>DDDD Locator—Not a Single Point of Failure</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">Jonathan Oliver</a> (c) Jonathan Oliver. All rights reserved.</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/index.js"></script>
+    
+</body>
+</html>
+

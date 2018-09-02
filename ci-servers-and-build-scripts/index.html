@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="CI Servers and Build Scripts"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@jonathan_oliver"/>
+
+
+
+  	<meta property="og:title" content="CI Servers and Build Scripts &middot; Jonathan Oliver" />
+  	<meta property="og:site_name" content="Jonathan Oliver" />
+  	<meta property="og:url" content="http://blog.jonathanoliver.com/ci-servers-and-build-scripts/" />
+
+    
+        
+            <meta property="og:image" content="/images/cover.jpg"/>
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2009-09-24T00:00:00Z" />
+
+    
+    
+
+    <title>CI Servers and Build Scripts &middot; Jonathan Oliver</title>
+
+    
+    <meta name="description" content="About a year ago, I read Continuous Integration: Improving Software Quality and Reducing Risk. It&#39;s a great book that talks about the importance of making your " />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="http://blog.jonathanoliver.com/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://blog.jonathanoliver.com/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/nav.css" />
+
+    
+
+    
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/default.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        
+        <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+      
+          <link href="http://blog.jonathanoliver.com/index.xml" rel="alternate" type="application/rss+xml" title="Jonathan Oliver" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.46-DEV" />
+
+    <link rel="canonical" href="http://blog.jonathanoliver.com/ci-servers-and-build-scripts/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": ,
+        "logo": http://blog.jonathanoliver.com/images/tux.png
+    },
+    "author": {
+        "@type": "Person",
+        "name": ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": http://blog.jonathanoliver.com/images/tux.png,
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": https://blog.jonathanoliver.com,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": CI Servers and Build Scripts,
+    "name": CI Servers and Build Scripts,
+    "wordCount": 671,
+    "timeRequired": "PT4M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": en
+    },
+    "url": http://blog.jonathanoliver.com/ci-servers-and-build-scripts/,
+    "datePublished": 2009-09-24T00:00Z,
+    "dateModified": 2009-09-24T00:00Z,
+    
+    
+    "description": ,
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": http://blog.jonathanoliver.com/ci-servers-and-build-scripts/
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="http://blog.jonathanoliver.com/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="http://blog.jonathanoliver.com/"><img src="http://blog.jonathanoliver.com/images/tux.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button icon-feed" href="http://blog.jonathanoliver.com/index.xml" >&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">CI Servers and Build Scripts</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2009-09-24T00:00:00Z">
+            Sep 24, 2009
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <p>About a year ago, I read <a href="http://www.amazon.com/Continuous-Integration-Improving-Software-Reducing/dp/0321336380">Continuous Integration: Improving Software Quality and Reducing Risk</a>. It's a great book that talks about the importance of making your CI server the hub of development.</p> <p>One part of the book that was very insightful was the exact role of build scripts. Specifically, the build scripts should be able to execute <strong>on our developer machines as well as the CI server</strong>. Even though we were attempting to do this to some extent, there were some additional advantages that were obtained by going the rest of the way.</p> <p><strong>Choose Your Server</strong></p> <p>When we first started doing automated builds, we wrote scripts under CruiseControl which ran exclusively on the server. There was no possible way to run the scripts on the developer machine short of having a full-blown CC instance running on our dev machines. The XML scripts were error prone and bugging and tightly coupled us to a CruiseControl-specific implementation. Further, everything was lumped together into one monolithic build script which made us afraid to touch it for fear of breaking the build.</p> <p>All CI products out there—CruiseControl, Cruise, TeamCity, Hudson, Continuum, etc. provide the ability to invoke activities, but I am not aware that they provide guidance stating that you should have CI-independent build scripts which are simply invoked through the CI server.</p> <p><strong>Separation of Concerns</strong></p> <p>To break our build server dependency, we moved away from CI-specific scripts and chose a "portable" solution—at first NAnt and finally rake. We then focused on writing build scripts that were broken down and focused on several different types of activities:</p> <ol> <li>Code compilation</li> <li>Static analysis/best practice compliance</li> <li>Testing in its various forms</li> <li>Source control actions (e.g. tagging)</li> </ol> <p>By having smaller script activities, we could compose them into larger once as necessary. Further, it allowed us to narrowly focus our attention on a single concern rather than mixing code compilation with source control actions, for example.</p> <p>In this way, we became CI server independent—we could pick whichever CI server implementation that we wanted because it would simply call a series of scripts. This also allowed us to have a private developer build to be performed locally prior to each commit (or "git push"). The local developer would be virtually assured that his source code changes would integrate because the developer build script was identical to the one that would be executed on the CI server.</p> <p><strong>Separate Workspaces</strong></p> <p>A best practice for build servers is to break down longer running tasks into shorter tasks. Usually you'll want to have some sort of fast-running "integration" task that compiles and does a few unit tests. This is a minimum threshold of quality that code must meet to be considered acceptable code. Beyond that, any number of additional long-running scripts may execute and perform a full range of testing against the code. Finally, at the end, some kind of "publish" is done to make the build artifacts generally available at a well-known location.</p> <p>One big problem that we noticed was that in a local or developer environment, your workspace is "stable" in that you can run a particular build script and immediately be ready to run the next build script because the binaries are at a specific location. A CI server provides no such luxury.</p> <p>A CI server almost always has a separate workspace (directory) for each "build project" that will be executed against a development project (i.e. a single C# project or solution). This presents a problem because the "Integrate" project has no way to push the compiled artifacts into the "Acceptance Testing", "Performance Testing", and "Code Metrics" projects.</p> <p>Here we had to help our CI server a little bit. We simply modified our "Acceptance Testing" project to retrieve the build artifacts (using "wget") from the "Integration" project prior to kicking off the acceptance-testing related scripts.</p> <p>Other than that, our CI server simply calls out to our build scripts. In this way, we maintain the ability to "hot swap" our build process at a moments notice.</p> <p>And by the way, we're using Hudson.</p> 
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+
+
+
+
+<figure class="author-image">
+    <a class="img" href="http://blog.jonathanoliver.com/" style="background-image: url(/images/tux.png)"><span class="hidden">Jonathan Oliver's Picture</span></a>
+</figure>
+
+
+<section class="author">
+  <h4><a href="http://blog.jonathanoliver.com/">Jonathan Oliver</a></h4>
+  
+  <p>Read <a href="http://blog.jonathanoliver.com/">more posts</a> by this author.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">Utah, USA</span>
+    <span class="author-link icon-link"><a href="https://blog.jonathanoliver.com">https://blog.jonathanoliver.com</a></span>
+  </div>
+</section>
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=CI%20Servers%20and%20Build%20Scripts&nbsp;-&nbsp;Jonathan%20Oliver&amp;url=http%3a%2f%2fblog.jonathanoliver.com%2fci-servers-and-build-scripts%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.jonathanoliver.com%2fci-servers-and-build-scripts%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fblog.jonathanoliver.com%2fci-servers-and-build-scripts%2f&amp;description=CI%20Servers%20and%20Build%20Scripts"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fblog.jonathanoliver.com%2fci-servers-and-build-scripts%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "http:\/\/blog.jonathanoliver.com\/ci-servers-and-build-scripts\/";  
+this.page.identifier = "http:\/\/blog.jonathanoliver.com\/ci-servers-and-build-scripts\/"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://jonathanoliver.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="http://blog.jonathanoliver.com/git-submodules-like-svnexternals/">
+          <section class="post">
+              <h2>Git Submodules like svn:externals</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="http://blog.jonathanoliver.com/continous-integration-workflow/">
+          <section class="post">
+              <h2>Continous Integration Workflow</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">Jonathan Oliver</a> (c) Jonathan Oliver. All rights reserved.</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/index.js"></script>
+    
+</body>
+</html>
+

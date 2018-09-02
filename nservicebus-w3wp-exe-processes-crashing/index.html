@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="NServiceBus: w3wp.exe Processes Crashing"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@jonathan_oliver"/>
+
+
+
+  	<meta property="og:title" content="NServiceBus: w3wp.exe Processes Crashing &middot; Jonathan Oliver" />
+  	<meta property="og:site_name" content="Jonathan Oliver" />
+  	<meta property="og:url" content="http://blog.jonathanoliver.com/nservicebus-w3wp-exe-processes-crashing/" />
+
+    
+        
+            <meta property="og:image" content="/images/cover.jpg"/>
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2010-11-17T00:00:00Z" />
+
+    
+    
+
+    <title>NServiceBus: w3wp.exe Processes Crashing &middot; Jonathan Oliver</title>
+
+    
+    <meta name="description" content="If you are using NServiceBus in a web application and the process named w3wp.exe keeps bombing and exiting shortly after starting, here&#39;s what&#39;s happening: You " />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="http://blog.jonathanoliver.com/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://blog.jonathanoliver.com/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/nav.css" />
+
+    
+
+    
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/default.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        
+        <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+      
+          <link href="http://blog.jonathanoliver.com/index.xml" rel="alternate" type="application/rss+xml" title="Jonathan Oliver" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.46-DEV" />
+
+    <link rel="canonical" href="http://blog.jonathanoliver.com/nservicebus-w3wp-exe-processes-crashing/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": ,
+        "logo": http://blog.jonathanoliver.com/images/tux.png
+    },
+    "author": {
+        "@type": "Person",
+        "name": ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": http://blog.jonathanoliver.com/images/tux.png,
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": https://blog.jonathanoliver.com,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": NServiceBus: w3wp.exe Processes Crashing,
+    "name": NServiceBus: w3wp.exe Processes Crashing,
+    "wordCount": 142,
+    "timeRequired": "PT1M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": en
+    },
+    "url": http://blog.jonathanoliver.com/nservicebus-w3wp-exe-processes-crashing/,
+    "datePublished": 2010-11-17T00:00Z,
+    "dateModified": 2010-11-17T00:00Z,
+    
+    
+    "description": ,
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": http://blog.jonathanoliver.com/nservicebus-w3wp-exe-processes-crashing/
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="http://blog.jonathanoliver.com/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="http://blog.jonathanoliver.com/"><img src="http://blog.jonathanoliver.com/images/tux.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button icon-feed" href="http://blog.jonathanoliver.com/index.xml" >&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">NServiceBus: w3wp.exe Processes Crashing</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2010-11-17T00:00:00Z">
+            Nov 17, 2010
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <p align="justify">If you are using NServiceBus in a web application and the process named w3wp.exe keeps bombing and exiting shortly after starting, here's what's happening:  <strong>You don't have the appropriate permissions set for your message queues</strong>.</p> <p align="justify">The way NServiceBus is designed, it performs a few small startup tasks when the bus is started during web application initialization. Among these tasks it checks the configured input queue. If, because of a permissions error, it fails to read from the queue, it logs a message using the configured logging, waits 10 seconds, and then exits the process.</p> <p align="justify">The simple fix is to give the web account permissions over the resource. This all goes back to one of my <a href="http://blog.jonathanoliver.com/2010/10/nservicebus-aspnet-permissions-for-msmq.html">previous posts</a> on the same subject, but I just wanted to mention that I got bit again because my message queue permissions were a little too tight.</p> 
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+
+
+
+
+<figure class="author-image">
+    <a class="img" href="http://blog.jonathanoliver.com/" style="background-image: url(/images/tux.png)"><span class="hidden">Jonathan Oliver's Picture</span></a>
+</figure>
+
+
+<section class="author">
+  <h4><a href="http://blog.jonathanoliver.com/">Jonathan Oliver</a></h4>
+  
+  <p>Read <a href="http://blog.jonathanoliver.com/">more posts</a> by this author.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">Utah, USA</span>
+    <span class="author-link icon-link"><a href="https://blog.jonathanoliver.com">https://blog.jonathanoliver.com</a></span>
+  </div>
+</section>
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=NServiceBus%3a%20w3wp.exe%20Processes%20Crashing&nbsp;-&nbsp;Jonathan%20Oliver&amp;url=http%3a%2f%2fblog.jonathanoliver.com%2fnservicebus-w3wp-exe-processes-crashing%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.jonathanoliver.com%2fnservicebus-w3wp-exe-processes-crashing%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fblog.jonathanoliver.com%2fnservicebus-w3wp-exe-processes-crashing%2f&amp;description=NServiceBus%3a%20w3wp.exe%20Processes%20Crashing"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fblog.jonathanoliver.com%2fnservicebus-w3wp-exe-processes-crashing%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "http:\/\/blog.jonathanoliver.com\/nservicebus-w3wp-exe-processes-crashing\/";  
+this.page.identifier = "http:\/\/blog.jonathanoliver.com\/nservicebus-w3wp-exe-processes-crashing\/"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://jonathanoliver.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="http://blog.jonathanoliver.com/cqrs-eventstore-v2-architectural-overview/">
+          <section class="post">
+              <h2>CQRS: EventStore v2 Architectural Overview</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="http://blog.jonathanoliver.com/100th-post/">
+          <section class="post">
+              <h2>100th Post</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">Jonathan Oliver</a> (c) Jonathan Oliver. All rights reserved.</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/index.js"></script>
+    
+</body>
+</html>
+

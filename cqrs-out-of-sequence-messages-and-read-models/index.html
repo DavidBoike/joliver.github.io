@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="CQRS: Out of Sequence Messages and Read Models"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@jonathan_oliver"/>
+
+
+
+  	<meta property="og:title" content="CQRS: Out of Sequence Messages and Read Models &middot; Jonathan Oliver" />
+  	<meta property="og:site_name" content="Jonathan Oliver" />
+  	<meta property="og:url" content="http://blog.jonathanoliver.com/cqrs-out-of-sequence-messages-and-read-models/" />
+
+    
+        
+            <meta property="og:image" content="/images/cover.jpg"/>
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2011-04-04T00:00:00Z" />
+
+    
+    
+
+    <title>CQRS: Out of Sequence Messages and Read Models &middot; Jonathan Oliver</title>
+
+    
+    <meta name="description" content="One of the tricks to message-based solutions is handling messages that come out of order. In some instances the application code must be made resilient to this " />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="http://blog.jonathanoliver.com/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://blog.jonathanoliver.com/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/nav.css" />
+
+    
+
+    
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/default.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        
+        <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+      
+          <link href="http://blog.jonathanoliver.com/index.xml" rel="alternate" type="application/rss+xml" title="Jonathan Oliver" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.46-DEV" />
+
+    <link rel="canonical" href="http://blog.jonathanoliver.com/cqrs-out-of-sequence-messages-and-read-models/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": ,
+        "logo": http://blog.jonathanoliver.com/images/tux.png
+    },
+    "author": {
+        "@type": "Person",
+        "name": ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": http://blog.jonathanoliver.com/images/tux.png,
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": https://blog.jonathanoliver.com,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": CQRS: Out of Sequence Messages and Read Models,
+    "name": CQRS: Out of Sequence Messages and Read Models,
+    "wordCount": 487,
+    "timeRequired": "PT3M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": en
+    },
+    "url": http://blog.jonathanoliver.com/cqrs-out-of-sequence-messages-and-read-models/,
+    "datePublished": 2011-04-04T00:00Z,
+    "dateModified": 2011-04-04T00:00Z,
+    
+    
+    "description": ,
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": http://blog.jonathanoliver.com/cqrs-out-of-sequence-messages-and-read-models/
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="http://blog.jonathanoliver.com/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="http://blog.jonathanoliver.com/"><img src="http://blog.jonathanoliver.com/images/tux.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button icon-feed" href="http://blog.jonathanoliver.com/index.xml" >&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">CQRS: Out of Sequence Messages and Read Models</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2011-04-04T00:00:00Z">
+            Apr 4, 2011
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <p><p align="justify">One of the tricks to message-based solutions is handling messages that come out of order. In some instances the application code must be made resilient to this situation. In other cases, it can be easier to re-sequence the messages and then apply each messages in sequence. In one of my current systems this is the route we took—re-sequencing messages if they arrive out of order.</p> <p align="justify">One of the easier possibilities is to have the read model poll the event store for new commits. I dislike this solution because it doesn't leverage the innate capabilities of push-based notifications and feels like a resource drain. Nonetheless, it's probably one of the easier ones to handle until you start dealing with scaling out the read model. At that point, a different approach must be taken.</p> <p align="justify">The solution that we use is to dequeue a message and to place it in a &quot;holding table&quot; until all messages with a previous sequence are received. When all previous messages have been received we take all messages out of the holding table and run them in sequence through the appropriate handlers. Once all handlers have been executed successfully, we remove the messages from the holding table and commit the updates to the read models.</p> <p align="justify">This works for us because the domain publishes events and marks them with the appropriate sequence number. Without this, the solution below would be much more difficult—if not impossible.</p> <p align="justify">This solution is using a relational database as a persistence storage mechanism, but we're not using any of the relational aspects of the storage engine. At the same time, there's a caveat in all of this. If message 2, 3, and 4 arrive but message 1 never does, we don't apply any of them. The scenario should only happen if there's an error processing message 1 or if message 1 somehow gets lost. Fortunately, it's easy enough to correct any errors in our message handlers and re-run the messages. Or, in the case of a lost message, to re-build the read models from the event store directly.</p> <p align="justify"><strong>One interesting and very positive side effect that we discovered when we implemented this solution was full message idempotency.</strong>  Basically we have a small &quot;Sequence&quot; table that gives us the most recent min/max message sequence received for a given aggregate. Only when we have received a full sequence do we run the messages through the handlers. If a message arrives more than once and it have already been handled, the sequence table's &quot;min&quot; value would be greater than the current message's &quot;sequence&quot; and we would know to drop the message.</p> <p align="justify">The other caveat that we have yet to address is how to apply this pattern to a NoSQL solution. It definitely would involve some additional overhead that we don't need at this point. The solution was quite straightforward to implement using pure SQL and would have been much more difficult using something like NHibernate.</p> <script src="https://gist.github.com/903011.js?file=DDL.sql"></script><script src="https://gist.github.com/903011.js?file=Resequencing.sql"></script></p>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+
+
+
+
+<figure class="author-image">
+    <a class="img" href="http://blog.jonathanoliver.com/" style="background-image: url(/images/tux.png)"><span class="hidden">Jonathan Oliver's Picture</span></a>
+</figure>
+
+
+<section class="author">
+  <h4><a href="http://blog.jonathanoliver.com/">Jonathan Oliver</a></h4>
+  
+  <p>Read <a href="http://blog.jonathanoliver.com/">more posts</a> by this author.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">Utah, USA</span>
+    <span class="author-link icon-link"><a href="https://blog.jonathanoliver.com">https://blog.jonathanoliver.com</a></span>
+  </div>
+</section>
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=CQRS%3a%20Out%20of%20Sequence%20Messages%20and%20Read%20Models&nbsp;-&nbsp;Jonathan%20Oliver&amp;url=http%3a%2f%2fblog.jonathanoliver.com%2fcqrs-out-of-sequence-messages-and-read-models%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.jonathanoliver.com%2fcqrs-out-of-sequence-messages-and-read-models%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fblog.jonathanoliver.com%2fcqrs-out-of-sequence-messages-and-read-models%2f&amp;description=CQRS%3a%20Out%20of%20Sequence%20Messages%20and%20Read%20Models"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fblog.jonathanoliver.com%2fcqrs-out-of-sequence-messages-and-read-models%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "http:\/\/blog.jonathanoliver.com\/cqrs-out-of-sequence-messages-and-read-models\/";  
+this.page.identifier = "http:\/\/blog.jonathanoliver.com\/cqrs-out-of-sequence-messages-and-read-models\/"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://jonathanoliver.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="http://blog.jonathanoliver.com/a-simple-reminder-of-event-sourcing-benefits/">
+          <section class="post">
+              <h2>A Simple Reminder of Event Sourcing Benefits</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="http://blog.jonathanoliver.com/how-i-avoid-two-phase-commit/">
+          <section class="post">
+              <h2>How I Avoid Two-Phase Commit</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">Jonathan Oliver</a> (c) Jonathan Oliver. All rights reserved.</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/index.js"></script>
+    
+</body>
+</html>
+

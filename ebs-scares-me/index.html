@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="AWS Elastic Block Storage Scares Me"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@jonathan_oliver"/>
+
+
+
+  	<meta property="og:title" content="AWS Elastic Block Storage Scares Me &middot; Jonathan Oliver" />
+  	<meta property="og:site_name" content="Jonathan Oliver" />
+  	<meta property="og:url" content="http://blog.jonathanoliver.com/ebs-scares-me/" />
+
+    
+        
+            <meta property="og:image" content="/images/cover.jpg"/>
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2014-06-30T00:00:00Z" />
+
+    
+    
+
+    <title>AWS Elastic Block Storage Scares Me &middot; Jonathan Oliver</title>
+
+    
+    <meta name="description" content="Take a look at the last half-dozen or so publicized outages at Amazon. Every single time it was a failure in EBS—including the multi-day EBS outage in April 201" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="http://blog.jonathanoliver.com/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://blog.jonathanoliver.com/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/nav.css" />
+
+    
+
+    
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/default.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        
+        <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+      
+          <link href="http://blog.jonathanoliver.com/index.xml" rel="alternate" type="application/rss+xml" title="Jonathan Oliver" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.46-DEV" />
+
+    <link rel="canonical" href="http://blog.jonathanoliver.com/ebs-scares-me/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": ,
+        "logo": http://blog.jonathanoliver.com/images/tux.png
+    },
+    "author": {
+        "@type": "Person",
+        "name": ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": http://blog.jonathanoliver.com/images/tux.png,
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": https://blog.jonathanoliver.com,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": AWS Elastic Block Storage Scares Me,
+    "name": AWS Elastic Block Storage Scares Me,
+    "wordCount": 676,
+    "timeRequired": "PT4M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": en
+    },
+    "url": http://blog.jonathanoliver.com/ebs-scares-me/,
+    "datePublished": 2014-06-30T00:00Z,
+    "dateModified": 2014-06-30T00:00Z,
+    
+    
+    "description": ,
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": http://blog.jonathanoliver.com/ebs-scares-me/
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="http://blog.jonathanoliver.com/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="http://blog.jonathanoliver.com/"><img src="http://blog.jonathanoliver.com/images/tux.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button icon-feed" href="http://blog.jonathanoliver.com/index.xml" >&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">AWS Elastic Block Storage Scares Me</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2014-06-30T00:00:00Z">
+            Jun 30, 2014
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <p>Take a look at the last half-dozen or so publicized outages at Amazon. Every single time it was a failure in EBS—including the multi-day EBS outage in April 2011.</p>
+
+<p>I still love AWS. If you have an elastic (scaling) workload, it's awesome. Normally I have a hard time taking a dependency of third-party behavior which facilitates vendor lock-in, but Amazon makes it so incredibly easy because their cloud is vastly more capable when compared to other cloud providers.</p>
+
+<p>The problem is that there's always a man behind the curtain—hardware fails and the <a href="http://en.wikipedia.org/wiki/Fallacies_of_Distributed_Computing">network isn't reliable</a>. AWS has done an amazing job engineering their system and driving out failure scenarios. But there's one system that seems to be so complex that it fails again and again: Elastic Block Storage.</p>
+
+<p>It seems that ever since the introduction of EBS, AWS has been trying to actively promote the use of EBS. For example, RDS and a number of other AWS offering are based upon it. This is a big drawback with the AWS cloud compared to other providers. Other cloud providers have stuck with physical disks (and SANs in some cases) because it's easy and reliable as far as disks are concerned. Yes, physical disks are slightly less capable, but they're better understood and present a known set of failure scenarios when compared to a network-based solution.</p>
+
+<p>On the surface, EBS solves the immediate business problem of durable/stateful storage on instance. This allows an operating system that think it own the underlying hardware to continue to operate on this same principle. But it's a crutch. Now I'm not saying that everyone should give up and just use S3, but I am saying that you may want to consider the storage requirements of your application when deploying and scaling. For example, there's a big difference in the underlying requirements for stateless systems such as web servers, application servers, etc. as compared to databases and message queues. If you drive out those differences in your architecture and infrastructure, it allows you to make trade offs about where and how the various kinds of services will be hosted.</p>
+
+<p>One of the biggest problems I have with EBS is that, for me, it violates the principle of boundaries. Specifically, I like to architect solutions based upon known boundaries—that of a physical disk or a physical machine. By considering local, physical devices rather than unknown, remote logical devices made to look like a single physical device, we constrain the boundaries of failure to a single machine. In traditional RAID storage, the failure modes are well understood and are handled at the hardware level. In EBS, the complexity of the implementation and all of the moving parts and variables allows a lot of room for error such that it's possible to have an outage across the entire AWS region, despite the single availability zone promises made by Amazon to the contrary. Note that EBS only recently started offering an SLA, but what's a few credits to your account in the face of hours or even days of failure?</p>
+
+<p>Fortunately, there are a lot of public AMIs maintained by the OS vendors that use instance-based storage rather than EBS storage. One reason we don't use them is because they're not actively promoted—in fact, they're typically hidden because of the support burden to Amazon resulting from misunderstanding about their durability guarantees—that and they're more difficult to work with, such as snapshotting, and other use cases.</p>
+
+<p>One question people have is whether S3 is just EBS under the hood. The answer to that is no. S3 was the original cloud offering from Amazon from 2004 and operates on the principle of replication. EBS is a relatively new invention (circa late 2009 or so).</p>
+
+<p>If you're the type that likes to get bitten hard by catastrophic failures and massive data loss, then by all means, keep using EBS. It's only a matter of time before an EBS outage strikes again. And please, try to stay out of Virginia (us-east-1), it seems to be the most susceptible to EBS failures.</p>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+
+
+
+
+<figure class="author-image">
+    <a class="img" href="http://blog.jonathanoliver.com/" style="background-image: url(/images/tux.png)"><span class="hidden">Jonathan Oliver's Picture</span></a>
+</figure>
+
+
+<section class="author">
+  <h4><a href="http://blog.jonathanoliver.com/">Jonathan Oliver</a></h4>
+  
+  <p>Read <a href="http://blog.jonathanoliver.com/">more posts</a> by this author.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">Utah, USA</span>
+    <span class="author-link icon-link"><a href="https://blog.jonathanoliver.com">https://blog.jonathanoliver.com</a></span>
+  </div>
+</section>
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=AWS%20Elastic%20Block%20Storage%20Scares%20Me&nbsp;-&nbsp;Jonathan%20Oliver&amp;url=http%3a%2f%2fblog.jonathanoliver.com%2febs-scares-me%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.jonathanoliver.com%2febs-scares-me%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fblog.jonathanoliver.com%2febs-scares-me%2f&amp;description=AWS%20Elastic%20Block%20Storage%20Scares%20Me"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fblog.jonathanoliver.com%2febs-scares-me%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "http:\/\/blog.jonathanoliver.com\/ebs-scares-me\/";  
+this.page.identifier = "http:\/\/blog.jonathanoliver.com\/ebs-scares-me\/"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://jonathanoliver.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="http://blog.jonathanoliver.com/golang-has-generics/">
+          <section class="post">
+              <h2>Golang Has Generics—Why I Don&#39;t Miss Generics Anymore</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">Jonathan Oliver</a> (c) Jonathan Oliver. All rights reserved.</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/index.js"></script>
+    
+</body>
+</html>
+

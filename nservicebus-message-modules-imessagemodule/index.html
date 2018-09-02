@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="NServiceBus Message Modules (IMessageModule)"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@jonathan_oliver"/>
+
+
+
+  	<meta property="og:title" content="NServiceBus Message Modules (IMessageModule) &middot; Jonathan Oliver" />
+  	<meta property="og:site_name" content="Jonathan Oliver" />
+  	<meta property="og:url" content="http://blog.jonathanoliver.com/nservicebus-message-modules-imessagemodule/" />
+
+    
+        
+            <meta property="og:image" content="/images/cover.jpg"/>
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2010-04-15T00:00:00Z" />
+
+    
+    
+
+    <title>NServiceBus Message Modules (IMessageModule) &middot; Jonathan Oliver</title>
+
+    
+    <meta name="description" content="When handling messages in NServiceBus it may become necessary to consume the same message multiple times but in different ways. For example, suppose you wanted " />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="http://blog.jonathanoliver.com/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://blog.jonathanoliver.com/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/nav.css" />
+
+    
+
+    
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/default.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        
+        <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+      
+          <link href="http://blog.jonathanoliver.com/index.xml" rel="alternate" type="application/rss+xml" title="Jonathan Oliver" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.46-DEV" />
+
+    <link rel="canonical" href="http://blog.jonathanoliver.com/nservicebus-message-modules-imessagemodule/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": ,
+        "logo": http://blog.jonathanoliver.com/images/tux.png
+    },
+    "author": {
+        "@type": "Person",
+        "name": ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": http://blog.jonathanoliver.com/images/tux.png,
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": https://blog.jonathanoliver.com,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": NServiceBus Message Modules (IMessageModule),
+    "name": NServiceBus Message Modules (IMessageModule),
+    "wordCount": 834,
+    "timeRequired": "PT4M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": en
+    },
+    "url": http://blog.jonathanoliver.com/nservicebus-message-modules-imessagemodule/,
+    "datePublished": 2010-04-15T00:00Z,
+    "dateModified": 2010-04-15T00:00Z,
+    
+    
+    "description": ,
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": http://blog.jonathanoliver.com/nservicebus-message-modules-imessagemodule/
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="http://blog.jonathanoliver.com/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="http://blog.jonathanoliver.com/"><img src="http://blog.jonathanoliver.com/images/tux.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button icon-feed" href="http://blog.jonathanoliver.com/index.xml" >&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">NServiceBus Message Modules (IMessageModule)</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2010-04-15T00:00:00Z">
+            Apr 15, 2010
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <p align="justify">When handling messages in NServiceBus it may become necessary to consume the same message multiple times but in different ways. For example, suppose you wanted to update separate yet related tables in the database. You could throw all of the business logic into a single message handler and be done with it. The only problem is that this message handler would be performing multiple actions and the intention behind the handler would be obscured. Instead, create multiple, distinct message handlers and have each perform one complete action related to the message, e.g. updating a table and publishing a message. In this way it becomes much easier to reason about each handler independently.</p> <p align="justify"><strong>Logical vs. Physical Messages</strong></p> <p align="justify">When NServiceBus receives a message from a message queue, it receives what is known as a TransportMessage. The TransportMessage can be viewed as a message envelope of sorts. It holds multiple business/application messages and gives some metadata about its return address, correlation identifier, deliverability guarantees, and time to be received.</p> <p align="justify">NServiceBus receives a TransportMessage from the queue and deserializes it, typically using the default XmlSerializer. Deserializing this physical message yields a collection of logical business/application messages. Each logical message is then dispatched to the list of registered handlers.</p> <p align="justify">But what if we wanted to wrap all of the handlers that we're executing? What if we wanted to have some behavior occur prior to the handlers receiving messages and after all handler code was complete? We need message modules.</p> <p align="justify"><strong>Using Message Modules</strong></p> <p align="justify">At the most basic level a message module is a .NET class that implements the IMessageModule interface which is found in the NServiceBus.dll assembly. This interface exposes three parameterless methods: HandleBeginMessage(), HandleEndMessage(), and HandleError(). These methods are invoked exactly once per physical TransportMessage received. In a typical scenario the only methods invoked will be HandleBeginMessage() and HandleEndMessage().</p> <p align="justify">Message modules are designed to wrap the receipt of a physical message. They allow you to set values and invoke behavior during the initial stages of receiving a message and to perform any cleanup after all handlers have executed. Lastly, they allow you to invoke additional behavior in failure scenarios.</p> <p align="justify">The canonical example of implementing a message module is when working with NHibernate's ISession and ISessionFactory. During HandleBeginMessage(), we create a new session and bind that session to the thread, e.g.</p> <blockquote> <p align="justify">CurrentSessionContext.Bind(sessionFactory.OpenSession());</p> </blockquote> <p align="justify">This allows each message handler executing on the same thread to obtain the same instance of ISession and thus participate in the same unit of work when interacting with a database. When all logical messages have been handled NServiceBus will invoke the module's HandleEndMessage() method where we can unbind the current session from the thread and perform additional clean as necessary.</p> <p align="justify"><strong>Message Module Behavior</strong></p> <p align="justify">There are a few things to be aware of when implementing a message module. The first is that message modules are global or singleton scoped. When the bus is started it requests the set of configured message modules from the configured IoC container. This set of modules is then held and stored for the duration of the bus lifetime.</p> <p align="justify">Because a message module is singleton scoped, care must be taken not to store message-specific state directly in the module. Instead, this information should be stored on the thread performing the processing by decorating the associated static member variable with the TheadStatic attribute. In addition NServiceBus reuses threads. This means that all values stored on the thread using the ThreadStatic attribute must be cleared and reinitialized at the start of processing a new message. Failure to reset all state within a module may lead to subtle bugs in your infrastructure code.</p> <p align="justify">Multiple message modules can be registered to execute. Simply have each implement IMessageModule. NServiceBus will automatically scan all assemblies in the runtime directory and register any classes that implement IMessageModule. Generally, the ordering of message modules should be unimportant to your application code. Nonetheless, you may explicitly control the ordering of the message modules by registering each with your IoC container explicitly and in the order that best fits your requirements. Message modules are always invoked from first to last. This means that when HandleBeginMessage() is called, it is called on the first registered module then on the second registered module and so on. This same ordering—first to last—is maintained when invoking HandleEndMessage() and HandleError().</p> <p align="justify">When a message module is registered with the bus, at least two of the three methods will always be invoked—HandleBeginMessage() and HandleEndMessage(). In error or failure conditions these two methods will be invoked and then HandleError() will be invoked. This means that there isn't a "Finally()" or "Dispose()" method for each module. That is, there's no way to be sure that HandleEndMessage() is the last method to be invoked because it may be followed by HandleError() in failure conditions.</p> <p align="justify"><strong>Conclusion</strong></p> <p align="justify">Despite a few minor quirks in the current implementation message modules serve a valuable purpose inside of an application and can be leveraged when the situation dictates their use, just like any other tool in the expansive NServiceBus toolbelt.</p> 
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+
+
+
+
+<figure class="author-image">
+    <a class="img" href="http://blog.jonathanoliver.com/" style="background-image: url(/images/tux.png)"><span class="hidden">Jonathan Oliver's Picture</span></a>
+</figure>
+
+
+<section class="author">
+  <h4><a href="http://blog.jonathanoliver.com/">Jonathan Oliver</a></h4>
+  
+  <p>Read <a href="http://blog.jonathanoliver.com/">more posts</a> by this author.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">Utah, USA</span>
+    <span class="author-link icon-link"><a href="https://blog.jonathanoliver.com">https://blog.jonathanoliver.com</a></span>
+  </div>
+</section>
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=NServiceBus%20Message%20Modules%20%28IMessageModule%29&nbsp;-&nbsp;Jonathan%20Oliver&amp;url=http%3a%2f%2fblog.jonathanoliver.com%2fnservicebus-message-modules-imessagemodule%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.jonathanoliver.com%2fnservicebus-message-modules-imessagemodule%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fblog.jonathanoliver.com%2fnservicebus-message-modules-imessagemodule%2f&amp;description=NServiceBus%20Message%20Modules%20%28IMessageModule%29"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fblog.jonathanoliver.com%2fnservicebus-message-modules-imessagemodule%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "http:\/\/blog.jonathanoliver.com\/nservicebus-message-modules-imessagemodule\/";  
+this.page.identifier = "http:\/\/blog.jonathanoliver.com\/nservicebus-message-modules-imessagemodule\/"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://jonathanoliver.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="http://blog.jonathanoliver.com/nservicebus-distributed-transaction-woes/">
+          <section class="post">
+              <h2>NServiceBus Distributed Transaction Woes</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="http://blog.jonathanoliver.com/extending-nservicebus-per-unit-of-work-ioc-container/">
+          <section class="post">
+              <h2>Extending NServiceBus: Per Unit of Work IoC Container</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">Jonathan Oliver</a> (c) Jonathan Oliver. All rights reserved.</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/index.js"></script>
+    
+</body>
+</html>
+

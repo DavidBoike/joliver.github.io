@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="CQRS EventStore v3.0"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@jonathan_oliver"/>
+
+
+
+  	<meta property="og:title" content="CQRS EventStore v3.0 &middot; Jonathan Oliver" />
+  	<meta property="og:site_name" content="Jonathan Oliver" />
+  	<meta property="og:url" content="http://blog.jonathanoliver.com/cqrs-eventstore-v3-0/" />
+
+    
+        
+            <meta property="og:image" content="/images/cover.jpg"/>
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2011-09-22T00:00:00Z" />
+
+    
+    
+
+    <title>CQRS EventStore v3.0 &middot; Jonathan Oliver</title>
+
+    
+    <meta name="description" content="The official release for EventStore 3.0 is just around the corner. Following SemVer semantics, this is now version 3.0 instead of 2.1 or whatever. his post is t" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="http://blog.jonathanoliver.com/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://blog.jonathanoliver.com/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/nav.css" />
+
+    
+
+    
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/default.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        
+        <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+      
+          <link href="http://blog.jonathanoliver.com/index.xml" rel="alternate" type="application/rss+xml" title="Jonathan Oliver" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.46-DEV" />
+
+    <link rel="canonical" href="http://blog.jonathanoliver.com/cqrs-eventstore-v3-0/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": ,
+        "logo": http://blog.jonathanoliver.com/images/tux.png
+    },
+    "author": {
+        "@type": "Person",
+        "name": ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": http://blog.jonathanoliver.com/images/tux.png,
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": https://blog.jonathanoliver.com,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": CQRS EventStore v3.0,
+    "name": CQRS EventStore v3.0,
+    "wordCount": 647,
+    "timeRequired": "PT4M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": en
+    },
+    "url": http://blog.jonathanoliver.com/cqrs-eventstore-v3-0/,
+    "datePublished": 2011-09-22T00:00Z,
+    "dateModified": 2011-09-22T00:00Z,
+    
+    
+    "description": ,
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": http://blog.jonathanoliver.com/cqrs-eventstore-v3-0/
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="http://blog.jonathanoliver.com/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="http://blog.jonathanoliver.com/"><img src="http://blog.jonathanoliver.com/images/tux.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button icon-feed" href="http://blog.jonathanoliver.com/index.xml" >&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">CQRS EventStore v3.0</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2011-09-22T00:00:00Z">
+            Sep 22, 2011
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <p align="justify">The official release for EventStore 3.0 is just around the corner. Following <a href="http://semver.org/">SemVer</a> semantics, this is now version 3.0 instead of 2.1 or whatever. his post is to highlight the differences between 2.0 and 3.0. First and foremost, the packages are available for download here in both .NET 3.5 and .NET 4.0 flavors:</p>  <p align="justify"><a href="https://github.com/joliver/EventStore/downloads">https://github.com/joliver/EventStore/downloads</a> (contains all binaries and plugins for various persistence and serialization methods)</p>  <p align="justify">On NuGet, the following packages have been pushed. Because this is a beta, not all of them are marked as "recommended" yet.</p>  <p align="justify"><a href="http://nuget.org/List/Packages/EventStore">http://nuget.org/List/Packages/EventStore</a>     <br /><a href="http://nuget.org/List/Packages/EventStore.Logging.NLog">http://nuget.org/List/Packages/EventStore.Logging.NLog</a>     <br /><a href="http://nuget.org/List/Packages/EventStore.Logging.Log4Net">http://nuget.org/List/Packages/EventStore.Logging.Log4Net</a>     <br /><a href="http://nuget.org/List/Packages/EventStore.Serialization.Json">http://nuget.org/List/Packages/EventStore.Serialization.Json</a>     <br /><a href="http://nuget.org/List/Packages/EventStore.Serialization.ServiceStack">http://nuget.org/List/Packages/EventStore.Serialization.ServiceStack</a>     <br /><a href="http://nuget.org/List/Packages/EventStore.Persistence.RavenPersistence">http://nuget.org/List/Packages/EventStore.Persistence.RavenPersistence</a>     <br /><a href="http://nuget.org/List/Packages/EventStore.Persistence.MongoPersistence">http://nuget.org/List/Packages/EventStore.Persistence.MongoPersistence</a></p>  <p align="justify"><strong>Big Changes</strong></p>  <ul>   <li>     <div align="justify"><strong>Paging</strong>: The SQL and Raven implementations now support paging automagically. This is to help facilitate queries where large result sets could potentially be returned, e.g. an stream with hundreds or thousands of commits against it or returning all commits since a given point in time. Page size is configurable with sensible defaults. Mongo already supports paging under the hood automatically.</div>   </li>    <li>     <div align="justify"><strong>Two-phase commit</strong>: Perhaps the biggest new feature is support for 2PC. Because *so* many people asked for it, here it is. There are a few big, fat issues to be aware of. First and foremost, your storage engine must support 2PC. That pretty much means SQL Server and Raven. <strong>One issue with Raven is that you get </strong><a href="https://groups.google.com/forum/# !searchin/ravendb/transactionscope/ravendb/RBNpmb8YNXo/BbB5Krc3rm4J"><strong>one operation per 2PC</strong></a><strong>.</strong>  This is due to the way Raven handles 2PC and doesn't update its indexes on commits until *after* the full transaction completes. In other words, you can't query and get the stuff you just saved until after the transaction is complete.</div>   </li>    <li>     <div align="justify">Most all dependencies are now automatically resolved from the NuGet gallery *at compile time*.</div>   </li>    <li>     <div align="justify">The two message "dispatchers"—sync and async—are now called '"dispatch schedulers", therefore the interface IDispatchCommits is now IScheduleDispatches. The associated IPublishMessages (which never felt like a good fit), is now called IDispatchCommits. The associated implementations have changed accordingly.</div>   </li>    <li>     <div align="justify">Added logging throughout the library. There's a little bit left to do for logging in Raven and Mongo, but all activities can now be logged. You can output the diagnostic messages to the console, trace window, log4net, or NLog. This can be specified using the "<strong>LogTo</strong>" wireup overload.</div>   </li>    <li>     <div align="justify">Added "SystemTime" abstraction to facilitate testing.</div>   </li>    <li>     <div align="justify">Added support to publish packages to NuGet.</div>   </li>    <li>     <div align="justify">For those using MySQL, I added an index that was missing—you may want to run this to add the index: <strong>CREATE INDEX IX_Commits_Stamp ON Commits (CommitStamp);</strong></div>   </li>    <li>     <div align="justify">The SQL implementation will now throw a "StorageUnavailableException" if storage is offline.</div>   </li>    <li>     <div align="justify">A few of the interfaces and implementations surrounding SQL persistence have changed—this should only really affect you if you're doing a custom SQL dialect.</div>   </li>    <li>     <div align="justify">Raven can now be run be run in Azure without a config file.</div>   </li>    <li>     <div align="justify">Fixed a few outstanding issues that had built up in the GitHub issue tracker.</div>   </li> </ul>  <p align="justify">Once this release solidifies, I'll turn my attention to 3.1 (hopefully it'll be a point release). There are some exciting things coming in 3.1 and beyond:</p>  <ul>   <li>     <div align="justify">Merging in the &quot;essence" of CommonDomain (which was spike code that worked a little too well) into EventStore but with a slightly different model that doesn't violate the spirit and ultimate purpose of either library.</div>   </li>    <li>     <div align="justify">Support for Amazon (SimpleDB/S3)</div>   </li>    <li>     <div align="justify">Support for Windows Azure (Tables/Blobs)</div>   </li>    <li>     <div align="justify">Support for CouchDB</div>   </li>    <li>     <div align="justify">Support for Cassandra</div>   </li>    <li>     <div align="justify">Support for Redis</div>   </li>    <li>     <div align="justify">Support for Oracle</div>   </li>    <li>     <div align="justify">Support for Sybase</div>   </li>    <li>     <div align="justify">Support for a local, file system-based store.</div>   </li>    <li>     <div align="justify">Support for Protocol Buffers and other serialization formats.</div>   </li> </ul>  <p align="justify">In the near future, perhaps after this release or one of the next ones, I will be dropping support for .NET 3.5 entirely. There is a point at which I can't hold this library back any longer from taking advantage of .NET 4.0-specific features. I don't expect any big showstoppers with this beta release. Once I address any feedback I get and have used this in production on my own systems long enough, I plan to push a release by around the first or second week of October.</p>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+
+
+
+
+<figure class="author-image">
+    <a class="img" href="http://blog.jonathanoliver.com/" style="background-image: url(/images/tux.png)"><span class="hidden">Jonathan Oliver's Picture</span></a>
+</figure>
+
+
+<section class="author">
+  <h4><a href="http://blog.jonathanoliver.com/">Jonathan Oliver</a></h4>
+  
+  <p>Read <a href="http://blog.jonathanoliver.com/">more posts</a> by this author.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">Utah, USA</span>
+    <span class="author-link icon-link"><a href="https://blog.jonathanoliver.com">https://blog.jonathanoliver.com</a></span>
+  </div>
+</section>
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=CQRS%20EventStore%20v3.0&nbsp;-&nbsp;Jonathan%20Oliver&amp;url=http%3a%2f%2fblog.jonathanoliver.com%2fcqrs-eventstore-v3-0%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.jonathanoliver.com%2fcqrs-eventstore-v3-0%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fblog.jonathanoliver.com%2fcqrs-eventstore-v3-0%2f&amp;description=CQRS%20EventStore%20v3.0"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fblog.jonathanoliver.com%2fcqrs-eventstore-v3-0%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "http:\/\/blog.jonathanoliver.com\/cqrs-eventstore-v3-0\/";  
+this.page.identifier = "http:\/\/blog.jonathanoliver.com\/cqrs-eventstore-v3-0\/"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://jonathanoliver.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="http://blog.jonathanoliver.com/eventstore-evan-presentation/">
+          <section class="post">
+              <h2>EventStore EVAN Presentation</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="http://blog.jonathanoliver.com/my-new-best-friend-git-merge-no-ff/">
+          <section class="post">
+              <h2>My New Best Friend: git merge  --no-ff</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">Jonathan Oliver</a> (c) Jonathan Oliver. All rights reserved.</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/index.js"></script>
+    
+</body>
+</html>
+

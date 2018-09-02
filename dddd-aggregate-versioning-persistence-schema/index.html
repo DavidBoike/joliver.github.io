@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="DDDD: Aggregate Versioning &amp; Persistence Schema"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@jonathan_oliver"/>
+
+
+
+  	<meta property="og:title" content="DDDD: Aggregate Versioning &amp; Persistence Schema &middot; Jonathan Oliver" />
+  	<meta property="og:site_name" content="Jonathan Oliver" />
+  	<meta property="og:url" content="http://blog.jonathanoliver.com/dddd-aggregate-versioning-persistence-schema/" />
+
+    
+        
+            <meta property="og:image" content="/images/cover.jpg"/>
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2009-04-04T00:00:00Z" />
+
+    
+    
+
+    <title>DDDD: Aggregate Versioning &amp; Persistence Schema &middot; Jonathan Oliver</title>
+
+    
+    <meta name="description" content="In a previous post, I talked about a possible relational database schema for event storage. I also discussed the idea behind aggregate versioning in a relationa" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="http://blog.jonathanoliver.com/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://blog.jonathanoliver.com/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/nav.css" />
+
+    
+
+    
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/default.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        
+        <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+      
+          <link href="http://blog.jonathanoliver.com/index.xml" rel="alternate" type="application/rss+xml" title="Jonathan Oliver" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.46-DEV" />
+
+    <link rel="canonical" href="http://blog.jonathanoliver.com/dddd-aggregate-versioning-persistence-schema/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": ,
+        "logo": http://blog.jonathanoliver.com/images/tux.png
+    },
+    "author": {
+        "@type": "Person",
+        "name": ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": http://blog.jonathanoliver.com/images/tux.png,
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": https://blog.jonathanoliver.com,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": DDDD: Aggregate Versioning &amp; Persistence Schema,
+    "name": DDDD: Aggregate Versioning &amp; Persistence Schema,
+    "wordCount": 452,
+    "timeRequired": "PT3M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": en
+    },
+    "url": http://blog.jonathanoliver.com/dddd-aggregate-versioning-persistence-schema/,
+    "datePublished": 2009-04-04T00:00Z,
+    "dateModified": 2009-04-04T00:00Z,
+    
+    
+    "description": ,
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": http://blog.jonathanoliver.com/dddd-aggregate-versioning-persistence-schema/
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="http://blog.jonathanoliver.com/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="http://blog.jonathanoliver.com/"><img src="http://blog.jonathanoliver.com/images/tux.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button icon-feed" href="http://blog.jonathanoliver.com/index.xml" >&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">DDDD: Aggregate Versioning &amp; Persistence Schema</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2009-04-04T00:00:00Z">
+            Apr 4, 2009
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <p>In a <a href="http://blog.jonathanoliver.com/2009/03/event-sourcing-persistence.html">previous post</a>, I talked about a possible relational database schema for event storage. I also discussed the idea behind <a href="http://blog.jonathanoliver.com/2009/03/event-sourcing-and-snapshots.html">aggregate versioning</a> in a relational store. In this post, I'd like to talk about storage in a non-relational persistence medium, such as <a href="http://couchdb.apache.org/">CouchDB</a>, <a href="http://hypertable.org/">HyperTable</a>, or even the file system.</p> <p>One of the reasons behind the "last_snapshot_seq" column in the relational schema is that is helps determine the point at which to start loading events from the database. Because, by definition, a relational set is unordered, we needed a way to retrieve all events that have occurred since (and including) the last snapshot event in one fell swoop.</p> <p>Using a non-relational model changes things slightly. We can start to treat the events stored for an aggregate as a collection accessible by an index. Using this mechanism, we start evaluating the events one by one beginning with the one that has most-recently occurred. For example, as we get the events, if the most recent event is not a snapshot message, we put it onto a temporary stack. We then read the next event. If that event is not a snapshot message, we push it on the stack on top of the previously retrieved message. We continue and read the next message. If that event <em>is</em> a snapshot, we run it through the aggregate, pop the stack and run the next event through the aggregate root and so forth. This has the effect of bringing our aggregate to the last known state.</p> <p>As you can see, we're working with events one at a time from the persistence engine. Because of this, we need to know the sequence number of the most recent event to be processed by the aggregate, which allows us to know the point at which to start loading events. This is where the storage for the aggregate version comes into play. In Greg's <a href="http://www.viddler.com/explore/GregYoung/videos/5/">devTeach video</a> (at 39:45), he mentions persisting the version to the persistence mechanism.</p> <p>The reason that it's important to store this value is so that we know the sequence number of the event at which to start retrieving the event messages from the store.</p> <p>Granted the event store could be implemented any number of ways. In thinking about it, you could still potentially store the last snapshot message sequence and load events forward (using a queue) or you could read from the end and move to the beginning of the storage (using a stack). The important thing is that you know the point at which to begin loading an event, that they are loaded in order, AND that you know the version number of the aggregate for the next message when you're pushing events to the persistence engine.</p> 
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+
+
+
+
+<figure class="author-image">
+    <a class="img" href="http://blog.jonathanoliver.com/" style="background-image: url(/images/tux.png)"><span class="hidden">Jonathan Oliver's Picture</span></a>
+</figure>
+
+
+<section class="author">
+  <h4><a href="http://blog.jonathanoliver.com/">Jonathan Oliver</a></h4>
+  
+  <p>Read <a href="http://blog.jonathanoliver.com/">more posts</a> by this author.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">Utah, USA</span>
+    <span class="author-link icon-link"><a href="https://blog.jonathanoliver.com">https://blog.jonathanoliver.com</a></span>
+  </div>
+</section>
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=DDDD%3a%20Aggregate%20Versioning%20%26%20Persistence%20Schema&nbsp;-&nbsp;Jonathan%20Oliver&amp;url=http%3a%2f%2fblog.jonathanoliver.com%2fdddd-aggregate-versioning-persistence-schema%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.jonathanoliver.com%2fdddd-aggregate-versioning-persistence-schema%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fblog.jonathanoliver.com%2fdddd-aggregate-versioning-persistence-schema%2f&amp;description=DDDD%3a%20Aggregate%20Versioning%20%26%20Persistence%20Schema"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fblog.jonathanoliver.com%2fdddd-aggregate-versioning-persistence-schema%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "http:\/\/blog.jonathanoliver.com\/dddd-aggregate-versioning-persistence-schema\/";  
+this.page.identifier = "http:\/\/blog.jonathanoliver.com\/dddd-aggregate-versioning-persistence-schema\/"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://jonathanoliver.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="http://blog.jonathanoliver.com/ddd-strategic-design-core-supporting-and-generic-subdomains/">
+          <section class="post">
+              <h2>DDD: Strategic Design: Core, Supporting, and Generic Subdomains</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="http://blog.jonathanoliver.com/dddd-double-dispatch/">
+          <section class="post">
+              <h2>DDDD: Double Dispatch</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">Jonathan Oliver</a> (c) Jonathan Oliver. All rights reserved.</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/index.js"></script>
+    
+</body>
+</html>
+

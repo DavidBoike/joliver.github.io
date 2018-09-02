@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="Extending NServiceBus: Per Unit of Work IoC Container"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@jonathan_oliver"/>
+
+
+
+  	<meta property="og:title" content="Extending NServiceBus: Per Unit of Work IoC Container &middot; Jonathan Oliver" />
+  	<meta property="og:site_name" content="Jonathan Oliver" />
+  	<meta property="og:url" content="http://blog.jonathanoliver.com/extending-nservicebus-per-unit-of-work-ioc-container/" />
+
+    
+        
+            <meta property="og:image" content="/images/cover.jpg"/>
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2010-04-14T00:00:00Z" />
+
+    
+    
+
+    <title>Extending NServiceBus: Per Unit of Work IoC Container &middot; Jonathan Oliver</title>
+
+    
+    <meta name="description" content="NServiceBus is great. That&#39;s really all there is to it. The framework is incredibly flexible such that it can be extended without too much effort. But there are" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="http://blog.jonathanoliver.com/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://blog.jonathanoliver.com/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/nav.css" />
+
+    
+
+    
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/default.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        
+        <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+      
+          <link href="http://blog.jonathanoliver.com/index.xml" rel="alternate" type="application/rss+xml" title="Jonathan Oliver" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.46-DEV" />
+
+    <link rel="canonical" href="http://blog.jonathanoliver.com/extending-nservicebus-per-unit-of-work-ioc-container/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": ,
+        "logo": http://blog.jonathanoliver.com/images/tux.png
+    },
+    "author": {
+        "@type": "Person",
+        "name": ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": http://blog.jonathanoliver.com/images/tux.png,
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": https://blog.jonathanoliver.com,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": Extending NServiceBus: Per Unit of Work IoC Container,
+    "name": Extending NServiceBus: Per Unit of Work IoC Container,
+    "wordCount": 746,
+    "timeRequired": "PT4M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": en
+    },
+    "url": http://blog.jonathanoliver.com/extending-nservicebus-per-unit-of-work-ioc-container/,
+    "datePublished": 2010-04-14T00:00Z,
+    "dateModified": 2010-04-14T00:00Z,
+    
+    
+    "description": ,
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": http://blog.jonathanoliver.com/extending-nservicebus-per-unit-of-work-ioc-container/
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="http://blog.jonathanoliver.com/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="http://blog.jonathanoliver.com/"><img src="http://blog.jonathanoliver.com/images/tux.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button icon-feed" href="http://blog.jonathanoliver.com/index.xml" >&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">Extending NServiceBus: Per Unit of Work IoC Container</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2010-04-14T00:00:00Z">
+            Apr 14, 2010
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <p align="justify">NServiceBus is great. That's really all there is to it. The framework is incredibly flexible such that it can be extended without too much effort. But there are a few small points of friction that we've encountered. This article shows how we've been able to address one such point.</p> <p align="justify"><strong>Choose Your IoC Container</strong></p> <p align="justify">Because NServiceBus allows us to choose an IoC container rather than forcing us to use a predefined one, we gain a lot of flexibility. At the same time NServiceBus must play to the lowest-common denominator of IoC containers and thus has not been able to take advantage of all of the developments across the dependency injection world.</p> <p align="justify">While most containers support "inner" or "nested" containers, some do not. Typically these inner containers are used to facilitate a unit of work, such that all resources resolved during the unit of work are shared. We happen to be using a container that does support nested scoping. Unfortunately NServiceBus does not leverage this extremely useful capability.</p> <p align="justify">Furthermore, more and more containers are handling the disposal of resources explicitly upon disposal of the inner or nested container. While some containers require you to call IoC.Release(someResourceHere), others perform that work for you when you call Dispose() on the nested container.</p> <p align="justify">Both of these capabilities combined—nested containers along with deterministic disposal of resources created by the nested container alleviate much of the development burden related to tracking and cleanup of resources.</p> <p align="justify">In NServiceBus the logical unit of work is a message handler while the physical unit of work is the receipt of a "TransportMessage" which may contain one or more logical messages (business or application messages). This means that the physical handling or processing of a TransportMessage is the perfect place to leverage our nested container unit of work pattern.</p> <p align="justify">This is where things get difficult. NServiceBus exposes no direct facility or capability to create a nested container upon receipt of a TransportMessage. While it does support the concept of message modules through implementing the IMessageModule interface, modules are not well suited to this task because they are singleton scoped and contain global, rather that unit of work-specific behavior.</p> <p align="justify"><strong>A Typical Example</strong></p> <p align="justify">The best example of this problem is demonstrated with NHibernate's ISession. ISession is our unit of work for all database-related activity. If per chance we have multiple message handlers handling the same message during the same physical/TransportMessage receive we want all of them to share the same ISession. We want a single database connection rather than multiple for handling a message. Conversely, we do not want to share the session with other handlers which may be concurrently processing separate physical messages on separate threads. <a href="http://stackoverflow.com/questions/1692709/nservicebus-message-handler-lifecycle-in-ioc-structuremap">The current workaround is to inject ISessionFactory</a> into your handlers directly and then call GetCurrentSession() to get the session for the thread. <a href="http://tech.groups.yahoo.com/group/nservicebus/message/5481">While this does work, it is less than ideal and represents a point of friction</a>.</p> <p align="justify">The same goes for all dependencies. While ISession is really easy because ISessionFactory exposes thread-bound instances, what about other dependencies that do not have similar capabilities? <a href="http://andreasohlund.blogspot.com/2010/03/thread-static-caching-in-nservicebus.html">A few IoC containers offer thread-static caching</a>, but if we're using one without that capability baked into the container, we've got to write our own.</p> <p align="justify"><strong>The Solution</strong></p> <p align="justify">What if all handlers that processed a single message could share dependencies? What if all of those dependencies were deterministically and reliably disposed at the end of processing for each physical message (TransportMessage)? What if we could leverage our container's ability to create nested or inner containers?</p> <p align="justify"><a href="http://github.com/joliver/NServiceBus.MessageSinks">I created a proof of concept around these very principles</a> and I have done some exploratory testing to show that it works. Rather than modifying the NSB source code to create an extension point, I simply leverage the facilities of our IoC container. The code currently works against Autofac 1.4, but could be ported to any popular container that supports nested containers, e.g. StructureMap, Castle, Ninject, etc.</p> <p align="justify">To utilize the sample, you must first compile the code in VS2008 and then add the associated assembly, NServiceBus.MessageSinks.AutofacConfiguration, to your project. At that point you change your NSB startup configuration to say:</p> <blockquote> <p align="justify">var builder = new ContainerBuilder();</p> <p align="justify">builder.Register(new <strong>MessageSinkConfigurationModule</strong>());</p> </blockquote> <p align="justify"><strong>Conclusion</strong></p> <p align="justify">Ideally there will be extension points added to NServiceBus which will allow us to utilize nested containers during the message handling portion, but in the meantime we're able to leverage additional IoC container capabilities without touching an NServiceBus code.</p> <p align="justify">I will be posting more about this and related solutions all touching on NServiceBus over the next few days.</p> 
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+
+
+
+
+<figure class="author-image">
+    <a class="img" href="http://blog.jonathanoliver.com/" style="background-image: url(/images/tux.png)"><span class="hidden">Jonathan Oliver's Picture</span></a>
+</figure>
+
+
+<section class="author">
+  <h4><a href="http://blog.jonathanoliver.com/">Jonathan Oliver</a></h4>
+  
+  <p>Read <a href="http://blog.jonathanoliver.com/">more posts</a> by this author.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">Utah, USA</span>
+    <span class="author-link icon-link"><a href="https://blog.jonathanoliver.com">https://blog.jonathanoliver.com</a></span>
+  </div>
+</section>
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Extending%20NServiceBus%3a%20Per%20Unit%20of%20Work%20IoC%20Container&nbsp;-&nbsp;Jonathan%20Oliver&amp;url=http%3a%2f%2fblog.jonathanoliver.com%2fextending-nservicebus-per-unit-of-work-ioc-container%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.jonathanoliver.com%2fextending-nservicebus-per-unit-of-work-ioc-container%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fblog.jonathanoliver.com%2fextending-nservicebus-per-unit-of-work-ioc-container%2f&amp;description=Extending%20NServiceBus%3a%20Per%20Unit%20of%20Work%20IoC%20Container"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fblog.jonathanoliver.com%2fextending-nservicebus-per-unit-of-work-ioc-container%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "http:\/\/blog.jonathanoliver.com\/extending-nservicebus-per-unit-of-work-ioc-container\/";  
+this.page.identifier = "http:\/\/blog.jonathanoliver.com\/extending-nservicebus-per-unit-of-work-ioc-container\/"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://jonathanoliver.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="http://blog.jonathanoliver.com/nservicebus-message-modules-imessagemodule/">
+          <section class="post">
+              <h2>NServiceBus Message Modules (IMessageModule)</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="http://blog.jonathanoliver.com/extending-nservicebus-thread-specific-message-modules/">
+          <section class="post">
+              <h2>Extending NServiceBus: Thread-Specific Message Modules</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">Jonathan Oliver</a> (c) Jonathan Oliver. All rights reserved.</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/index.js"></script>
+    
+</body>
+</html>
+

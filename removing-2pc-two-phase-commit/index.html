@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="Removing 2PC (Two Phase Commit)"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@jonathan_oliver"/>
+
+
+
+  	<meta property="og:title" content="Removing 2PC (Two Phase Commit) &middot; Jonathan Oliver" />
+  	<meta property="og:site_name" content="Jonathan Oliver" />
+  	<meta property="og:url" content="http://blog.jonathanoliver.com/removing-2pc-two-phase-commit/" />
+
+    
+        
+            <meta property="og:image" content="/images/cover.jpg"/>
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2011-03-16T00:00:00Z" />
+
+    
+    
+
+    <title>Removing 2PC (Two Phase Commit) &middot; Jonathan Oliver</title>
+
+    
+    <meta name="description" content="I received the following email today and I thought I&#39;d answer it as a blog post so that all can benefit:
+ If you remove the 2PC from the system, how do you deal" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="http://blog.jonathanoliver.com/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://blog.jonathanoliver.com/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/nav.css" />
+
+    
+
+    
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/default.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        
+        <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+      
+          <link href="http://blog.jonathanoliver.com/index.xml" rel="alternate" type="application/rss+xml" title="Jonathan Oliver" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.46-DEV" />
+
+    <link rel="canonical" href="http://blog.jonathanoliver.com/removing-2pc-two-phase-commit/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": ,
+        "logo": http://blog.jonathanoliver.com/images/tux.png
+    },
+    "author": {
+        "@type": "Person",
+        "name": ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": http://blog.jonathanoliver.com/images/tux.png,
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": https://blog.jonathanoliver.com,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": Removing 2PC (Two Phase Commit),
+    "name": Removing 2PC (Two Phase Commit),
+    "wordCount": 566,
+    "timeRequired": "PT3M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": en
+    },
+    "url": http://blog.jonathanoliver.com/removing-2pc-two-phase-commit/,
+    "datePublished": 2011-03-16T00:00Z,
+    "dateModified": 2011-03-16T00:00Z,
+    
+    
+    "description": ,
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": http://blog.jonathanoliver.com/removing-2pc-two-phase-commit/
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="http://blog.jonathanoliver.com/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="http://blog.jonathanoliver.com/"><img src="http://blog.jonathanoliver.com/images/tux.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button icon-feed" href="http://blog.jonathanoliver.com/index.xml" >&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">Removing 2PC (Two Phase Commit)</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2011-03-16T00:00:00Z">
+            Mar 16, 2011
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <p align="justify">I received the following email today and I thought I'd answer it as a blog post so that all can benefit:</p> <blockquote> <p align="justify">If you remove the 2PC from the system, how do you deal with ensuring that published events are: </p> <p align="justify">* truly published, </p> <p align="justify">* not lost, </p> <p align="justify">* that there is confidence that the interested parties (subscribers) are truly receiving and processing the events in a 'timely' manner</p> <p align="justify">* and that there is confidence and a method that the system can gracefully recover from unexpected situations?</p> <p align="justify">This is an area that seems to be glossed over quite a bit in the talks and sample code.</p> <p align="justify">Most of the time, the 'talks' say, &quot;Throw it in a durable queue, and then it's there (easy-peasy)&quot; and sample code uses an in-memory synchronous stream of registered methods calls to have a lightweight bus.</p> <p align="justify">How do dev's handle this in the 'real-world'?</p> <p align="justify">Perhaps I can ask you this question - how do you normally implement your event processing logic and ensuring that, for example, read models are updated properly even when, for example, db connections go down without using 2PC?</p> </blockquote> <p align="justify">Here is my answer:</p> <p align="justify">In the EventStore, here's how I handle publishing without 2PC:</p> <ol> <li> <div align="justify">When a batch of events are received, they are durably stored to disk with a "Dispatched" flag of false—meaning they haven't been published.</div> </li> <li> <div align="justify">The batch of events which I call a "commit" is then pushed to a "dispatcher" (like NServiceBus) on a different thread.</div> </li> <li> <div align="justify">The dispatcher publishes all of the events in the commit and commits its own transaction against the queue.</div> </li> <li> <div align="justify">The dispatcher marks the batch of events/commit as dispatched.</div> </li> </ol> <p align="justify">If at any point the dispatch fails, the commit is still marked as undispatched and when the system comes back online it will immediately publish those events. Yes, the introduces a slightly possibility that the message might be published more than once, which is why we need to de-duplicate when handling messages in the read models.</p> <p align="justify">As far as updating a read model without 2PC, here are the general steps:</p> <ol> <li> <div align="justify">Receive the event and update your view models accordingly.</div> </li> <li> <div align="justify">As part of the same database transaction, record the unique identifier for the message into some kind of "I've handled this message already" table.</div> </li> <li> <div align="justify">Commit the database transaction.</div> </li> </ol> <p align="justify">If that message is ever received again, your system will try to insert into the table with all of the message ids, but the transaction will fail because you've already handled the message previously. Simply catch this duplicate insert exception and then drop the message. Or you could be more proactive and find out if the message id is already in the table before you update anything. But this situation should be very seldom such that I would recommend the more reactive approach.</p> <p align="justify">One question that is too often overlooked is, how long do you keep those identifiers around before remove them. That question will depend upon the nature of your system and how long the possibility of duplicate messages exist. You could easily setup an automated/scheduled task to clean out old identifiers that have been in the table for perhaps a few days or even a week or more.</p> <p align="justify">If you're using a storage engine for your view models that doesn't support traditional transactions, e.g. a NoSQL store, then you have to be a bit more creative about how you de-duplicate messages, but that's another topic for another day.</p> 
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+
+
+
+
+<figure class="author-image">
+    <a class="img" href="http://blog.jonathanoliver.com/" style="background-image: url(/images/tux.png)"><span class="hidden">Jonathan Oliver's Picture</span></a>
+</figure>
+
+
+<section class="author">
+  <h4><a href="http://blog.jonathanoliver.com/">Jonathan Oliver</a></h4>
+  
+  <p>Read <a href="http://blog.jonathanoliver.com/">more posts</a> by this author.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">Utah, USA</span>
+    <span class="author-link icon-link"><a href="https://blog.jonathanoliver.com">https://blog.jonathanoliver.com</a></span>
+  </div>
+</section>
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Removing%202PC%20%28Two%20Phase%20Commit%29&nbsp;-&nbsp;Jonathan%20Oliver&amp;url=http%3a%2f%2fblog.jonathanoliver.com%2fremoving-2pc-two-phase-commit%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.jonathanoliver.com%2fremoving-2pc-two-phase-commit%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fblog.jonathanoliver.com%2fremoving-2pc-two-phase-commit%2f&amp;description=Removing%202PC%20%28Two%20Phase%20Commit%29"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fblog.jonathanoliver.com%2fremoving-2pc-two-phase-commit%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "http:\/\/blog.jonathanoliver.com\/removing-2pc-two-phase-commit\/";  
+this.page.identifier = "http:\/\/blog.jonathanoliver.com\/removing-2pc-two-phase-commit\/"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://jonathanoliver.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="http://blog.jonathanoliver.com/ilmerge-gotcha/">
+          <section class="post">
+              <h2>ILMerge Gotcha</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="http://blog.jonathanoliver.com/cqrs-event-sourcing-and-immutable-data/">
+          <section class="post">
+              <h2>CQRS: Event Sourcing and Immutable Data</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">Jonathan Oliver</a> (c) Jonathan Oliver. All rights reserved.</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/index.js"></script>
+    
+</body>
+</html>
+

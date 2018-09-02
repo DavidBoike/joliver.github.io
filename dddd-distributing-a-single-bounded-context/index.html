@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="DDDD: Distributing A Single Bounded Context"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@jonathan_oliver"/>
+
+
+
+  	<meta property="og:title" content="DDDD: Distributing A Single Bounded Context &middot; Jonathan Oliver" />
+  	<meta property="og:site_name" content="Jonathan Oliver" />
+  	<meta property="og:url" content="http://blog.jonathanoliver.com/dddd-distributing-a-single-bounded-context/" />
+
+    
+        
+            <meta property="og:image" content="/images/cover.jpg"/>
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2009-08-10T00:00:00Z" />
+
+    
+    
+
+    <title>DDDD: Distributing A Single Bounded Context &middot; Jonathan Oliver</title>
+
+    
+    <meta name="description" content="In a previous post, I detailed all of the reasons why processing messages one by one with an aggregate root was a good thing. I am now going to contradict some " />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="http://blog.jonathanoliver.com/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://blog.jonathanoliver.com/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/nav.css" />
+
+    
+
+    
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/default.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        
+        <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+      
+          <link href="http://blog.jonathanoliver.com/index.xml" rel="alternate" type="application/rss+xml" title="Jonathan Oliver" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.46-DEV" />
+
+    <link rel="canonical" href="http://blog.jonathanoliver.com/dddd-distributing-a-single-bounded-context/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": ,
+        "logo": http://blog.jonathanoliver.com/images/tux.png
+    },
+    "author": {
+        "@type": "Person",
+        "name": ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": http://blog.jonathanoliver.com/images/tux.png,
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": https://blog.jonathanoliver.com,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": DDDD: Distributing A Single Bounded Context,
+    "name": DDDD: Distributing A Single Bounded Context,
+    "wordCount": 724,
+    "timeRequired": "PT4M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": en
+    },
+    "url": http://blog.jonathanoliver.com/dddd-distributing-a-single-bounded-context/,
+    "datePublished": 2009-08-10T00:00Z,
+    "dateModified": 2009-08-10T00:00Z,
+    
+    
+    "description": ,
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": http://blog.jonathanoliver.com/dddd-distributing-a-single-bounded-context/
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="http://blog.jonathanoliver.com/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="http://blog.jonathanoliver.com/"><img src="http://blog.jonathanoliver.com/images/tux.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button icon-feed" href="http://blog.jonathanoliver.com/index.xml" >&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">DDDD: Distributing A Single Bounded Context</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2009-08-10T00:00:00Z">
+            Aug 10, 2009
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <p>In a <a href="http://blog.jonathanoliver.com/2009/07/serializing-queuing-messages-to.html">previous post</a>, I detailed all of the reasons why processing messages one by one with an aggregate root was a good thing. I am now going to contradict some of the main points in that post. While certain aspects still hold true, there is a much larger matter involved.</p> <p>First, the points that I still consider to be valid:</p> <ol> <li>Don't have threading logic in your aggregate roots. Don't do things with locks, monitors, mutexes, etc. Your domain objects should run on a single thread at a time. They're going to be complex enough as is with business concerns, why add so much incidental complexity related to threading and infrastructure to cloud their intent? </li> <li>Don't use synchronous calls to services within your aggregates. Send a message to the service. The service will, at some point in the future, publish a message asynchronously back to the aggregate and the aggregate will continue processing. </li> </ol> <p>While messaging patterns easily allow us to distribute the various/different bounded contexts (subsystems) across multiple machines, how do we handle splitting a single bounded context? <a href="http://blog.jonathanoliver.com/2009/03/dddd-locatornot-single-point-of-failure.html">My initial understanding</a> was to us some kind of partitioning strategy with <a href="http://tech.groups.yahoo.com/group/domaindrivendesign/message/14088">advanced routing mechanisms</a>. This type of strategy may be overkill for most scenarios.</p> <p>The simple answer is optimistic concurrency—sort of. Optimistic concurrency tells us that, while we were working with a copy of an object, the original object has changed underneath us. Greg has mentioned <a href="http://tech.groups.yahoo.com/group/domaindrivendesign/message/12615">IConflictWith</a> as a way to solve this issue. But there's still something missing. IConflictWith is only designed to deal with *commands* that you send to your domain. When a domain object receives two commands that conflict, it may ultimately reject one or both. Events are another matter. Events happened and must be dealt with—they cannot be rejected.</p> <p>In a single machine/context environment, things are easy. In fact, it's the simplest thing that could possibly work. The problems that you may ultimately encounter in this scenario relate to fault tolerance/single point of failure and vertical scaling to name a few. For bounded contexts in your domain that require a timely response due to strict SLAs, you absolutely must have some kind of fault tolerance. This requires distributing a single bounded context such that it runs on multiple machines simultaneously.</p> <p>The big problem running a single bounded context on multiple machines relates to consistency within aggregates. If an aggregate can run on machine A and machine B simultaneously, who's right? Who is "consistent"? They both are. By using messages, we send all appropriate events to the other instance of the bounded context so that it can be made aware of what happened in our instance. But that introduces yet another problem still: what happens if they can't communicate?</p> <p>If you have two machines, you can virtually guarantee that the network between them will be  unavailable at some point in time. But if the network is unavailable, how do we ensure that the events between copies of the same aggregate are handled by the other copies quickly? How can each copy be made aware of the events from the other copies? They can't. At least, not until network connectivity is restored.</p> <p>Suppose you have geo-distributed your application. One critical bounded context of the application is running on a server in Los Angeles and another copy of that same bounded context in New York. If for some reason that network between them goes down, each piece will continue to operate and service requests. If the network is down for a few minutes, hours, possibly even days, each piece can continue to process and be available.</p> <p>In the above scenario, what are the chances that each piece may have performed some work that was also performed by the other? What are the chances that each copy has started to diverge from the other? The chances are pretty good—especially as more time passes. How do we handle this? How do we reconcile conflicting differences between two copies of the <strong>same</strong> aggregate object? Compensating actions.</p> <p>At some point in the messaging pipeline—perhaps as late as the reporting bounded context—something will detect the anomaly showing that these two aggregate instances have produced conflicting results. Whoever detects the anomaly sends a message back into the aggregate letting it know of the conflicted state. The aggregate would then take the appropriate compensating action in order to reconcile the differences.</p> 
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+
+
+
+
+<figure class="author-image">
+    <a class="img" href="http://blog.jonathanoliver.com/" style="background-image: url(/images/tux.png)"><span class="hidden">Jonathan Oliver's Picture</span></a>
+</figure>
+
+
+<section class="author">
+  <h4><a href="http://blog.jonathanoliver.com/">Jonathan Oliver</a></h4>
+  
+  <p>Read <a href="http://blog.jonathanoliver.com/">more posts</a> by this author.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">Utah, USA</span>
+    <span class="author-link icon-link"><a href="https://blog.jonathanoliver.com">https://blog.jonathanoliver.com</a></span>
+  </div>
+</section>
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=DDDD%3a%20Distributing%20A%20Single%20Bounded%20Context&nbsp;-&nbsp;Jonathan%20Oliver&amp;url=http%3a%2f%2fblog.jonathanoliver.com%2fdddd-distributing-a-single-bounded-context%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.jonathanoliver.com%2fdddd-distributing-a-single-bounded-context%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fblog.jonathanoliver.com%2fdddd-distributing-a-single-bounded-context%2f&amp;description=DDDD%3a%20Distributing%20A%20Single%20Bounded%20Context"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fblog.jonathanoliver.com%2fdddd-distributing-a-single-bounded-context%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "http:\/\/blog.jonathanoliver.com\/dddd-distributing-a-single-bounded-context\/";  
+this.page.identifier = "http:\/\/blog.jonathanoliver.com\/dddd-distributing-a-single-bounded-context\/"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://jonathanoliver.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="http://blog.jonathanoliver.com/dddd-the-event-storage-doesnt-store-commands/">
+          <section class="post">
+              <h2>DDDD: The Event Storage Doesn&#39;t Store Commands</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="http://blog.jonathanoliver.com/poor-mans-dependency-injection-take-42-action/">
+          <section class="post">
+              <h2>Poor Man&#39;s Dependency Injection: Take 42, Action!</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">Jonathan Oliver</a> (c) Jonathan Oliver. All rights reserved.</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/index.js"></script>
+    
+</body>
+</html>
+

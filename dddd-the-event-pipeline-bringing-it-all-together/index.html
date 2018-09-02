@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="DDDD: The Event Pipeline—Bringing It All Together"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@jonathan_oliver"/>
+
+
+
+  	<meta property="og:title" content="DDDD: The Event Pipeline—Bringing It All Together &middot; Jonathan Oliver" />
+  	<meta property="og:site_name" content="Jonathan Oliver" />
+  	<meta property="og:url" content="http://blog.jonathanoliver.com/dddd-the-event-pipeline-bringing-it-all-together/" />
+
+    
+        
+            <meta property="og:image" content="/images/cover.jpg"/>
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2009-03-25T00:00:00Z" />
+
+    
+    
+
+    <title>DDDD: The Event Pipeline—Bringing It All Together &middot; Jonathan Oliver</title>
+
+    
+    <meta name="description" content="There are little nuggets of gold in comments that Greg makes on various groups, such as Yahoo&#39;s DDD group. One of them is in regards to the event pipeline.
+The " />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="http://blog.jonathanoliver.com/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://blog.jonathanoliver.com/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/nav.css" />
+
+    
+
+    
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/default.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        
+        <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+      
+          <link href="http://blog.jonathanoliver.com/index.xml" rel="alternate" type="application/rss+xml" title="Jonathan Oliver" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.46-DEV" />
+
+    <link rel="canonical" href="http://blog.jonathanoliver.com/dddd-the-event-pipeline-bringing-it-all-together/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": ,
+        "logo": http://blog.jonathanoliver.com/images/tux.png
+    },
+    "author": {
+        "@type": "Person",
+        "name": ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": http://blog.jonathanoliver.com/images/tux.png,
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": https://blog.jonathanoliver.com,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": DDDD: The Event Pipeline—Bringing It All Together,
+    "name": DDDD: The Event Pipeline—Bringing It All Together,
+    "wordCount": 605,
+    "timeRequired": "PT3M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": en
+    },
+    "url": http://blog.jonathanoliver.com/dddd-the-event-pipeline-bringing-it-all-together/,
+    "datePublished": 2009-03-25T00:00Z,
+    "dateModified": 2009-03-25T00:00Z,
+    
+    
+    "description": ,
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": http://blog.jonathanoliver.com/dddd-the-event-pipeline-bringing-it-all-together/
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="http://blog.jonathanoliver.com/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="http://blog.jonathanoliver.com/"><img src="http://blog.jonathanoliver.com/images/tux.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button icon-feed" href="http://blog.jonathanoliver.com/index.xml" >&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">DDDD: The Event Pipeline—Bringing It All Together</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2009-03-25T00:00:00Z">
+            Mar 25, 2009
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <p>There are <a href="http://tech.groups.yahoo.com/group/domaindrivendesign/message/11496">little nuggets of gold</a> in comments that Greg makes on various groups, such as Yahoo's DDD group. One of them is in regards to the event pipeline.</p> <p>The responsibility of the event pipeline is "to provide an indexed view of the event storage."  In other words, it's like the repository pattern, but this time at a much lower level. Basically we want to make it look like all of the events are in memory.</p> <p>In <a href="http://tech.groups.yahoo.com/group/domaindrivendesign/message/11496">Greg's response</a> to a question Yahoo Groups, he mentions that he created a custom pipeline implementation using the file system which preserved the message ordering because it had to. I have been digging for this very response for a few weeks now. I was trying to determine the actual implementation details of the pipeline. This understanding of some of the implementation details helps me to reconcile my understanding of where the <a href="http://blog.jonathanoliver.com/2009/03/event-sourcing-and-write-ahead-logging.html">write-ahead log</a> fits into the picture. The write-ahead log *is* the pipeline—or at least part of it.</p> <p>It appears that the pipeline is broken down into two pieces: a local storage (the write-ahead log) and permanent, shared storage, meaning a persistence engine of some type—perhaps <a href="http://couchdb.apache.org/">CouchDB</a>? These two persistence mechanisms would most likely implement some type of IPipeline interface. Then, there would be another object, let's call it CompositePipeline that would also implement IPipeline, which would contain two IPipeline references—one to the local file system, and the other to the database.</p> <p>Here is where it gets interesting. As soon as a unit of work is complete, several things would happen transactionally. First, the message(s) sent to the bounded context would be removed from their message channel (if we're using a service bus) and the events would be serialized to the file system. There is a slight issue regarding the transactional capabilities of the file system prior to Vista, but that's beyond the scope of this blog post.</p> <p>In a completely separate process, we would have an instance of the FileSystemPipeline and a CouchDbPipeline and we would read events from the file system and put them into CouchDB in a transactional manner. This would in a multi-threaded, thread-safe manner. To completely avoid issues with file locking, we ensure that the instance of the pipeline inside of the bounded content memory space only adds to the file system—it never reads or deletes an event once written.</p> <p>What about concurrency? If the events are temporarily stored in the file system and the system goes offline before writing them to the database, how is the rest of the system made aware of those state changes?</p> <p>If you're only running a single instance of a bounded context, then it doesn't matter. Your reporting DB and other bounded contexts won't get the events until the machine comes back online—that's all part of the "eventually consistent" paradigm.</p> <p>I am still investigating how best to handle offline scenarios when there are multiple instances of the same bounded context. In general though, it doesn't appear to be much different—the rest of the system gets updated when the node comes back online.</p> <p>One possibility would be to have each event produced have some sort of correlation identifier which tied back to the original command message. Then, if the locator (<a href="http://blog.jonathanoliver.com/2009/03/dddd-locatornot-single-point-of-failure.html">content-based router</a>) detected a particular node was offline, it could re-dispatch those same commands to another node for processing. When the failed node came back online and started persisting to the database the persistence process would detect whether or not the particular correlation identifier was already stored and simply skip storing those events. I haven't thought this through all the way, but in general the idea might work.</p> 
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+
+
+
+
+<figure class="author-image">
+    <a class="img" href="http://blog.jonathanoliver.com/" style="background-image: url(/images/tux.png)"><span class="hidden">Jonathan Oliver's Picture</span></a>
+</figure>
+
+
+<section class="author">
+  <h4><a href="http://blog.jonathanoliver.com/">Jonathan Oliver</a></h4>
+  
+  <p>Read <a href="http://blog.jonathanoliver.com/">more posts</a> by this author.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">Utah, USA</span>
+    <span class="author-link icon-link"><a href="https://blog.jonathanoliver.com">https://blog.jonathanoliver.com</a></span>
+  </div>
+</section>
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=DDDD%3a%20The%20Event%20Pipeline%e2%80%94Bringing%20It%20All%20Together&nbsp;-&nbsp;Jonathan%20Oliver&amp;url=http%3a%2f%2fblog.jonathanoliver.com%2fdddd-the-event-pipeline-bringing-it-all-together%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.jonathanoliver.com%2fdddd-the-event-pipeline-bringing-it-all-together%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fblog.jonathanoliver.com%2fdddd-the-event-pipeline-bringing-it-all-together%2f&amp;description=DDDD%3a%20The%20Event%20Pipeline%e2%80%94Bringing%20It%20All%20Together"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fblog.jonathanoliver.com%2fdddd-the-event-pipeline-bringing-it-all-together%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "http:\/\/blog.jonathanoliver.com\/dddd-the-event-pipeline-bringing-it-all-together\/";  
+this.page.identifier = "http:\/\/blog.jonathanoliver.com\/dddd-the-event-pipeline-bringing-it-all-together\/"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://jonathanoliver.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="http://blog.jonathanoliver.com/ensure-code-file-line-lengths/">
+          <section class="post">
+              <h2>Ensure Code File Line Lengths</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="http://blog.jonathanoliver.com/concurrency-in-a-dddd-world/">
+          <section class="post">
+              <h2>Concurrency in a DDDD World</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">Jonathan Oliver</a> (c) Jonathan Oliver. All rights reserved.</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/index.js"></script>
+    
+</body>
+</html>
+

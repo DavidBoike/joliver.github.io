@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="Extending NServiceBus: Thread-Specific Message Modules"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@jonathan_oliver"/>
+
+
+
+  	<meta property="og:title" content="Extending NServiceBus: Thread-Specific Message Modules &middot; Jonathan Oliver" />
+  	<meta property="og:site_name" content="Jonathan Oliver" />
+  	<meta property="og:url" content="http://blog.jonathanoliver.com/extending-nservicebus-thread-specific-message-modules/" />
+
+    
+        
+            <meta property="og:image" content="/images/cover.jpg"/>
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2010-04-14T00:00:00Z" />
+
+    
+    
+
+    <title>Extending NServiceBus: Thread-Specific Message Modules &middot; Jonathan Oliver</title>
+
+    
+    <meta name="description" content="NServiceBus message modules are global objects that are invoked at various stages of processing for a physical message, e.g. during receipt, when processing is " />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="http://blog.jonathanoliver.com/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://blog.jonathanoliver.com/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/nav.css" />
+
+    
+
+    
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/default.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        
+        <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+      
+          <link href="http://blog.jonathanoliver.com/index.xml" rel="alternate" type="application/rss+xml" title="Jonathan Oliver" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.46-DEV" />
+
+    <link rel="canonical" href="http://blog.jonathanoliver.com/extending-nservicebus-thread-specific-message-modules/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": ,
+        "logo": http://blog.jonathanoliver.com/images/tux.png
+    },
+    "author": {
+        "@type": "Person",
+        "name": ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": http://blog.jonathanoliver.com/images/tux.png,
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": https://blog.jonathanoliver.com,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": Extending NServiceBus: Thread-Specific Message Modules,
+    "name": Extending NServiceBus: Thread-Specific Message Modules,
+    "wordCount": 720,
+    "timeRequired": "PT4M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": en
+    },
+    "url": http://blog.jonathanoliver.com/extending-nservicebus-thread-specific-message-modules/,
+    "datePublished": 2010-04-14T00:00Z,
+    "dateModified": 2010-04-14T00:00Z,
+    
+    
+    "description": ,
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": http://blog.jonathanoliver.com/extending-nservicebus-thread-specific-message-modules/
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="http://blog.jonathanoliver.com/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="http://blog.jonathanoliver.com/"><img src="http://blog.jonathanoliver.com/images/tux.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button icon-feed" href="http://blog.jonathanoliver.com/index.xml" >&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">Extending NServiceBus: Thread-Specific Message Modules</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2010-04-14T00:00:00Z">
+            Apr 14, 2010
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <p align="justify">NServiceBus message modules are global objects that are invoked at various stages of processing for a physical message, e.g. during receipt, when processing is complete, and upon any error condition. Their typical use case is to setup thread-specific values, such as outbound message headers or starting up a new instance of ISession and storing it on the thread.</p> <p align="justify">Message modules, while incredibly powerful, are somewhat troublesome. First, because they're shared, we have to remember to to avoid storing any state about message processing unless we store it on the thread by decorating it with the ThreadStatic attribute.</p> <p align="justify">One other quirk of message modules is that they execute from first to last for HandleBeginMessage, HandleEndMessage, and HandleError. In some situations, such as deterministic resource disposal, it would be nice to have them invoked from first to last for HandleBeginMessage and then last to first for HandleEndMessage/HandleError—in an inner-to-outer style.</p> <p align="justify">The biggest challenge relates to not having a "final"-type method. While message modules do expose HandleEndMessage and HandleError, we have no way of knowing which will be called last. True, HandleError will always be called after HandleEndMessage, but we have no way to determine if HandleError will be called once HandleEndMessage is invoked. Note that HandleEndMessage is always called, even in error conditions.</p> <p align="justify"><strong>A Typical Example</strong></p> <p align="justify">We have a situation that requires setting up an alternate TransactionScope outside of the normal TransactionScope associated with the processing of the message. Essentially we want to perform a "new TransactionScope(TransactionScopeOption.RequiresNew)". We can do this in a message module without difficulty. The problem comes when we're ready to Complete() the scope. Where do we call Complete()? NServiceBus is responsible for the transaction surrounding the processing of the message from the queue and is responsible for committing that transaction, but what about our transaction? Our transaction is not enlisted in the ambient transaction which means that we are responsible for calling Complete() explicitly.</p> <p align="justify">If we called Complete() from HandleEndMessage, how can we be sure that HandleError will not be called? If we did call Complete() and HandleError was called, it would be too late to roll back.</p> <p align="justify"><a href="http://tech.groups.yahoo.com/group/nservicebus/message/5481">One workaround</a> is to create a base message handler from which our message handler derives. This works great if you only have a single message handler per message (which is a best practice), but suppose we needed to have two handlers process the message? We would be required to implement a pre-handler and a post-handler for our example above. While it works, it less than ideal.</p> <p align="justify"><strong>The Solution</strong></p> <p align="justify">What if there was something kind of like a message module but kind of like a message handler—something in between? What if we had something whose lifetime was specific the processing of a physical message? What if it was invoked at critical points before and after all message handlers? What if it was thread specific so we wouldn't have to worry about ThreadStatic attributes.</p> <p align="justify"><a href="http://github.com/joliver/NServiceBus.MessageSinks">I created a proof of concept</a> around the these principles and am calling it a "<strong>MessageSink</strong>". A MessageSink exposes four critical points during the processing of a physical message:</p> <ul> <li> <div align="justify"><strong>Initialize</strong>: Before message processing.</div> </li> <li> <div align="justify">(Message handlers run here)</div> </li> <li> <div align="justify"><strong>Success</strong>: After all handlers have completed successfully.</div> </li> <li> <div align="justify"><strong>Failure</strong>: If any handler has thrown an exception.</div> </li> <li> <div align="justify"><strong>Dispose</strong>: After success or failure, when we're "cleaning up the sink".</div> </li> </ul> <p align="justify">One other cool think about MessageSinks is that, unlike message modules, they are called in order for Initialize and then in reverse order for Success/Failure/Dispose. This means that resources can be committed and cleaned up from an inner to outer manner.</p> <p align="justify">Rather than modifying the NSB source code to implement this custom behavior, I found that by implementing a custom ITransport which wraps the actual transport, usually MsmqTransport, I was able to create the above behavior.</p> <p align="justify">I don't yet have a convenient way to get this into NSB per the regular configuration syntax. I'm planning on creating a small proxy for IContainer which detects resolution of ITransport and then wraps the actual ITransport received from the container with the "MessageSinkTransport" and then returns the wrapped ITransport to NSB.</p> <p align="justify"><strong>Conclusion</strong></p> <p align="justify">While NServiceBus message modules are incredibly capable there are certain scenarios where they do not adequately cover our requirements. By leveraging message sinks we can more predictably gain access into the message processing pipeline to better respond to the various events which occur during such processing.</p> 
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+
+
+
+
+<figure class="author-image">
+    <a class="img" href="http://blog.jonathanoliver.com/" style="background-image: url(/images/tux.png)"><span class="hidden">Jonathan Oliver's Picture</span></a>
+</figure>
+
+
+<section class="author">
+  <h4><a href="http://blog.jonathanoliver.com/">Jonathan Oliver</a></h4>
+  
+  <p>Read <a href="http://blog.jonathanoliver.com/">more posts</a> by this author.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">Utah, USA</span>
+    <span class="author-link icon-link"><a href="https://blog.jonathanoliver.com">https://blog.jonathanoliver.com</a></span>
+  </div>
+</section>
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Extending%20NServiceBus%3a%20Thread-Specific%20Message%20Modules&nbsp;-&nbsp;Jonathan%20Oliver&amp;url=http%3a%2f%2fblog.jonathanoliver.com%2fextending-nservicebus-thread-specific-message-modules%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.jonathanoliver.com%2fextending-nservicebus-thread-specific-message-modules%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fblog.jonathanoliver.com%2fextending-nservicebus-thread-specific-message-modules%2f&amp;description=Extending%20NServiceBus%3a%20Thread-Specific%20Message%20Modules"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fblog.jonathanoliver.com%2fextending-nservicebus-thread-specific-message-modules%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "http:\/\/blog.jonathanoliver.com\/extending-nservicebus-thread-specific-message-modules\/";  
+this.page.identifier = "http:\/\/blog.jonathanoliver.com\/extending-nservicebus-thread-specific-message-modules\/"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://jonathanoliver.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="http://blog.jonathanoliver.com/extending-nservicebus-per-unit-of-work-ioc-container/">
+          <section class="post">
+              <h2>Extending NServiceBus: Per Unit of Work IoC Container</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="http://blog.jonathanoliver.com/cqrs-session-video-utah-code-camp-2010/">
+          <section class="post">
+              <h2>CQRS Session Video – Utah Code Camp 2010</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">Jonathan Oliver</a> (c) Jonathan Oliver. All rights reserved.</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/index.js"></script>
+    
+</body>
+</html>
+

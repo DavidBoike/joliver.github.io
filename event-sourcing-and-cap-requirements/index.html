@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="Event Sourcing and CAP Requirements"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@jonathan_oliver"/>
+
+
+
+  	<meta property="og:title" content="Event Sourcing and CAP Requirements &middot; Jonathan Oliver" />
+  	<meta property="og:site_name" content="Jonathan Oliver" />
+  	<meta property="og:url" content="http://blog.jonathanoliver.com/event-sourcing-and-cap-requirements/" />
+
+    
+        
+            <meta property="og:image" content="/images/cover.jpg"/>
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2010-02-22T00:00:00Z" />
+
+    
+    
+
+    <title>Event Sourcing and CAP Requirements &middot; Jonathan Oliver</title>
+
+    
+    <meta name="description" content="One of the great things about CQRS is that, because all read responsibilities have been removed from the service layer, the mechanism for storage can be vastly " />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="http://blog.jonathanoliver.com/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://blog.jonathanoliver.com/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/nav.css" />
+
+    
+
+    
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/default.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        
+        <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+      
+          <link href="http://blog.jonathanoliver.com/index.xml" rel="alternate" type="application/rss+xml" title="Jonathan Oliver" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.46-DEV" />
+
+    <link rel="canonical" href="http://blog.jonathanoliver.com/event-sourcing-and-cap-requirements/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": ,
+        "logo": http://blog.jonathanoliver.com/images/tux.png
+    },
+    "author": {
+        "@type": "Person",
+        "name": ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": http://blog.jonathanoliver.com/images/tux.png,
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": https://blog.jonathanoliver.com,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": Event Sourcing and CAP Requirements,
+    "name": Event Sourcing and CAP Requirements,
+    "wordCount": 996,
+    "timeRequired": "PT5M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": en
+    },
+    "url": http://blog.jonathanoliver.com/event-sourcing-and-cap-requirements/,
+    "datePublished": 2010-02-22T00:00Z,
+    "dateModified": 2010-02-22T00:00Z,
+    
+    
+    "description": ,
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": http://blog.jonathanoliver.com/event-sourcing-and-cap-requirements/
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="http://blog.jonathanoliver.com/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="http://blog.jonathanoliver.com/"><img src="http://blog.jonathanoliver.com/images/tux.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button icon-feed" href="http://blog.jonathanoliver.com/index.xml" >&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">Event Sourcing and CAP Requirements</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2010-02-22T00:00:00Z">
+            Feb 22, 2010
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <p align="justify">One of the great things about CQRS is that, because all read responsibilities have been removed from the service layer, the mechanism for storage can be vastly different. We can continue to use a relational database but we also have the option to utilize alternative storage engines, such a document database or an object database.</p> <p align="justify">From an application layer perspective, when we employ CQRS and utilize the event sourcing pattern we only require lookups based upon a unique key. We don't need to perform complex selects or joins or anything like that. This means that we only require a simple API from our persistent storage. Furthermore, because the event store when using event sourcing is append only, it eases some of our non-functional requirements.</p> <p align="justify">The <a href="http://www.julianbrowne.com/article/viewer/brewers-cap-theorem">CAP Theorem</a> states that between consistency, availability, and partition tolerance (which can generally be considered "scalability") we can only have two. A huge advantage of CQRS is that we are able to relax the consistency requirements of our read model in order to gain high availability and scalability. But what about the write model? We have very different requirements for our write model. Greg Young <a href="http://codebetter.com/blogs/gregyoung/archive/2010/02/20/cqrs-and-cap-theorem.aspx">has already written a little bit about this</a>, but I wanted to go into depth about the actual storage engines we could leverage for the write model for CQRS+event sourcing.</p> <p align="justify">Inside the service layer (the transactional part of the system) we have exactly two requirements: consistency and high availability. We don't need partition tolerance (scalability). Wait a second…we don't need scalability?!  Exactly. While we may want scalability for the system, we don't need the <strong>storage engine</strong> to provide us with scalability. When applying CQRS, we've broken up our system into business services and business components and we're (hopefully) utilizing asynchronous, one-way messaging, we've already partitioned our system. We've taken care of the partition tolerance at the application level. So we've done the work to break apart our system into many smaller pieces instead of one monolithic system.</p> <p align="justify"><strong>Consistency and Availability</strong></p> <p align="justify">In the last few years there has been a surge in the number of storage engines, both relational and otherwise. During this time I have been looking into many of them, but it wasn't until I realized my exact requirements that I was able to narrow down the field.</p> <p align="justify">While many popular document-oriented databases such as CouchDB and MongoDB are very, very appealing, they aren't able to provide the transactional guarantees (think ACID and synchronous replication) that we require for our domain model/transactional write model. Instead they are more BASE-oriented and focused. They relax consistency to provide availability and partition tolerance. Again, we're already partitioning our system ours manually along business service boundaries so we don't need that.</p> <p align="justify">[UPDATE: The transactional guarantee I'm referring to is more of a distributed transaction between a message queue and our storage engine. I have written <a href="http://blog.jonathanoliver.com/2010/04/extending-nservicebus-avoiding-two.html">a post about how to work around this "deficiency"</a> which enables us to utilize other storage engines.]</p> <p align="justify">What options do I have? Well, there are a bunch. If you have identified any, please comment so I can append to this list:</p> <ul> <li> <div align="justify">An RDBMS (more on this in a second)</div> </li> <li> <div align="justify"><a href="http://hadoop.apache.org/hbase/">HBase</a> (Hadoop)</div> </li> <li> <div align="justify"><a href="http://code.google.com/p/scalaris/">Scalaris</a> (aka Scalarix—this one is very intriguing; <a href="http://www.scribd.com/doc/12945138/Building-a-transactional-distributed-data-store-with-Erlang">great research paper</a>)</div> </li> <li> <div align="justify"><a href="http://code.google.com/appengine/">BigTable</a> (Google App Engine)</div> </li> <li> <div align="justify"><a href="http://code.google.com/p/terrastore/">Even some distributed hash tables</a></div> </li> </ul> <p align="justify"><strong>Using and Abusing Relational Databases</strong></p> <p align="justify">For most every project we could actually use a relational database for the event store. That's crazy talk!  If we've come all this way to break out from underneath the RDBMS mentality, why go running back? Well, we're not actually running back. We've come full circle, but we know the place for the first time. Instead of using an RDBMS by default, we've examined our exact requirements and now we're making informed, intelligent decisions about our needs versus what an RDBMS can offer us.</p> <p align="justify">First we would like tool support. Check. Next we want support in our programming language of choice. Check. Solid vendor that won't disappear tomorrow? Check. What about lots of community help and support? Check. Free? Check.</p> <p align="justify">The reason that so many are abandoning the traditional RDBMS product is to escape the impedance mismatch problem of object relational mapping and to gain the partition tolerance perspective at the expense of consistency. As mentioned previously, we don't have to worry about relationships when utilizing event sourcing. Further, we want consistency because we've already partitioned our system.</p> <p align="justify"><strong>Don't Scare Your Operations Team</strong></p> <p align="justify">One of the other great things about using a relational database is that it won't scare your operations team (if you have one). There is strength in familiarity. Because many of the popular relational database products have a wealth of paid and community support, we have resource for when problems occur. With alternative storage engines you may be left on your own—and that's the last place you want to be when your system is having trouble in production.</p> <p align="justify"><strong>Conclusion</strong></p> <p align="justify">So why not implement a simple transactional event store on top of a few database tables? Relational DBs can easily handle 1,000 writes/second—and that's per DB. We're allowed to have multiple instances. How many of your systems need 1,000 writes/second? Twitter does about 200 tweets/second. During the last presidential inauguration they spiked to about 5,000 tweets/second. We haven't even talked about sharding yet, e.g. vertically partitioning your domain such that users whose ID ends with 1-2 go to DB1, 3-4 go to DB2, etc.</p> <p align="justify">If you have serious performance requirements and are concerned about latency and have really high (fast) SLAs on your system, you can easily swap out the relational event store and either <a href="http://tech.groups.yahoo.com/group/altdotnet/message/15415">write your own</a> or utilize one of the above-mentioned storage engines, or vertically partition.</p> <p align="justify">One last thought: Depending upon your domain, you may still be able to utilize MongoDB or some other eventually consistence event store for your transactional store if losing messages on occasion is okay in your particular domain. This decision can be made on a per business component-basis, so you can mix and match depending upon your specific requirements.</p> 
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+
+
+
+
+<figure class="author-image">
+    <a class="img" href="http://blog.jonathanoliver.com/" style="background-image: url(/images/tux.png)"><span class="hidden">Jonathan Oliver's Picture</span></a>
+</figure>
+
+
+<section class="author">
+  <h4><a href="http://blog.jonathanoliver.com/">Jonathan Oliver</a></h4>
+  
+  <p>Read <a href="http://blog.jonathanoliver.com/">more posts</a> by this author.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">Utah, USA</span>
+    <span class="author-link icon-link"><a href="https://blog.jonathanoliver.com">https://blog.jonathanoliver.com</a></span>
+  </div>
+</section>
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Event%20Sourcing%20and%20CAP%20Requirements&nbsp;-&nbsp;Jonathan%20Oliver&amp;url=http%3a%2f%2fblog.jonathanoliver.com%2fevent-sourcing-and-cap-requirements%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.jonathanoliver.com%2fevent-sourcing-and-cap-requirements%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fblog.jonathanoliver.com%2fevent-sourcing-and-cap-requirements%2f&amp;description=Event%20Sourcing%20and%20CAP%20Requirements"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fblog.jonathanoliver.com%2fevent-sourcing-and-cap-requirements%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "http:\/\/blog.jonathanoliver.com\/event-sourcing-and-cap-requirements\/";  
+this.page.identifier = "http:\/\/blog.jonathanoliver.com\/event-sourcing-and-cap-requirements\/"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://jonathanoliver.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="http://blog.jonathanoliver.com/utah-code-camp-cqrs-presentation/">
+          <section class="post">
+              <h2>Utah Code Camp: CQRS Presentation</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="http://blog.jonathanoliver.com/event-sourcing-and-the-event-pipeline/">
+          <section class="post">
+              <h2>Event Sourcing and the Event Pipeline</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">Jonathan Oliver</a> (c) Jonathan Oliver. All rights reserved.</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/index.js"></script>
+    
+</body>
+</html>
+

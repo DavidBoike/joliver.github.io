@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="DDDD and CQS: Getting Started"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@jonathan_oliver"/>
+
+
+
+  	<meta property="og:title" content="DDDD and CQS: Getting Started &middot; Jonathan Oliver" />
+  	<meta property="og:site_name" content="Jonathan Oliver" />
+  	<meta property="og:url" content="http://blog.jonathanoliver.com/dddd-and-cqs-getting-started/" />
+
+    
+        
+            <meta property="og:image" content="/images/cover.jpg"/>
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2009-03-18T00:00:00Z" />
+
+    
+    
+
+    <title>DDDD and CQS: Getting Started &middot; Jonathan Oliver</title>
+
+    
+    <meta name="description" content="There are a number of good resources for getting started on Distributed Domain-Driven Design as well as architectural-level Command Query Separation (not to be " />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="http://blog.jonathanoliver.com/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://blog.jonathanoliver.com/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/nav.css" />
+
+    
+
+    
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/default.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        
+        <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+      
+          <link href="http://blog.jonathanoliver.com/index.xml" rel="alternate" type="application/rss+xml" title="Jonathan Oliver" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.46-DEV" />
+
+    <link rel="canonical" href="http://blog.jonathanoliver.com/dddd-and-cqs-getting-started/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": ,
+        "logo": http://blog.jonathanoliver.com/images/tux.png
+    },
+    "author": {
+        "@type": "Person",
+        "name": ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": http://blog.jonathanoliver.com/images/tux.png,
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": https://blog.jonathanoliver.com,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": DDDD and CQS: Getting Started,
+    "name": DDDD and CQS: Getting Started,
+    "wordCount": 288,
+    "timeRequired": "PT2M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": en
+    },
+    "url": http://blog.jonathanoliver.com/dddd-and-cqs-getting-started/,
+    "datePublished": 2009-03-18T00:00Z,
+    "dateModified": 2009-03-18T00:00Z,
+    
+    
+    "description": ,
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": http://blog.jonathanoliver.com/dddd-and-cqs-getting-started/
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="http://blog.jonathanoliver.com/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="http://blog.jonathanoliver.com/"><img src="http://blog.jonathanoliver.com/images/tux.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button icon-feed" href="http://blog.jonathanoliver.com/index.xml" >&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">DDDD and CQS: Getting Started</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2009-03-18T00:00:00Z">
+            Mar 18, 2009
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <p>There are a number of good resources for getting started on Distributed Domain-Driven Design as well as architectural-level Command Query Separation (not to be confused with CQS as a programming paradigm).</p> <p><strong>Basic Concepts</strong></p> <p>For starters, you should be familiar with &quot;regular&quot; DDD: <a href="http://en.wikipedia.org/wiki/Domain-driven_design">Domain-Driven Design</a>, <a href="http://www.infoq.com/news/2006/12/domain-driven-design">DDD Quickly</a>, and <a href="http://thinkddd.com/">Think DDD</a>.</p> <p>Then, you'll probably want to understand about distributed systems because the way that you think about programming in a distributed environment is most definitely not the traditional &quot;request/response&quot; paradigm: <a href="http://www.amazon.com/Enterprise-Integration-Patterns-Designing-Addison-Wesley/dp/0321200683/ref=pd_sim_b_2">Enterprise Integration Patterns</a>, <a href="http://www.amazon.com/Pattern-Oriented-Software-Architecture-Distributed-Computing/dp/0470059028">Pattern-Oriented Software Architecture, Volume 4 (Distributed Computing)</a>, and <a href="http://www.amazon.com/Distributed-Event-Based-Systems-Gero-M&uuml;hl/dp/3540326510/ref=sr_1_1?ie=UTF8&amp;s=books&amp;qid=1208908666&amp;sr=1-1">Distributed, Event-Based Systems</a>.</p> <p>From there, you'll want to read up just a bit on <a href="http://www.udidahan.com/2008/08/11/command-query-separation-and-soa/">Command Query Separation and SOA</a> on Udi Dahan's blog as well as some of the <a href="http://nservicebus.com/Overview.aspx">processing methods</a> using messaging.</p> <p><strong>Videos & Screencasts</strong></p> <p>You may want to allocate a block of time. I can promise you it is probably the best few hours you'll ever spend. Think of this as an investment. If you spend all day writing code, wouldn't it be nice to &quot;sharpen the saw&quot; from time to time?</p> <p>With that block of time there are several videos that are worth watching. I advocate watching them in order listed below. I had to watch each several times to really have things sink in.</p> <p><a href="http://codebetter.com/blogs/gregyoung/archive/2008/05/20/devteach-talk.aspx">devTeach</a> - The best &quot;primer&quot; to DDDD and CQS</p> <p><a href="http://vimeo.com/3171910">European Virtual ALT.NET Screencast</a> - The quality of the video isn't the best, but it expands upon the original concepts in the devTeach video.</p> <p><a href="http://www.infoq.com/interviews/Architecture-Eric-Evans-Interviews-Greg-Young">Eric Evans interviews Greg Young</a></p> <p><a href="http://www.infoq.com/interviews/greg-young-ddd">Greg Young discusses State Transitions in DDD</a></p> <p><a href="http://codebetter.com/blogs/gregyoung/archive/2008/04/25/altdotnet-seattle-session-video.aspx">Seattle ALT.NET Meeting</a></p> <p><strong>Follow-up</strong></p> <p>Once you're done watching those videos, you'll be able to better understand <a href="http://codebetter.com/blogs/gregyoung/archive/tags/DDDD/default.aspx">Greg Young's blog posts</a>.</p> <p>In addition, there are a number of other really good resources:</p> <p><a title="http://www.bjoernrochel.de/2008/11/20/command-query-separation/" href="http://www.bjoernrochel.de/2008/11/20/command-query-separation/">http://www.bjoernrochel.de/2008/11/20/command-query-separation/</a></p> <p><a title="http://www.goeleven.com/blog/EntryDetail.aspx?entry=133" href="http://www.goeleven.com/blog/EntryDetail.aspx?entry=133">http://www.goeleven.com/blog/EntryDetail.aspx?entry=133</a></p> <p><a href="http://blog.xebia.com/2008/11/22/qcon-san-francisco-2008-unleash-your-domain/">http://blog.xebia.com/2008/11/22/qcon-san-francisco-2008-unleash-your-domain/</a></p> <p><a title="http://elegantcode.com/2008/04/30/altnet-seattle-takeawayddddresources/" href="http://elegantcode.com/2008/04/30/altnet-seattle-takeawayddddresources/">http://elegantcode.com/2008/04/30/altnet-seattle-takeawayddddresources/</a></p> <p><a title="http://www.martinfowler.com/eaaDev/EventSourcing.html" href="http://www.martinfowler.com/eaaDev/EventSourcing.html">http://www.martinfowler.com/eaaDev/EventSourcing.html</a></p> 
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+
+
+
+
+<figure class="author-image">
+    <a class="img" href="http://blog.jonathanoliver.com/" style="background-image: url(/images/tux.png)"><span class="hidden">Jonathan Oliver's Picture</span></a>
+</figure>
+
+
+<section class="author">
+  <h4><a href="http://blog.jonathanoliver.com/">Jonathan Oliver</a></h4>
+  
+  <p>Read <a href="http://blog.jonathanoliver.com/">more posts</a> by this author.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">Utah, USA</span>
+    <span class="author-link icon-link"><a href="https://blog.jonathanoliver.com">https://blog.jonathanoliver.com</a></span>
+  </div>
+</section>
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=DDDD%20and%20CQS%3a%20Getting%20Started&nbsp;-&nbsp;Jonathan%20Oliver&amp;url=http%3a%2f%2fblog.jonathanoliver.com%2fdddd-and-cqs-getting-started%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.jonathanoliver.com%2fdddd-and-cqs-getting-started%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fblog.jonathanoliver.com%2fdddd-and-cqs-getting-started%2f&amp;description=DDDD%20and%20CQS%3a%20Getting%20Started"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fblog.jonathanoliver.com%2fdddd-and-cqs-getting-started%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "http:\/\/blog.jonathanoliver.com\/dddd-and-cqs-getting-started\/";  
+this.page.identifier = "http:\/\/blog.jonathanoliver.com\/dddd-and-cqs-getting-started\/"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://jonathanoliver.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="http://blog.jonathanoliver.com/dddd-locator-not-a-single-point-of-failure/">
+          <section class="post">
+              <h2>DDDD Locator—Not a Single Point of Failure</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="http://blog.jonathanoliver.com/event-sourcing-persistence/">
+          <section class="post">
+              <h2>Event Sourcing Persistence</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">Jonathan Oliver</a> (c) Jonathan Oliver. All rights reserved.</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/index.js"></script>
+    
+</body>
+</html>
+

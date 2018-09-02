@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="Golang Has Generics—Why I Don&#39;t Miss Generics Anymore"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@jonathan_oliver"/>
+
+
+
+  	<meta property="og:title" content="Golang Has Generics—Why I Don&#39;t Miss Generics Anymore &middot; Jonathan Oliver" />
+  	<meta property="og:site_name" content="Jonathan Oliver" />
+  	<meta property="og:url" content="http://blog.jonathanoliver.com/golang-has-generics/" />
+
+    
+        
+            <meta property="og:image" content="/images/cover.jpg"/>
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2014-06-30T00:00:00Z" />
+
+    
+    
+
+    <title>Golang Has Generics—Why I Don&#39;t Miss Generics Anymore &middot; Jonathan Oliver</title>
+
+    
+    <meta name="description" content="There&#39;s a lot of discussion about generics in Go. In fact, it&#39;s one of the most-requested features in the language discussion groups. The language designers are" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="http://blog.jonathanoliver.com/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://blog.jonathanoliver.com/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/nav.css" />
+
+    
+
+    
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/default.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        
+        <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+      
+          <link href="http://blog.jonathanoliver.com/index.xml" rel="alternate" type="application/rss+xml" title="Jonathan Oliver" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.46-DEV" />
+
+    <link rel="canonical" href="http://blog.jonathanoliver.com/golang-has-generics/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": ,
+        "logo": http://blog.jonathanoliver.com/images/tux.png
+    },
+    "author": {
+        "@type": "Person",
+        "name": ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": http://blog.jonathanoliver.com/images/tux.png,
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": https://blog.jonathanoliver.com,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": Golang Has Generics—Why I Don&#39;t Miss Generics Anymore,
+    "name": Golang Has Generics—Why I Don&#39;t Miss Generics Anymore,
+    "wordCount": 545,
+    "timeRequired": "PT3M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": en
+    },
+    "url": http://blog.jonathanoliver.com/golang-has-generics/,
+    "datePublished": 2014-06-30T00:00Z,
+    "dateModified": 2014-06-30T00:00Z,
+    
+    
+    "description": ,
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": http://blog.jonathanoliver.com/golang-has-generics/
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="http://blog.jonathanoliver.com/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="http://blog.jonathanoliver.com/"><img src="http://blog.jonathanoliver.com/images/tux.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button icon-feed" href="http://blog.jonathanoliver.com/index.xml" >&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">Golang Has Generics—Why I Don&#39;t Miss Generics Anymore</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2014-06-30T00:00:00Z">
+            Jun 30, 2014
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <p>There's a lot of discussion about generics in Go. In fact, it's one of the most-requested features in the language discussion groups. The language designers aren't against generics, but they have not found or seen a good proposal that allows generics in the language without significantly complicating the language and implementation.</p>
+
+<p>That being said, Go has generics. Think about it. What is the primary use case for generics? Collections—when you've got a set of &quot;objects&quot; (instances of a structure) and you want to operate on that structure regardless of type.</p>
+
+<p>When I lived in .NET v1.0 and v1.1, we didn't have generics. All of our collections were of type <code>object</code>. This meant that a dictionary (map in Go) or list (slice in Go) were always of type <code>object</code> and always required a cast back to the underlying type when reading off the collection. This muddled the code.</p>
+
+<p>In Go, the primitive collections—array, map, and slice are strongly typed. When I work with these collections, there's no casting necessary. I read and write from the collections as the actual type and the code is beautiful.</p>
+
+<p>Okay, what if I wanted an operation that works with multiple types—perhaps on all numeric types, e.g. <code>int32</code>, <code>int64</code>, <code>uint16</code>, etc. Now we've got a problem. But actually we don't. We just need a few intermediate alias types which implement an interface. Once each alias type for <code>int32</code>, <code>int16</code>, etc. is created, we can operate on the various underlying types according to our desired behavior.</p>
+
+<pre><code>type Integer16 int16
+type Integer32 int32
+type Calculator interface {
+	Calculate()
+}
+
+func (i Integer16) Calculate() { /* behavior here */ }
+func (i Integer32) Calculate() { /* behavior here */ }
+
+func main() {
+	container := []Calculator{Integer16(1),Integer32(2)}
+	fmt.Println(container)
+}
+</code></pre>
+
+<p><del>(As an aside, I should note that .NET only implemented generic constraints on numeric types as of .NET v4.5.)</del> [EDIT: I never made the leap to v4.5, so other than async/await, I don't have much hands-on experience.]</p>
+
+<p>Now, what we're talking about here is really poor-man's generics. It's not the true Java/.NET generics or C++ templates that we know and love/hate. And for that I'm glad. One significant problem that I had with generics—at least in .NET land—was that it was a never-ending rabbit hole. Concrete generics weren't bad, but interface-based generics were awful. Anyone who has ever created a highly used, third-party library knows what I'm talking about.</p>
+
+<p>In a lot of cases, generics were more trouble than they were worth. In such cases in .NET land, I found that I was often worried about compilation and things like covariant and contravariant relationships to the base type. Then, getting into generics of generics of generics made life really hard, for example: <code>List&lt;Dictionary&lt;string&lt;IEnumerable&lt;HttpRequest&gt;&gt;&gt;&gt;</code>. No, I've never actually used that type. In Go, instead of worrying about re-using that same kind of collection, but for something other than <code>HttpRequest</code>, I would worry about using it for the problem algorithm at hand. If I needed re-use later, I could implement an interface.</p>
+
+<p>Do I miss generics? Not really. Yes, I've had to adjust my thinking slightly, but that's what happens when you work in a different language. Once I've gotten past a few mental hurdles, there are some really elegant solutions that solve the lack-of-generics problem in Go.</p>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+
+
+
+
+<figure class="author-image">
+    <a class="img" href="http://blog.jonathanoliver.com/" style="background-image: url(/images/tux.png)"><span class="hidden">Jonathan Oliver's Picture</span></a>
+</figure>
+
+
+<section class="author">
+  <h4><a href="http://blog.jonathanoliver.com/">Jonathan Oliver</a></h4>
+  
+  <p>Read <a href="http://blog.jonathanoliver.com/">more posts</a> by this author.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">Utah, USA</span>
+    <span class="author-link icon-link"><a href="https://blog.jonathanoliver.com">https://blog.jonathanoliver.com</a></span>
+  </div>
+</section>
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Golang%20Has%20Generics%e2%80%94Why%20I%20Don%27t%20Miss%20Generics%20Anymore&nbsp;-&nbsp;Jonathan%20Oliver&amp;url=http%3a%2f%2fblog.jonathanoliver.com%2fgolang-has-generics%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.jonathanoliver.com%2fgolang-has-generics%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fblog.jonathanoliver.com%2fgolang-has-generics%2f&amp;description=Golang%20Has%20Generics%e2%80%94Why%20I%20Don%27t%20Miss%20Generics%20Anymore"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fblog.jonathanoliver.com%2fgolang-has-generics%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "http:\/\/blog.jonathanoliver.com\/golang-has-generics\/";  
+this.page.identifier = "http:\/\/blog.jonathanoliver.com\/golang-has-generics\/"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://jonathanoliver.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="http://blog.jonathanoliver.com/ebs-scares-me/">
+          <section class="post">
+              <h2>AWS Elastic Block Storage Scares Me</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="http://blog.jonathanoliver.com/hacker-news-page-one/">
+          <section class="post">
+              <h2>I Was On Page One of Hacker News—Here&#39;s What I Learned</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">Jonathan Oliver</a> (c) Jonathan Oliver. All rights reserved.</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/index.js"></script>
+    
+</body>
+</html>
+

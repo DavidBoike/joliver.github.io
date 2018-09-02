@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="CQRS: Event Sourcing and Immutable Data"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@jonathan_oliver"/>
+
+
+
+  	<meta property="og:title" content="CQRS: Event Sourcing and Immutable Data &middot; Jonathan Oliver" />
+  	<meta property="og:site_name" content="Jonathan Oliver" />
+  	<meta property="og:url" content="http://blog.jonathanoliver.com/cqrs-event-sourcing-and-immutable-data/" />
+
+    
+        
+            <meta property="og:image" content="/images/cover.jpg"/>
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2011-03-15T00:00:00Z" />
+
+    
+    
+
+    <title>CQRS: Event Sourcing and Immutable Data &middot; Jonathan Oliver</title>
+
+    
+    <meta name="description" content="There are a number of interesting and unique advantages offered by event sourcing as well as messaging in general. Some of these advantages include the ability " />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="http://blog.jonathanoliver.com/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://blog.jonathanoliver.com/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/nav.css" />
+
+    
+
+    
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/default.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        
+        <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+      
+          <link href="http://blog.jonathanoliver.com/index.xml" rel="alternate" type="application/rss+xml" title="Jonathan Oliver" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.46-DEV" />
+
+    <link rel="canonical" href="http://blog.jonathanoliver.com/cqrs-event-sourcing-and-immutable-data/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": ,
+        "logo": http://blog.jonathanoliver.com/images/tux.png
+    },
+    "author": {
+        "@type": "Person",
+        "name": ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": http://blog.jonathanoliver.com/images/tux.png,
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": https://blog.jonathanoliver.com,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": CQRS: Event Sourcing and Immutable Data,
+    "name": CQRS: Event Sourcing and Immutable Data,
+    "wordCount": 758,
+    "timeRequired": "PT4M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": en
+    },
+    "url": http://blog.jonathanoliver.com/cqrs-event-sourcing-and-immutable-data/,
+    "datePublished": 2011-03-15T00:00Z,
+    "dateModified": 2011-03-15T00:00Z,
+    
+    
+    "description": ,
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": http://blog.jonathanoliver.com/cqrs-event-sourcing-and-immutable-data/
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="http://blog.jonathanoliver.com/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="http://blog.jonathanoliver.com/"><img src="http://blog.jonathanoliver.com/images/tux.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button icon-feed" href="http://blog.jonathanoliver.com/index.xml" >&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">CQRS: Event Sourcing and Immutable Data</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2011-03-15T00:00:00Z">
+            Mar 15, 2011
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <p align="justify">There are a number of interesting and unique advantages offered by event sourcing as well as messaging in general. Some of these advantages include the ability to perform merge-based, business-level concurrency—as compared to simple optimistic or pessimistic concurrency. Further, the ability to replay all stored messages into new or alternate models because business context and intent has been captured, is invaluable. One interesting advantage that may not seem like much at first is the immutability of the events once they are committed to a persistent medium.</p> <p align="justify">This idea is incredibly powerful because it completely solves with of the primary challenges in computing—concurrency and the need for a single, authoritative source of truth. Once an event has been accepted and committed, it becomes an established fact—as unalterable as a decree from Pharaoh—and it can be copied everywhere. The only way to "undo" an event is to add a compensating event on top—like a negative transaction in accounting.</p> <p align="justify">So what does that mean for my application? How can I take advantage of the immutability of events? Well, for starters, by following the ideas found below you can completely eliminate almost any chance of the <a href="http://news.cnet.com/8301-1023_3-20037554-93.html">high-profile data loss</a> issues that <a href="http://www.pcworld.com/businesscenter/article/215365/hotmail_data_loss_reveals_cloud_trust_issues.html">companies face</a> because you can rebuild your views and reports by replaying all recorded events.</p> <p align="justify">One of the biggest and most obvious ways to take advantage of immutable events is to increase your application's performance by caching like crazy. Why not replicate the events into some kind of disk-based in-memory cache across a bunch of nodes? Because the events never change we can always be assured we're getting the latest version of a particular event regardless of which cache node we talk to. In this way, we can read from almost anywhere when we populate our read models or create other reports from our events.</p> <p align="justify">Furthermore, backups become ultra simple—just get all events that have been added since the last backup. Disaster recovery involves reading data from somewhere else.</p> <p align="justify">From time to time the question comes up, won't this take up a lot of space? Yes, it might. What if I want to clear our some events to make room for new ones? Can we snapshot and delete/archive events from before the snapshot? The answer is…why? Disk space is cheap and data is valuable. Why not replicate those events to another kind of ultra-cheap, yet highly available storage such as S3 or Azure Blobs? In this way we have the most immediate and recent events available locally, but all of older events available to us with a few simple queries—but at a slightly higher cost in terms of latency. How much does 1GB of storage cost on S3? How many business events can you store in 1 GB of space—especially  when compressed?</p> <p align="justify">If somehow events could change, all of the above advantages would disappear and we would have to keep going back to a single source of truth—a single point of failure—to be sure we had the latest version. How much of your data is held hostage inside of a legacy database?</p> <p align="justify">If you have a lot of systems that listen to those events, each system could maintain its own copy, thus decreasing the load on your primary or mission-critical systems.</p> <p align="justify">The last advantage is almost unnoticed in the way it compensates for a nefarious and silent killer—<a href="http://en.wikipedia.org/wiki/Bit_rot">media decay or "bit rot"</a>. Ever had a hard drive slowly and silently corrupt your data? When media goes bad, it takes your data with it. But because our data is immutable, it becomes very easy to detect via checksums that the data has been altered by tampering or by media decay. In our world, this isn't a problem because we don't need a single source of truth. Much like distributed source control, e.g. git, mercurial, etc., any repository can be the authoritative source if we detect problems in our most readily available copy. Bye bye silent media corruption.</p> <p align="justify">If we wanted we could even write our events to a solid state drive (SSD) so that we can accept writes more quickly. SSDs generally don't like lots of writes to the same physical sectors and have tendency to wear out over time as more and more writes occur to the same areas, but our events have a "solid" state, which means that we write them once and then read forevermore. Thus, the wearing out of an SSD is much less of a problem.</p> <p align="justify">Immutability is a very simple property, but it has profound implications and we can more easily build a truly distributed system.</p> 
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+
+
+
+
+<figure class="author-image">
+    <a class="img" href="http://blog.jonathanoliver.com/" style="background-image: url(/images/tux.png)"><span class="hidden">Jonathan Oliver's Picture</span></a>
+</figure>
+
+
+<section class="author">
+  <h4><a href="http://blog.jonathanoliver.com/">Jonathan Oliver</a></h4>
+  
+  <p>Read <a href="http://blog.jonathanoliver.com/">more posts</a> by this author.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">Utah, USA</span>
+    <span class="author-link icon-link"><a href="https://blog.jonathanoliver.com">https://blog.jonathanoliver.com</a></span>
+  </div>
+</section>
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=CQRS%3a%20Event%20Sourcing%20and%20Immutable%20Data&nbsp;-&nbsp;Jonathan%20Oliver&amp;url=http%3a%2f%2fblog.jonathanoliver.com%2fcqrs-event-sourcing-and-immutable-data%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.jonathanoliver.com%2fcqrs-event-sourcing-and-immutable-data%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fblog.jonathanoliver.com%2fcqrs-event-sourcing-and-immutable-data%2f&amp;description=CQRS%3a%20Event%20Sourcing%20and%20Immutable%20Data"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fblog.jonathanoliver.com%2fcqrs-event-sourcing-and-immutable-data%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "http:\/\/blog.jonathanoliver.com\/cqrs-event-sourcing-and-immutable-data\/";  
+this.page.identifier = "http:\/\/blog.jonathanoliver.com\/cqrs-event-sourcing-and-immutable-data\/"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://jonathanoliver.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="http://blog.jonathanoliver.com/removing-2pc-two-phase-commit/">
+          <section class="post">
+              <h2>Removing 2PC (Two Phase Commit)</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="http://blog.jonathanoliver.com/iis-7-500-errors/">
+          <section class="post">
+              <h2>IIS 7 500 Errors</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">Jonathan Oliver</a> (c) Jonathan Oliver. All rights reserved.</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/index.js"></script>
+    
+</body>
+</html>
+

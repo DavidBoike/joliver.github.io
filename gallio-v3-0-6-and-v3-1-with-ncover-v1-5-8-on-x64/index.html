@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="Gallio (v3.0.6 and v3.1) with NCover v1.5.8 on x64"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@jonathan_oliver"/>
+
+
+
+  	<meta property="og:title" content="Gallio (v3.0.6 and v3.1) with NCover v1.5.8 on x64 &middot; Jonathan Oliver" />
+  	<meta property="og:site_name" content="Jonathan Oliver" />
+  	<meta property="og:url" content="http://blog.jonathanoliver.com/gallio-v3-0-6-and-v3-1-with-ncover-v1-5-8-on-x64/" />
+
+    
+        
+            <meta property="og:image" content="/images/cover.jpg"/>
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2009-09-22T00:00:00Z" />
+
+    
+    
+
+    <title>Gallio (v3.0.6 and v3.1) with NCover v1.5.8 on x64 &middot; Jonathan Oliver</title>
+
+    
+    <meta name="description" content="I spent the better part of a day trying to get Gallio&#39;s runner to execute NCover and run our unit and integration tests as part of our build process. Our build " />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="http://blog.jonathanoliver.com/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://blog.jonathanoliver.com/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/nav.css" />
+
+    
+
+    
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/default.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        
+        <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+      
+          <link href="http://blog.jonathanoliver.com/index.xml" rel="alternate" type="application/rss+xml" title="Jonathan Oliver" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.46-DEV" />
+
+    <link rel="canonical" href="http://blog.jonathanoliver.com/gallio-v3-0-6-and-v3-1-with-ncover-v1-5-8-on-x64/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": ,
+        "logo": http://blog.jonathanoliver.com/images/tux.png
+    },
+    "author": {
+        "@type": "Person",
+        "name": ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": http://blog.jonathanoliver.com/images/tux.png,
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": https://blog.jonathanoliver.com,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": Gallio (v3.0.6 and v3.1) with NCover v1.5.8 on x64,
+    "name": Gallio (v3.0.6 and v3.1) with NCover v1.5.8 on x64,
+    "wordCount": 296,
+    "timeRequired": "PT2M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": en
+    },
+    "url": http://blog.jonathanoliver.com/gallio-v3-0-6-and-v3-1-with-ncover-v1-5-8-on-x64/,
+    "datePublished": 2009-09-22T00:00Z,
+    "dateModified": 2009-09-22T00:00Z,
+    
+    
+    "description": ,
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": http://blog.jonathanoliver.com/gallio-v3-0-6-and-v3-1-with-ncover-v1-5-8-on-x64/
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="http://blog.jonathanoliver.com/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="http://blog.jonathanoliver.com/"><img src="http://blog.jonathanoliver.com/images/tux.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button icon-feed" href="http://blog.jonathanoliver.com/index.xml" >&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">Gallio (v3.0.6 and v3.1) with NCover v1.5.8 on x64</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2009-09-22T00:00:00Z">
+            Sep 22, 2009
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <p>I spent the better part of a day trying to get Gallio's runner to execute NCover and run our unit and integration tests as part of our build process. Our build server and all of our developer workstations run some variant of 64-bit Windows, e.g. Vista, 2008, 7, 2008 R2, etc.</p> <p>At the command line, I would type the following:</p> <p>Gallio.Echo.exe /runner:NCover PathToTestAssemblyMyApp.UnitTests.dll</p> <p>Everything worked great except for NCover. NCover.Console.exe would stall and timeout after 60 seconds and then die saying "Profiled process terminated. Profiler connection not established."</p> <p>I tried things in a 32-bit virtual machine which worked great, so the problem had to be 64-bit related. I tried using the <a href="http://abdullin.com/journal/2008/6/6/how-to-run-free-ncover-on-a-64-bit-machine.html">corflags 32bit flag trick</a>, I tried explicitly specifying a 32-bit runner.   I ran the build scripts as admin on my local machine. I even tried just running NCover.Console.exe directly specifying NUnit-Console-x86.exe but things still wouldn't talk properly. What was going on?!</p> <p>I stumbled upon an <a href="http://weblogs.asp.net/rchartier/archive/2006/01/30/436897.aspx">article</a> that solved my problem. I simply ran: "<strong>regsvr32 coverlib.dll</strong>" from the command line in the NCoverv1.5.8 directory which registered a particular COM component. That took care of the problem. This old version of NCover wants to run with administrator privileges and requires registration of the COM component on the various machines that will run this coverage. That makes it difficult to ensure machine independence, but we'll live with it for the time being.</p> <p><strong>UPDATE:</strong> You <em>should</em> be able to provide the following argument to Gallio.Echo to get the COM component to register during execution and unregister after execution:</p> <blockquote> <p>Gallio.Echo.exe /runner:NCover <strong>/rp:&quot;NCoverArguments='//reg' &quot;</strong> ….</p> </blockquote> <p>In the very near future we will be upgrading to NCover 3, but before we do, we want to ensure that we're receiving value from NCover's current reports before we invest money into it.the latest version.</p> 
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+
+
+
+
+<figure class="author-image">
+    <a class="img" href="http://blog.jonathanoliver.com/" style="background-image: url(/images/tux.png)"><span class="hidden">Jonathan Oliver's Picture</span></a>
+</figure>
+
+
+<section class="author">
+  <h4><a href="http://blog.jonathanoliver.com/">Jonathan Oliver</a></h4>
+  
+  <p>Read <a href="http://blog.jonathanoliver.com/">more posts</a> by this author.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">Utah, USA</span>
+    <span class="author-link icon-link"><a href="https://blog.jonathanoliver.com">https://blog.jonathanoliver.com</a></span>
+  </div>
+</section>
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Gallio%20%28v3.0.6%20and%20v3.1%29%20with%20NCover%20v1.5.8%20on%20x64&nbsp;-&nbsp;Jonathan%20Oliver&amp;url=http%3a%2f%2fblog.jonathanoliver.com%2fgallio-v3-0-6-and-v3-1-with-ncover-v1-5-8-on-x64%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.jonathanoliver.com%2fgallio-v3-0-6-and-v3-1-with-ncover-v1-5-8-on-x64%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fblog.jonathanoliver.com%2fgallio-v3-0-6-and-v3-1-with-ncover-v1-5-8-on-x64%2f&amp;description=Gallio%20%28v3.0.6%20and%20v3.1%29%20with%20NCover%20v1.5.8%20on%20x64"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fblog.jonathanoliver.com%2fgallio-v3-0-6-and-v3-1-with-ncover-v1-5-8-on-x64%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "http:\/\/blog.jonathanoliver.com\/gallio-v3-0-6-and-v3-1-with-ncover-v1-5-8-on-x64\/";  
+this.page.identifier = "http:\/\/blog.jonathanoliver.com\/gallio-v3-0-6-and-v3-1-with-ncover-v1-5-8-on-x64\/"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://jonathanoliver.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="http://blog.jonathanoliver.com/continous-integration-workflow/">
+          <section class="post">
+              <h2>Continous Integration Workflow</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="http://blog.jonathanoliver.com/nhibernate-inverse-and-object-associations/">
+          <section class="post">
+              <h2>NHibernate, Inverse, and Object Associations</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">Jonathan Oliver</a> (c) Jonathan Oliver. All rights reserved.</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/index.js"></script>
+    
+</body>
+</html>
+

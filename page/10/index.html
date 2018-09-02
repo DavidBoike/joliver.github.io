@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:image" content="/images/cover.jpg"/>
+
+
+
+<meta name="twitter:title" content="Jonathan Oliver"/>
+<meta name="twitter:description" content="Eventually Consistent, Fully Distributed"/>
+<meta name="twitter:site" content="@jonathan_oliver"/>
+
+
+
+  	<meta property="og:title" content="Jonathan Oliver" />
+  	<meta property="og:site_name" content="Jonathan Oliver" />
+  	<meta property="og:url" content="http://blog.jonathanoliver.com/" />
+
+    
+        
+            <meta property="og:image" content="/images/cover.jpg"/>
+        
+    
+
+    
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="Eventually Consistent, Fully Distributed" />
+    
+
+    <title>Jonathan Oliver</title>
+
+    
+    <meta name="description" content="Eventually Consistent, Fully Distributed" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="http://blog.jonathanoliver.com/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://blog.jonathanoliver.com/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/nav.css" />
+
+    
+
+    
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/default.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        
+        <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+      
+      
+        <link href="http://blog.jonathanoliver.com/index.xml" rel="alternate" type="application/rss+xml" title="Jonathan Oliver" />
+      
+    
+    <meta name="generator" content="Hugo 0.46-DEV" />
+
+    <link rel="canonical" href="http://blog.jonathanoliver.com/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Person",
+        "name": ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": http://blog.jonathanoliver.com/images/tux.png,
+            "width": 250,
+            "height": 250
+        },
+        
+        "url": https://blog.jonathanoliver.com,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "url": http://blog.jonathanoliver.com/,
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": http://blog.jonathanoliver.com/
+    },
+    "description": Eventually Consistent, Fully Distributed
+}
+  </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="http://blog.jonathanoliver.com/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+	
+  <header class="main-header tag-head" style="background-image: url(/images/cover.jpg)">
+  
+
+    <nav class="main-nav overlay clearfix">
+      
+        <a class="blog-logo" href="http://blog.jonathanoliver.com/"><img src="http://blog.jonathanoliver.com/images/tux.png" alt="Home" /></a>
+      
+      
+        
+          <a class="menu-button icon-feed" href="http://blog.jonathanoliver.com/index.xml">&nbsp;&nbsp;Subscribe</a>
+        
+      
+    </nav>
+    <div class="vertical">
+        <div class="main-header-content inner">
+            <h1 class="page-title">Jonathan Oliver</h1>
+            <h2 class="page-description">
+                
+            </h2>
+        </div>
+    </div>
+</header>
+
+<main class="content" role="main">
+    
+
+	<div class="extra-pagination inner">
+    <nav class="pagination" role="navigation">
+	
+	    <a class="newer-posts" href="http://blog.jonathanoliver.com/page/9/">&larr; Newer Posts</a>
+	
+	<span class="page-number">Page 10 of 15</span>
+	
+	    <a class="older-posts" href="http://blog.jonathanoliver.com/page/11/">Older Posts &rarr;</a>
+	
+</nav>
+
+	</div>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="http://blog.jonathanoliver.com/gallio-v3-0-6-and-v3-1-with-ncover-v1-5-8-on-x64/">Gallio (v3.0.6 and v3.1) with NCover v1.5.8 on x64</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>I spent the better part of a day trying to get Gallio's runner to execute NCover and run our unit and integration tests as part of our build process. Our build server and all of our developer workstations run some variant of 64-bit Windows, e.g. Vista, 2008, 7, 2008 R2, etc.
+At the command line, I would type the following:
+Gallio.Echo.exe /runner:NCover PathToTestAssemblyMyApp.UnitTests.dll
+Everything worked great except for NCover. NCover.Console.exe would stall and timeout after 60 seconds and then die saying " <a class="read-more" href="http://blog.jonathanoliver.com/gallio-v3-0-6-and-v3-1-with-ncover-v1-5-8-on-x64/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="http://blog.jonathanoliver.com/images/tux.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            Jonathan Oliver
+                 
+        
+
+        
+        <time class="post-date" datetime="2009-09-22T00:00:00Z">
+            22 Sep 2009
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="http://blog.jonathanoliver.com/nhibernate-inverse-and-object-associations/">NHibernate, Inverse, and Object Associations</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>You gotta love NHibernate. But sometimes there are little quirks the drive you nuts—at least until you understand how NHibernate handles things. We ran into one such "hiccup" the other day.
+Our objective was to have a parent object contain a list of child objects. Simple enough. Problem is, we didn't want the child to know about or have a reference back to the parent. But all of the simple example code that we found for NHibernate and Fluent NHibernate kept showing the bidirectional reference. <a class="read-more" href="http://blog.jonathanoliver.com/nhibernate-inverse-and-object-associations/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="http://blog.jonathanoliver.com/images/tux.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            Jonathan Oliver
+                 
+        
+
+        
+        <time class="post-date" datetime="2009-09-18T00:00:00Z">
+            18 Sep 2009
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="http://blog.jonathanoliver.com/git-lost-and-git-submodules/">Git Lost (and Git Submodules)</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>We've been using Git for a little while now in a Windows environment and we have been quite pleased with it and the capabilities it affords us as part with its decentralized workflow. We have a number of shared projects or "common libraries" that we use between projects. Because of this, we are using Git's submodules feature.
+One small issue that we hit was when we would make changes to the code to the project in a submodule (for example, some scripting code in a submodule), we would want to commit and push those changes. <a class="read-more" href="http://blog.jonathanoliver.com/git-lost-and-git-submodules/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="http://blog.jonathanoliver.com/images/tux.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            Jonathan Oliver
+                 
+        
+
+        
+        <time class="post-date" datetime="2009-09-03T00:00:00Z">
+            3 Sep 2009
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="http://blog.jonathanoliver.com/microsoft-source-server-with-git/">Microsoft Source Server with Git</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>I try to avoid the debugger at all costs, but it does come in handy sometimes. You'll even catch Uncle Bob in the debugger on occasion. When using a compiled language, you basically "lose" the source code once compiled. Of course bytecode languages can be decompiled, but that's beside the point.
+We have a number of common library projects that we share between our applications. Usually these common projects are very low-level infrastructure concerns, etc. <a class="read-more" href="http://blog.jonathanoliver.com/microsoft-source-server-with-git/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="http://blog.jonathanoliver.com/images/tux.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            Jonathan Oliver
+                 
+        
+
+        
+        <time class="post-date" datetime="2009-09-03T00:00:00Z">
+            3 Sep 2009
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="http://blog.jonathanoliver.com/accountants-dont-use-erasers/">Accountants Don&#39;t Use Erasers</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>Mark Needham posted on his blog a link to this article which I hadn't read before. It's a really good read about the logic behind write-only storage:
+http://blogs.msdn.com/pathelland/archive/2007/06/14/accountants-don-t-use-erasers.aspx <a class="read-more" href="http://blog.jonathanoliver.com/accountants-dont-use-erasers/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="http://blog.jonathanoliver.com/images/tux.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            Jonathan Oliver
+                 
+        
+
+        
+        <time class="post-date" datetime="2009-08-29T00:00:00Z">
+            29 Aug 2009
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="http://blog.jonathanoliver.com/dddd-the-event-storage-doesnt-store-commands/">DDDD: The Event Storage Doesn&#39;t Store Commands</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>I've been involved in a few projects recently that didn't get into DDD much, so I've been out of the loop for a few months. As I was getting back into things, I had a question regarding what was stored in the "event store" for a bounded context—events, commands, or both? The reason for this is critical, because replaying of events vs. commands has some broad implications related to side effects, recalculation of values, keeping the context of the original operation, etc. <a class="read-more" href="http://blog.jonathanoliver.com/dddd-the-event-storage-doesnt-store-commands/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="http://blog.jonathanoliver.com/images/tux.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            Jonathan Oliver
+                 
+        
+
+        
+        <time class="post-date" datetime="2009-08-11T00:00:00Z">
+            11 Aug 2009
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="http://blog.jonathanoliver.com/dddd-distributing-a-single-bounded-context/">DDDD: Distributing A Single Bounded Context</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>In a previous post, I detailed all of the reasons why processing messages one by one with an aggregate root was a good thing. I am now going to contradict some of the main points in that post. While certain aspects still hold true, there is a much larger matter involved.
+First, the points that I still consider to be valid:
+ Don't have threading logic in your aggregate roots. Don't do things with locks, monitors, mutexes, etc. <a class="read-more" href="http://blog.jonathanoliver.com/dddd-distributing-a-single-bounded-context/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="http://blog.jonathanoliver.com/images/tux.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            Jonathan Oliver
+                 
+        
+
+        
+        <time class="post-date" datetime="2009-08-10T00:00:00Z">
+            10 Aug 2009
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="http://blog.jonathanoliver.com/poor-mans-dependency-injection-take-42-action/">Poor Man&#39;s Dependency Injection: Take 42, Action!</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>I watched the battle from the sidelines where Jimmy Bogard talked about how not to do "poor man's dependency injection". Then Tim Barcz gave his input. Then Chad Myers got into the mix. Considering this blog is called Inversion of Control Freak, I should probably add my $.02 now that things have settled down.
+I've gone back and forth on this issue where I really want to allow flexible wire-up of my components using the IoC container of choice, but at the same time, I'd like to have the ability to just skip the wire-up and have a default, ready-to-go implementation. <a class="read-more" href="http://blog.jonathanoliver.com/poor-mans-dependency-injection-take-42-action/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="http://blog.jonathanoliver.com/images/tux.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            Jonathan Oliver
+                 
+        
+
+        
+        <time class="post-date" datetime="2009-07-24T00:00:00Z">
+            24 Jul 2009
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="http://blog.jonathanoliver.com/behavior-and-data-centricity/">Behavior and Data Centricity</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>As I look back at applications and systems that I have been involved with over the years, what strikes me is how data-centric those applications were. In fact, the driving force behind most of those applications was the data. The behavior of an application was looked at as merely if statements and for loops. It was inconsequential. The other thing that strikes me about all of these applications is that, because they were all about the data, they were incredibly dumb. <a class="read-more" href="http://blog.jonathanoliver.com/behavior-and-data-centricity/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="http://blog.jonathanoliver.com/images/tux.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            Jonathan Oliver
+                 
+        
+
+        
+        <time class="post-date" datetime="2009-07-23T00:00:00Z">
+            23 Jul 2009
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="http://blog.jonathanoliver.com/ddd-tdd-bdd-and-cqs/">DDD, TDD, BDD, and CQS</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>While fixing a few bugs in some legacy code that had no tests didn't follow DDD principles, I had an epiphany. Well, maybe I shouldn't say it that way. I had a few concepts reinforced in my mind regarding the importance of state-based testing, specifically using Behavior-Driven Design techniques.
+The problems I had were related to business concepts, such as renewing a customer's subscription. Other than the bugs that I fixed, the main problem with the code was that it didn't follow DDD principles. <a class="read-more" href="http://blog.jonathanoliver.com/ddd-tdd-bdd-and-cqs/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="http://blog.jonathanoliver.com/images/tux.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            Jonathan Oliver
+                 
+        
+
+        
+        <time class="post-date" datetime="2009-07-22T00:00:00Z">
+            22 Jul 2009
+        </time>
+    </footer>
+</article>
+
+	
+
+	<nav class="pagination" role="navigation">
+	
+	    <a class="newer-posts" href="http://blog.jonathanoliver.com/page/9/">&larr; Newer Posts</a>
+	
+	<span class="page-number">Page 10 of 15</span>
+	
+	    <a class="older-posts" href="http://blog.jonathanoliver.com/page/11/">Older Posts &rarr;</a>
+	
+</nav>
+
+</main>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">Jonathan Oliver</a> (c) Jonathan Oliver. All rights reserved.</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/index.js"></script>
+    
+</body>
+</html>

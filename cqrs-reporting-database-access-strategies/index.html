@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="CQRS: Reporting Database Access Strategies"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@jonathan_oliver"/>
+
+
+
+  	<meta property="og:title" content="CQRS: Reporting Database Access Strategies &middot; Jonathan Oliver" />
+  	<meta property="og:site_name" content="Jonathan Oliver" />
+  	<meta property="og:url" content="http://blog.jonathanoliver.com/cqrs-reporting-database-access-strategies/" />
+
+    
+        
+            <meta property="og:image" content="/images/cover.jpg"/>
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2009-11-12T00:00:00Z" />
+
+    
+    
+
+    <title>CQRS: Reporting Database Access Strategies &middot; Jonathan Oliver</title>
+
+    
+    <meta name="description" content="One of the things that I love about CQRS is that it completely eliminates the impedance mismatch that you normally experience with traditional ORMs. It is incre" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="http://blog.jonathanoliver.com/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://blog.jonathanoliver.com/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/nav.css" />
+
+    
+
+    
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/default.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        
+        <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+      
+          <link href="http://blog.jonathanoliver.com/index.xml" rel="alternate" type="application/rss+xml" title="Jonathan Oliver" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.46-DEV" />
+
+    <link rel="canonical" href="http://blog.jonathanoliver.com/cqrs-reporting-database-access-strategies/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": ,
+        "logo": http://blog.jonathanoliver.com/images/tux.png
+    },
+    "author": {
+        "@type": "Person",
+        "name": ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": http://blog.jonathanoliver.com/images/tux.png,
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": https://blog.jonathanoliver.com,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": CQRS: Reporting Database Access Strategies,
+    "name": CQRS: Reporting Database Access Strategies,
+    "wordCount": 543,
+    "timeRequired": "PT3M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": en
+    },
+    "url": http://blog.jonathanoliver.com/cqrs-reporting-database-access-strategies/,
+    "datePublished": 2009-11-12T00:00Z,
+    "dateModified": 2009-11-12T00:00Z,
+    
+    
+    "description": ,
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": http://blog.jonathanoliver.com/cqrs-reporting-database-access-strategies/
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="http://blog.jonathanoliver.com/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="http://blog.jonathanoliver.com/"><img src="http://blog.jonathanoliver.com/images/tux.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button icon-feed" href="http://blog.jonathanoliver.com/index.xml" >&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">CQRS: Reporting Database Access Strategies</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2009-11-12T00:00:00Z">
+            Nov 12, 2009
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <p>One of the things that I love about CQRS is that it completely eliminates the impedance mismatch that you normally experience with traditional ORMs. It is incredibly compelling to be able query and retrieve all values necessary for a particular report or screen in a single database call because of a denormalized database schema.</p> <p>Over the past year there has been significant debate regarding Microsoft's LINQ to SQL, Entity Framework, and ADO.NET Data Services data access strategies. Further, NHibernate with the 2.0+ release has become the de-facto standard in many ALT.NET shops. Other solutions such as LLBLGen and Subsonic are also gaining more and more acceptance and traction.</p> <p>With all of these options, the question becomes: which one should we use? The answer from a CQRS perspective is…it doesn't matter. That's right. It doesn't matter. One of the primary reasons this works is because the only place you need a relational database is in your reporting context and it follows the ActiveRecord pattern where the class structure mimics the table schema. Most data access mechanisms handle this scenario very, very well. But you've got to expose your data access through the correct abstraction.</p> <p>In a project I am working on, we simply created an abstraction of our data access mechanism through an IAccessStorage interface which had a single property with the following signature:</p> <blockquote> <p>IQueryable<t> Items</t><t> { get; }</t></p> </blockquote> <p>It could be queried using either a "SQL-like" LINQ expression or like this:</p> <blockquote> <p>storage.Items<user>.Where(user => user.Id == 12345)</user></p> </blockquote> <p>As a proof of concept, I created a class to abstract each persistence mechanism, e.g. NHibernateStorage, LinqToSqlStorage, EntityFrameworkStorage, and SubsonicStorage. Using dependency injection, I was easily able to swap out which storage mechanism I used and my application code was none the wiser.</p> <p>The caveat in all of this is that each one must have a LINQ provider. While I've run into some quirks in NHibernate's LINQ provider related to "joins", this isn't really an issue for the reporting database because you don't really want to be doing joins anyway.</p> <p>An additional issue that you may notice concerns the DTO/class files generated by the above technologies. This may be a small issue because the "User" object generated by Subsonic is not the same one generated LINQ to SQL or the Entity Framework. In the end, it isn't that big of a deal because these objects are simple DTOs with zero behavior. As long as they don't have behavior, you're okay, so you may end up with a dependency on the DTOs. If you really wanted to maintain purity, you could potentially use a solution like AutoMapper to map the generated objects to your own POCOs. [Update: The "dynamic" keyword in C# is another possible resolution to this.]</p> <p><strong>Conclusion</strong></p> <p>With all of the arguing that is happening regarding the various persistence mechanisms and their relative strengths and weaknesses, using CQRS allows us to completely avoid dependencies on any of the aforementioned projects thus allowing us to freely choose whichever one we see fit at that time. And if we make a mistake or discover additional capabilities in another ORM, we can swap implementations with virtually no effort. Thus, we are now doubly insulated from the database and we can swap both database and data access technologies at will.</p>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+
+
+
+
+<figure class="author-image">
+    <a class="img" href="http://blog.jonathanoliver.com/" style="background-image: url(/images/tux.png)"><span class="hidden">Jonathan Oliver's Picture</span></a>
+</figure>
+
+
+<section class="author">
+  <h4><a href="http://blog.jonathanoliver.com/">Jonathan Oliver</a></h4>
+  
+  <p>Read <a href="http://blog.jonathanoliver.com/">more posts</a> by this author.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">Utah, USA</span>
+    <span class="author-link icon-link"><a href="https://blog.jonathanoliver.com">https://blog.jonathanoliver.com</a></span>
+  </div>
+</section>
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=CQRS%3a%20Reporting%20Database%20Access%20Strategies&nbsp;-&nbsp;Jonathan%20Oliver&amp;url=http%3a%2f%2fblog.jonathanoliver.com%2fcqrs-reporting-database-access-strategies%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.jonathanoliver.com%2fcqrs-reporting-database-access-strategies%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fblog.jonathanoliver.com%2fcqrs-reporting-database-access-strategies%2f&amp;description=CQRS%3a%20Reporting%20Database%20Access%20Strategies"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fblog.jonathanoliver.com%2fcqrs-reporting-database-access-strategies%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "http:\/\/blog.jonathanoliver.com\/cqrs-reporting-database-access-strategies\/";  
+this.page.identifier = "http:\/\/blog.jonathanoliver.com\/cqrs-reporting-database-access-strategies\/"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://jonathanoliver.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="http://blog.jonathanoliver.com/persistence-ignorance-and-activerecord/">
+          <section class="post">
+              <h2>Persistence Ignorance and ActiveRecord</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="http://blog.jonathanoliver.com/the-software-simplist/">
+          <section class="post">
+              <h2>The Software Simplist</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">Jonathan Oliver</a> (c) Jonathan Oliver. All rights reserved.</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/index.js"></script>
+    
+</body>
+</html>
+

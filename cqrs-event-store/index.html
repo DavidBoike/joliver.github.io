@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="CQRS Event Store"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@jonathan_oliver"/>
+
+
+
+  	<meta property="og:title" content="CQRS Event Store &middot; Jonathan Oliver" />
+  	<meta property="og:site_name" content="Jonathan Oliver" />
+  	<meta property="og:url" content="http://blog.jonathanoliver.com/cqrs-event-store/" />
+
+    
+        
+            <meta property="og:image" content="/images/cover.jpg"/>
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2010-07-15T00:00:00Z" />
+
+    
+    
+
+    <title>CQRS Event Store &middot; Jonathan Oliver</title>
+
+    
+    <meta name="description" content="Almost two months ago I went to Montreal to visit Greg Young and get some clarification on a few lesser-known points of his DDDD (CQRS&#43;DDD&#43;Event Sourcing) style" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="http://blog.jonathanoliver.com/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://blog.jonathanoliver.com/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/nav.css" />
+
+    
+
+    
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/default.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        
+        <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+      
+          <link href="http://blog.jonathanoliver.com/index.xml" rel="alternate" type="application/rss+xml" title="Jonathan Oliver" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.46-DEV" />
+
+    <link rel="canonical" href="http://blog.jonathanoliver.com/cqrs-event-store/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": ,
+        "logo": http://blog.jonathanoliver.com/images/tux.png
+    },
+    "author": {
+        "@type": "Person",
+        "name": ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": http://blog.jonathanoliver.com/images/tux.png,
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": https://blog.jonathanoliver.com,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": CQRS Event Store,
+    "name": CQRS Event Store,
+    "wordCount": 861,
+    "timeRequired": "PT5M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": en
+    },
+    "url": http://blog.jonathanoliver.com/cqrs-event-store/,
+    "datePublished": 2010-07-15T00:00Z,
+    "dateModified": 2010-07-15T00:00Z,
+    
+    
+    "description": ,
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": http://blog.jonathanoliver.com/cqrs-event-store/
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="http://blog.jonathanoliver.com/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="http://blog.jonathanoliver.com/"><img src="http://blog.jonathanoliver.com/images/tux.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button icon-feed" href="http://blog.jonathanoliver.com/index.xml" >&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">CQRS Event Store</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2010-07-15T00:00:00Z">
+            Jul 15, 2010
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <p align="justify">Almost two months ago I went to Montreal to <a href="http://blog.jonathanoliver.com/2010/05/greg-youngs-cqrs-workshop.html">visit Greg Young</a> and get some clarification on a few lesser-known points of his DDDD (CQRS+DDD+Event Sourcing) style of programming and preachment. He's really great to talk to but it can sometimes be like sipping from the fire hose. This is a good thing.</p> <p align="justify">One key point that Greg kept hammering on was his dislike of frameworks. Not all frameworks, per se, but just our general inclination as .NET developers to framework-ize everything. In many situations this creates additional cost and maintenance overhead when [gasp!] copy & paste would serve us much better. At the same time, there was one key area where Greg mentioned that a great deal of value could be extracted by creating a library of reusable code. That area was for the event store.</p> <p align="justify">The event store serves as one of the foundational infrastructure components in a typical event sourcing-based architecture. Over a year ago I posted a potential <a href="http://blog.jonathanoliver.com/2009/03/event-sourcing-persistence.html">relational database schema</a> for creating an event store. That post did not go into much detail on how to build an event store. It simply outlined how we might overlay a typical event store on top of a traditional RDBMS.</p> <p align="justify">During may three days with Greg I took nearly 50 pages of notes as he unloaded all the various facets of his experience with implementing CQRS with event sourcing. One area of special attention was that of the event store. One key benefit of having followed Greg's methodologies closely for the last 18+ months is that I was able to extract a great deal more than one might normally get if he/she was hearing it for the first time.</p> <p align="justify">With all of this background in mind, I went ahead and implemented a storage-engine agnostic <a href="http://github.com/joliver/EventStore">CQRS event store</a>.</p> <p align="justify"><strong>Design Principles and Goals</strong></p> <p align="justify">I had several foundational principles when creating my event store.</p> <ol> <li> <div align="justify">Have <strong>no</strong> external dependencies.</div> </li> <li> <div align="justify">Do not force the user of the code to implement any special interfaces such as <strong>IEvent</strong>.</div> </li> <li> <div align="justify">Make the storage engine completely pluggable so one could easily be created for a relational DB or even a NoSQL engine, such as a document, graph, or object DB.</div> </li> <li> <div align="justify">Accomplish all persistence in a <strong>single round trip</strong>.</div> </li> <li> <div align="justify">Reference only <strong>one assembly</strong> through the magic of ILMerge.</div> </li> <li> <div align="justify">Support <strong>optimistic concurrency</strong> to facilitate intelligent <strong>merging</strong> by client code.</div> </li> <li> <div align="justify">Support up-conversion of events/snapshots to the latest version as we versionize events and snapshots.</div> </li> <li> <div align="justify">Support any kind of serialization, e.g. JSON, BSON, Protocol Buffers, XML, etc.</div> </li> </ol> <p align="justify"><strong>SQL Implementation</strong></p> <p align="justify">As a quick way to get things moving and to make it easy to plug in, I have included implementations for three popular RDBMS engines—Microsoft SQL Server 2000 (or later), MySQL 5 (or later), and SQLite 3. I will also be implementing one for PostgreSQL in the near future. Basically all of these implementations work by utilizing IDbConnection and having slightly different SQL statements that are executed depending upon the "dialect" specified in the IoC wire-up code.</p> <p align="justify">I also created all necessary DDL (CREATE TABLE) statements for each SQL implementation in order to establish the event store schema.</p> <p align="justify">One critical advantage the library I created has over the various CQRS frameworks is that mine batches all of the events and sends them in a single trip to the database. Many of the current CQRS frameworks as of this writing have a loop for each event to be persisted which causes multiple round trips per commit, whereas my implementation can store about 1200 events at a time for SQL Server (at which point SQL balks because there's too much on the payload) and several thousand for MySQL using the default MySQL .NET connector.</p> <p align="justify"><strong>License, Docs, and Example Code</strong></p> <p align="justify">First off the license is MIT. Just take it and do what you want with it. Ideally if you do anything with it, I'd get a little bit of recognition, but other than that, do what you want.</p> <p align="justify">I have enabled XML/Code documentation on the interfaces within the library. This should help to a certain extent with figuring out how to use the code.</p> <p align="justify">One other area that still needs some help is that of some example code. I'll be pushing a readme file so that github can show the sample code.</p> <p align="justify"><strong>Notes from Greg on Document DBs</strong></p> <p align="justify">One quirk that Greg mentioned during my three days with him was concerning document databases. RavenDB being exempted because it has first-class support for event sourcing, most document DBs have no good way to link a series of events together. In those cases, Greg actually recommend persisting a snapshot along with the events to be committed at each commit. Basically as the aggregate is committed each time, a new snapshot would be persisted as a key part of the document along with the new events. In this way, our aggregate would be built off a snapshot rather than off events, but we would still have the events and could do some kind of MapReduce query to get at the underlying stream of events.</p> <p align="justify"><strong>Conclusion</strong></p> <p align="justify">Have fun. Copy it. Tear it apart. Tell me why the API is terrible and should be improved. Create implementations for CouchDB and the like.</p> 
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+
+
+
+
+<figure class="author-image">
+    <a class="img" href="http://blog.jonathanoliver.com/" style="background-image: url(/images/tux.png)"><span class="hidden">Jonathan Oliver's Picture</span></a>
+</figure>
+
+
+<section class="author">
+  <h4><a href="http://blog.jonathanoliver.com/">Jonathan Oliver</a></h4>
+  
+  <p>Read <a href="http://blog.jonathanoliver.com/">more posts</a> by this author.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">Utah, USA</span>
+    <span class="author-link icon-link"><a href="https://blog.jonathanoliver.com">https://blog.jonathanoliver.com</a></span>
+  </div>
+</section>
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=CQRS%20Event%20Store&nbsp;-&nbsp;Jonathan%20Oliver&amp;url=http%3a%2f%2fblog.jonathanoliver.com%2fcqrs-event-store%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.jonathanoliver.com%2fcqrs-event-store%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fblog.jonathanoliver.com%2fcqrs-event-store%2f&amp;description=CQRS%20Event%20Store"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fblog.jonathanoliver.com%2fcqrs-event-store%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "http:\/\/blog.jonathanoliver.com\/cqrs-event-store\/";  
+this.page.identifier = "http:\/\/blog.jonathanoliver.com\/cqrs-event-store\/"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://jonathanoliver.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="http://blog.jonathanoliver.com/why-i-love-nservicebus-2/">
+          <section class="post">
+              <h2>Why I Love NServiceBus</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="http://blog.jonathanoliver.com/optimistic-concurrency-in-riak-take-2/">
+          <section class="post">
+              <h2>Optimistic Concurrency in Riak: Take 2</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">Jonathan Oliver</a> (c) Jonathan Oliver. All rights reserved.</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/index.js"></script>
+    
+</body>
+</html>
+

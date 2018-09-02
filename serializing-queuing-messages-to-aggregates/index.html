@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="Serializing (Queuing) Messages To Aggregates"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@jonathan_oliver"/>
+
+
+
+  	<meta property="og:title" content="Serializing (Queuing) Messages To Aggregates &middot; Jonathan Oliver" />
+  	<meta property="og:site_name" content="Jonathan Oliver" />
+  	<meta property="og:url" content="http://blog.jonathanoliver.com/serializing-queuing-messages-to-aggregates/" />
+
+    
+        
+            <meta property="og:image" content="/images/cover.jpg"/>
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2009-07-07T00:00:00Z" />
+
+    
+    
+
+    <title>Serializing (Queuing) Messages To Aggregates &middot; Jonathan Oliver</title>
+
+    
+    <meta name="description" content="I responded to a message on Yahoo! Groups DDD forum regarding locking an aggregate root and serializing access to it. The question surrounds locking of an aggre" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="http://blog.jonathanoliver.com/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://blog.jonathanoliver.com/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/nav.css" />
+
+    
+
+    
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/default.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        
+        <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+      
+          <link href="http://blog.jonathanoliver.com/index.xml" rel="alternate" type="application/rss+xml" title="Jonathan Oliver" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.46-DEV" />
+
+    <link rel="canonical" href="http://blog.jonathanoliver.com/serializing-queuing-messages-to-aggregates/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": ,
+        "logo": http://blog.jonathanoliver.com/images/tux.png
+    },
+    "author": {
+        "@type": "Person",
+        "name": ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": http://blog.jonathanoliver.com/images/tux.png,
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": https://blog.jonathanoliver.com,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": Serializing (Queuing) Messages To Aggregates,
+    "name": Serializing (Queuing) Messages To Aggregates,
+    "wordCount": 573,
+    "timeRequired": "PT3M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": en
+    },
+    "url": http://blog.jonathanoliver.com/serializing-queuing-messages-to-aggregates/,
+    "datePublished": 2009-07-07T00:00Z,
+    "dateModified": 2009-07-07T00:00Z,
+    
+    
+    "description": ,
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": http://blog.jonathanoliver.com/serializing-queuing-messages-to-aggregates/
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="http://blog.jonathanoliver.com/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="http://blog.jonathanoliver.com/"><img src="http://blog.jonathanoliver.com/images/tux.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button icon-feed" href="http://blog.jonathanoliver.com/index.xml" >&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">Serializing (Queuing) Messages To Aggregates</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2009-07-07T00:00:00Z">
+            Jul 7, 2009
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <p>I <a href="http://tech.groups.yahoo.com/group/domaindrivendesign/message/13688">responded to a message</a> on Yahoo! Groups DDD forum regarding locking an aggregate root and serializing access to it. The question surrounds locking of an aggregate while it processes a message. The concern was that "pessimistic locking" makes your system unable to scale, which per the formal definition is absolutely correct. But there's a slightly different way to lock that isn't truly pessimistic.</p> <p>Below follows my response to some of the concerns posted in the above message.</p> <blockquote> <p>> Well I don't agree with this - at least in our domain. There are many     <br />> commands that could be applied simultaneously to the one Aggregate.     <br />> That's what an IConflictWith interface would be for - for those that      <br />> do actually conflict. For large aggregates in a shared-nothing      <br />> architecture, it just wouldn't scale to only allow one message at a      <br />> time. </p> </blockquote> <p>From what I understand and have read, IConflictWith is used for conflicts between your eventually consistent reporting store and your aggregates. The idea is that because you're issuing commands built off of eventually consistent (potentially outdated) data you need a way to determine if the incoming command might conflict with other changes that have already occurred within the aggregate. No amount of locking could prevent this when using an eventually consistent model. Yet, we need to ensure each aggregate is always be 100% fully consistent at all times. </p> <p>Going back to the locking strategy, one of the critical elements in DDDD is that because an aggregate root must be 100% consistent at all times, it can only be actively receiving commands in a single process/address space at a time. In other words, you wouldn't want to have the same aggregate running on multiple machines at the same time and have both actively receiving and processing commands. [Greg has an active/passive aggregate mechanism to handle fast, graceful failover scenarios.] </p> <p>If an aggregate can only exist in one address space at a time, how do you scale? Don't you create a bottleneck? Yes and no. You scale through partitioning. You distribute your bounded context across multiple machines where Machine A handles aggregates with IDs A-C, Machine B handles aggregates with IDs D-F, etc. </p> <p>Okay, but we're still locking the aggregate and a single message to the aggregate could take a really long time to process. The answer then is, don't lock for a long time. But what if you have to? If you have some message that's taking a long time to process, the processing for that message probably needs to be broken out into a service. Then, when you need the service, you send a message to it and ask it to perform some work. You then release the lock on the aggregate. When the service completes, it sends a message letting you know the work is done and the status of the work (or whatever you need), you lock the aggregate, process that message and release. </p> <p>In other words, the lock on the aggregate is always for an extremely short amount of time--never more than a few milliseconds. The aggregate receives the message, makes a quick decision based on any and all the information it already has, and sends a message. If the aggregate needs more information to make a decision, it sends a message asking for more information from a service, the user, etc. You never *ever* lock the aggregate while it's "waiting" for a "response" from the service, doing so would kill your scalability.</p> 
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+
+
+
+
+<figure class="author-image">
+    <a class="img" href="http://blog.jonathanoliver.com/" style="background-image: url(/images/tux.png)"><span class="hidden">Jonathan Oliver's Picture</span></a>
+</figure>
+
+
+<section class="author">
+  <h4><a href="http://blog.jonathanoliver.com/">Jonathan Oliver</a></h4>
+  
+  <p>Read <a href="http://blog.jonathanoliver.com/">more posts</a> by this author.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">Utah, USA</span>
+    <span class="author-link icon-link"><a href="https://blog.jonathanoliver.com">https://blog.jonathanoliver.com</a></span>
+  </div>
+</section>
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Serializing%20%28Queuing%29%20Messages%20To%20Aggregates&nbsp;-&nbsp;Jonathan%20Oliver&amp;url=http%3a%2f%2fblog.jonathanoliver.com%2fserializing-queuing-messages-to-aggregates%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.jonathanoliver.com%2fserializing-queuing-messages-to-aggregates%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fblog.jonathanoliver.com%2fserializing-queuing-messages-to-aggregates%2f&amp;description=Serializing%20%28Queuing%29%20Messages%20To%20Aggregates"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fblog.jonathanoliver.com%2fserializing-queuing-messages-to-aggregates%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "http:\/\/blog.jonathanoliver.com\/serializing-queuing-messages-to-aggregates\/";  
+this.page.identifier = "http:\/\/blog.jonathanoliver.com\/serializing-queuing-messages-to-aggregates\/"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://jonathanoliver.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="http://blog.jonathanoliver.com/stephen-coveys-personal-library/">
+          <section class="post">
+              <h2>Stephen Covey&#39;s Personal Library</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="http://blog.jonathanoliver.com/ddd-in-a-distributed-world/">
+          <section class="post">
+              <h2>DDD in a Distributed World</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">Jonathan Oliver</a> (c) Jonathan Oliver. All rights reserved.</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/index.js"></script>
+    
+</body>
+</html>
+

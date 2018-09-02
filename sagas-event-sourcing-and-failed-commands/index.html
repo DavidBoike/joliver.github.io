@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="Sagas, Event Sourcing, and Failed Commands"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@jonathan_oliver"/>
+
+
+
+  	<meta property="og:title" content="Sagas, Event Sourcing, and Failed Commands &middot; Jonathan Oliver" />
+  	<meta property="og:site_name" content="Jonathan Oliver" />
+  	<meta property="og:url" content="http://blog.jonathanoliver.com/sagas-event-sourcing-and-failed-commands/" />
+
+    
+        
+            <meta property="og:image" content="/images/cover.jpg"/>
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2010-12-25T00:00:00Z" />
+
+    
+    
+
+    <title>Sagas, Event Sourcing, and Failed Commands &middot; Jonathan Oliver</title>
+
+    
+    <meta name="description" content="There is an interesting thread on the DDD/CQRS group involving sagas. I&#39;m posting my reply below because I want to make it available as a solution to those that" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="http://blog.jonathanoliver.com/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://blog.jonathanoliver.com/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/nav.css" />
+
+    
+
+    
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/default.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        
+        <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+      
+          <link href="http://blog.jonathanoliver.com/index.xml" rel="alternate" type="application/rss+xml" title="Jonathan Oliver" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.46-DEV" />
+
+    <link rel="canonical" href="http://blog.jonathanoliver.com/sagas-event-sourcing-and-failed-commands/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": ,
+        "logo": http://blog.jonathanoliver.com/images/tux.png
+    },
+    "author": {
+        "@type": "Person",
+        "name": ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": http://blog.jonathanoliver.com/images/tux.png,
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": https://blog.jonathanoliver.com,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": Sagas, Event Sourcing, and Failed Commands,
+    "name": Sagas, Event Sourcing, and Failed Commands,
+    "wordCount": 843,
+    "timeRequired": "PT4M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": en
+    },
+    "url": http://blog.jonathanoliver.com/sagas-event-sourcing-and-failed-commands/,
+    "datePublished": 2010-12-25T00:00Z,
+    "dateModified": 2010-12-25T00:00Z,
+    
+    
+    "description": ,
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": http://blog.jonathanoliver.com/sagas-event-sourcing-and-failed-commands/
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="http://blog.jonathanoliver.com/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="http://blog.jonathanoliver.com/"><img src="http://blog.jonathanoliver.com/images/tux.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button icon-feed" href="http://blog.jonathanoliver.com/index.xml" >&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">Sagas, Event Sourcing, and Failed Commands</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2010-12-25T00:00:00Z">
+            Dec 25, 2010
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <p align="justify">There is an <a href="http://groups.google.com/group/dddcqrs/browse_thread/thread/843a6db64e3036e9">interesting thread on the DDD/CQRS group involving sagas</a>. I'm posting my reply below because I want to make it available as a solution to those that encounter this same problem. <strong>All replies should be directed on the CQRS thread instead of replying here below.</strong></p> <p align="justify">To give a small amount of background, the question is related to how a failure or refusal on the part of the domain to perform some action is communicated back to the saga such that it can take the appropriate, compensating action.</p> <p align="justify">Here's the post:</p> <p align="justify">We've run into almost this exact situation and considered a number of ways to solve the problem.</p> <p align="justify">To sum up the problem, it's that we need to communicate a failure or rejection of a command/instruction by the domain back to a saga such that the saga can take the appropriate, compensating action.</p> <p align="justify">As previously mentioned in this thread, an aggregate must enforce its invariants and is not allowed to enter an invalid state. This presents somewhat of an issue because we want to communicate the failure back to the saga but this failure cannot be communicated *through* the domain.</p> <p align="justify">One potential solution (although not the one that we use) was raised during Greg's course when he was discussing sagas. He hinted at the idea that a call from the saga to the domain could be made via RPC. In essence the command message is sent synchronously via some kind of RPC-like call or web service instead of asynchronously using a message bus or message queue. In this way the failure can easily be communicated back in the form of a fault that is understood by the saga. Ultimately we went with something a little bit different because we were exposing our domain behavior through message handlers that listened to a message bus and we wanted to maintain asynchronous messaging throughout or system.</p> <p align="justify">Our solution was the following (and it's worked quite well):</p> <p align="justify">1. The saga asynchronously dispatches a command message to the domain.</p> <p align="justify">2. The message handler receives the command message, loads the aggregate from the repository, and calls the appropriate method on the aggregate.</p> <p align="justify">3. The domain object checks its invariants and ultimately decides to throws an intention-revealing, well-named, domain-specific exception.</p> <p align="justify">4. The command handler catches the well-named exception. Because the command handler knows the type of message received along with its intention and the type of exception that was thrown and caught, it's in a position to relay that exception in the form of a message back to the saga via a bus.Reply(). But this time, it's not an event message, which represents something that something happened. Instead it's a message that describes something that didn't happen. We didn't have a name for this kind of message but the terms notification and alert kept coming back. Ultimately we decided to call these kinds of messages alert. These messages could also potentially be called faults or something else, but they should be considered separate from events.</p> <p align="justify">5. The saga receives the alert/fault message and applies the appropriate action.</p> <p align="justify">The one question that still remains is that we lose the alert message once it's consumed by the saga and the concern is that we want to keep track of everything that has happened. I couldn't agree more. Keeping track of what's happened and it's extremely important. But a better question is who's responsible for keeping track of this fault/alert? Should the domain keep track of something that didn't happen or something that it refused to do? Isn't it the saga that cares about the command and associated failure? Shouldn't the saga (or its infrastructure) be responsible for tracking all messages relative to the saga?</p> <p align="justify">In our implementation, we actually implement our sagas using event sourcing. What this means is that all messages addressed to the saga are replayed in order to re-build the state of the saga. In addition (and as an auditing benefit), we use an event store to dispatch outbound message from the saga. This means that a saga is completely autonomous and separate from the domain and is only coupled by the message contracts. It also means that we can replay incoming messages against a new implementation of a saga if necessary to come up with an alternate model as our sagas and domain evolve to changing business requirements.</p> <p align="justify">To sum things up:</p> <p align="justify">1. When the domain refuses to do something, it doesn't generate an event. Instead, it throws an exception.</p> <p align="justify">2. The command handler handles the exception and does a bus.Reply() with an "alert" or "fault" message.</p> <p align="justify">3. Because the message is not generated by the domain, but by the layer just on top of the domain, we don't track this alert/fault message inside of the domain.</p> <p align="justify">4. The saga receives the message and takes appropriate, compensating action.</p> <p align="justify">5. Because the saga is implemented using event sourcing, nothing is ever lost. We have a complete business/audit history of what happened and we can evolve our saga model and rebuild it with full confidence in our message history.</p> 
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+
+
+
+
+<figure class="author-image">
+    <a class="img" href="http://blog.jonathanoliver.com/" style="background-image: url(/images/tux.png)"><span class="hidden">Jonathan Oliver's Picture</span></a>
+</figure>
+
+
+<section class="author">
+  <h4><a href="http://blog.jonathanoliver.com/">Jonathan Oliver</a></h4>
+  
+  <p>Read <a href="http://blog.jonathanoliver.com/">more posts</a> by this author.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">Utah, USA</span>
+    <span class="author-link icon-link"><a href="https://blog.jonathanoliver.com">https://blog.jonathanoliver.com</a></span>
+  </div>
+</section>
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Sagas%2c%20Event%20Sourcing%2c%20and%20Failed%20Commands&nbsp;-&nbsp;Jonathan%20Oliver&amp;url=http%3a%2f%2fblog.jonathanoliver.com%2fsagas-event-sourcing-and-failed-commands%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.jonathanoliver.com%2fsagas-event-sourcing-and-failed-commands%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fblog.jonathanoliver.com%2fsagas-event-sourcing-and-failed-commands%2f&amp;description=Sagas%2c%20Event%20Sourcing%2c%20and%20Failed%20Commands"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fblog.jonathanoliver.com%2fsagas-event-sourcing-and-failed-commands%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "http:\/\/blog.jonathanoliver.com\/sagas-event-sourcing-and-failed-commands\/";  
+this.page.identifier = "http:\/\/blog.jonathanoliver.com\/sagas-event-sourcing-and-failed-commands\/"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://jonathanoliver.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="http://blog.jonathanoliver.com/eventstore-getting-all-events-since/">
+          <section class="post">
+              <h2>EventStore: Getting All Events Since…</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="http://blog.jonathanoliver.com/event-store-transaction-integrity-without-transactions/">
+          <section class="post">
+              <h2>Event Store: Transaction Integrity Without Transactions</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">Jonathan Oliver</a> (c) Jonathan Oliver. All rights reserved.</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/index.js"></script>
+    
+</body>
+</html>
+

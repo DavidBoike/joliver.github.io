@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="Continous Integration Workflow"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@jonathan_oliver"/>
+
+
+
+  	<meta property="og:title" content="Continous Integration Workflow &middot; Jonathan Oliver" />
+  	<meta property="og:site_name" content="Jonathan Oliver" />
+  	<meta property="og:url" content="http://blog.jonathanoliver.com/continous-integration-workflow/" />
+
+    
+        
+            <meta property="og:image" content="/images/cover.jpg"/>
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2009-09-24T00:00:00Z" />
+
+    
+    
+
+    <title>Continous Integration Workflow &middot; Jonathan Oliver</title>
+
+    
+    <meta name="description" content="With permission, here is our general CI workflow document that my team drafted that governs our vision regarding how we do CI:
+Continuous Integration Workflow
+A" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="http://blog.jonathanoliver.com/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://blog.jonathanoliver.com/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/nav.css" />
+
+    
+
+    
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/default.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        
+        <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+      
+          <link href="http://blog.jonathanoliver.com/index.xml" rel="alternate" type="application/rss+xml" title="Jonathan Oliver" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.46-DEV" />
+
+    <link rel="canonical" href="http://blog.jonathanoliver.com/continous-integration-workflow/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": ,
+        "logo": http://blog.jonathanoliver.com/images/tux.png
+    },
+    "author": {
+        "@type": "Person",
+        "name": ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": http://blog.jonathanoliver.com/images/tux.png,
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": https://blog.jonathanoliver.com,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": Continous Integration Workflow,
+    "name": Continous Integration Workflow,
+    "wordCount": 929,
+    "timeRequired": "PT5M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": en
+    },
+    "url": http://blog.jonathanoliver.com/continous-integration-workflow/,
+    "datePublished": 2009-09-24T00:00Z,
+    "dateModified": 2009-09-24T00:00Z,
+    
+    
+    "description": ,
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": http://blog.jonathanoliver.com/continous-integration-workflow/
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="http://blog.jonathanoliver.com/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="http://blog.jonathanoliver.com/"><img src="http://blog.jonathanoliver.com/images/tux.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button icon-feed" href="http://blog.jonathanoliver.com/index.xml" >&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">Continous Integration Workflow</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2009-09-24T00:00:00Z">
+            Sep 24, 2009
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <p align="justify">With permission, here is our general CI workflow document that my team drafted that governs our vision regarding how we do CI:</p> <p align="center"><b>Continuous Integration Workflow</b></p> <p align="justify"><b>Abstract</b></p> <p align="justify">We want to provide developers with the ability to make changes to project source code and to then automatically, transparently, and consistently subject all project source code to rigorous testing and quality assurance processes.</p> <p align="justify">Further, we want the build artifacts resulting from source code changes to be quickly available to interested parties at a well-known location, but at a lower level of confidence in the those changes. These same artifacts, after a more time-consuming and rigorous testing process, are made available in another well-known "blessed" location.</p> <p align="justify">Any projects which depend upon the newly built artifacts will detect changes to the "blessed" locations and begin their own workflow in much the same manner. This is recursive all the way up a dependency graph such that any low-level library can be certified against all projects that use it all the way up the chain within a relatively short period of time.</p> <p align="justify"><b>Objectives</b></p> <ol> <li> <div align="justify">Define the basic structure of a continuous integration workflow.</div> </li> <li> <div align="justify">Provide a high degree of assurance regarding changes made to the source code such that a baseline of quality can be ensured within a few minutes and higher degrees of quality can be ensured shortly thereafter.</div> </li> <li> <div align="justify">Allow developers to explicitly "pull" shared libraries where high confidence has not yet been obtained.</div> </li> <li> <div align="justify">If modified source code is a shared library, ensure dependent projects only receive the binary at the highest level of confidence before kicking off their own integration workflow as a result of changes to a shared library.</div> </li> <li> <div align="justify">Allow projects to lock their dependencies to prevent # 4 from occurring.</div> </li> </ol> <p align="justify"><b>Local/Developer "Private" Workflow</b></p> <ol> <li> <div align="justify">Pull from "source code" repository on "mainline" server</div> </li> <li> <div align="justify">Make changes to source</div> </li> <li> <div align="justify"><b>Execute developer "private" build script which:</b></div> </li> <ol> <li> <div align="justify"><b>Runs all unit tests and fast quality metrics</b></div> </li> </ol> <li> <div align="justify">Commit to local "source code" repository</div> </li> <li> <div align="justify">Re-run steps 1-4 and rebase as necessary</div> </li> <li> <div align="justify">Push to "source code" repository on "mainline" server</div> </li> </ol> <p align="justify"><b>Check-in Gate</b><b><sup>1</sup></b> "Commit" Workflow (CI Server)</p> <ol> <li> <div align="justify">Pull from "source code" repository" on "mainline" server</div> </li> <li> <div align="justify"><b>Execute check-in gate "commit" build script which:</b></div> </li> <ol> <li> <div align="justify"><b>Versions assemblies</b></div> </li> <li> <div align="justify"><b>Compiles/AOP/ source index/ILMerge/obfuscation/etc.</b></div> </li> <li> <div align="justify"><b>Runs quick/unit tests</b></div> </li> </ol> </ol> <p align="justify"><b>Stamp Artifacts Workflow</b></p> <ol> <li> <div align="justify"><b>Executes "stamp" built script which:</b></div> </li> <ol> <li> <div align="justify"><b>Tags local "source code" repository with version</b></div> </li> <li> <div align="justify"><b>Commits compiled artifacts to local "artifact" repository (known location)</b></div> </li> <li> <div align="justify"><b>Pushes tags to "source code" repository" on "mainline" server</b></div> </li> <li> <div align="justify"><b>Pushes artifacts + tags to "artifact" repository on "mainline" server</b></div> </li> </ol> </ol> <p align="justify"><b>Acceptance Test "Secondary Build" Workflow</b></p> <ol> <li> <div align="justify">These tests can be platform specific and can be executed on multiple nodes simultaneously<b></b></div> </li> <li> <div align="justify">Pull the stamped artifacts from the "artifact" repository on the "mainline" server<b></b></div> </li> <li> <div align="justify"><strong>Execute any secondary/test scripts which:</strong></div> </li> <ol> <li> <div align="justify"><strong>Runs unit and integration tests (with coverage)</strong></div> </li> <li> <div align="justify"><strong>Runs source code quality metrics (complexity, lines of code, introspection, performance)</strong></div> </li> <li> <div align="justify"><strong>Generates documentation</strong></div> </li> </ol> </ol> <p align="justify"><b>Bless Artifacts Workflow</b></p> <ol> <li> <div align="justify">Once all previous tests have been accepted, the artifacts are now considered "blessed" and can be moved into the "artifact" repository on the "blessed" server. This particular script simply performs a push from its own repository to the "blessed" server (which is "origin" in git) and makes the binaries generally available as a release.</div> </li> </ol> <p align="justify"><b>Recursive Workflow</b></p> <p align="justify">Once the blessed artifacts have been published, any dependent project (via the master/trunk branch) can pull the update (via git submodules or svn:externals) and commence their own workflow, thus beginning the cycle all over again all the way up any project dependency chain to the leaf node projects. At any point if any of the dependent projects fail, we can easily follow the error back to either a bug in the library being modified or possibly the dependent project's usage of the library.</p> <p align="justify">In addition, some projects may want to use a very specific version of a dependency. Through the use of tags (in git submodules or svn:externals) a dependent project can "lock" at a particular build of a dependency or a particular version of a dependency.</p> <p align="justify">Note that git submodules are already "locked" at a particular revision and require another script to facilitate updating those modules to the latest revision as desired.</p> <p align="justify"><b>Developer Shortcuts</b></p> <p align="justify">Oftentimes, a developer makes a change to a shared library because they need some immediate functionality in the library or they have identified a bug and want to quickly correct it so that they can move on. Git helps us in this scenario because the original developer who corrects the problem can simply "pull" from his local/committed repository into the dependent project. Further, other developers can quickly pull from the original developer's repository as necessary or they can pull the "artifact" repository on the "mainline" a minute or two after the bug fix is committed. In this way, we ensure that developer productivity is uninhibited while dependent projects always receive the highest quality build possible.</p> <p align="justify"><b>Additional Thoughts</b></p> <p align="justify">There is a large debate about where to store build artifacts. Some teams prefer to use a shared network drive or other well-known location. While this works well for localized teams, it does present challenges for those that are developing with semi-connected laptops or elsewhere without local network or even internet connectivity. For this reason, we have opted to use Git repositories to store the build artifacts primarily because the repositories are cloned locally. Furthermore, because of Git's unique delta-based storage and compression mechanisms, large numbers of build artifacts can be stored with minimal increase in the size of the repository. Lastly, unlike most SCM systems, Git has the unique ability to remove history thus allowing us to remove old binaries if the repository becomes too large.</p> <p align="justify"><b>References</b></p> <p align="justify">1. The Deployment Pipeline, Dave Farley, 2007.</p> <p align="justify"></p> 
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+
+
+
+
+<figure class="author-image">
+    <a class="img" href="http://blog.jonathanoliver.com/" style="background-image: url(/images/tux.png)"><span class="hidden">Jonathan Oliver's Picture</span></a>
+</figure>
+
+
+<section class="author">
+  <h4><a href="http://blog.jonathanoliver.com/">Jonathan Oliver</a></h4>
+  
+  <p>Read <a href="http://blog.jonathanoliver.com/">more posts</a> by this author.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">Utah, USA</span>
+    <span class="author-link icon-link"><a href="https://blog.jonathanoliver.com">https://blog.jonathanoliver.com</a></span>
+  </div>
+</section>
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Continous%20Integration%20Workflow&nbsp;-&nbsp;Jonathan%20Oliver&amp;url=http%3a%2f%2fblog.jonathanoliver.com%2fcontinous-integration-workflow%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.jonathanoliver.com%2fcontinous-integration-workflow%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fblog.jonathanoliver.com%2fcontinous-integration-workflow%2f&amp;description=Continous%20Integration%20Workflow"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fblog.jonathanoliver.com%2fcontinous-integration-workflow%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "http:\/\/blog.jonathanoliver.com\/continous-integration-workflow\/";  
+this.page.identifier = "http:\/\/blog.jonathanoliver.com\/continous-integration-workflow\/"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://jonathanoliver.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="http://blog.jonathanoliver.com/ci-servers-and-build-scripts/">
+          <section class="post">
+              <h2>CI Servers and Build Scripts</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="http://blog.jonathanoliver.com/gallio-v3-0-6-and-v3-1-with-ncover-v1-5-8-on-x64/">
+          <section class="post">
+              <h2>Gallio (v3.0.6 and v3.1) with NCover v1.5.8 on x64</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">Jonathan Oliver</a> (c) Jonathan Oliver. All rights reserved.</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/index.js"></script>
+    
+</body>
+</html>
+

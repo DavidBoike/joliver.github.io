@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:image" content="/images/cover.jpg"/>
+
+
+
+<meta name="twitter:title" content="Posts"/>
+<meta name="twitter:description" content="Eventually Consistent, Fully Distributed"/>
+<meta name="twitter:site" content="@jonathan_oliver"/>
+
+
+
+  	<meta property="og:title" content="Posts &middot; Jonathan Oliver" />
+  	<meta property="og:site_name" content="Jonathan Oliver" />
+  	<meta property="og:url" content="http://blog.jonathanoliver.com/post/" />
+
+    
+        
+            <meta property="og:image" content="/images/cover.jpg"/>
+        
+    
+
+    
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="Eventually Consistent, Fully Distributed" />
+    
+
+    <title>Posts &middot; Jonathan Oliver</title>
+
+    
+    <meta name="description" content="Eventually Consistent, Fully Distributed" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="http://blog.jonathanoliver.com/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://blog.jonathanoliver.com/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/nav.css" />
+
+    
+
+    
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/default.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        
+        <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+      
+          <link href="http://blog.jonathanoliver.com/index.xml" rel="alternate" type="application/rss+xml" title="Jonathan Oliver" />
+      
+      
+        <link href="http://blog.jonathanoliver.com/post/index.xml" rel="alternate" type="application/rss+xml" title="Posts &middot; Jonathan Oliver" />
+      
+    
+    <meta name="generator" content="Hugo 0.46-DEV" />
+
+    <link rel="canonical" href="http://blog.jonathanoliver.com/post/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Person",
+        "name": ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": http://blog.jonathanoliver.com/images/tux.png,
+            "width": 250,
+            "height": 250
+        },
+        
+        "url": https://blog.jonathanoliver.com,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "url": http://blog.jonathanoliver.com/,
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": http://blog.jonathanoliver.com/
+    },
+    "description": Eventually Consistent, Fully Distributed
+}
+  </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="http://blog.jonathanoliver.com/post/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+
+	 
+  <header class="main-header tag-head" style="background-image: url(/images/cover.jpg)">
+  
+
+    <nav class="main-nav overlay clearfix">
+      
+        <a class="blog-logo" href="http://blog.jonathanoliver.com/"><img src="http://blog.jonathanoliver.com/images/tux.png" alt="Home" /></a>
+      
+      
+        
+          <a class="menu-button icon-feed" href="http://blog.jonathanoliver.com/post/index.xml">&nbsp;&nbsp;Subscribe</a>
+        
+      
+    </nav>
+    <div class="vertical">
+        <div class="main-header-content inner">
+            <h1 class="page-title">Posts</h1>
+            <h2 class="page-description">
+                
+            </h2>
+        </div>
+    </div>
+</header>
+
+<main class="content" role="main">
+    
+
+	<div class="extra-pagination inner">
+    <nav class="pagination" role="navigation">
+	
+	    <a class="newer-posts" href="http://blog.jonathanoliver.com/post/page/2/">&larr; Newer Posts</a>
+	
+	<span class="page-number">Page 3 of 15</span>
+	
+	    <a class="older-posts" href="http://blog.jonathanoliver.com/post/page/4/">Older Posts &rarr;</a>
+	
+</nav>
+
+	</div>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="http://blog.jonathanoliver.com/cqrs-eventstore-v2-0-release/">CQRS EventStore v2.0 Release</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>I have just released v2.0 of my CQRS EventStore project. I have been amazed at and delighted by the number of contributors the project. Interest continues to grow and implementations for various storage engines continues as well as other serialization strategies.
+Download
+Download the .NET 4.0 release here: https://github.com/downloads/joliver/EventStore/EventStore-2.0.11157.39-net40.zip
+Download the .NET 3.5 release here: https://github.com/downloads/joliver/EventStore/EventStore-2.0.11157.39-net35.zip
+The Roadmap
+First and foremost, any volunteers to help me with the NuGet package? Ideally we'd have one package per storage engine that contains . <a class="read-more" href="http://blog.jonathanoliver.com/cqrs-eventstore-v2-0-release/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="http://blog.jonathanoliver.com/images/tux.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            Jonathan Oliver
+                 
+        
+
+        
+        <time class="post-date" datetime="2011-06-06T00:00:00Z">
+            6 Jun 2011
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="http://blog.jonathanoliver.com/why-i-still-love-cqrs-and-messaging-and-event-sourcing/">Why I Still Love CQRS (and Messaging and Event Sourcing)</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>Let's rewind several years. At the time I was struggling through a large project with ever increasing complexity in my "domain model" (if you could really call it that) along with an explosion of dependencies—from NHibernate (including Fluent NHibernate, NHibernate.LINQ), log4net, unit tests, and web services all over the place. It was crazy—crazy big, crazy hard to debug, and crazy hard to figure out what was happening through the rats nest of dependencies. <a class="read-more" href="http://blog.jonathanoliver.com/why-i-still-love-cqrs-and-messaging-and-event-sourcing/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="http://blog.jonathanoliver.com/images/tux.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            Jonathan Oliver
+                 
+        
+
+        
+        <time class="post-date" datetime="2011-05-09T00:00:00Z">
+            9 May 2011
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="http://blog.jonathanoliver.com/asp-net-mvc-and-iis7-404-pages/">ASP.NET MVC and IIS7 404 Pages</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>Note to self (and to anyone else who cares): If IIS7 is giving back 404 pages and it's pointing to the proper directory and configured with Integrated Mode, and the MVC routes appear to be correct, it might be that there are no controllers registered with the container.
+This one bit me a little bit today--I kept getting 404 pages from IIS and everything appeared to be configured correctly. Finally, when I registered the controller with the container the 404's went away and I was able to continue. <a class="read-more" href="http://blog.jonathanoliver.com/asp-net-mvc-and-iis7-404-pages/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="http://blog.jonathanoliver.com/images/tux.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            Jonathan Oliver
+                 
+        
+
+        
+        <time class="post-date" datetime="2011-05-06T00:00:00Z">
+            6 May 2011
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="http://blog.jonathanoliver.com/a-simple-reminder-of-event-sourcing-benefits/">A Simple Reminder of Event Sourcing Benefits</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>I was working with some legacy data the other day when all of a sudden I realized that I needed to know exactly how old the data was. The problem? I had no way to get that information precisely. The specific scenario was I was working with phone numbers and addresses of customers. Knowing how old a piece of information—especially contact info—is critical because the older or more stale it is, the higher the potential for error. <a class="read-more" href="http://blog.jonathanoliver.com/a-simple-reminder-of-event-sourcing-benefits/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="http://blog.jonathanoliver.com/images/tux.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            Jonathan Oliver
+                 
+        
+
+        
+        <time class="post-date" datetime="2011-05-02T00:00:00Z">
+            2 May 2011
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="http://blog.jonathanoliver.com/cqrs-out-of-sequence-messages-and-read-models/">CQRS: Out of Sequence Messages and Read Models</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>One of the tricks to message-based solutions is handling messages that come out of order. In some instances the application code must be made resilient to this situation. In other cases, it can be easier to re-sequence the messages and then apply each messages in sequence. In one of my current systems this is the route we took—re-sequencing messages if they arrive out of order.
+One of the easier possibilities is to have the read model poll the event store for new commits. <a class="read-more" href="http://blog.jonathanoliver.com/cqrs-out-of-sequence-messages-and-read-models/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="http://blog.jonathanoliver.com/images/tux.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            Jonathan Oliver
+                 
+        
+
+        
+        <time class="post-date" datetime="2011-04-04T00:00:00Z">
+            4 Apr 2011
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="http://blog.jonathanoliver.com/how-i-avoid-two-phase-commit/">How I Avoid Two-Phase Commit</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>In my last blog post I ranted about two-phase commit (2PC) and MSDTC. This is going to be a quick post about a few techniques that I use. The basic premise is that I break a two-phase commit apart into multiple transactions such that each is handled independently but with resiliency against failure scenarios.
+There are a number of different methods and patterns that can be used to avoid 2PC and each method is different depending upon the application-level requirements. <a class="read-more" href="http://blog.jonathanoliver.com/how-i-avoid-two-phase-commit/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="http://blog.jonathanoliver.com/images/tux.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            Jonathan Oliver
+                 
+        
+
+        
+        <time class="post-date" datetime="2011-04-04T00:00:00Z">
+            4 Apr 2011
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="http://blog.jonathanoliver.com/my-beef-with-msdtc-and-two-phase-commits/">My Beef with MSDTC and Two-Phase Commits</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>I'm just not a fan of the Microsoft Distributed Transaction Coordinator. I've tweeted and blogged a few times about it, but I've never really gone into why. I should preface my remarks by saying that MSDTC does work—it will facilitate and coordinate distributed transactions using a two-phase commit (2PC) protocol. I should also say also that much of what follows is a rant against 2PC and MSDTC is a casualty in the argument. <a class="read-more" href="http://blog.jonathanoliver.com/my-beef-with-msdtc-and-two-phase-commits/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="http://blog.jonathanoliver.com/images/tux.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            Jonathan Oliver
+                 
+        
+
+        
+        <time class="post-date" datetime="2011-04-04T00:00:00Z">
+            4 Apr 2011
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="http://blog.jonathanoliver.com/ilmerge-gotcha/">ILMerge Gotcha</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>Just remember that when two assemblies have internalized a reference to another assembly using ILMerge, each gets their own "copy" of static variables. That is to say, that the class MyClass1.SomeStaticInstance is no longer the same between the two assemblies. I was kicking against this one for the better part of an hour. At first I thought it was some quirk with the [ThreadStatic] attribute I was using. It wasn't. <a class="read-more" href="http://blog.jonathanoliver.com/ilmerge-gotcha/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="http://blog.jonathanoliver.com/images/tux.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            Jonathan Oliver
+                 
+        
+
+        
+        <time class="post-date" datetime="2011-04-02T00:00:00Z">
+            2 Apr 2011
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="http://blog.jonathanoliver.com/removing-2pc-two-phase-commit/">Removing 2PC (Two Phase Commit)</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>I received the following email today and I thought I'd answer it as a blog post so that all can benefit:
+ If you remove the 2PC from the system, how do you deal with ensuring that published events are: * truly published, * not lost, * that there is confidence that the interested parties (subscribers) are truly receiving and processing the events in a 'timely' manner
+* and that there is confidence and a method that the system can gracefully recover from unexpected situations? <a class="read-more" href="http://blog.jonathanoliver.com/removing-2pc-two-phase-commit/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="http://blog.jonathanoliver.com/images/tux.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            Jonathan Oliver
+                 
+        
+
+        
+        <time class="post-date" datetime="2011-03-16T00:00:00Z">
+            16 Mar 2011
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="http://blog.jonathanoliver.com/cqrs-event-sourcing-and-immutable-data/">CQRS: Event Sourcing and Immutable Data</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>There are a number of interesting and unique advantages offered by event sourcing as well as messaging in general. Some of these advantages include the ability to perform merge-based, business-level concurrency—as compared to simple optimistic or pessimistic concurrency. Further, the ability to replay all stored messages into new or alternate models because business context and intent has been captured, is invaluable. One interesting advantage that may not seem like much at first is the immutability of the events once they are committed to a persistent medium. <a class="read-more" href="http://blog.jonathanoliver.com/cqrs-event-sourcing-and-immutable-data/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="http://blog.jonathanoliver.com/images/tux.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            Jonathan Oliver
+                 
+        
+
+        
+        <time class="post-date" datetime="2011-03-15T00:00:00Z">
+            15 Mar 2011
+        </time>
+    </footer>
+</article>
+
+	
+
+	<nav class="pagination" role="navigation">
+	
+	    <a class="newer-posts" href="http://blog.jonathanoliver.com/post/page/2/">&larr; Newer Posts</a>
+	
+	<span class="page-number">Page 3 of 15</span>
+	
+	    <a class="older-posts" href="http://blog.jonathanoliver.com/post/page/4/">Older Posts &rarr;</a>
+	
+</nav>
+
+</main>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">Jonathan Oliver</a> (c) Jonathan Oliver. All rights reserved.</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/index.js"></script>
+    
+</body>
+</html>
