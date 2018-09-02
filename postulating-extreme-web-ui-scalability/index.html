@@ -20,7 +20,7 @@
 
   	<meta property="og:title" content="Postulating Extreme Web UI Scalability &middot; Jonathan Oliver" />
   	<meta property="og:site_name" content="Jonathan Oliver" />
-  	<meta property="og:url" content="http://blog.jonathanoliver.com/postulating-extreme-web-ui-scalability/" />
+  	<meta property="og:url" content="http://joliver.github.io/postulating-extreme-web-ui-scalability/" />
 
     
         
@@ -45,11 +45,11 @@
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="shortcut icon" href="http://blog.jonathanoliver.com/images/favicon.ico">
-	  <link rel="apple-touch-icon" href="http://blog.jonathanoliver.com/images/apple-touch-icon.png" />
+    <link rel="shortcut icon" href="http://joliver.github.io/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://joliver.github.io/images/apple-touch-icon.png" />
 
-    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/screen.css" />
-    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/nav.css" />
+    <link rel="stylesheet" type="text/css" href="http://joliver.github.io/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://joliver.github.io/css/nav.css" />
 
     
 
@@ -62,13 +62,13 @@
 
     
       
-          <link href="http://blog.jonathanoliver.com/index.xml" rel="alternate" type="application/rss+xml" title="Jonathan Oliver" />
+          <link href="http://joliver.github.io/index.xml" rel="alternate" type="application/rss+xml" title="Jonathan Oliver" />
       
       
     
     <meta name="generator" content="Hugo 0.46-DEV" />
 
-    <link rel="canonical" href="http://blog.jonathanoliver.com/postulating-extreme-web-ui-scalability/" />
+    <link rel="canonical" href="http://joliver.github.io/postulating-extreme-web-ui-scalability/" />
 
     
       
@@ -80,7 +80,7 @@
     "publisher": {
         "@type": "Organization",
         "name": ,
-        "logo": http://blog.jonathanoliver.com/images/tux.png
+        "logo": http://joliver.github.io/images/tux.png
     },
     "author": {
         "@type": "Person",
@@ -88,7 +88,7 @@
         
         "image": {
             "@type": "ImageObject",
-            "url": http://blog.jonathanoliver.com/images/tux.png,
+            "url": http://joliver.github.io/images/tux.png,
             "width": 250,
             "height": 250
         }, 
@@ -113,7 +113,7 @@
       "@type": "Language",
       "alternateName": en
     },
-    "url": http://blog.jonathanoliver.com/postulating-extreme-web-ui-scalability/,
+    "url": http://joliver.github.io/postulating-extreme-web-ui-scalability/,
     "datePublished": 2009-12-16T00:00Z,
     "dateModified": 2009-12-16T00:00Z,
     
@@ -121,7 +121,7 @@
     "description": ,
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": http://blog.jonathanoliver.com/postulating-extreme-web-ui-scalability/
+        "@id": http://joliver.github.io/postulating-extreme-web-ui-scalability/
     }
 }
     </script>
@@ -147,7 +147,7 @@
     </ul>
 
     
-    <a class="subscribe-button icon-feed" href="http://blog.jonathanoliver.com/index.xml">Subscribe</a>
+    <a class="subscribe-button icon-feed" href="http://joliver.github.io/index.xml">Subscribe</a>
     
 </div>
 <span class="nav-cover"></span>
@@ -162,10 +162,10 @@
 
 
   
-      <a class="blog-logo" href="http://blog.jonathanoliver.com/"><img src="http://blog.jonathanoliver.com/images/tux.png" alt="Home" /></a>
+      <a class="blog-logo" href="http://joliver.github.io/"><img src="http://joliver.github.io/images/tux.png" alt="Home" /></a>
   
   
-      <a class="menu-button icon-feed" href="http://blog.jonathanoliver.com/index.xml" >&nbsp;&nbsp;Subscribe</a>
+      <a class="menu-button icon-feed" href="http://joliver.github.io/index.xml" >&nbsp;&nbsp;Subscribe</a>
   
   </nav>
 </header>
@@ -194,7 +194,7 @@
     </header>
 
     <section class="post-content">
-      <p>I've been working with CQRS for almost a year. Ever since I first heard about it, I was immediately convinced that it had the ability to vastly simplify a lot of unnecessary development overhead. In this particular post, I will not be discussing event sourcing which is often mingled with CQRS. Instead, I will be focusing on the query side of the equation.</p> <p>Please note that the ideas contained herein are merely conjectures of what might be rather than any kind of working, concrete implementation. I've thought my way through some aspects and ramifications of implementing what I mention below but new insights will undoubtedly merit additional consideration. Furthermore the solutions outlined below need not be considered mutually exclusive with more traditional ways of doing things. There is definitely room to implement portions of what I mention for specific views while doing things in the traditional way in other views.</p> <p><strong>ViewModel Tables</strong></p> <p>Several weeks ago <a href="http://blog.jonathanoliver.com/2009/11/cqrs-reporting-database-access.html">I blogged</a> about having one table per view. Since that time Udi Dahan <a href="http://www.udidahan.com/2009/12/09/clarified-cqrs/">has mentioned</a> it as well, although independently of my post. Querying view model tables directly, which comes as a positive consequence of implementing CQRS, enables us to avoid having numerous mapping layers between the database and the view. Further, it allows us to avoid projecting off of our domain model and keeps the domain model focused solely on behavior. Lastly, it allows us to scale the read database independently of the write database.</p> <p><strong>Content Delivery Networks</strong></p> <p>Think for a moment about the pure static resources that are handled on a given website. They just sit there with the exact same content for each request. These are the exact kinds of resources for which we could leverage a content-delivery network. In other words, we could push these static elements to a CDN and have the CDN deliver them for us thus offloading  traffic from our servers and freeing our web tier to perform more interesting tasks—such as processing update-type commands. Not only does this offload work from our web tier, but the user has a better and faster browsing experience.</p> <p><strong>HTML + JSON</strong></p> <p>In ASP.NET as well as other server-based page-rendering technologies we typically have the request come all the way to our server and then we render some HTML but with a few modifications depending upon the user. Could there be a way to somehow render static layout HTML but render the parts that vary separately? Why not have the pages render identical static HTML regardless of user and then, on a separate request, render the user-specific content and then stitch the two together using JavaScript?</p> <p>Let me say that another way. Our MVC view or our ASP.NET "Page" could render pure HTML with absolutely no server-side markup. Inside of that HTML we would have the URL of an embedded resource: <script src=""></script>. The request to this embedded resource would call our MVC controller and then render JSON data with user-specific information for the currently logged-in user for that view. We could then use a client-side JavaScript templating engine such as jTemplates to combine the JSON with the static HTML.</p> <p><strong>Static HTML Views + CDNs</strong></p> <p>The above has some interesting ramifications. Why couldn't we just put the static HTML for each view into an HTML file and push those HTML files to a CDN? The static HTML files would have <script> tags inside which would make HTTP requests to our controller actions. Of course we would need to figure out a way to render each view with its associated header/footer HTML or perhaps use JavaScript to get the various HTML parts of the page and assemble them on the client.</p>  <p>By doing this, our web tier is now responsible for exactly two things: outputting user-specific data in JSON format and handling of mutating/update-type POST commands from the browser.</p>  <p><strong>CDNs + JSON</strong></p>  <p>Here's where things get interesting. What if we didn't have to query the database through our controller/service layer to render the JSON? What if the request for the user-specific data never reached the web server? What if the user-specific JSON files were <em>already</em> on the CDN? Think about that for a minute. If that was somehow possible, our web servers would only be responsible for handling POSTs which contained task-specific commands. Wouldn't that make the web tier massively scalable? Wouldn't it be easier to handle exponentially larger loads on the web tier without the need for additional hardware? Even if we didn't use a CDN and we did everything ourselves, Apache and IIS are really, really good at serving up static files when compared to the expense of going through the ASP.NET pipeline. [This applies to any server-side technology such as Ruby, PHP, Perl, Java, etc.]</p>  <p>How is this accomplished? In addition to what has been mentioned throughout this post of splitting up the HTML and the JSON requests, there are two additional pieces. First, you would want to have a component subscribing to events being published by your domain model. This component would then render the user-specific JSON for each view or page.  Second, we would need a way to map the incoming request for a particular JSON file at a "general" location, e.g. "/scripts/account-history" to a user-specific location, e.g. "/scripts/user-12345/account-history.js".</p>  <p><strong>URL Rewriting + Session State ID + Hard Links</strong></p>  <p>That last part is the tricky part because we want to ensure that the user's information is protected and cannot be accessed by others. The way to do it is with URL rewriting and file system hard links/junction points. The user-specific JSON file would be written to a known/fixed location, but that location couldn't be accessed and would never be disclosed over the web. Instead what we would do is rewrite the URL to be: "/scripts/<session-state-id>/account-history.js". This could be accomplished through either server-side rewriting or even client-side rewriting.</p>  <p>If you recall, the session state ID is very, very temporary. When a user logs out of their account or the session expires, the session state is nullified and disappears. But we don't typically think like that about directories. This is where hard links or junction points come into play.</p>  <p>When a user logs in, a hard link is created which points to the user-specific (but never disclosed) directory. For example "/scripts/<session-state-id>/account-history.js" would map to: "/scripts/<random-guid>/account-history.js". When the login takes place, a small, server-side lookup is performed to get the GUID for the particular user—not the user identifier, but another GUID that is never publicly disclosed. We then have a server-side process create a hard link between the temporary session state identifier and the GUID. Conversely, when the user logs out or the session expires, the hard link is removed. In this way we can protect the user data from prying eyes—there would be no way to access the user data without knowing the session state identifier.</p>  <p><strong>Conclusion</strong></p>  <p>All of this is highly experimental, but conceptually makes sense. The development tools currently available bring us some but not all of the way there. Further, there is an amount of overhead in developing such a solution, but the benefits could be significant, especially the separation of concerns aspect and the ability to scale without significant additional effort. Amazon, eBay, Google, and other big players currently implement some or even most of the above techniques but I don't think I've ever seen all of them put together in quite this way.</p>  <p>There are three other benefits that I just thought of. First, if your web servers are completely offline, because of HTTP content caching with expirations, your users wouldn't even notice—until they tried to perform an update/POST. In this way, your website remains highly available—even if your servers aren't online!  The second benefit, although much smaller, is that you could more easily render browser-specific implementations of your site, such as those for mobile devices and browsers (which you can already do this using different views in MVC). Lastly, Google can index your site much more quickly because everything is effectively static, which will soon have a positive effect on your PageRank.</p>  <p>For those of you that have read thus far, I'm curious to hear your comments.</p>  </script></p>
+      <p>I've been working with CQRS for almost a year. Ever since I first heard about it, I was immediately convinced that it had the ability to vastly simplify a lot of unnecessary development overhead. In this particular post, I will not be discussing event sourcing which is often mingled with CQRS. Instead, I will be focusing on the query side of the equation.</p> <p>Please note that the ideas contained herein are merely conjectures of what might be rather than any kind of working, concrete implementation. I've thought my way through some aspects and ramifications of implementing what I mention below but new insights will undoubtedly merit additional consideration. Furthermore the solutions outlined below need not be considered mutually exclusive with more traditional ways of doing things. There is definitely room to implement portions of what I mention for specific views while doing things in the traditional way in other views.</p> <p><strong>ViewModel Tables</strong></p> <p>Several weeks ago <a href="http://joliver.github.io/2009/11/cqrs-reporting-database-access.html">I blogged</a> about having one table per view. Since that time Udi Dahan <a href="http://www.udidahan.com/2009/12/09/clarified-cqrs/">has mentioned</a> it as well, although independently of my post. Querying view model tables directly, which comes as a positive consequence of implementing CQRS, enables us to avoid having numerous mapping layers between the database and the view. Further, it allows us to avoid projecting off of our domain model and keeps the domain model focused solely on behavior. Lastly, it allows us to scale the read database independently of the write database.</p> <p><strong>Content Delivery Networks</strong></p> <p>Think for a moment about the pure static resources that are handled on a given website. They just sit there with the exact same content for each request. These are the exact kinds of resources for which we could leverage a content-delivery network. In other words, we could push these static elements to a CDN and have the CDN deliver them for us thus offloading  traffic from our servers and freeing our web tier to perform more interesting tasks—such as processing update-type commands. Not only does this offload work from our web tier, but the user has a better and faster browsing experience.</p> <p><strong>HTML + JSON</strong></p> <p>In ASP.NET as well as other server-based page-rendering technologies we typically have the request come all the way to our server and then we render some HTML but with a few modifications depending upon the user. Could there be a way to somehow render static layout HTML but render the parts that vary separately? Why not have the pages render identical static HTML regardless of user and then, on a separate request, render the user-specific content and then stitch the two together using JavaScript?</p> <p>Let me say that another way. Our MVC view or our ASP.NET "Page" could render pure HTML with absolutely no server-side markup. Inside of that HTML we would have the URL of an embedded resource: <script src=""></script>. The request to this embedded resource would call our MVC controller and then render JSON data with user-specific information for the currently logged-in user for that view. We could then use a client-side JavaScript templating engine such as jTemplates to combine the JSON with the static HTML.</p> <p><strong>Static HTML Views + CDNs</strong></p> <p>The above has some interesting ramifications. Why couldn't we just put the static HTML for each view into an HTML file and push those HTML files to a CDN? The static HTML files would have <script> tags inside which would make HTTP requests to our controller actions. Of course we would need to figure out a way to render each view with its associated header/footer HTML or perhaps use JavaScript to get the various HTML parts of the page and assemble them on the client.</p>  <p>By doing this, our web tier is now responsible for exactly two things: outputting user-specific data in JSON format and handling of mutating/update-type POST commands from the browser.</p>  <p><strong>CDNs + JSON</strong></p>  <p>Here's where things get interesting. What if we didn't have to query the database through our controller/service layer to render the JSON? What if the request for the user-specific data never reached the web server? What if the user-specific JSON files were <em>already</em> on the CDN? Think about that for a minute. If that was somehow possible, our web servers would only be responsible for handling POSTs which contained task-specific commands. Wouldn't that make the web tier massively scalable? Wouldn't it be easier to handle exponentially larger loads on the web tier without the need for additional hardware? Even if we didn't use a CDN and we did everything ourselves, Apache and IIS are really, really good at serving up static files when compared to the expense of going through the ASP.NET pipeline. [This applies to any server-side technology such as Ruby, PHP, Perl, Java, etc.]</p>  <p>How is this accomplished? In addition to what has been mentioned throughout this post of splitting up the HTML and the JSON requests, there are two additional pieces. First, you would want to have a component subscribing to events being published by your domain model. This component would then render the user-specific JSON for each view or page.  Second, we would need a way to map the incoming request for a particular JSON file at a "general" location, e.g. "/scripts/account-history" to a user-specific location, e.g. "/scripts/user-12345/account-history.js".</p>  <p><strong>URL Rewriting + Session State ID + Hard Links</strong></p>  <p>That last part is the tricky part because we want to ensure that the user's information is protected and cannot be accessed by others. The way to do it is with URL rewriting and file system hard links/junction points. The user-specific JSON file would be written to a known/fixed location, but that location couldn't be accessed and would never be disclosed over the web. Instead what we would do is rewrite the URL to be: "/scripts/<session-state-id>/account-history.js". This could be accomplished through either server-side rewriting or even client-side rewriting.</p>  <p>If you recall, the session state ID is very, very temporary. When a user logs out of their account or the session expires, the session state is nullified and disappears. But we don't typically think like that about directories. This is where hard links or junction points come into play.</p>  <p>When a user logs in, a hard link is created which points to the user-specific (but never disclosed) directory. For example "/scripts/<session-state-id>/account-history.js" would map to: "/scripts/<random-guid>/account-history.js". When the login takes place, a small, server-side lookup is performed to get the GUID for the particular user—not the user identifier, but another GUID that is never publicly disclosed. We then have a server-side process create a hard link between the temporary session state identifier and the GUID. Conversely, when the user logs out or the session expires, the hard link is removed. In this way we can protect the user data from prying eyes—there would be no way to access the user data without knowing the session state identifier.</p>  <p><strong>Conclusion</strong></p>  <p>All of this is highly experimental, but conceptually makes sense. The development tools currently available bring us some but not all of the way there. Further, there is an amount of overhead in developing such a solution, but the benefits could be significant, especially the separation of concerns aspect and the ability to scale without significant additional effort. Amazon, eBay, Google, and other big players currently implement some or even most of the above techniques but I don't think I've ever seen all of them put together in quite this way.</p>  <p>There are three other benefits that I just thought of. First, if your web servers are completely offline, because of HTTP content caching with expirations, your users wouldn't even notice—until they tried to perform an update/POST. In this way, your website remains highly available—even if your servers aren't online!  The second benefit, although much smaller, is that you could more easily render browser-specific implementations of your site, such as those for mobile devices and browsers (which you can already do this using different views in MVC). Lastly, Google can index your site much more quickly because everything is effectively static, which will soon have a positive effect on your PageRank.</p>  <p>For those of you that have read thus far, I'm curious to hear your comments.</p>  </script></p>
 
     </section>
 
@@ -212,14 +212,14 @@
 
 
 <figure class="author-image">
-    <a class="img" href="http://blog.jonathanoliver.com/" style="background-image: url(/images/tux.png)"><span class="hidden">Jonathan Oliver's Picture</span></a>
+    <a class="img" href="http://joliver.github.io/" style="background-image: url(/images/tux.png)"><span class="hidden">Jonathan Oliver's Picture</span></a>
 </figure>
 
 
 <section class="author">
-  <h4><a href="http://blog.jonathanoliver.com/">Jonathan Oliver</a></h4>
+  <h4><a href="http://joliver.github.io/">Jonathan Oliver</a></h4>
   
-  <p>Read <a href="http://blog.jonathanoliver.com/">more posts</a> by this author.</p>
+  <p>Read <a href="http://joliver.github.io/">more posts</a> by this author.</p>
   
   <div class="author-meta">
     <span class="author-location icon-location">Utah, USA</span>
@@ -233,19 +233,19 @@
     
 <section class="share">
   <h4>Share this post</h4>
-  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Postulating%20Extreme%20Web%20UI%20Scalability&nbsp;-&nbsp;Jonathan%20Oliver&amp;url=http%3a%2f%2fblog.jonathanoliver.com%2fpostulating-extreme-web-ui-scalability%2f"
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Postulating%20Extreme%20Web%20UI%20Scalability&nbsp;-&nbsp;Jonathan%20Oliver&amp;url=http%3a%2f%2fjoliver.github.io%2fpostulating-extreme-web-ui-scalability%2f"
       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
       <span class="hidden">Twitter</span>
   </a>
-  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.jonathanoliver.com%2fpostulating-extreme-web-ui-scalability%2f"
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fjoliver.github.io%2fpostulating-extreme-web-ui-scalability%2f"
       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
       <span class="hidden">Facebook</span>
   </a>
-  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fblog.jonathanoliver.com%2fpostulating-extreme-web-ui-scalability%2f&amp;description=Postulating%20Extreme%20Web%20UI%20Scalability"
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fjoliver.github.io%2fpostulating-extreme-web-ui-scalability%2f&amp;description=Postulating%20Extreme%20Web%20UI%20Scalability"
       onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
       <span class="hidden">Pinterest</span>
   </a>
-  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fblog.jonathanoliver.com%2fpostulating-extreme-web-ui-scalability%2f"
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fjoliver.github.io%2fpostulating-extreme-web-ui-scalability%2f"
      onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
       <span class="hidden">Google+</span>
   </a>
@@ -262,8 +262,8 @@
 
 
 var disqus_config = function () {
-this.page.url = "http:\/\/blog.jonathanoliver.com\/postulating-extreme-web-ui-scalability\/";  
-this.page.identifier = "http:\/\/blog.jonathanoliver.com\/postulating-extreme-web-ui-scalability\/"; 
+this.page.url = "http:\/\/joliver.github.io\/postulating-extreme-web-ui-scalability\/";  
+this.page.identifier = "http:\/\/joliver.github.io\/postulating-extreme-web-ui-scalability\/"; 
 };
 
 (function() { 
@@ -290,7 +290,7 @@ s.setAttribute('data-timestamp', +new Date());
 
   <aside class="read-next">
   
-      <a class="read-next-story" style="no-cover" href="http://blog.jonathanoliver.com/extreme-web-ui-scalability-part-2/">
+      <a class="read-next-story" style="no-cover" href="http://joliver.github.io/extreme-web-ui-scalability-part-2/">
           <section class="post">
               <h2>Extreme Web UI Scalability – Part 2</h2>
               
@@ -298,7 +298,7 @@ s.setAttribute('data-timestamp', +new Date());
       </a>
   
   
-      <a class="read-next-story prev" style="no-cover" href="http://blog.jonathanoliver.com/persistence-ignorance-and-activerecord/">
+      <a class="read-next-story prev" style="no-cover" href="http://joliver.github.io/persistence-ignorance-and-activerecord/">
           <section class="post">
               <h2>Persistence Ignorance and ActiveRecord</h2>
           </section>
@@ -313,9 +313,9 @@ s.setAttribute('data-timestamp', +new Date());
         
     </footer>
     </div>
-    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.js"></script>
-    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.fitvids.js"></script>
-    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/index.js"></script>
+    <script type="text/javascript" src="http://joliver.github.io/js/jquery.js"></script>
+    <script type="text/javascript" src="http://joliver.github.io/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://joliver.github.io/js/index.js"></script>
     
 </body>
 </html>

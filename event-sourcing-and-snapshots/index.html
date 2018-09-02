@@ -20,7 +20,7 @@
 
   	<meta property="og:title" content="Event Sourcing and Snapshots &middot; Jonathan Oliver" />
   	<meta property="og:site_name" content="Jonathan Oliver" />
-  	<meta property="og:url" content="http://blog.jonathanoliver.com/event-sourcing-and-snapshots/" />
+  	<meta property="og:url" content="http://joliver.github.io/event-sourcing-and-snapshots/" />
 
     
         
@@ -45,11 +45,11 @@
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="shortcut icon" href="http://blog.jonathanoliver.com/images/favicon.ico">
-	  <link rel="apple-touch-icon" href="http://blog.jonathanoliver.com/images/apple-touch-icon.png" />
+    <link rel="shortcut icon" href="http://joliver.github.io/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://joliver.github.io/images/apple-touch-icon.png" />
 
-    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/screen.css" />
-    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/nav.css" />
+    <link rel="stylesheet" type="text/css" href="http://joliver.github.io/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://joliver.github.io/css/nav.css" />
 
     
 
@@ -62,13 +62,13 @@
 
     
       
-          <link href="http://blog.jonathanoliver.com/index.xml" rel="alternate" type="application/rss+xml" title="Jonathan Oliver" />
+          <link href="http://joliver.github.io/index.xml" rel="alternate" type="application/rss+xml" title="Jonathan Oliver" />
       
       
     
     <meta name="generator" content="Hugo 0.46-DEV" />
 
-    <link rel="canonical" href="http://blog.jonathanoliver.com/event-sourcing-and-snapshots/" />
+    <link rel="canonical" href="http://joliver.github.io/event-sourcing-and-snapshots/" />
 
     
       
@@ -80,7 +80,7 @@
     "publisher": {
         "@type": "Organization",
         "name": ,
-        "logo": http://blog.jonathanoliver.com/images/tux.png
+        "logo": http://joliver.github.io/images/tux.png
     },
     "author": {
         "@type": "Person",
@@ -88,7 +88,7 @@
         
         "image": {
             "@type": "ImageObject",
-            "url": http://blog.jonathanoliver.com/images/tux.png,
+            "url": http://joliver.github.io/images/tux.png,
             "width": 250,
             "height": 250
         }, 
@@ -113,7 +113,7 @@
       "@type": "Language",
       "alternateName": en
     },
-    "url": http://blog.jonathanoliver.com/event-sourcing-and-snapshots/,
+    "url": http://joliver.github.io/event-sourcing-and-snapshots/,
     "datePublished": 2009-03-18T00:00Z,
     "dateModified": 2009-03-18T00:00Z,
     
@@ -121,7 +121,7 @@
     "description": ,
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": http://blog.jonathanoliver.com/event-sourcing-and-snapshots/
+        "@id": http://joliver.github.io/event-sourcing-and-snapshots/
     }
 }
     </script>
@@ -147,7 +147,7 @@
     </ul>
 
     
-    <a class="subscribe-button icon-feed" href="http://blog.jonathanoliver.com/index.xml">Subscribe</a>
+    <a class="subscribe-button icon-feed" href="http://joliver.github.io/index.xml">Subscribe</a>
     
 </div>
 <span class="nav-cover"></span>
@@ -162,10 +162,10 @@
 
 
   
-      <a class="blog-logo" href="http://blog.jonathanoliver.com/"><img src="http://blog.jonathanoliver.com/images/tux.png" alt="Home" /></a>
+      <a class="blog-logo" href="http://joliver.github.io/"><img src="http://joliver.github.io/images/tux.png" alt="Home" /></a>
   
   
-      <a class="menu-button icon-feed" href="http://blog.jonathanoliver.com/index.xml" >&nbsp;&nbsp;Subscribe</a>
+      <a class="menu-button icon-feed" href="http://joliver.github.io/index.xml" >&nbsp;&nbsp;Subscribe</a>
   
   </nav>
 </header>
@@ -194,7 +194,7 @@
     </header>
 
     <section class="post-content">
-      <p>One part of Event Sourcing that could become problematic is those objects with long, complex lifetimes. In virtually all cases, an object's lifetime is relatively short--perhaps a dozen events or so. But there are cases in which an object may live for a very, very long time and be used frequently. Greg gives an example in one if his talks of an object that gets thousands of new events per day. Loading up this object can be expensive because you have to load up all of the state transitions since the object's inception.</p> <p>One shortcut around this is the concept of a snapshot. You send the aggregate a snapshot command message of some kind and it produces a snapshot message which contains all of its state--along the lines of converting a domain object to a DTO, except this comes from inside of the domain object rather than from the outside.</p> <p>Once we have this snapshot message, we persist it. Then, when loading up the object from storage, we load all of the events up to and including the last snapshot. This allows us to restore the object to a certain state and then &quot;replay&quot; all events since the last snapshot.</p> <p>Here's a critical piece that is often overlooked and not really explained in Greg's <a href="http://www.viddler.com/explore/GregYoung/videos/5/">devTeach presentation</a>--the aggregate version. The aggregate has some kind of version number indicating how many events have been run against it since it was first created--including the aggregate creation event. At 39:45 in the video he starts explaining the DB schema and briefly mentions the version number, but doesn't go into any detail.</p> <p>In my <a href="http://blog.jonathanoliver.com/2009/03/event-sourcing-persistence.html">proposed event storage schema</a> I have a column called &quot;snapshot_event_seq&quot; which is the number of the event at which the last snapshot occurred. When an aggregate is initially created it will have a a snapshot_event_seq or version of zero. In memory, as messages are produced by the aggregate root, the sequence counter or version will increment. This will then indicate the version of the aggregate as a whole.</p> <p>The trick is to <strong>*not*</strong> increment the snapshot_event_seq in your persistence mechanism when events are saved. Only when a snapshot is created is that value updated. This reason is that, when we load up an aggregate from storage, we set the &quot;version&quot; of the aggregate equal to the last snapshot_event_seq - 1. Then, we replay the event messages that have occurred since (and including) the last snapshot against the aggregate, thus incrementing the version in memory. For example:</p> <p>In-memory aggregate version: 12</p> <p>Persisted aggregate version (Last snapshot event sequence): 10</p> <p>Events since (and including) last snapshot: 3</p> <p>When loading, we set the version to 10 and then add 1 for each event (10 - 1 + 1 + 1 + 1) = 12, which is the same as the in-memory representation.</p> <p>This solves a very important issue. If we simply incremented the value in storage each time an event was saved, our aggregate version would get out of sync. Specifically, we'd load up the aggregate and set the version to the snapshot_event_seq - 1 and then replay all events since (and including) the last snapshot. For example:</p> <p>In-memory aggregate version: 12</p> <p>Persisted aggregate version: 12 (because we're incorrectly incrementing it with each event saved).</p> <p>Events since (and including) last snapshot: 2</p> <p>When loading, we set the version to the incorrect value of 12 - 1 and add one for each event: (12 - 1 + 1 + 1) = 13, which is out of sync with the in-memory representation.</p> <p>See the problem? To solve it we do the following: In memory, we set the aggregate version to the number of messages processed, but when persisting, we only update the version when a snapshot is taken.</p> <p>One of the reasons I call the aggregate version &quot;snapshot_event_seq&quot; is to ensure that we don't accidentally confuse the difference between the in-memory and persisted representation of the two values.</p> 
+      <p>One part of Event Sourcing that could become problematic is those objects with long, complex lifetimes. In virtually all cases, an object's lifetime is relatively short--perhaps a dozen events or so. But there are cases in which an object may live for a very, very long time and be used frequently. Greg gives an example in one if his talks of an object that gets thousands of new events per day. Loading up this object can be expensive because you have to load up all of the state transitions since the object's inception.</p> <p>One shortcut around this is the concept of a snapshot. You send the aggregate a snapshot command message of some kind and it produces a snapshot message which contains all of its state--along the lines of converting a domain object to a DTO, except this comes from inside of the domain object rather than from the outside.</p> <p>Once we have this snapshot message, we persist it. Then, when loading up the object from storage, we load all of the events up to and including the last snapshot. This allows us to restore the object to a certain state and then &quot;replay&quot; all events since the last snapshot.</p> <p>Here's a critical piece that is often overlooked and not really explained in Greg's <a href="http://www.viddler.com/explore/GregYoung/videos/5/">devTeach presentation</a>--the aggregate version. The aggregate has some kind of version number indicating how many events have been run against it since it was first created--including the aggregate creation event. At 39:45 in the video he starts explaining the DB schema and briefly mentions the version number, but doesn't go into any detail.</p> <p>In my <a href="http://joliver.github.io/2009/03/event-sourcing-persistence.html">proposed event storage schema</a> I have a column called &quot;snapshot_event_seq&quot; which is the number of the event at which the last snapshot occurred. When an aggregate is initially created it will have a a snapshot_event_seq or version of zero. In memory, as messages are produced by the aggregate root, the sequence counter or version will increment. This will then indicate the version of the aggregate as a whole.</p> <p>The trick is to <strong>*not*</strong> increment the snapshot_event_seq in your persistence mechanism when events are saved. Only when a snapshot is created is that value updated. This reason is that, when we load up an aggregate from storage, we set the &quot;version&quot; of the aggregate equal to the last snapshot_event_seq - 1. Then, we replay the event messages that have occurred since (and including) the last snapshot against the aggregate, thus incrementing the version in memory. For example:</p> <p>In-memory aggregate version: 12</p> <p>Persisted aggregate version (Last snapshot event sequence): 10</p> <p>Events since (and including) last snapshot: 3</p> <p>When loading, we set the version to 10 and then add 1 for each event (10 - 1 + 1 + 1 + 1) = 12, which is the same as the in-memory representation.</p> <p>This solves a very important issue. If we simply incremented the value in storage each time an event was saved, our aggregate version would get out of sync. Specifically, we'd load up the aggregate and set the version to the snapshot_event_seq - 1 and then replay all events since (and including) the last snapshot. For example:</p> <p>In-memory aggregate version: 12</p> <p>Persisted aggregate version: 12 (because we're incorrectly incrementing it with each event saved).</p> <p>Events since (and including) last snapshot: 2</p> <p>When loading, we set the version to the incorrect value of 12 - 1 and add one for each event: (12 - 1 + 1 + 1) = 13, which is out of sync with the in-memory representation.</p> <p>See the problem? To solve it we do the following: In memory, we set the aggregate version to the number of messages processed, but when persisting, we only update the version when a snapshot is taken.</p> <p>One of the reasons I call the aggregate version &quot;snapshot_event_seq&quot; is to ensure that we don't accidentally confuse the difference between the in-memory and persisted representation of the two values.</p> 
 
     </section>
 
@@ -212,14 +212,14 @@
 
 
 <figure class="author-image">
-    <a class="img" href="http://blog.jonathanoliver.com/" style="background-image: url(/images/tux.png)"><span class="hidden">Jonathan Oliver's Picture</span></a>
+    <a class="img" href="http://joliver.github.io/" style="background-image: url(/images/tux.png)"><span class="hidden">Jonathan Oliver's Picture</span></a>
 </figure>
 
 
 <section class="author">
-  <h4><a href="http://blog.jonathanoliver.com/">Jonathan Oliver</a></h4>
+  <h4><a href="http://joliver.github.io/">Jonathan Oliver</a></h4>
   
-  <p>Read <a href="http://blog.jonathanoliver.com/">more posts</a> by this author.</p>
+  <p>Read <a href="http://joliver.github.io/">more posts</a> by this author.</p>
   
   <div class="author-meta">
     <span class="author-location icon-location">Utah, USA</span>
@@ -233,19 +233,19 @@
     
 <section class="share">
   <h4>Share this post</h4>
-  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Event%20Sourcing%20and%20Snapshots&nbsp;-&nbsp;Jonathan%20Oliver&amp;url=http%3a%2f%2fblog.jonathanoliver.com%2fevent-sourcing-and-snapshots%2f"
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Event%20Sourcing%20and%20Snapshots&nbsp;-&nbsp;Jonathan%20Oliver&amp;url=http%3a%2f%2fjoliver.github.io%2fevent-sourcing-and-snapshots%2f"
       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
       <span class="hidden">Twitter</span>
   </a>
-  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.jonathanoliver.com%2fevent-sourcing-and-snapshots%2f"
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fjoliver.github.io%2fevent-sourcing-and-snapshots%2f"
       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
       <span class="hidden">Facebook</span>
   </a>
-  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fblog.jonathanoliver.com%2fevent-sourcing-and-snapshots%2f&amp;description=Event%20Sourcing%20and%20Snapshots"
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fjoliver.github.io%2fevent-sourcing-and-snapshots%2f&amp;description=Event%20Sourcing%20and%20Snapshots"
       onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
       <span class="hidden">Pinterest</span>
   </a>
-  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fblog.jonathanoliver.com%2fevent-sourcing-and-snapshots%2f"
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fjoliver.github.io%2fevent-sourcing-and-snapshots%2f"
      onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
       <span class="hidden">Google+</span>
   </a>
@@ -262,8 +262,8 @@
 
 
 var disqus_config = function () {
-this.page.url = "http:\/\/blog.jonathanoliver.com\/event-sourcing-and-snapshots\/";  
-this.page.identifier = "http:\/\/blog.jonathanoliver.com\/event-sourcing-and-snapshots\/"; 
+this.page.url = "http:\/\/joliver.github.io\/event-sourcing-and-snapshots\/";  
+this.page.identifier = "http:\/\/joliver.github.io\/event-sourcing-and-snapshots\/"; 
 };
 
 (function() { 
@@ -290,7 +290,7 @@ s.setAttribute('data-timestamp', +new Date());
 
   <aside class="read-next">
   
-      <a class="read-next-story" style="no-cover" href="http://blog.jonathanoliver.com/event-sourcing-and-committing-transactions/">
+      <a class="read-next-story" style="no-cover" href="http://joliver.github.io/event-sourcing-and-committing-transactions/">
           <section class="post">
               <h2>Event Sourcing and Committing Transactions</h2>
               
@@ -298,7 +298,7 @@ s.setAttribute('data-timestamp', +new Date());
       </a>
   
   
-      <a class="read-next-story prev" style="no-cover" href="http://blog.jonathanoliver.com/event-sourcing-and-write-ahead-logging/">
+      <a class="read-next-story prev" style="no-cover" href="http://joliver.github.io/event-sourcing-and-write-ahead-logging/">
           <section class="post">
               <h2>Event Sourcing and Write-Ahead Logging</h2>
           </section>
@@ -313,9 +313,9 @@ s.setAttribute('data-timestamp', +new Date());
         
     </footer>
     </div>
-    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.js"></script>
-    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.fitvids.js"></script>
-    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/index.js"></script>
+    <script type="text/javascript" src="http://joliver.github.io/js/jquery.js"></script>
+    <script type="text/javascript" src="http://joliver.github.io/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://joliver.github.io/js/index.js"></script>
     
 </body>
 </html>

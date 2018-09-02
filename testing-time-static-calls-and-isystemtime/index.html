@@ -20,7 +20,7 @@
 
   	<meta property="og:title" content="Testing Time—Static Calls and ISystemTime &middot; Jonathan Oliver" />
   	<meta property="og:site_name" content="Jonathan Oliver" />
-  	<meta property="og:url" content="http://blog.jonathanoliver.com/testing-time-static-calls-and-isystemtime/" />
+  	<meta property="og:url" content="http://joliver.github.io/testing-time-static-calls-and-isystemtime/" />
 
     
         
@@ -45,11 +45,11 @@
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="shortcut icon" href="http://blog.jonathanoliver.com/images/favicon.ico">
-	  <link rel="apple-touch-icon" href="http://blog.jonathanoliver.com/images/apple-touch-icon.png" />
+    <link rel="shortcut icon" href="http://joliver.github.io/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://joliver.github.io/images/apple-touch-icon.png" />
 
-    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/screen.css" />
-    <link rel="stylesheet" type="text/css" href="http://blog.jonathanoliver.com/css/nav.css" />
+    <link rel="stylesheet" type="text/css" href="http://joliver.github.io/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://joliver.github.io/css/nav.css" />
 
     
 
@@ -62,13 +62,13 @@
 
     
       
-          <link href="http://blog.jonathanoliver.com/index.xml" rel="alternate" type="application/rss+xml" title="Jonathan Oliver" />
+          <link href="http://joliver.github.io/index.xml" rel="alternate" type="application/rss+xml" title="Jonathan Oliver" />
       
       
     
     <meta name="generator" content="Hugo 0.46-DEV" />
 
-    <link rel="canonical" href="http://blog.jonathanoliver.com/testing-time-static-calls-and-isystemtime/" />
+    <link rel="canonical" href="http://joliver.github.io/testing-time-static-calls-and-isystemtime/" />
 
     
       
@@ -80,7 +80,7 @@
     "publisher": {
         "@type": "Organization",
         "name": ,
-        "logo": http://blog.jonathanoliver.com/images/tux.png
+        "logo": http://joliver.github.io/images/tux.png
     },
     "author": {
         "@type": "Person",
@@ -88,7 +88,7 @@
         
         "image": {
             "@type": "ImageObject",
-            "url": http://blog.jonathanoliver.com/images/tux.png,
+            "url": http://joliver.github.io/images/tux.png,
             "width": 250,
             "height": 250
         }, 
@@ -113,7 +113,7 @@
       "@type": "Language",
       "alternateName": en
     },
-    "url": http://blog.jonathanoliver.com/testing-time-static-calls-and-isystemtime/,
+    "url": http://joliver.github.io/testing-time-static-calls-and-isystemtime/,
     "datePublished": 2009-10-19T00:00Z,
     "dateModified": 2009-10-19T00:00Z,
     
@@ -121,7 +121,7 @@
     "description": ,
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": http://blog.jonathanoliver.com/testing-time-static-calls-and-isystemtime/
+        "@id": http://joliver.github.io/testing-time-static-calls-and-isystemtime/
     }
 }
     </script>
@@ -147,7 +147,7 @@
     </ul>
 
     
-    <a class="subscribe-button icon-feed" href="http://blog.jonathanoliver.com/index.xml">Subscribe</a>
+    <a class="subscribe-button icon-feed" href="http://joliver.github.io/index.xml">Subscribe</a>
     
 </div>
 <span class="nav-cover"></span>
@@ -162,10 +162,10 @@
 
 
   
-      <a class="blog-logo" href="http://blog.jonathanoliver.com/"><img src="http://blog.jonathanoliver.com/images/tux.png" alt="Home" /></a>
+      <a class="blog-logo" href="http://joliver.github.io/"><img src="http://joliver.github.io/images/tux.png" alt="Home" /></a>
   
   
-      <a class="menu-button icon-feed" href="http://blog.jonathanoliver.com/index.xml" >&nbsp;&nbsp;Subscribe</a>
+      <a class="menu-button icon-feed" href="http://joliver.github.io/index.xml" >&nbsp;&nbsp;Subscribe</a>
   
   </nav>
 </header>
@@ -194,7 +194,7 @@
     </header>
 
     <section class="post-content">
-      <p>In my <a href="http://blog.jonathanoliver.com/2009/10/ddd-entity-injection-and-mocking-time.html">previous post</a>, I talked about a technique that I saw for testing time and also about how I simply injected some kind of ISystemTime/IClock interface. The problem with that was having to do injection at every level—including domain entities.</p> <p><a href="http://ayende.com/Blog/archive/2008/07/07/Dealing-with-time-in-tests.aspx">Oren Eini's method</a>, while probably the most simple and easiest to implement (both of which are *good things*) has two small issues:</p> <ol> <li>Implicit disposability. You have to remember to reset the static lambda expression every time it's set. </li> <li>Thread isolation: All calls are to a single, static instance and return the same value—running unit tests in parallel can be dangerous. </li> </ol> <p>With that I mind I decided to create my own small library to address those issues.</p> <p><strong>Oh No!  Another Library</strong></p> <p>In the past I would normally have put this new code into a library with other infrastructure code. I purposefully avoided mixing this code with any other concern because I want to have a truly static library—one that I compile and continue to use for the next five years without updating it. I want a library that any and all projects can depend upon and has a stable implementation and can be considered as fundamental as Microsoft's BCL (System.*) implementations.</p> <p><strong><a href="http://github.com/joliver/OpenXtensions.SystemTime">OpenXtensions</a></strong></p> <p>Therefore, I present <a href="http://github.com/joliver/OpenXtensions.SystemTime">OpenXtensions.SystemTime</a>. I named it that facilitate Google-fo. OpenXtensions.* will be a set of small libraries related to simple, helper methods and behavior surrounding deficiencies and rough spots in the BCL. Common usage looks like the following:</p> <blockquote> <p>var instant = DateTime.Parse('"2000-01-01");</p> <p>using (SystemTime.Is(instant))</p> <p>{</p> <p>    // do some work</p> <p>    var currentTime = SystemTime.UtcNow;</p> <p>}</p> </blockquote> <p>The library is about 7K and is signed with a strong key. It is under the MIT license so you're free to do whatever you'd like with it.</p> <p><strong>Dependency Injection</strong></p> <p>For those of you who want to continue to use dependency injection, I created an interface ISystemTime as well as a class SystemTimeAdapter (which implements ISystemTime). You can inject this into your objects as necessary and it will call SystemTime.UtcNow on your behalf.</p> <p>UPDATE: <a href="http://davybrion.com/blog/2009/10/testability-of-date-dependent-code/comment-page-1/# comment-22795">Davy Brion linked</a> to <a href="http://blog.jonathanoliver.com/2009/10/ddd-entity-injection-and-mocking-time.html">my previous article</a> on this subject. In the comments for Davy's post, Mel Grubb <a href="http://melgrubb.spaces.live.com/blog/cns!A44BB98A805C8996!263.entry">linked to his solution</a>, which is very similar to the one I have detailed here. For what it's worth, one key different would be that Mel stores a "DateTimeContext" on the thread while I'm storing the DateTime.</p> 
+      <p>In my <a href="http://joliver.github.io/2009/10/ddd-entity-injection-and-mocking-time.html">previous post</a>, I talked about a technique that I saw for testing time and also about how I simply injected some kind of ISystemTime/IClock interface. The problem with that was having to do injection at every level—including domain entities.</p> <p><a href="http://ayende.com/Blog/archive/2008/07/07/Dealing-with-time-in-tests.aspx">Oren Eini's method</a>, while probably the most simple and easiest to implement (both of which are *good things*) has two small issues:</p> <ol> <li>Implicit disposability. You have to remember to reset the static lambda expression every time it's set. </li> <li>Thread isolation: All calls are to a single, static instance and return the same value—running unit tests in parallel can be dangerous. </li> </ol> <p>With that I mind I decided to create my own small library to address those issues.</p> <p><strong>Oh No!  Another Library</strong></p> <p>In the past I would normally have put this new code into a library with other infrastructure code. I purposefully avoided mixing this code with any other concern because I want to have a truly static library—one that I compile and continue to use for the next five years without updating it. I want a library that any and all projects can depend upon and has a stable implementation and can be considered as fundamental as Microsoft's BCL (System.*) implementations.</p> <p><strong><a href="http://github.com/joliver/OpenXtensions.SystemTime">OpenXtensions</a></strong></p> <p>Therefore, I present <a href="http://github.com/joliver/OpenXtensions.SystemTime">OpenXtensions.SystemTime</a>. I named it that facilitate Google-fo. OpenXtensions.* will be a set of small libraries related to simple, helper methods and behavior surrounding deficiencies and rough spots in the BCL. Common usage looks like the following:</p> <blockquote> <p>var instant = DateTime.Parse('"2000-01-01");</p> <p>using (SystemTime.Is(instant))</p> <p>{</p> <p>    // do some work</p> <p>    var currentTime = SystemTime.UtcNow;</p> <p>}</p> </blockquote> <p>The library is about 7K and is signed with a strong key. It is under the MIT license so you're free to do whatever you'd like with it.</p> <p><strong>Dependency Injection</strong></p> <p>For those of you who want to continue to use dependency injection, I created an interface ISystemTime as well as a class SystemTimeAdapter (which implements ISystemTime). You can inject this into your objects as necessary and it will call SystemTime.UtcNow on your behalf.</p> <p>UPDATE: <a href="http://davybrion.com/blog/2009/10/testability-of-date-dependent-code/comment-page-1/# comment-22795">Davy Brion linked</a> to <a href="http://joliver.github.io/2009/10/ddd-entity-injection-and-mocking-time.html">my previous article</a> on this subject. In the comments for Davy's post, Mel Grubb <a href="http://melgrubb.spaces.live.com/blog/cns!A44BB98A805C8996!263.entry">linked to his solution</a>, which is very similar to the one I have detailed here. For what it's worth, one key different would be that Mel stores a "DateTimeContext" on the thread while I'm storing the DateTime.</p> 
 
     </section>
 
@@ -212,14 +212,14 @@
 
 
 <figure class="author-image">
-    <a class="img" href="http://blog.jonathanoliver.com/" style="background-image: url(/images/tux.png)"><span class="hidden">Jonathan Oliver's Picture</span></a>
+    <a class="img" href="http://joliver.github.io/" style="background-image: url(/images/tux.png)"><span class="hidden">Jonathan Oliver's Picture</span></a>
 </figure>
 
 
 <section class="author">
-  <h4><a href="http://blog.jonathanoliver.com/">Jonathan Oliver</a></h4>
+  <h4><a href="http://joliver.github.io/">Jonathan Oliver</a></h4>
   
-  <p>Read <a href="http://blog.jonathanoliver.com/">more posts</a> by this author.</p>
+  <p>Read <a href="http://joliver.github.io/">more posts</a> by this author.</p>
   
   <div class="author-meta">
     <span class="author-location icon-location">Utah, USA</span>
@@ -233,19 +233,19 @@
     
 <section class="share">
   <h4>Share this post</h4>
-  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Testing%20Time%e2%80%94Static%20Calls%20and%20ISystemTime&nbsp;-&nbsp;Jonathan%20Oliver&amp;url=http%3a%2f%2fblog.jonathanoliver.com%2ftesting-time-static-calls-and-isystemtime%2f"
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Testing%20Time%e2%80%94Static%20Calls%20and%20ISystemTime&nbsp;-&nbsp;Jonathan%20Oliver&amp;url=http%3a%2f%2fjoliver.github.io%2ftesting-time-static-calls-and-isystemtime%2f"
       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
       <span class="hidden">Twitter</span>
   </a>
-  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.jonathanoliver.com%2ftesting-time-static-calls-and-isystemtime%2f"
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fjoliver.github.io%2ftesting-time-static-calls-and-isystemtime%2f"
       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
       <span class="hidden">Facebook</span>
   </a>
-  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fblog.jonathanoliver.com%2ftesting-time-static-calls-and-isystemtime%2f&amp;description=Testing%20Time%e2%80%94Static%20Calls%20and%20ISystemTime"
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fjoliver.github.io%2ftesting-time-static-calls-and-isystemtime%2f&amp;description=Testing%20Time%e2%80%94Static%20Calls%20and%20ISystemTime"
       onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
       <span class="hidden">Pinterest</span>
   </a>
-  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fblog.jonathanoliver.com%2ftesting-time-static-calls-and-isystemtime%2f"
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fjoliver.github.io%2ftesting-time-static-calls-and-isystemtime%2f"
      onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
       <span class="hidden">Google+</span>
   </a>
@@ -262,8 +262,8 @@
 
 
 var disqus_config = function () {
-this.page.url = "http:\/\/blog.jonathanoliver.com\/testing-time-static-calls-and-isystemtime\/";  
-this.page.identifier = "http:\/\/blog.jonathanoliver.com\/testing-time-static-calls-and-isystemtime\/"; 
+this.page.url = "http:\/\/joliver.github.io\/testing-time-static-calls-and-isystemtime\/";  
+this.page.identifier = "http:\/\/joliver.github.io\/testing-time-static-calls-and-isystemtime\/"; 
 };
 
 (function() { 
@@ -290,7 +290,7 @@ s.setAttribute('data-timestamp', +new Date());
 
   <aside class="read-next">
   
-      <a class="read-next-story" style="no-cover" href="http://blog.jonathanoliver.com/testing-time-the-best-of-both-worlds/">
+      <a class="read-next-story" style="no-cover" href="http://joliver.github.io/testing-time-the-best-of-both-worlds/">
           <section class="post">
               <h2>Testing Time - The Best of Both Worlds</h2>
               
@@ -298,7 +298,7 @@ s.setAttribute('data-timestamp', +new Date());
       </a>
   
   
-      <a class="read-next-story prev" style="no-cover" href="http://blog.jonathanoliver.com/ddd-entity-injection-and-mocking-time/">
+      <a class="read-next-story prev" style="no-cover" href="http://joliver.github.io/ddd-entity-injection-and-mocking-time/">
           <section class="post">
               <h2>DDD: Entity Injection and Mocking Time</h2>
           </section>
@@ -313,9 +313,9 @@ s.setAttribute('data-timestamp', +new Date());
         
     </footer>
     </div>
-    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.js"></script>
-    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/jquery.fitvids.js"></script>
-    <script type="text/javascript" src="http://blog.jonathanoliver.com/js/index.js"></script>
+    <script type="text/javascript" src="http://joliver.github.io/js/jquery.js"></script>
+    <script type="text/javascript" src="http://joliver.github.io/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://joliver.github.io/js/index.js"></script>
     
 </body>
 </html>
